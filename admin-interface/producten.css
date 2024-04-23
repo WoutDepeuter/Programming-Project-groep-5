@@ -20,18 +20,15 @@ body {
 
 .center-element{
     font-family: 'JetBrains Mono', monospace;
-    background-color: #FF0000;
-    display: flex;
-
+    background-color: red;
     
+
     
 }
 
 .center-element a {
     padding: 0px;
     margin: 0px;
-    flex-grow: 1;
-    flex-basis: 0;
 }
 
 .adminhead {
@@ -49,8 +46,6 @@ body {
     align-items: center;
     border-radius: 20px;
     overflow: hidden;
-    flex-grow: 1;
-    flex-basis: 0;
 }
 
 .zoekid
@@ -90,10 +85,7 @@ body {
 }
 
 .producten-container {
-    margin-left: auto;
     padding-right: 20px;
-    flex-grow: 1;
-    flex-basis: 0;
 }
 
 .adminhead a {
@@ -103,106 +95,7 @@ body {
     font-size: 30px;
 }
 
-.klantinfo🤓 img
-{
-    border-radius: 50%;
-    max-width: 50px;
-    max-height: 50px;
-}
 
-.klantinfo🤓 
-{
-    display: flex;
-    align-items: center ;
-}
-
-.klantinfo🤓 h3,h5{
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-.klantinfo🤓 h3{
-    font-size: 20px;
-    width: 50px;
-    padding: 20px;
-}
-
-.product img
-{
-    border-radius: 0;
-}
-
-.product
-{
-    display: flex;
-    margin: 10px;
-    border-bottom: 1px solid #ccc;
-    border: 1px solid #ccc;
-    flex-direction: row;
-    max-width: 400px;
-    height: 400px;
-    /* background-color: Blue; */
-}
-
-.product h5,p {
-    margin-bottom: 0;
-}
-
-.product {
-    margin-bottom: 2em;
-}
-
-
-
-.ontvangen{
-    padding-left: 2em;
-    max-width: 50%;
-    border-right: #222831 solid 3px;
-}
-
-.uitlenen{
-    padding-left: 2em;
-}
-
-.oke {
-    margin-top: 1em;
-    margin-left: 2em;
-    border-radius: 50%; /* Makes the b  tton round */
-    background-color: rgb(255, 255, 255); /* Sets the background color to red */
-    color: green; /* Sets the text color to white */
-    width: 40px; /* Sets the width of the button */
-    height: 40px; /* Sets the height of the button */
-    border: solid 1px; /* Removes the border */
-    cursor: pointer; /* Changes cursor to pointer on hover */
-}
-
-.oke:hover {
-    background-color: rgb(0, 207, 0); /* Sets the background color to green on hover */
-    color: white; /* Sets the text color to white on hover */
-}
-
-.nietoke {
-    border-radius: 50%; /* Makes the button round */
-    margin-top: 1em;
-    margin-left: 2em;
-    background-color: rgb(255, 255, 255); /* Sets the background color to red */
-    color: red; /* Sets the text color to white */
-    width: 40px; /* Sets the width of the button */
-    height: 40px; /* Sets the height of the button */
-    border: solid 1px; /* Removes the border */
-    cursor: pointer; /* Changes cursor to pointer on hover */
-    
-}
-
-.nietoke:hover {
-    background-color: red; /* Sets the background color to red on hover */
-    color: white; /* Sets the text color to white on hover */
-}
-
-.buttons
-{display: flex;
-    flex-direction: row;
-}
 
 div #verzend {
     width: 100px;
@@ -279,3 +172,32 @@ footer p a:hover {
     display: flex;
 }
 
+.prodnav ul 
+{
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    list-style: none;
+    font-size: large;
+    text-decoration: none;
+    flex-direction: row;
+}
+.prodnav a
+{
+    text-decoration: none;
+    color: black;
+    font-size: 32px;
+    font-weight: 600;
+    padding-left: 160px;
+}
+.prodnav .active
+{
+color: #FF0000;
+}
+hr {
+    border: none;
+    border-top: 1px solid #ccc; /* You can adjust the color as needed */
+    margin: 20px 0; /* You can adjust the margin as needed */
+}
