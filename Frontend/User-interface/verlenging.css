@@ -1,0 +1,116 @@
+/*titel: */
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
+/*algemeen*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+/*verlengen*/
+@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&display=swap');
+body {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  font-family: "Poppins";
+}
+
+header {
+  background-color: red;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.menu-container,
+.site-naam,
+.profiel {
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+.menu-container {
+  margin-left: 10px;
+  height: auto;
+  display: flex;
+  align-items: center;
+}
+
+
+#zoekbalk::placeholder {
+  color: #ff0000;
+  font-weight: bold;
+}
+
+.site-naam {
+  text-align: center;
+}
+
+#site-naam {
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  font-weight: bold;
+  font-family: "JetBrains Mono", monospace;
+}
+
+.profiel {
+  text-align: right;
+}
+#profiel {
+  width: 50px;
+  height: 50px;
+}
+
+footer {
+  bottom: 0;
+  left: 0;
+  background-color: red;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#school {
+  padding: 10px;
+  color: white;
+}
+
+#taal {
+  padding: 10px;
+  color: white;
+}
+#return{
+    width: 50px;
+  height: 50px;
+}
+
+#menu {
+    width: 35px;
+    height: 5px;
+    background-color: rgb(255, 255, 255);
+    margin: 6px 0;
+    border-radius: 50px;
+  }
+
+  #profiel-foto{
+    width: 150px;
+    height: 150px;
+    margin: 25px;
+  }
+  .gegevens{
+    display: flex;
+    flex-direction: row;
+  }
+  .naam{
+    display: flex;
+    flex-direction: row;
+  }
+  #voornaam{
+    margin-right: 5px;
+  }
+  #detail-gegevens{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
