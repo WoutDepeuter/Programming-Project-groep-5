@@ -21,17 +21,15 @@ body {
 .center-element{
     font-family: 'JetBrains Mono', monospace;
     background-color: #FF0000;
-    display: flex; 
-    /* background-color: blue; */
-    float: right;
-    flex-grow: 1;
-   
+    display: flex;
+    justify-content: center;
 }
+
 .center-element a {
     padding: 0px;
-    margin-left: auto;
-    margin-right: auto;
-
+    margin: 0px;
+    flex-grow: 1;
+    flex-basis: 0;
 }
 
 .adminhead {
@@ -65,7 +63,7 @@ body {
     align-items: left;
     border-radius: 20px;
     overflow: hidden;
-     border: none;
+    border: none;
 }
 
 .search{
@@ -90,20 +88,13 @@ body {
 }
 
 .producten-container  {
-    /* display: flex; */
-    /* justify-content: center;
-    align-items: center; */
-    /* margin-left: 0px; */
     display: flex;
-    /* flex-grow: 1; */
-    /* background-color: aquamarine; */
+    justify-content: right;
+    margin-left: auto;
+    flex-grow: 1;
     flex-basis: 0;
 }
 
-.producten-container a {
-    align-items: center;
-    justify-content: center;
-}
 
 .adminhead a {
     color: white;
@@ -119,11 +110,14 @@ body {
     max-height: 50px;
 }
 
+div .klantinfo🤓{
+    background-color: #222831;
+
+}
 .klantinfo🤓 
-{
-    display: flex;
-    align-items: center ;
-    justify-content: center;
+{    display: flex;
+    align-items: center;
+    max-width: 50%  ;
 }
 
 .klantinfo🤓 h3,h5{
@@ -149,7 +143,8 @@ body {
     border-bottom: 1px solid #ccc;
     border: 1px solid #ccc;
     flex-direction: row;
-    max-width: 600px;
+    max-width: 500px;
+    height: fit-content;
     /* background-color: Blue; */
 }
 
@@ -164,12 +159,16 @@ body {
 
 
 .ontvangen{
-    width: 50%;
+    padding-left: 2em;
+    max-width: 50%;
     border-right: #222831 solid 3px;
+    margin-left: auto;
 }
 
 .uitlenen{
-    padding-left: 50px;
+
+    max-width: 50%;
+   
 }
 
 .oke {
