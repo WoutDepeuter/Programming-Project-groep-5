@@ -1,38 +1,215 @@
-* {
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/*lettertypes: TITEL 'JetBrain Mono'/ MAIN 'Poppins' */
+
+html{
+
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins';
     margin: 0;
     padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.center-element{
+    font-family: 'JetBrains Mono', monospace;
+    background-color: red;
+    padding-right: 350px;
 }
 
 .adminhead {
     background-color: #FF0000;
     color: white;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    
 }
 
 .search-container {
+    margin: 10px;
     display: flex;
     align-items: center;
-    border-radius: 15px;
+    border-radius: 20px;
     overflow: hidden;
+}
 
+.zoekid
+{
+    padding-left: 160px;
+    border: none;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    padding-left: 10px;
+    display: flex;
+    width: 120px;
+    align-items: left;
+    border-radius: 20px;
+    overflow: hidden;
+    border: none;
+}
+
+.search{
+    padding-left: 160px;
+    border: none;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    padding-left: 10px;
+    display: flex;
+    width: 200px;
+    align-items: left;
+    border-radius: 20px;
+    overflow: hidden;
+    border: none;
 }
 
 .zoekname {
-    padding-left: 40px;
+    padding-left: 10px;
     border: none;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
 }
 
-
-
 .center-element {
-    flex-grow: 1;
+    flex-grow: 1
     text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0;
+    
 }
 
 .producten-container {
     padding-right: 20px;
 }
+
+.adminhead a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    font-size: 30px;
+}
+
+.klantinfo🤓 img
+{
+    border-radius: 50%;
+    max-width: 50px;
+    max-height: 50px;
+}
+
+.klantinfo🤓 
+{
+    display: flex;
+    align-items: center ;
+}
+
+.product img
+{
+    border-radius: 0;
+}
+
+.product
+{
+    display: flex;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    border: 1px solid #ccc;
+    flex-direction: row;
+
+    
+}
+
+.ontvangen{
+    padding-left: 2em;
+    max-width: 50%;
+    border-right: #222831 solid 3px;
+}
+
+.uitlenen{
+    padding-left: 2em;
+}
+
+.oke {
+    border-radius: 50%; /* Makes the b  tton round */
+    background-color: rgb(255, 255, 255); /* Sets the background color to red */
+    color: green; /* Sets the text color to white */
+    width: 40px; /* Sets the width of the button */
+    height: 40px; /* Sets the height of the button */
+    border: solid 1px; /* Removes the border */
+    cursor: pointer; /* Changes cursor to pointer on hover */
+}
+
+.nietoke {
+    border-radius: 50%; /* Makes the button round */
+    background-color: rgb(255, 255, 255); /* Sets the background color to red */
+    color: red; /* Sets the text color to white */
+    width: 40px; /* Sets the width of the button */
+    height: 40px; /* Sets the height of the button */
+    border: solid 1px; /* Removes the border */
+    cursor: pointer; /* Changes cursor to pointer on hover */
+}
+
+.buttons{display: flex;
+    flex-direction: row;
+}
+
+
+
+footer {
+    background-color: #FF0000;
+    color: white;
+    font-weight: 500;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto; /* Push footer to the bottom */
+}
+
+footer p {
+    margin-left: 10px;
+    margin-right: 10px;
+    /* padding: 1px; */
+}
+
+footer p a {
+    text-decoration: none;
+    color: white;
+}
+
+footer p a:hover {
+    text-decoration: none;
+    color: black;
+    transition-duration: 700ms;
+}
+
+
+
+/* scrollbar */
+/* width */
+::-webkit-scrollbar {
+    width: 7.5px;
+
+  }
+  
+  /* Track */
+::-webkit-scrollbar-track {
+    background: #222831; 
+  }
+   
+  /* Handle */
+::-webkit-scrollbar-thumb {
+    background: #FF0000; 
+    border-radius: 10px;
+  }
+  .container
+  {
+display: flex;
+
+  }
+
