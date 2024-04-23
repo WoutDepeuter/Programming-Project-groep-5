@@ -21,10 +21,7 @@ body {
 .center-element{
     font-family: 'JetBrains Mono', monospace;
     background-color: #FF0000;
-    display: flex;
-
-    
-    
+    display: flex; 
 }
 
 .center-element a {
@@ -89,9 +86,10 @@ body {
     border-bottom-left-radius: 15px;
 }
 
-.producten-container {
+.producten-container  {
+    display: flex;
+    justify-content: right;
     margin-left: auto;
-    padding-right: 20px;
     flex-grow: 1;
     flex-basis: 0;
 }
@@ -156,12 +154,13 @@ body {
 
 .ontvangen{
     padding-left: 2em;
-    max-width: 50%;
+    width: 50%;
     border-right: #222831 solid 3px;
 }
 
 .uitlenen{
     padding-left: 2em;
+    width: 50%;
 }
 
 .oke {
@@ -278,4 +277,3 @@ footer p a:hover {
 {
     display: flex;
 }
-

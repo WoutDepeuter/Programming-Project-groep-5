@@ -9,3 +9,5 @@ Hieronder staan de functionaliteiten van de applicatie vermeldt:
 - Functie 1
 - Functie 2
 - ...
+
+
