@@ -1,45 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home</title>
     <link rel="stylesheet" href="styleadmin.css">
 </head>
 
-
-
-    <header class="adminhead">
-    <div class="search-container">
-        <input type="text" class="zoekname">
-    </div>
-    <div class="search-container">
-        <input type="number" class="zoekid">
-    </div>
-    <div class="center-element">
-        <a>&lt;ehbloan hub&gt;</a>
-    </div>
-    <div class="producten-container">
-        <a href="">producten</a>
-    </div>
-</header>
 <body>
-<div class="ontvangen">
-<h1>vandaag te ontvangen</h1>    
-</div>
+    <header class="adminhead">
+        <!-- ZOEKBALK FORM -->
+        <form action="" style="display: flex;">
+            <div class="search-container">
+                <input placeholder="Productnaam" type="text" class="search" required>
+            </div>
+            <div class="search-container">
+                <input placeholder="Product-ID 🎥 " type="number" class="zoekid" required>
+            </div>
+            <div style="align-items: center; justify-content: center; display: flex;">
+                <input type="submit">
+            </div>
+        </form>
 
-<div class="uitlenen">
-<h1>vandaag uit te lenen</h1>
+        <!-- TITEL -->
+        <div class="center-element">
+            <a>&lt;ehbloan hub&gt;</a>
+        </div>
 
+        <!-- BUTTON PRODUCTEN -->
+        <div class="producten-container">
+            <a href="">producten</a>
+        </div>
+    </header>
 
+    <div class="container">
+        <div class="ontvangen">
+            <h1>vandaag te ontvangen</h1>
+            <div class="klantinfo🤓">
+                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="profile">
+                <h3>Frank Jansen</h3>
+                <div class="product">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSU8PYw1EFF1SAff2BfwjYNOdvFFGdLNV1olJleDwEy3Q&s" alt="">
+                    <h5>Lumix Z100</h5>
+                    <p> De Lumix Z100 is een veelzijdige camera die perfect is voor zowel professionele fotografen als enthousiaste amateurs die streven naar hoogwaardige beeldkwaliteit en geavanceerde functies. Met een 24-megapixel full-frame sensor en een krachtige Venus Engine-processor levert de Lumix Z100 adembenemende foto's en video's.</p>
+                    <div class="buttonsklant">
+                        <button class="oke">✓</button>
+                        <button class="nietoke">x</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="uitlenen">
+            <h1>vandaag uit te lenen</h1>
+            <div class="klantinfo🤓">
+                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="profile">
+                <h3>Frank Jansen</h3>
+                <div class="product">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSU8PYw1EFF1SAff2BfwjYNOdvFFGdLNV1olJleDwEy3Q&s" alt="">
+                    <h5>Lumix Z100</h5>
+                    <p>De Lumix Z100 is een veelzijdige camera die perfect is voor zowel professionele fotografen als enthousiaste amateurs die streven naar hoogwaardige beeldkwaliteit en geavanceerde functies. Met een 24-megapixel full-frame sensor en een krachtige Venus Engine-processor levert de Lumix Z100 adembenemende foto's en video's.</p>
+                    <div class="buttonsklant">
+                        <button class="oke">✓</button>
+                        <button class="nietoke">x</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Erasmushogeschool Brussel</p>
+        <p><a href="#">Nederlands</a> | <a href="#">Engels</a></p>
+    </footer>
 
-</div>
 </body>
-<footer>
-    <p>&copy; 2024 Erasmushogeschool Brussel</p>
-    <p>nederlands|engels</p>
-</footer>
 
 </html>
