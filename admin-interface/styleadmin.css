@@ -1,4 +1,14 @@
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/*lettertypes: TITEL 'JetBrain Mono'/ MAIN 'Poppins' */
+
+/* *{
+    font-family: 'Poppins';
+} */
+
 body {
+    font-family: 'Poppins';
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
@@ -6,6 +16,11 @@ body {
     flex-direction: column;
     min-height: 100vh;
 }
+
+.center-element{
+    font-family: 'JetBrains Mono', monospace;
+}
+
 
 .adminhead {
     background-color: #FF0000;
@@ -29,10 +44,21 @@ footer {
 
 
 .search-container {
+    margin: 10px;
     display: flex;
     align-items: center;
     border-radius: 20px;
     overflow: hidden;
+}
+
+.search-container2 {
+    padding-left: 10px;
+    display: flex;
+    width: 120px;
+    align-items: left;
+    border-radius: 20px;
+    overflow: hidden;
+    border: none;
 }
 
 .zoekid
@@ -41,6 +67,13 @@ footer {
     border: none;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
+    padding-left: 10px;
+    display: flex;
+    width: 120px;
+    align-items: left;
+    border-radius: 20px;
+    overflow: hidden;
+    border: none;
 }
 
 .zoekname {
