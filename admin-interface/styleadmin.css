@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.adminhead {
+    background-color: #FF0000;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    border-radius: 15px;
+    overflow: hidden;
+
+}
+
+.zoekname {
+    padding-left: 40px;
+    border: none;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+
+
+.center-element {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.producten-container {
+    padding-right: 20px;
+}
