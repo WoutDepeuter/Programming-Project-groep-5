@@ -1,0 +1,101 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+/* Stijl voor de header */
+.header {
+    background-color: red;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Stijl voor de navigatie- en accountsymbolen */
+  .icon {
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  /* Stijl voor de zoekbalk */
+  .search-bar {
+    background-color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    margin: 0 10px;
+  }
+  
+  /* Stijl voor de tekst "EHBLoanHub" */
+  .logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-content: center;
+  }
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 50px;
+    padding: 5px 0 0 20px;
+}
+nav ul a {
+    color: #231F20;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+}
+nav ul a:hover {
+    color: red;
+}
+nav ul .huidigepagina {
+    color: red;
+}
+nav .icon {
+    color: black;
+}
+hr {
+    color: red;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.box {
+    border-style: solid;
+    border-width: 2px;
+    padding: 5px;
+    margin: 8px;
+    border-radius: 1em;
+    display: flex;
+}
+.box img {
+    width: 200px;
+    height: auto;
+    float: left;
+}
+.button {
+    background-color: red;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+  }
+
+footer {
+    background-color: red;
+    color: white;
+    margin: 0;
+}
+footer p {
+    padding: 8px 0px 8px 20px;
+}
