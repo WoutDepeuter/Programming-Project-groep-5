@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catalogus</title>
+    <link href="/Frontend/User-interface/pictures/EHB_site_logo-removebg-preview.png" rel="icon" >
+
+    <title>&lt;EHBLoanHub&gt;</title>
     <link rel="stylesheet" href="../catalogus.css">
 </head>
+
 <body>
     <header class="header">
-        <!-- Linker gedeelte van de header -->
-        <div>
-            <span class="icon">&#9776;</span> <!-- Symbool navigatie -->
-            <span class="icon">&#8617;</span> <!-- Symbool return -->
-            <input type="text" class="search-bar" placeholder="Zoeken"> <!-- Zoekbalk -->
+        <div class="inter-knoppen">
+            <a href="#"></a>
         </div>
-        <!-- Middelste gedeelte van de header -->
-        <div class="logo">EHBLoanHub</div>
-        <!-- Rechter gedeelte van de header -->
-        <div>
-            <span class="icon">&#128100;</span> <!-- Symbool mannetje -->
+        <div class="zoekbalk">
+            <input id="zoekbalk" type="text" placeholder="Zoeken...">
+        </div>
+        <div class="site-naam">
+            <a href="/Frontend/User-interface/HomeScreen.html" id="site-naam">&lt;EHBLoanHub&gt;</a>
+        </div>
+        <div class="profiel">
+            <a href="#"><img id="profiel" src="/Frontend/User-interface/pictures/winelkar.png" alt="winkelkar"></a>
+            <a href="#"><img id="profiel" src="/Frontend/User-interface/pictures/icons8-name-96.png" alt="profiel"></a>
         </div>
     </header>
-    <nav>
-        <!-- Navigatie van de 5 categorieën -->
+    <nav>   
         <ul class="navigatie">
             <li><a href="#nowhere" class="huidigepagina">Audio</a></li>
             <li><a href="belichting-catalogus.html">Belichting</a></li>
@@ -34,98 +38,21 @@
         <hr>
     </nav>
     <main>
-        <!-- Box 1 -->
+        <!-- Voorbeeld box -->
         <div class="box">
             <img src="../pictures/Afbeelding-microfoon.png" alt="Afbeelding 1">
             <div>
                 <h2>DM10</h2>
                 <p>Korte beschrijving van product 1.</p>
-                <a href="#" class="button">Reserveren</a>
-            </div>
-        </div>
-    
-        <!-- Box 2 -->
-        <div class="box">
-            <img src="../pictures/Afbeelding-microfoon.png" alt="Afbeelding 2">
-            <div>
-                <h2>DM10</h2>
-                <p>Korte beschrijving van product 2.</p>
-                <a href="#" class="button">Reserveren</a>
-            </div>
-        </div>
-    
-        <!-- Box 3 -->
-        <div class="box">
-            <img src="../pictures/Afbeelding-microfoon.png" alt="Afbeelding 3">
-            <div>
-                <h2>DM10</h2>
-                <p>Korte beschrijving van product 3.</p>
-                <a href="#" class="button">Reserveren</a>
+                <a href="#" id="reserveren">Reserveren</a>
             </div>
         </div>
 
-        <!-- Box 4 -->
-        <div class="box">
-            <img src="../pictures/Afbeelding-microfoon.png" alt="Afbeelding 4">
-            <div>
-                <h2>DM10</h2>
-                <p>Korte beschrijving van product 4.</p>
-                <a href="#" class="button">Reserveren</a>
-            </div>
-        </div>
-    
-        <!-- Box 5 -->
-        <div class="box">
-            <img src="../pictures/Afbeelding-microfoon.png" alt="Afbeelding 5">
-            <div>
-                <h2>DM10</h2>
-                <p>Korte beschrijving van product 5.</p>
-                <a href="#" class="button">Reserveren</a>
-            </div>
-        </div>
-    
-        <!-- Box 6 -->
-        <div class="box">
-            <img src="../pictures/Afbeelding-microfoon.png" alt="Afbeelding 6">
-            <div>
-                <h2>DM10</h2>
-                <p>Korte beschrijving van product 6.</p>
-                <a href="#" class="button">Reserveren</a>
-            </div>
-        </div>
-
-        <!-- Box 7 -->
-        <div class="box">
-            <img src="../pictures/Afbeelding-microfoon.png" alt="Afbeelding 7">
-            <div>
-                <h2>DM10</h2>
-                <p>Korte beschrijving van product 7.</p>
-                <a href="#" class="button">Reserveren</a>
-            </div>
-        </div>
-    
-        <!-- Box 8 -->
-        <div class="box">
-            <img src="../pictures/Afbeelding-microfoon.png" alt="Afbeelding 8">
-            <div>
-                <h2>DM10</h2>
-                <p>Korte beschrijving van product 8.</p>
-                <a href="#" class="button">Reserveren</a>
-            </div>
-        </div>
-    
-        <!-- Box 9 -->
-        <div class="box">
-            <img src="../pictures/Afbeelding-microfoon.png" alt="Afbeelding 9">
-            <div>
-                <h2>DM10</h2>
-                <p>Korte beschrijving van product 9.</p>
-                <a href="#" class="button">Reserveren</a>
-            </div>
-        </div>
     </main>
     <footer>
-        <p>&copy; 2024 Erasmushogeschool Brussel</p>
+        <div id="school">© 2024 Erasmushogeschool Brussel</div>
+        <div id="taal">Nederlands</div>
     </footer>
 </body>
+
 </html>
