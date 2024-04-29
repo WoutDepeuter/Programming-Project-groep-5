@@ -1,288 +1,267 @@
-
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 /*lettertypes: TITEL 'JetBrain Mono'/ MAIN 'Poppins' */
 
-html{
-
-    scroll-behavior: smooth;
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-    font-family: 'Poppins';
-    margin: 0;
-    padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  font-family: "Poppins";
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-.center-element{
-    font-family: 'JetBrains Mono', monospace;
-    background-color: #FF0000;
-    display: flex; 
-    /* background-color: blue; */
-    float: right;
-    flex-grow: 1;
-   
-}
-.center-element a {
-    padding: 0px;
-    margin-left: auto;
-    margin-right: auto;
-
+header {
+  background-color: red;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 50px;
 }
 
-.adminhead {
-    background-color: #ff0000;
-    box-shadow:3px 3px 5px rgba(0,0,0,0.1);
-    color: white;
-    display: flex;
-    align-items: center;
-    
+.zoekbalk,
+.site-naam,
+.producten {
+  flex-grow: 1;
+  flex-basis: 0;
 }
 
-.search-container {
-    margin: 10px;
-    display: flex;
-    align-items: center;
-    border-radius: 20px;
-    overflow: hidden;
-    flex-grow: 1;
-    flex-basis: 0;
+.zoekbalk {
+  margin-left: 10px;
+  height: auto;
+  display: flex;
 }
 
-.zoekid
-{
-    padding-left: 160px;
-    border: none;
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
-    padding-left: 10px;
-    display: flex;
-    width: 120px;
-    align-items: left;
-    border-radius: 20px;
-    overflow: hidden;
-     border: none;
+#zoekbalkNAAM {
+  border: none;
+  background-color: #f2f2f2;
+  height: 30px;
+  padding-left: 10px;
+  border-radius: 30px;
+  width: 300px;
+  margin-right: 10px;
+}
+#zoekbalkID {
+  border: none;
+  background-color: #f2f2f2;
+  height: 30px;
+  padding-left: 10px;
+  border-radius: 30px;
+  width: 100px;
+}
+#zoekbalkNAAM::placeholder {
+  color: #ff0000;
+  font-weight: bold;
+}
+#zoekbalkID::placeholder {
+  color: #ff0000;
+  font-weight: bold;
 }
 
-.search{
-    padding-left: 160px;
-    border: none;
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
-    padding-left: 10px;
-    display: flex;
-    width: 200px;
-    align-items: left;
-    border-radius: 20px;
-    overflow: hidden;
-    border: none;
+.site-naam {
+  text-align: center;
 }
 
-.zoekname {
-    padding-left: 10px;
-    border: none;
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
+#site-naam {
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  font-weight: bold;
+  font-family: "JetBrains Mono", monospace;
 }
 
-.producten-container  {
-    /* display: flex; */
-    /* justify-content: center;
+.producten {
+  text-align: right;
+}
+
+.producten-container {
+  /* display: flex; */
+  /* justify-content: center;
     align-items: center; */
-    /* margin-left: 0px; */
-    display: flex;
-    /* flex-grow: 1; */
-    /* background-color: aquamarine; */
-    flex-basis: 0;
+  /* margin-left: 0px; */
+  display: flex;
+  /* flex-grow: 1; */
+  /* background-color: aquamarine; */
+  flex-basis: 0;
 }
 
 .producten-container a {
-    align-items: center;
-    justify-content: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .adminhead a {
-    color: white;
-    text-decoration: none;
-    padding: 10px;
-    font-size: 30px;
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  font-size: 30px;
 }
 
-.klantinfo🤓 img
-{
-    border-radius: 50%;
-    max-width: 50px;
-    max-height: 50px;
+.klantinfo img {
+  border-radius: 50%;
+  max-width: 50px;
+  max-height: 50px;
 }
 
-.klantinfo🤓 
-{
-    display: flex;
-    align-items: center ;
-    justify-content: center;
+.klantinfo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.klantinfo🤓 h3,h5{
-    padding-left: 10px;
-    padding-right: 10px;
+.klantinfo h3,
+h5 {
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
-.klantinfo🤓 h3{
-    font-size: 20px;
-    width: 50px;
-    padding: 20px;
-}
-
-.product img
-{
-    border-radius: 0;
-}
-
-.product
-{
-    display: flex;
-    margin: 10px;
-    border-bottom: 1px solid #ccc;
-    border: 1px solid #ccc;
-    flex-direction: row;
-    max-width: 600px;
-    /* background-color: Blue; */
-}
-
-.product h5,p {
-    margin-bottom: 0;
+.klantinfo h3 {
+  font-size: 20px;
+  width: 50px;
+  padding: 20px;
 }
 
 .product {
-    margin-bottom: 2em;
+  display: flex;
+  margin: 10px;
+  border-bottom: 1px solid #ccc;
+  border: 1px solid #ccc;
+  flex-direction: row;
+  max-width: 600px;
+  /* background-color: Blue; */
 }
 
-
-
-.ontvangen{
-    width: 50%;
-    border-right: #222831 solid 3px;
+.product h5,
+p {
+  margin-bottom: 0;
 }
 
-.uitlenen{
-    padding-left: 50px;
+.product {
+  margin-bottom: 2em;
+}
+
+.ontvangen {
+  width: 50%;
+  border-right: #222831 solid 3px;
+}
+
+.uitlenen {
+  padding-left: 50px;
 }
 
 .oke {
-    margin-top: 1em;
-    margin-left: 2em;
-    border-radius: 50%; /* Makes the b  tton round */
-    background-color: rgb(255, 255, 255); /* Sets the background color to red */
-    color: green; /* Sets the text color to white */
-    width: 40px; /* Sets the width of the button */
-    height: 40px; /* Sets the height of the button */
-    border: solid 1px; /* Removes the border */
-    cursor: pointer; /* Changes cursor to pointer on hover */
+  margin-top: 1em;
+  margin-left: 2em;
+  border-radius: 50%; /* Makes the b  tton round */
+  background-color: rgb(255, 255, 255); /* Sets the background color to red */
+  color: green; /* Sets the text color to white */
+  width: 40px; /* Sets the width of the button */
+  height: 40px; /* Sets the height of the button */
+  border: solid 1px; /* Removes the border */
+  cursor: pointer; /* Changes cursor to pointer on hover */
 }
 
 .oke:hover {
-    background-color: rgb(0, 207, 0); /* Sets the background color to green on hover */
-    color: white; /* Sets the text color to white on hover */
+  background-color: rgb(
+    0,
+    207,
+    0
+  ); /* Sets the background color to green on hover */
+  color: white; /* Sets the text color to white on hover */
 }
 
 .nietoke {
-    border-radius: 50%; /* Makes the button round */
-    margin-top: 1em;
-    margin-left: 2em;
-    background-color: rgb(255, 255, 255); /* Sets the background color to red */
-    color: red; /* Sets the text color to white */
-    width: 40px; /* Sets the width of the button */
-    height: 40px; /* Sets the height of the button */
-    border: solid 1px; /* Removes the border */
-    cursor: pointer; /* Changes cursor to pointer on hover */
-    
+  border-radius: 50%; /* Makes the button round */
+  margin-top: 1em;
+  margin-left: 2em;
+  background-color: rgb(255, 255, 255); /* Sets the background color to red */
+  color: red; /* Sets the text color to white */
+  width: 40px; /* Sets the width of the button */
+  height: 40px; /* Sets the height of the button */
+  border: solid 1px; /* Removes the border */
+  cursor: pointer; /* Changes cursor to pointer on hover */
 }
 
 .nietoke:hover {
-    background-color: red; /* Sets the background color to red on hover */
-    color: white; /* Sets the text color to white on hover */
+  background-color: red; /* Sets the background color to red on hover */
+  color: white; /* Sets the text color to white on hover */
 }
 
-.buttons
-{display: flex;
-    flex-direction: row;
+.buttons {
+  display: flex;
+  flex-direction: row;
 }
 
 div #verzend {
-    width: 100px;
-    height: 17px;
-    position: relative;
-    color: #FF0000;
-    font-weight: 600;
-    background-color: #fff;
-    border: none;
-    /* overflow: hidden; */
-    border-radius: 20px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
-    transition: all ease 100ms;
+  width: 100px;
+  height: 17px;
+  position: relative;
+  color: #ff0000;
+  font-weight: 600;
+  background-color: #fff;
+  border: none;
+  /* overflow: hidden; */
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+  transition: all ease 100ms;
 }
 
 div #verzend:hover {
-    background-color: #FF0000;
-    color: white;
-    transition: all ease 100ms;
-    border: white 1px solid;
-    text-align: center;
+  background-color: #ff0000;
+  color: white;
+  transition: all ease 100ms;
+  border: white 1px solid;
+  text-align: center;
 }
-
-footer {
-    background-color: #FF0000;
-    color: white;
-    font-weight: 500;
-    font-size: 20px;
-    display: flex;
-    justify-content: space-between;
-    margin-top: auto; /* Push footer to the bottom */
-}
-
-footer p {
-    margin-left: 10px;
-    margin-right: 10px;
-    /* padding: 1px; */
-}
-
-footer p a {
-    text-decoration: none;
-    color: white;
-}
-
-footer p a:hover {
-    text-decoration: none;
-    color: black;
-    transition-duration: 700ms;
-}
-
 
 /* scrollbar */
 /* width */
-::-webkit-scrollbar 
-{
-    width: 7.5px;
-}
-  
-/* Track */
-::-webkit-scrollbar-track 
-{
-    background: #222831; 
-}
-   
-/* Handle */
-::-webkit-scrollbar-thumb 
-{
-    background: #FF0000; 
-    border-radius: 10px;
+::-webkit-scrollbar {
+  width: 7.5px;
 }
 
-  .container
-{
-    display: flex;
+::-webkit-scrollbar-track {
+  background: #222831;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ff0000;
+  border-radius: 10px;
+}
+
+.container {
+  display: flex;
+}
+
+footer {
+  bottom: 0;
+  left: 0;
+  background-color: red;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: auto;
+}
+
+#school {
+  padding: 10px;
+  color: white;
+}
+
+#taal {
+  padding: 10px;
+  color: white;
+}
+
+#vto {
+  padding-left: 50px;
 }
