@@ -76,6 +76,7 @@ header {
 }
 
 #site-naam {
+  margin-right: 10px;
   padding: 0;
   text-decoration: none;
   font-size: 25px;
@@ -83,8 +84,6 @@ header {
   font-weight: bold;
   font-family: "JetBrains Mono", monospace;
 }
-
-
 
 .prodnav ul {
   padding: 0;
@@ -110,7 +109,6 @@ header {
 
 .prodnav a:hover {
   color: #ff0000;
-
 }
 .prodnav img {
   margin-top: -21px;
@@ -179,3 +177,45 @@ main {
   height: auto;
   float: left;
 }
+
+.delete img,.edit img
+{
+max-width: 40px;
+max-height: 40px;
+}
+.delete button, .edit button
+{
+
+background-color: white;
+color: white;
+border: none;
+}
+
+.extrabuttons button
+{
+  background-color: #ff0000;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+.extrabuttons button:hover
+{
+  background-color: darkred;
+}
+.extrabuttons
+{
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-around;
+  align-items: flex-end;
+  width: 100%;
+
+}
+
+
