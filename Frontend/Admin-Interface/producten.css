@@ -72,11 +72,13 @@ header {
 }
 
 .site-naam {
+
   padding: 0;
   text-align: center;
 }
 
 #site-naam {
+  margin-right: 10px;
   padding: 0;
   text-decoration: none;
   font-size: 25px;
