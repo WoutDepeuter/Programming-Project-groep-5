@@ -9,12 +9,13 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font-family: "Poppins",Arial, Helvetica, sans-serif;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
+/* Begin header */
 header {
   background-color: red;
   display: flex;
@@ -38,7 +39,7 @@ header {
   display: flex;
 }
 
-#zoekbalkNAAM {
+#zoekbalkNaam {
   border: none;
   background-color: #f2f2f2;
   height: 30px;
@@ -55,7 +56,7 @@ header {
   border-radius: 30px;
   width: 100px;
 }
-#zoekbalkNAAM::placeholder {
+#zoekbalkNaam::placeholder {
   color: #ff0000;
   font-weight: bold;
 }
@@ -76,31 +77,43 @@ header {
   font-family: "JetBrains Mono", monospace;
 }
 
-.producten {
+
+
+
+.producten{ 
+  padding-right: 10px; 
   text-align: right;
 }
 
-.producten-container {
-  display: flex;
-  flex-basis: 0;
+.producten a {
+  padding: 0px;
 }
 
-.producten-container a {
-  align-items: center;
-  justify-content: center;
+.producten a:hover {
+  border-bottom: white 2px solid;
 }
 
+/* Titel (EHBLoanHub) */
 .adminhead a {
   color: white;
   text-decoration: none;
-  padding: 10px;
+  padding: 0px;
   font-size: 30px;
+}
+/* Einde header */
+
+
+/* Begin main CSS */
+
+.container {
+  display: flex;
+  flex-grow: 1;
 }
 
 .klantinfo img {
   border-radius: 50%;
-  max-width: 50px;
-  max-height: 50px;
+  max-width: 100px;
+  max-height: 80px;
 }
 
 .klantinfo {
@@ -117,7 +130,8 @@ h5 {
 }
 
 .klantinfo h5 {
-  margin-top: 20px;
+  margin-top: 1em;
+  font-size: 20px;
 }
 
 .klantinfo h3 {
@@ -153,42 +167,44 @@ p {
   width: 50%;
 }
 
-.oke {
+.buttonsAdmin{
+  display: flex;
+  flex-direction: column;
+}
+
+.bevestig-knop {
   margin-top: 1em;
   margin-left: 2em;
-  border-radius: 50%; /* Makes the b  tton round */
-  background-color: rgb(255, 255, 255); /* Sets the background color to red */
-  color: green; /* Sets the text color to white */
-  width: 40px; /* Sets the width of the button */
-  height: 40px; /* Sets the height of the button */
-  border: solid 1px; /* Removes the border */
-  cursor: pointer; /* Changes cursor to pointer on hover */
+  border-radius: 50%;
+  background-color: rgb(255, 255, 255);
+  color: green;
+  width: 40px;
+  height: 40px;
+  border: solid 1px;
+  cursor: pointer;
 }
 
-.oke:hover {
-  background-color: rgb(
-    0,
-    207,
-    0
-  ); /* Sets the background color to green on hover */
-  color: white; /* Sets the text color to white on hover */
+.bevestig-knop:hover {
+  background-color: rgb(0, 207, 0);
+  color: white;
 }
 
-.nietoke {
-  border-radius: 50%; /* Makes the button round */
+.annuleer-knop {
+  border-radius: 50%;
   margin-top: 1em;
   margin-left: 2em;
-  background-color: rgb(255, 255, 255); /* Sets the background color to red */
-  color: red; /* Sets the text color to white */
-  width: 40px; /* Sets the width of the button */
-  height: 40px; /* Sets the height of the button */
-  border: solid 1px; /* Removes the border */
-  cursor: pointer; /* Changes cursor to pointer on hover */
+  margin-bottom: 1em;
+  background-color: rgb(255, 255, 255);
+  color: red;
+  width: 40px;
+  height: 40px;
+  border: solid 1px;
+  cursor: pointer;
 }
 
-.nietoke:hover {
-  background-color: red; /* Sets the background color to red on hover */
-  color: white; /* Sets the text color to white on hover */
+.annuleer-knop:hover {
+  background-color: red;
+  color: white;
 }
 
 .buttons {
@@ -204,7 +220,6 @@ div #verzend {
   font-weight: 600;
   background-color: #fff;
   border: none;
-  /* overflow: hidden; */
   border-radius: 20px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
   transition: all ease 100ms;
@@ -233,11 +248,6 @@ div #verzend:hover {
   border-radius: 10px;
 }
 
-.container {
-  display: flex;
-  flex-grow: 1;
-}
-
 footer {
   bottom: 0;
   left: 0;
@@ -251,20 +261,20 @@ footer {
   margin-top: auto;
 }
 
-#school {
+#school-tekst-footer {
   padding: 10px;
   color: white;
 }
 
-#taal {
+#taal-tekst-footer {
   padding: 10px;
   color: white;
 }
 
-#vto {
+#vandaag-te-ontvangen {
   padding-left: 50px;
 }
 
-#vutl {
+#vandaag-uit-te-lenen {
   padding-left: 50px;
 }

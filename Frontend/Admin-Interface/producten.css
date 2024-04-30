@@ -7,10 +7,9 @@ html {
 }
 
 body {
-  font-family: "Poppins";
   margin: 0;
   padding: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -72,29 +71,18 @@ header {
 }
 
 .site-naam {
+  padding: 0;
   text-align: center;
 }
 
 #site-naam {
+  margin-right: 10px;
+  padding: 0;
   text-decoration: none;
   font-size: 25px;
   color: white;
   font-weight: bold;
   font-family: "JetBrains Mono", monospace;
-}
-
-.producten{ 
-  padding-right: 10px; 
-  text-align: right;
-}
-
-.producten a{ 
-padding: 0;
-
-}
-.producten a:hover { 
-  border-bottom: white 2px solid;
-
 }
 
 .prodnav ul {
@@ -121,7 +109,6 @@ padding: 0;
 
 .prodnav a:hover {
   color: #ff0000;
-
 }
 .prodnav img {
   margin-top: -21px;
@@ -190,3 +177,45 @@ main {
   height: auto;
   float: left;
 }
+
+.delete img,.edit img
+{
+max-width: 40px;
+max-height: 40px;
+}
+.delete button, .edit button
+{
+
+background-color: white;
+color: white;
+border: none;
+}
+
+.extrabuttons button
+{
+  background-color: #ff0000;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+.extrabuttons button:hover
+{
+  background-color: darkred;
+}
+.extrabuttons
+{
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-around;
+  align-items: flex-end;
+  width: 100%;
+
+}
+
+
