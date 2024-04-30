@@ -25,6 +25,8 @@ header {
   height: 56px;
 }
 
+
+
 .zoekbalk,
 .site-naam,
 .producten {
@@ -76,24 +78,28 @@ header {
   font-family: "JetBrains Mono", monospace;
 }
 
-.producten {
+
+
+
+.producten{ 
+  padding-right: 10px; 
   text-align: right;
 }
 
-.producten-container {
-  display: flex;
-  flex-basis: 0;
+.producten a{
+padding: 0px;
+
 }
 
-.producten-container a {
-  align-items: center;
-  justify-content: center;
+.producten a:hover { 
+  border-bottom: white 2px solid;
+
 }
 
 .adminhead a {
   color: white;
   text-decoration: none;
-  padding: 10px;
+  padding: 0px;
   font-size: 30px;
 }
 

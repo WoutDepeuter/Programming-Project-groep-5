@@ -71,10 +71,12 @@ header {
 }
 
 .site-naam {
+  padding: 0;
   text-align: center;
 }
 
 #site-naam {
+  padding: 0;
   text-decoration: none;
   font-size: 25px;
   color: white;
@@ -82,19 +84,7 @@ header {
   font-family: "JetBrains Mono", monospace;
 }
 
-.producten{ 
-  padding-right: 10px; 
-  text-align: right;
-}
 
-.producten a{ 
-padding: 0;
-
-}
-.producten a:hover { 
-  border-bottom: white 2px solid;
-
-}
 
 .prodnav ul {
   padding: 0;
