@@ -38,7 +38,7 @@ header {
   display: flex;
 }
 
-#zoekbalkNAAM {
+#zoekbalkNaam {
   border: none;
   background-color: #f2f2f2;
   height: 30px;
@@ -55,7 +55,7 @@ header {
   border-radius: 30px;
   width: 100px;
 }
-#zoekbalkNAAM::placeholder {
+#zoekbalkNaam::placeholder {
   color: #ff0000;
   font-weight: bold;
 }
@@ -246,20 +246,20 @@ footer {
   margin-top: auto;
 }
 
-#school {
+#school-tekst-footer {
   padding: 10px;
   color: white;
 }
 
-#taal {
+#taal-tekst-footer {
   padding: 10px;
   color: white;
 }
 
-#vto {
+#vandaag-te-ontvangen {
   padding-left: 50px;
 }
 
-#vutl {
+#vandaag-uit-te-lenen {
   padding-left: 50px;
 }
