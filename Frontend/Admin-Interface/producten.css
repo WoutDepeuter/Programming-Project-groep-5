@@ -83,8 +83,18 @@ header {
   font-family: "JetBrains Mono", monospace;
 }
 
-.producten {
+.producten{ 
+  padding-right: 10px; 
   text-align: right;
+}
+
+.producten a{ 
+padding: 0;
+
+}
+.producten a:hover { 
+  border-bottom: white 2px solid;
+
 }
 
 .prodnav ul {
@@ -106,6 +116,12 @@ header {
 }
 .prodnav .active {
   color: #ff0000;
+  border-bottom: #ff0000 2px solid;
+}
+
+.prodnav a:hover {
+  color: #ff0000;
+
 }
 .prodnav img {
   margin-top: -21px;
