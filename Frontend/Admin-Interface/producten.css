@@ -26,6 +26,12 @@ header {
   height: 56px;
 }
 
+.adminhead a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  font-size: 30px;
+}
 .zoekbalk,
 .site-naam,
 .producten {
@@ -81,50 +87,23 @@ header {
   text-align: right;
 }
 
-.producten-container {
-  display: flex;
-  flex-basis: 0;
-}
-
-.producten-container a {
-  align-items: center;
-  justify-content: center;
-}
-
-.adminhead a {
-  color: white;
-  text-decoration: none;
-  padding: 10px;
-  font-size: 30px;
-}
-
-#school {
-  padding: 10px;
-  color: white;
-}
-
-#taal {
-  padding: 10px;
-  color: white;
-}
 
 .prodnav ul {
-  padding: 10px;
-  margin: 10px;
-  border-radius: 10px;
+  padding: 0;
+  border-radius:10px;
   color: white;
   display: flex;
   list-style: none;
   font-size: large;
   text-decoration: none;
   flex-direction: row;
+  justify-content: space-around;
 }
 .prodnav a {
   text-decoration: none;
   color: black;
   font-size: 32px;
   font-weight: 600;
-  padding-left: 160px;
 }
 .prodnav .active {
   color: #ff0000;
@@ -133,6 +112,15 @@ hr {
   border: none;
   border-top: 1px solid #ccc; /* You can adjust the color as needed */
   margin: 20px 0; /* You can adjust the margin as needed */
+}
+#school {
+  padding: 10px;
+  color: white;
+}
+
+#taal {
+  padding: 10px;
+  color: white;
 }
 
 footer {
