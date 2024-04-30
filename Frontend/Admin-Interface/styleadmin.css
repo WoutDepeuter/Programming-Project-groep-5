@@ -7,10 +7,9 @@ html {
 }
 
 body {
-  font-family: "Poppins";
   margin: 0;
   padding: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Poppins",Arial, Helvetica, sans-serif;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -108,12 +107,17 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-left: 10px;
 }
 
 .klantinfo h3,
 h5 {
   padding-left: 10px;
   padding-right: 10px;
+}
+
+.klantinfo h5 {
+  margin-top: 20px;
 }
 
 .klantinfo h3 {
@@ -129,7 +133,6 @@ h5 {
   border: 1px solid #ccc;
   flex-direction: row;
   max-width: 600px;
-  /* background-color: Blue; */
 }
 
 .product h5,
@@ -147,7 +150,7 @@ p {
 }
 
 .uitlenen {
-  padding-left: 50px;
+  width: 50%;
 }
 
 .oke {
@@ -232,6 +235,7 @@ div #verzend:hover {
 
 .container {
   display: flex;
+  flex-grow: 1;
 }
 
 footer {
@@ -258,5 +262,9 @@ footer {
 }
 
 #vto {
+  padding-left: 50px;
+}
+
+#vutl {
   padding-left: 50px;
 }
