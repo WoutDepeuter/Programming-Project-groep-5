@@ -6,16 +6,35 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Scrollbar begin */
+/* Scrollbar dikte */
+::-webkit-scrollbar {
+  width: 7.5px;
+}
+
+/* Scrollbar achtergrondkleur */
+::-webkit-scrollbar-track {
+  background: #222831;
+}
+
+/* Scrollbar voorgrondkleur */
+::-webkit-scrollbar-thumb {
+  background: #ff0000;
+  border-radius: 10px;
+}
+
+/* Scrollbar einde */
+
 body {
-  font-family: "Poppins";
   margin: 0;
   padding: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
+/* Begin header */
 header {
   background-color: red;
   display: flex;
@@ -39,7 +58,7 @@ header {
   display: flex;
 }
 
-#zoekbalkNAAM {
+#zoekbalkNaam {
   border: none;
   background-color: #f2f2f2;
   height: 30px;
@@ -56,10 +75,12 @@ header {
   border-radius: 30px;
   width: 100px;
 }
-#zoekbalkNAAM::placeholder {
+
+#zoekbalkNaam::placeholder {
   color: #ff0000;
   font-weight: bold;
 }
+
 #zoekbalkID::placeholder {
   color: #ff0000;
   font-weight: bold;
@@ -77,43 +98,56 @@ header {
   font-family: "JetBrains Mono", monospace;
 }
 
-.producten {
+.producten{ 
+  padding-right: 10px; 
   text-align: right;
 }
 
-.producten-container {
-  /* display: flex; */
-  /* justify-content: center;
-    align-items: center; */
-  /* margin-left: 0px; */
-  display: flex;
-  /* flex-grow: 1; */
-  /* background-color: aquamarine; */
-  flex-basis: 0;
+.producten a {
+  padding: 0px;
 }
 
-.producten-container a {
-  align-items: center;
-  justify-content: center;
+.producten a:hover {
+  border-bottom: white 2px solid;
 }
 
+/* Titel (EHBLoanHub) */
 .adminhead a {
   color: white;
   text-decoration: none;
-  padding: 10px;
+  padding: 0px;
   font-size: 30px;
 }
+/* Einde header */
 
-.klantinfo img {
-  border-radius: 50%;
-  max-width: 50px;
-  max-height: 50px;
+
+/* Begin main CSS */
+
+.container {
+  display: flex;
+  flex-grow: 1;
+}
+
+.ontvangen {
+  width: 50%;
+  border-right: #222831 solid 3px;
+}
+
+.uitlenen {
+  width: 50%;
 }
 
 .klantinfo {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-left: 10px;
+}
+
+.klantinfo img {
+  border-radius: 50%;
+  max-width: 100px;
+  max-height: 80px;
 }
 
 .klantinfo h3,
@@ -122,10 +156,21 @@ h5 {
   padding-right: 10px;
 }
 
+/* Naam van klant */
 .klantinfo h3 {
   font-size: 20px;
   width: 50px;
   padding: 20px;
+}
+
+/* Naam van product */
+.klantinfo h5 {
+  margin-top: 1em;
+  font-size: 20px;
+}
+
+.klantinfo h5,p {
+  margin-bottom: 0;
 }
 
 .product {
@@ -135,111 +180,53 @@ h5 {
   border: 1px solid #ccc;
   flex-direction: row;
   max-width: 600px;
-  /* background-color: Blue; */
-}
-
-.product h5,
-p {
-  margin-bottom: 0;
 }
 
 .product {
-  margin-bottom: 2em;
+  margin-bottom: 1em;
 }
 
-.ontvangen {
-  width: 50%;
-  border-right: #222831 solid 3px;
-}
-
-.uitlenen {
-  padding-left: 50px;
-}
-
-.oke {
-  margin-top: 1em;
-  margin-left: 2em;
-  border-radius: 50%; /* Makes the b  tton round */
-  background-color: rgb(255, 255, 255); /* Sets the background color to red */
-  color: green; /* Sets the text color to white */
-  width: 40px; /* Sets the width of the button */
-  height: 40px; /* Sets the height of the button */
-  border: solid 1px; /* Removes the border */
-  cursor: pointer; /* Changes cursor to pointer on hover */
-}
-
-.oke:hover {
-  background-color: rgb(
-    0,
-    207,
-    0
-  ); /* Sets the background color to green on hover */
-  color: white; /* Sets the text color to white on hover */
-}
-
-.nietoke {
-  border-radius: 50%; /* Makes the button round */
-  margin-top: 1em;
-  margin-left: 2em;
-  background-color: rgb(255, 255, 255); /* Sets the background color to red */
-  color: red; /* Sets the text color to white */
-  width: 40px; /* Sets the width of the button */
-  height: 40px; /* Sets the height of the button */
-  border: solid 1px; /* Removes the border */
-  cursor: pointer; /* Changes cursor to pointer on hover */
-}
-
-.nietoke:hover {
-  background-color: red; /* Sets the background color to red on hover */
-  color: white; /* Sets the text color to white on hover */
-}
-
-.buttons {
+.buttonsAdmin{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
-div #verzend {
-  width: 100px;
-  height: 17px;
-  position: relative;
-  color: #ff0000;
-  font-weight: 600;
-  background-color: #fff;
-  border: none;
-  /* overflow: hidden; */
-  border-radius: 20px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
-  transition: all ease 100ms;
-} 
+.bevestig-knop {
+  margin-top: 1em;
+  margin-left: 2em;
+  border-radius: 50%;
+  background-color: rgb(255, 255, 255);
+  color: green;
+  width: 40px;
+  height: 40px;
+  border: solid 1px;
+  cursor: pointer;
+}
 
-div #verzend:hover {
-  background-color: #ff0000;
+.bevestig-knop:hover {
+  background-color: rgb(0, 207, 0);
   color: white;
-  transition: all ease 100ms;
-  border: white 1px solid;
-  text-align: center;
 }
 
-/* scrollbar */
-/* width */
-::-webkit-scrollbar {
-  width: 7.5px;
+.annuleer-knop {
+  border-radius: 50%;
+  margin-top: 1em;
+  margin-left: 2em;
+  margin-bottom: 1em;
+  background-color: rgb(255, 255, 255);
+  color: red;
+  width: 40px;
+  height: 40px;
+  border: solid 1px;
+  cursor: pointer;
 }
 
-::-webkit-scrollbar-track {
-  background: #222831;
+.annuleer-knop:hover {
+  background-color: red;
+  color: white;
 }
 
-::-webkit-scrollbar-thumb {
-  background: #ff0000;
-  border-radius: 10px;
-}
-
-.container {
-  display: flex;
-}
-
+/* Begin footer */
 footer {
   bottom: 0;
   left: 0;
@@ -253,16 +240,22 @@ footer {
   margin-top: auto;
 }
 
-#school {
+#school-tekst-footer {
   padding: 10px;
   color: white;
 }
 
-#taal {
+#taal-tekst-footer {
   padding: 10px;
   color: white;
 }
 
-#vto {
+#vandaag-te-ontvangen {
   padding-left: 50px;
 }
+
+#vandaag-uit-te-lenen {
+  padding-left: 50px;
+}
+
+/* Einde footer */

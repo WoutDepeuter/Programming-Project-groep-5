@@ -3,7 +3,7 @@
 /*algemeen*/
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 /*verlengen*/
-@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&display=swap");
 body {
   margin: 0;
   padding: 0;
@@ -17,6 +17,7 @@ header {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  height: 50px;
   width: 100%;
 }
 
@@ -63,6 +64,66 @@ header {
 #profiel {
   width: 50px;
   height: 50px;
+}
+
+.slider {
+  display: flex;
+  transition: all 0.5s ease;
+}
+
+.producten-container {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.product-box {
+  flex: 0 0 calc(100% / 4);
+
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  background-color: #f0f0f0;
+  margin: 20px;
+  padding: 20px;
+}
+
+.product-box img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.product-box h2 {
+  margin-top: 0;
+}
+
+.product-box p {
+  margin-bottom: 10px;
+  max-width: 100%;
+}
+
+.button {
+  background-color: #ff0000;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.arrow{
+  z-index: 1;
+}
+
+
+.button:hover {
+  background-color: darkred;
 }
 
 footer {
@@ -115,68 +176,67 @@ footer {
   font-weight: bold;
   padding-left: 40px;
 }
-#breakprod{
-    width: 97%;
+#breakprod {
+  width: 97%;
   height: 1px;
   background-color: rgb(0, 0, 0);
   border: none;
   border-radius: 50px;
 }
-.producten-container{
-    margin-top: 50px;
+.producten-container {
+  margin-top: 50px;
 }
-.info-container{
-    display: flex;
-    justify-content: space-around;
-    margin-top: 50px;
+.info-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
 }
-#verleng{
-    display: flex;
-    justify-content: center;
+#verleng {
+  display: flex;
+  justify-content: center;
 }
-.informatie{
-    background-color: rgb(209, 209, 209);
-    border-top-left-radius: 50px;
-    border-bottom-left-radius: 50px;
-    margin-left: 150px;
-    margin-bottom:20px ;
-    margin-right: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex-grow: 2;
-    flex-basis: 0;
-    padding-left: 20px;
-
+.informatie {
+  background-color: rgb(209, 209, 209);
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+  margin-left: 150px;
+  margin-bottom: 20px;
+  margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 2;
+  flex-basis: 0;
+  padding-left: 20px;
 }
-.plusEen{
-    background-color:rgb(43, 205, 199) ;
-    border-top-right-radius: 50px;
-    border-bottom-right-radius: 50px;
-    margin-right: 150px;
-    margin-bottom:20px;
-    margin-left: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-grow: 1;
-    flex-basis: 0;
-    font-size: 60px;
-    font-family: "Cabin Sketch", sans-serif;
+.plusEen {
+  background-color: rgb(43, 205, 199);
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  margin-right: 150px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  flex-basis: 0;
+  font-size: 60px;
+  font-family: "Cabin Sketch", sans-serif;
 }
 #verlengen-button {
-    background-color: red;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    text-decoration: none;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
 }
 
 #verlengen-button:hover {
-    background-color: #ff4444;
+  background-color: #ff4444;
 }
