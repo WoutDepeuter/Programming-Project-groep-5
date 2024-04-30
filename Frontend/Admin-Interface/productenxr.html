@@ -12,23 +12,15 @@
 <body>
 
     <header class="adminhead">
-        <!-- ZOEKBALK FORM -->
-        <form action="" style="display: flex;">
-            <div class="search-container">
-                <input placeholder="Productnaam" type="text" class="search" required>
-            </div>
-            <div style="align-items: center; justify-content: center; display: flex;">
-                <input type="submit">
-            </div>
-        </form>
-
-        <!-- TITEL -->
-        <div class="center-element">
-            <a>&lt;ehbloan hub&gt;</a>
+        <div class="zoekbalk">
+            <input id="zoekbalkNAAM" type="text" placeholder="Persoon zoeken...">
+            <input id="zoekbalkID" type="text" placeholder="ID zoeken...">
         </div>
-        <!-- BUTTON PRODUCTEN -->
-        <div class="producten-container">
-            <a href="indexad.html">dashbord</a>
+        <div class="site-naam">
+            <a href="/Frontend/User-interface/HomeScreen.html" id="site-naam">&lt;EHBLoanHub&gt;</a>
+        </div>
+        <div class="producten">
+            <a href="producten.html">Producten</a>
         </div>
     </header>
 
@@ -43,10 +35,9 @@
     </nav>
     <hr>
 
-
     <footer>
-        <p>&copy; 2024 Erasmushogeschool Brussel</p>
-        <p><a href="#">Nederlands</a> | <a href="#">Engels</a></p>
+        <div id="school">© 2024 Erasmushogeschool Brussel</div>
+        <div id="taal">Nederlands</div>
     </footer>
 
 </body>

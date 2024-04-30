@@ -103,29 +103,29 @@ body {
     font-size: 30px;
 }
 
-.klantinfo🤓 img
+.klantinfo img
 {
     border-radius: 50%;
     max-width: 50px;
     max-height: 50px;
 }
 
-div .klantinfo🤓{
+div .klantinfo{
     background-color: #222831;
 
 }
-.klantinfo🤓 
+.klantinfo 
 {    display: flex;
     align-items: center;
     max-width: 50%  ;
 }
 
-.klantinfo🤓 h3,h5{
+.klantinfo h3,h5{
     padding-left: 10px;
     padding-right: 10px;
 }
 
-.klantinfo🤓 h3{
+.klantinfo h3{
     font-size: 20px;
     width: 50px;
     padding: 20px;
