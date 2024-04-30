@@ -71,7 +71,6 @@ header {
 }
 
 .site-naam {
-
   padding: 0;
   text-align: center;
 }
@@ -85,8 +84,6 @@ header {
   font-weight: bold;
   font-family: "JetBrains Mono", monospace;
 }
-
-
 
 .prodnav ul {
   padding: 0;
@@ -112,7 +109,6 @@ header {
 
 .prodnav a:hover {
   color: #ff0000;
-
 }
 .prodnav img {
   margin-top: -21px;

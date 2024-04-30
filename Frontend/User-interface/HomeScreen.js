@@ -1,4 +1,4 @@
-let slider = document.querySelector('.slider');
+let slider = document.querySelector(".slider");
 let boxWidth = slider.offsetWidth / 3; // Breedte van de zichtbare slider
 let currentIndex = 0;
 
