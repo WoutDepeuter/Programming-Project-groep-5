@@ -72,7 +72,7 @@ header {
 }
 
 .product-box{
-  flex: 0 0 calc(100% / 3);
+  flex: 0 0 calc(100% / 4);
 
   display: flex;
   flex-direction: column;
