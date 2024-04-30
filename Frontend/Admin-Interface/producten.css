@@ -107,12 +107,10 @@ header {
 .prodnav .active {
   color: #ff0000;
 }
-.prodnav img
-{
-margin-top: -21px;
-margin-left: 14px;
-max-height: 70px;
-
+.prodnav img {
+  margin-top: -21px;
+  margin-left: 14px;
+  max-height: 70px;
 }
 hr {
   border: none;
