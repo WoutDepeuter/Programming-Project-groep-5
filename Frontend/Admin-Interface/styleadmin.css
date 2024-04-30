@@ -6,6 +6,25 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Scrollbar begin */
+/* Scrollbar dikte */
+::-webkit-scrollbar {
+  width: 7.5px;
+}
+
+/* Scrollbar achtergrondkleur */
+::-webkit-scrollbar-track {
+  background: #222831;
+}
+
+/* Scrollbar voorgrondkleur */
+::-webkit-scrollbar-thumb {
+  background: #ff0000;
+  border-radius: 10px;
+}
+
+/* Scrollbar einde */
+
 body {
   margin: 0;
   padding: 0;
@@ -56,10 +75,12 @@ header {
   border-radius: 30px;
   width: 100px;
 }
+
 #zoekbalkNaam::placeholder {
   color: #ff0000;
   font-weight: bold;
 }
+
 #zoekbalkID::placeholder {
   color: #ff0000;
   font-weight: bold;
@@ -76,9 +97,6 @@ header {
   font-weight: bold;
   font-family: "JetBrains Mono", monospace;
 }
-
-
-
 
 .producten{ 
   padding-right: 10px; 
@@ -110,10 +128,13 @@ header {
   flex-grow: 1;
 }
 
-.klantinfo img {
-  border-radius: 50%;
-  max-width: 100px;
-  max-height: 80px;
+.ontvangen {
+  width: 50%;
+  border-right: #222831 solid 3px;
+}
+
+.uitlenen {
+  width: 50%;
 }
 
 .klantinfo {
@@ -123,21 +144,34 @@ header {
   margin-left: 10px;
 }
 
+.klantinfo img {
+  border-radius: 50%;
+  max-width: 100px;
+  max-height: 80px;
+}
+
 .klantinfo h3,
 h5 {
   padding-left: 10px;
   padding-right: 10px;
 }
 
+/* Naam van klant */
+.klantinfo h3 {
+  font-size: 20px;
+  width: 50px;
+  padding: 20px;
+  background-color: ;
+}
+
+/* Naam van product */
 .klantinfo h5 {
   margin-top: 1em;
   font-size: 20px;
 }
 
-.klantinfo h3 {
-  font-size: 20px;
-  width: 50px;
-  padding: 20px;
+.klantinfo h5,p {
+  margin-bottom: 0;
 }
 
 .product {
@@ -149,22 +183,8 @@ h5 {
   max-width: 600px;
 }
 
-.product h5,
-p {
-  margin-bottom: 0;
-}
-
 .product {
-  margin-bottom: 2em;
-}
-
-.ontvangen {
-  width: 50%;
-  border-right: #222831 solid 3px;
-}
-
-.uitlenen {
-  width: 50%;
+  margin-bottom: 1em;
 }
 
 .buttonsAdmin{
@@ -207,47 +227,7 @@ p {
   color: white;
 }
 
-.buttons {
-  display: flex;
-  flex-direction: row;
-}
-
-div #verzend {
-  width: 100px;
-  height: 17px;
-  position: relative;
-  color: #ff0000;
-  font-weight: 600;
-  background-color: #fff;
-  border: none;
-  border-radius: 20px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
-  transition: all ease 100ms;
-}
-
-div #verzend:hover {
-  background-color: #ff0000;
-  color: white;
-  transition: all ease 100ms;
-  border: white 1px solid;
-  text-align: center;
-}
-
-/* scrollbar */
-/* width */
-::-webkit-scrollbar {
-  width: 7.5px;
-}
-
-::-webkit-scrollbar-track {
-  background: #222831;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #ff0000;
-  border-radius: 10px;
-}
-
+/* Begin footer */
 footer {
   bottom: 0;
   left: 0;
@@ -278,3 +258,5 @@ footer {
 #vandaag-uit-te-lenen {
   padding-left: 50px;
 }
+
+/* Einde footer */
