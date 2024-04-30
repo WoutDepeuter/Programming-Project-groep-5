@@ -15,6 +15,7 @@ body {
   min-height: 100vh;
 }
 
+/* Begin header */
 header {
   background-color: red;
   display: flex;
@@ -24,8 +25,6 @@ header {
   width: 100%;
   height: 56px;
 }
-
-
 
 .zoekbalk,
 .site-naam,
@@ -78,9 +77,6 @@ header {
   font-family: "JetBrains Mono", monospace;
 }
 
-
-
-
 .producten{ 
   padding-right: 10px; 
   text-align: right;
@@ -96,17 +92,27 @@ padding: 0px;
 
 }
 
+/* Titel (EHBLoanHub) */
 .adminhead a {
   color: white;
   text-decoration: none;
   padding: 0px;
   font-size: 30px;
 }
+/* Einde header */
+
+
+/* Begin main CSS */
+
+.container {
+  display: flex;
+  flex-grow: 1;
+}
 
 .klantinfo img {
   border-radius: 50%;
-  max-width: 50px;
-  max-height: 50px;
+  max-width: 100px;
+  max-height: 80px;
 }
 
 .klantinfo {
@@ -123,7 +129,8 @@ h5 {
 }
 
 .klantinfo h5 {
-  margin-top: 20px;
+  margin-top: 1em;
+  font-size: 20px;
 }
 
 .klantinfo h3 {
@@ -159,6 +166,11 @@ p {
   width: 50%;
 }
 
+.buttonsAdmin{
+  display: flex;
+  flex-direction: column;
+}
+
 .bevestig-knop {
   margin-top: 1em;
   margin-left: 2em;
@@ -180,6 +192,7 @@ p {
   border-radius: 50%;
   margin-top: 1em;
   margin-left: 2em;
+  margin-bottom: 1em;
   background-color: rgb(255, 255, 255);
   color: red;
   width: 40px; 
@@ -232,11 +245,6 @@ div #verzend:hover {
 ::-webkit-scrollbar-thumb {
   background: #ff0000;
   border-radius: 10px;
-}
-
-.container {
-  display: flex;
-  flex-grow: 1;
 }
 
 footer {
