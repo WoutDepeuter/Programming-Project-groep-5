@@ -23,7 +23,7 @@ header {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 50px;
+  height: 56px;
 }
 
 .zoekbalk,
@@ -77,58 +77,25 @@ header {
   font-family: "JetBrains Mono", monospace;
 }
 
-
-div #verzend {
-  width: 100px;
-  height: 17px;
-  position: relative;
-  color: #ff0000;
-  font-weight: 600;
-  background-color: #fff;
-  border: none;
-  /* overflow: hidden; */
-  border-radius: 20px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
-  transition: all ease 100ms;
-} 
-
-div #verzend:hover {
-  background-color: #ff0000;
-  color: white;
-  transition: all ease 100ms;
-  border: white 1px solid;
-  text-align: center;
+.producten {
+  text-align: right;
 }
 
-/* scrollbar */
-/* width */
-::-webkit-scrollbar {
-  width: 7.5px;
-}
-
-::-webkit-scrollbar-track {
-  background: #222831;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #ff0000;
-  border-radius: 10px;
-}
-
-.container {
+.producten-container {
   display: flex;
+  flex-basis: 0;
 }
 
-footer {
-  bottom: 0;
-  left: 0;
-  background-color: red;
-  display: flex;
-  flex-direction: row;
+.producten-container a {
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  margin-top: auto;
+  justify-content: center;
+}
+
+.adminhead a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  font-size: 30px;
 }
 
 #school {
@@ -141,33 +108,26 @@ footer {
   color: white;
 }
 
-#vto {
-  padding-left: 50px;
+.prodnav ul {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  color: white;
+  display: flex;
+  list-style: none;
+  font-size: large;
+  text-decoration: none;
+  flex-direction: row;
 }
-
-.prodnav ul 
-{
-    padding: 10px;
-    margin: 10px;
-    border-radius: 10px;
-    color: white;
-    display: flex;
-    list-style: none;
-    font-size: large;
-    text-decoration: none;
-    flex-direction: row;
+.prodnav a {
+  text-decoration: none;
+  color: black;
+  font-size: 32px;
+  font-weight: 600;
+  padding-left: 160px;
 }
-.prodnav a
-{
-    text-decoration: none;
-    color: black;
-    font-size: 32px;
-    font-weight: 600;
-    padding-left: 160px;
-}
-.prodnav .active
-{
-color: #FF0000;
+.prodnav .active {
+  color: #ff0000;
 }
 .prodnav img
 {
@@ -177,7 +137,36 @@ max-height: 70px;
 
 }
 hr {
-    border: none;
-    border-top: 1px solid #ccc; /* You can adjust the color as needed */
-    margin: 20px 0; /* You can adjust the margin as needed */
+  border: none;
+  border-top: 1px solid #ccc; /* You can adjust the color as needed */
+  margin: 20px 0; /* You can adjust the margin as needed */
+}
+
+footer {
+  bottom: 0;
+  left: 0;
+  height: 44px;
+  background-color: red;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: auto;
+}
+
+/* scrollbar */
+/* width */
+
+::-webkit-scrollbar {
+  width: 7.5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #222831;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ff0000;
+  border-radius: 10px;
 }
