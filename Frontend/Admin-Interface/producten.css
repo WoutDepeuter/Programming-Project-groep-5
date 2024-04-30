@@ -169,6 +169,13 @@ footer {
 {
 color: #FF0000;
 }
+.prodnav img
+{
+margin-top: -21px;
+margin-left: 14px;
+max-height: 70px;
+
+}
 hr {
     border: none;
     border-top: 1px solid #ccc; /* You can adjust the color as needed */
