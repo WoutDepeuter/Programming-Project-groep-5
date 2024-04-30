@@ -1,5 +1,7 @@
 let currentIndex = 0;
 
+//Array meegeven als counter
+
 function moveLeft(sliderId) {
     let slider = document.getElementById(sliderId);
     let boxWidth = slider.offsetWidth / 3; // Breedte van de zichtbare slider
