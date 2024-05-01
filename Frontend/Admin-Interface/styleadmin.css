@@ -142,6 +142,7 @@ header {
   align-items: center;
   justify-content: center;
   margin-left: 10px;
+  max-height: 150px;
 }
 
 .klantinfo img {
