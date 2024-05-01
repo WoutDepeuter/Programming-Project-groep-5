@@ -110,11 +110,14 @@ header {
 .prodnav a:hover {
   color: #ff0000;
 }
+
+/* Filter foto */
 .prodnav img {
-  margin-top: -21px;
   margin-left: 14px;
   max-height: 70px;
+  max-width: 40px;
 }
+
 hr {
   border: none;
   border-top: 1px solid #ccc; /* You can adjust the color as needed */
@@ -144,7 +147,6 @@ footer {
 }
 
 /* scrollbar */
-/* width */
 
 ::-webkit-scrollbar {
   width: 7.5px;
@@ -184,16 +186,17 @@ footer {
 
 .delete img,.edit img
 {
-max-width: 40px;
-max-height: 40px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: white;
 }
 
-.delete button, .edit button
-{
-
-background-color: white;
-color: white;
-border: none;
+.delete, .edit {
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 
 .extrabuttons button
