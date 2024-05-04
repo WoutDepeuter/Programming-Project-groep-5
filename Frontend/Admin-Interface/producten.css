@@ -230,3 +230,7 @@ footer {
   margin-left: auto;
   opacity: 80%;
 }
+
+#potlood-icoon:hover, #vuilbak-icoon:hover{
+  background-color: #cdcdcd;
+}
