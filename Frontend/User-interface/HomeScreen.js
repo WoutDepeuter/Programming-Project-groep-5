@@ -1,28 +1,34 @@
-let currentIndex = 0;
-
-//Array meegeven als counter
+let currentIndex = {
+  audio: 0,
+  belichting: 0,
+  varia: 0,
+  video: 0,
+  xr: 0
+};
 
 function moveLeft(sliderId) {
     let slider = document.getElementById(sliderId);
-    let boxWidth = slider.offsetWidth / 3; // Breedte van de zichtbare slider
+    let boxWidth = slider.offsetWidth / 3;
+    let sliderName = sliderId.split('-')[0]; //Naam van slider ophalen
   
-    if (currentIndex > 0) {
-      currentIndex--;
+    if (currentIndex[sliderName] > 0) {
+      currentIndex[sliderName]--;
     } else {
-      currentIndex = 3; // Als we bij box 1 zijn en naar links klikken, ga naar box 6
+      currentIndex[sliderName] = 3;
     }
-    slider.style.transform = `translateX(-${currentIndex * boxWidth}px)`;
+    slider.style.transform = `translateX(-${currentIndex[sliderName] * boxWidth}px)`;
   }
   
   function moveRight(sliderId) {
     let slider = document.getElementById(sliderId);
-    let boxWidth = slider.offsetWidth / 3; // Breedte van de zichtbare slider
+    let boxWidth = slider.offsetWidth / 3;
+    let sliderName = sliderId.split('-')[0]; //Naam van slider ophalen
   
-    if (currentIndex < 3) {
-      currentIndex++;
+    if (currentIndex[sliderName] < 3) {
+      currentIndex[sliderName]++;
     } else {
-      currentIndex = 0; // Als we bij box 6 zijn en naar rechts klikken, ga naar box 1
+      currentIndex[sliderName] = 0;
     }
-    slider.style.transform = `translateX(-${currentIndex * boxWidth}px)`;
+    slider.style.transform = `translateX(-${currentIndex[sliderName] * boxWidth}px)`;
   }
   
