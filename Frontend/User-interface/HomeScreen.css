@@ -120,8 +120,32 @@ header {
 
 .arrow{
   z-index: 1;
+  font-size: 30px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
+.arrow:hover{
+  transform: scale(1.1); /* Pijlen vergroten */
+  font-size: 35px;
+}
+
+.arrow-left{
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.arrow-right{
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
 
 .button:hover {
   background-color: darkred;
