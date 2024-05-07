@@ -234,8 +234,3 @@ footer {
 #potlood-icoon:hover, #vuilbak-icoon:hover{
   background-color: #cdcdcd;
 }
-
-#filter-icoon:hover {
-  filter: hue-rotate(180);
-  background-color: RED;
-}
