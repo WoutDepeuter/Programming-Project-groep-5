@@ -1,0 +1,113 @@
+/*titel: */
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
+/*algemeen*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  font-family: "Poppins";
+}
+header {
+  background-color: red;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+.zoekbalk,
+.site-naam,
+.profiel {
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+.site-naam {
+  text-align: center;
+}
+
+#site-naam {
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  font-weight: bold;
+  font-family: "JetBrains Mono", monospace;
+}
+
+.icons {
+    font-size: x-large;
+    margin: 0 0 0 0.5em;
+}
+
+main {
+    margin: 2em;
+}
+
+.profiel-informatie {
+    display: flex;
+    align-items: center;
+}
+
+.profiel-informatie img {
+    height: 6em;
+    width: 6em;
+    border-radius: 3em;
+    margin: 0 1em 0 0;
+}
+
+.bezit-en-ophalen {
+    display: flex;
+    flex-basis: 0;
+    flex-grow: 1;
+}
+
+.product-in-bezit {
+    display: flex;
+}
+
+.product-in-bezit h4 {
+    margin: 0 3em 0 0;
+}
+
+.product-in-bezit h4 a {
+    color: black;
+    text-decoration: none;
+}
+
+.op-te-halen {
+    border-style: solid;
+    border-width: 0 0 0 0.1em;
+    padding: 0 0 0 2em;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: red;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#school {
+  padding: 10px;
+  color: white;
+}
+
+#taal {
+  padding: 10px;
+  color: white;
+}
+
+.producten {
+  text-align: right;
+}
