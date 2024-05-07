@@ -150,6 +150,12 @@ footer {
   width: 100%;
 }
 
+/* dit hoort bij gebruikersvoorwaarden.html */
+
+.gebruiksvoorwaarden > li {
+  margin: 10px 0 0 0;
+}
+
 #school {
   padding: 10px;
   color: white;
