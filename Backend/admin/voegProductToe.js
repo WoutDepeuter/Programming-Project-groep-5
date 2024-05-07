@@ -1,4 +1,11 @@
 
+let producten = document.getElementsByClassName("contaiter-producten")
+if(producten.length == 0 )
+{
+    let box = document.getElementsByClassName("box")
+    box[0].style.max-width == "50%"
+}
+
 let addproduct = document.getElementById('add');
 addproduct.addEventListener("click",voegProductToeButton)
 
@@ -38,5 +45,4 @@ function voegProductToeButton()
             </div>
         `;
     }
-    
 }
