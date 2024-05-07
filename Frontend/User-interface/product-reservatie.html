@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
-      href="/Frontend/User-interface/pictures/EHB_site_logo-removebg-preview.png"
+      href="/Frontend/pictures/EHB_site_logo-removebg-preview.png"
       rel="icon"
     />
 
@@ -30,33 +30,81 @@
         <a href="#"
           ><img
             id="profiel"
-            src="/Frontend/User-interface/pictures/icons8-name-96.png"
+            src="/Frontend/pictures/icons8-name-96.png"
             alt="profiel"
         /></a>
       </div>
     </header>
     <main>
       <div class="container">
-        <div>
+        <div class="foto-en-knop-reservatie">
           <img
-            src="/Frontend/User-interface/pictures/Afbeelding-microfoon.png"
+            src="/Frontend/pictures/Afbeelding-microfoon.png"
             alt="foto-product"
           />
+          <br>
           <a
             href="/Frontend/User-interface/product-reservatie.html"
             id="reserveren"
             >Reserveren</a
           >
         </div>
-        <div>
-          <h2>DM10</h2>
-          <div>
-            <h3>Van:</h3>
-            <h3>Tot:</h3>
+        <div class="tijd-en-beschikbaarheid">
+          <h2>Titel</h2>
+          <div class="datum-forms-uitlening">
+            <form>
+              <label for="van-tijd">Van:</label>
+              <input id="van-tijd" type="date" required>
+              <label for="tot-tijd">Tot:</label>
+              <input id="tot-tijd" type="date" required>
+            </form>
           </div>
+          <div class="melding-uitleentermijn">
+            <p>Uitleentermijn voor <span>studenten</span>: <span class="uitleentermijn">1 week</span></p>
+          </div>
+          <br>
+          <p>Nog <span class="aantal-beschikbaar">3</span> beschikbaar</p>
         </div>
-        <div></div>
+        <div>
+          <p>Geen idee hoe dit moet</p>
+        </div>
       </div>
+      <br>
+      <hr>
+      <h1>Extra's:</h1>
+      <div>
+        <!-- Voorbeeld box -->
+      <div class="extra-product">
+        <div>
+          <img src="/Frontend/pictures/Afbeelding-microfoon.png" alt="Afbeelding 1"/>
+          <p>Beschikbaar: <span>3/4</span></p>
+          <form class="checkbox-extra"><input type="checkbox"></form>
+        </div>
+        <h4>Titel</h4>
+      </div>
+      </div>
+      <h1>Description:</h1>
+      <div class="beschrijving">
+        <p>
+          De Lumix Z100 is een veelzijdige camera die perfect is voor zowel professionele fotografen als enthousiaste amateurs die streven naar
+          hoogwaardige beeldkwaliteit en geavanceerde functies. Met een 24-megapixel full-frame sensor en een krachtige Venus Engine-processor
+          levert de Lumix Z100 adembenemende foto's en video's.
+        </p>
+        <p>Belangrijkste specificaties:</p>
+        <u>
+          <li>24-megapixel full-frame MOS-sensor</li>
+          <li>Venus Engine-processor voor snelle verwerking</li>
+          <li>4K UHD-video-opname met 30fps</li>
+          <li>5-assige beeldstabilisatie voor scherpe beelden, zelfs bij langere brandpuntsafstanden</li>
+          <li>ISO-bereik van 100-25600 voor uitstekende prestaties bij weinig licht</li>
+          <li>3,2-inch kantelbaar touchscreen LCD-scherm voor eenvoudige bediening en compositie</li>
+          <li>9-punts autofocus met snelle en nauwkeurige prestaties</li>
+          <li>Draadloze connectiviteit via ingebouwde wifi en Bluetooth voor eenvoudig delen en bedienen op afstand</li>
+          <li>Weerbestendige body die bestand is tegen stof en vocht, ideaal voor gebruik in verschillende omstandigheden</li>
+          <li>Dual SD-kaartsleuven voor uitgebreide opslagmogelijkheden en back-upfunctionaliteit</li>
+        </u>
+      </div>
+      <br>
     </main>
     <footer>
       <div id="school">© 2024 Erasmushogeschool Brussel</div>
