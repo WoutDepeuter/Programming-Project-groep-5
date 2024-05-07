@@ -1,8 +1,9 @@
-console.log("test")
 
-let voegProductToeButton = document.getElementById("search");
-let elements = document.getElementsByTagName("main")
+let voegProductToeButton = document.getElementById("add");
+let elements = document.getElementsByTagName("main");
+let alles = document.getElementsByTagName("*");
+let main = document.getElementById("mainmain")
+let box = document.getElementsByClassName("box")
 
 voegProductToeButton.addEventListener("click", function(){
-    console.log(elements.childNodes())
 })
