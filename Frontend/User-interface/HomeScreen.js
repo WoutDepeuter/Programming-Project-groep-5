@@ -8,20 +8,22 @@ let currentIndex = {
 
 function moveLeft(sliderId) {
     let slider = document.getElementById(sliderId);
-    let boxWidth = slider.offsetWidth / 3;
+    let visibleWidth = slider.offsetWidth; //Breedte van zichtbare slider
+    let visibleBoxes = 4;
+    let boxWidth = visibleWidth / visibleBoxes;
     let sliderName = sliderId.split('-')[0]; //Naam van slider ophalen
-  
-    if (currentIndex[sliderName] > 0) {
+
+    if(currentIndex[sliderName] > 0){
       currentIndex[sliderName]--;
-    } else {
-      currentIndex[sliderName] = 3;
     }
     slider.style.transform = `translateX(-${currentIndex[sliderName] * boxWidth}px)`;
   }
   
   function moveRight(sliderId) {
     let slider = document.getElementById(sliderId);
-    let boxWidth = slider.offsetWidth / 3;
+    let visibleWidth = slider.offsetWidth; //Breedte van zichtbare slider
+    let visibleBoxes = 4;
+    let boxWidth = visibleWidth / visibleBoxes;
     let sliderName = sliderId.split('-')[0]; //Naam van slider ophalen
   
     if (currentIndex[sliderName] < 3) {
