@@ -18,24 +18,30 @@ for(let i = 0; i < annuleer.length; i++) {
 
 
 function bevestigRetour() {
-let klant = this.closest('.klantinfo');
-klant.innerHTML = `
+    let klant = this.closest('.klantinfo');
+    let container = document.getElementsByClassName("container")[0] 
+    let ontvangen = document.getElementsByClassName("ontvangen")[0]
+    let uitlenen = document.getElementsByClassName("uitlenen")[0]
 
-    <div class="returnrform">
-        <h1>Product ontvangen</h1>
-        <form id="returnForm">
-            <input type="radio" name="schade" id="schade1">
-            <label for="schade1">Schade</label><br>
-            <input type="radio" name="schade" id="schade2">
-            <label for="schade2">Schade2</label><br>
-            <input type="text" name="schade" id="damage">
-            <label for="damage">Is er schade</label><br>
-            <button type="submit">Submit</button>
-        </form>
-        <h1>ID 144 </h1>
-    </div>
-`;
+    if (ontvangen) ontvangen.innerHTML = "";
+    if (uitlenen) uitlenen.innerHTML = "";
+
+    container.innerHTML = `
+        <div class="returnform">
+            <h1>Product ontvangen</h1>
+            <form id="returnForm">
+                <input type="radio" name="schade" id="schade1">
+                <label for="schade1">Schade</label><br>
+                <input type="radio" name="schade" id="schade2">
+                <label for="schade2">Schade2</label><br>
+                <h2>Beschrijving</h2>
+                <input type="text" name="schade" id="damage" placeholder="type hier">
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    `;
 }
+
 function annuleerRetour() {
     //maak een div om klant info weg te halen
     let klant =  this.closest('.klantinfo');

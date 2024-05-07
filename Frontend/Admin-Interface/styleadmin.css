@@ -227,6 +227,28 @@ h5 {
   color: white;
 }
 
+.returnform {
+  border: #222831 solid 3px;
+  padding-top: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+}
+
+.returnform input[type="text"] {
+  width: 100%;
+  max-width: 300px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: gray;
+}
+
+
+
 /* Begin footer */
 footer {
   bottom: 0;
