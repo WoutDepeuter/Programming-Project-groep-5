@@ -1,5 +1,5 @@
 
-let addproduct = document.getElementById('add');
+ let addproduct = document.getElementById('add');
 addproduct.addEventListener("click",voegProductToeButton)
 
 function voegProductToeButton()
