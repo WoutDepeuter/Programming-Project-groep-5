@@ -95,6 +95,14 @@ main {
   text-decoration: underline;
 }
 
+#echte-reservatie {
+  background-color: red;
+  color: white;
+  text-decoration: none;
+  border-radius: 20px;
+  padding: 5px 15px;
+}
+
 .alle-extra-producten {
   display: flex;
 }
