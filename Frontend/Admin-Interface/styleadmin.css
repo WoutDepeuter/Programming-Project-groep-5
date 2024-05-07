@@ -229,23 +229,56 @@ h5 {
 
 .returnform {
   border: #222831 solid 3px;
-  padding-top: 10px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
+  width: 50%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Align items at the center horizontally */
 }
 
 .returnform input[type="text"] {
   width: 100%;
   max-width: 300px;
-  padding: 20px;
+  padding: 4em; /* Adjust padding */
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
   background-color: gray;
+  margin-top: 10px; 
+
 }
+
+.radio-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%; /* Ensure the radio buttons span the full width */
+}
+
+.radio-container input[type="radio"] {
+  display: none;
+  border: 1px solid;
+}
+
+.radio-container label {
+  flex: 1; 
+  text-align: center;
+  margin-right: 20px;
+}
+
+.radio-container label:hover {
+  background-color: #ddd;
+}
+
+.radio-container input[type="radio"]:checked + label {
+  background-color: #ff0000;
+  color: #fff;
+}
+
 
 
 
