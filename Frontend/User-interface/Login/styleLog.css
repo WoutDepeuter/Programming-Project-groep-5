@@ -9,7 +9,7 @@
 }
 
 body {
-  background-color: gray;
+  background-color: white;
   /* background: url("OIP.jpeg"); */
   /* background-size: cover; */
   /* background-repeat: no-repeat; */
@@ -30,7 +30,7 @@ body {
   height: 360px;
   margin: auto;
   margin-top: 150px;
-  background-color: white;
+  background-color: black;
   box-shadow: 2px 2px 40px black;
   border-radius: 13px;
   margin-bottom: 233px;
@@ -76,7 +76,7 @@ input[type="button"] {
 p {
   text-align: center;
   padding-top: 20px;
-  padding-bottom: auto;
+  padding-bottom: 69.2px;
   color: red;
   font-size: 15px;
 }
@@ -86,7 +86,8 @@ p a {
 }
 
 p a:hover {
-  background-color:red ;
+  background-color: red;
+  border-radius: 7px;
   color: white;
 }
 
