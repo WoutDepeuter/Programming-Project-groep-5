@@ -249,7 +249,8 @@ h5 {
   box-sizing: border-box;
   background-color: gray;
   margin-top: 10px; 
-
+  color: white;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
 }
 
 .radio-container {

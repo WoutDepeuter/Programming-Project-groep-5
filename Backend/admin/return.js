@@ -18,7 +18,7 @@ function bevestigRetour() {
     let container = document.getElementsByClassName("container")[0] ;
     let ontvangen = document.getElementsByClassName("ontvangen")[0];
     let uitlenen = document.getElementsByClassName("uitlenen")[0];
-    let product = document.getElementById("product-id").innerText;
+    let product = this.closest('product-id');
     console.log(product)
     if (ontvangen) ontvangen.innerHTML = "";
     if (uitlenen) uitlenen.innerHTML = "";
