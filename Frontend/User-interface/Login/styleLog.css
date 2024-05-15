@@ -33,7 +33,6 @@ body {
   background-color: black;
   box-shadow: 2px 2px 40px black;
   border-radius: 13px;
-  margin-bottom: 233px;
 }
 
 h1 {
@@ -76,7 +75,6 @@ input[type="button"] {
 p {
   text-align: center;
   padding-top: 20px;
-  padding-bottom: 69.2px;
   color: red;
   font-size: 15px;
 }
@@ -92,7 +90,9 @@ p a:hover {
 }
 
 footer {
+  position: absolute;
   bottom: 0;
+  width: 100%;
   left: 0;
   height: 44px;
   background-color: red;
@@ -100,7 +100,6 @@ footer {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
   margin-top: auto;
 }
 
