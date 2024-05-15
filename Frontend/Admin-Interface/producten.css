@@ -110,11 +110,14 @@ header {
 .prodnav a:hover {
   color: #ff0000;
 }
+
+/* Filter foto */
 .prodnav img {
-  margin-top: -21px;
   margin-left: 14px;
   max-height: 70px;
+  max-width: 40px;
 }
+
 hr {
   border: none;
   border-top: 1px solid #ccc; /* You can adjust the color as needed */
@@ -144,7 +147,6 @@ footer {
 }
 
 /* scrollbar */
-/* width */
 
 ::-webkit-scrollbar {
   width: 7.5px;
@@ -158,11 +160,16 @@ footer {
   background: #ff0000;
   border-radius: 10px;
 }
-main {
+
+.container-producten {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
+  height: fit-content;
+
 }
+
 .box {
   border-style: solid;
   border-width: 2px;
@@ -171,6 +178,7 @@ main {
   border-radius: 1em;
   display: flex;
 }
+
 .box img {
   height: 200px;
   width: 200px;
@@ -180,15 +188,17 @@ main {
 
 .delete img,.edit img
 {
-max-width: 40px;
-max-height: 40px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: white;
 }
-.delete button, .edit button
-{
 
-background-color: white;
-color: white;
-border: none;
+.delete, .edit {
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 
 .extrabuttons button
@@ -196,6 +206,7 @@ border: none;
   background-color: #ff0000;
   color: white;
   padding: 10px 20px;
+  margin: 1px;
   border: none;
   border-radius: 20px;
   cursor: pointer;
@@ -204,18 +215,94 @@ border: none;
   display: inline-block;
   transition: all 0.3s ease;
 }
+
 .extrabuttons button:hover
 {
   background-color: darkred;
 }
+
 .extrabuttons
 {
+  position: sticky;
+  top: 0px;
   display: flex;
-  flex-direction: column-reverse;
-  justify-content: space-around;
-  align-items: flex-end;
-  width: 100%;
-
+  flex-direction: column;
+  max-width: 200px;
+  max-height: 100%;
+  margin-left: auto;
+  opacity: 80%;
 }
 
+#potlood-icoon:hover, #vuilbak-icoon:hover{
+  background-color: #cdcdcd;
+}
 
+#filter-icoon {
+  width: 60px;
+  height: 50px;
+  margin: 0;
+}
+
+main button a {
+  text-decoration: none;
+  color: white;
+}
+
+/* POPUP product toevoegen CSS */
+#popup-voeg-product-toe {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  flex-direction: column;
+  width: 50%;
+}
+
+#productnaam-product-toevoegen {
+  width: 100%;
+  border-radius: 5px;
+  background-color: grey;
+  margin: 1px;
+}
+
+#productnaam-product-toevoegen input::placeholder {
+  color: white;
+}
+
+#productnaam-product-toevoegen input {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+}
+
+#productbeschrijving-product-toevoegen {
+  border-radius: 5px;
+  background-color: grey;
+}
+
+#productbeschrijving-product-toevoegen::placeholder {
+  color: white;
+}
+
+#fotouploaden-product-toevoegen {
+  width: 100%;
+  border-radius: 5px;
+  background-color: grey;
+  margin: 1px;
+  color: white;
+}
+
+#fotouploaden-product-toevoegen input{
+  
+}
+
+#lijstMetCategorien-product-toevoegen {
+  width: 100%;
+  border-radius: 5px;
+  background-color: grey;
+  margin: 1px;
+}
+/* POPUP product toevoegen (einde CSS) */

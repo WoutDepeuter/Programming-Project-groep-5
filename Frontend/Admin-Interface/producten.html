@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-    />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>Home</title>
     <link rel="icon" href="../pictures/EHB_site_logo-removebg-preview.png">
-    <link rel="stylesheet" href="producten.css" />
+    <link rel="stylesheet" href="producten.css"/>
   </head>
 
   <body>
@@ -19,65 +16,58 @@
         <input id="zoekbalkID" type="text" placeholder="ID zoeken..." />
       </div>
       <div class="site-naam">
-        <a href="/Frontend/Admin-Interface/HoofdMenuAdmin.html" id="site-naam"
-          >&lt;EHBLoanHub&gt;</a
-        >
+        <a href="/Frontend/Admin-Interface/HoofdMenuAdmin.html" id="site-naam">&lt;EHBLoanHub&gt;</a>
       </div>
       <div class="producten"></div>
     </header>
 
     <nav class="prodnav">
       <ul class="product-categorien">
-        <li>
-          <a href="/Frontend/Admin-Interface/producten.html" class="active"
-            >Audio</a
-          >
-        </li>
-        <li>
-          <a href="/Frontend/Admin-Interface/productenbelichting.html"
-            >Belichting</a
-          >
-        </li>
-        <li>
-          <a href="/Frontend/Admin-Interface/productenvideo.html">Video</a>
-        </li>
-        <li>
-          <a href="/Frontend/Admin-Interface/productenvaria.html">Varia</a>
-        </li>
+        <li><a href="/Frontend/Admin-Interface/producten.html" class="active">Audio</a></li>
+        <li><a href="/Frontend/Admin-Interface/productenbelichting.html">Belichting</a></li>
+        <li><a href="/Frontend/Admin-Interface/productenvideo.html">Video</a></li>
+        <li><a href="/Frontend/Admin-Interface/productenvaria.html">Varia</a></li>
         <li><a href="/Frontend/Admin-Interface/productenxr.html">XR</a></li>
-        <li><img src="../pictures/filter.png" alt="filter" /></li>
+        <li><img src="../pictures/filter2.png" alt="filter-icoon" id="filter-icoon"></li>
       </ul>
     </nav>
-    <hr />
+
+    <hr/>
+
     <main>
-      <!-- Voorbeeld box -->
-      <div class="box">
-        <img src="../pictures/Afbeelding-microfoon.png" alt="Afbeelding 1" />
-        <div>
-          <h2>DM10</h2>
-          <h3>id 45454745</h3>
-          <p>Korte beschrijving van product 1.</p>
-          <button class="edit">
-            <img src="/Frontend/pictures/POTLOOD.png" alt="" />
-          </button>
-          <button class="delete">
-            <img
-              src="/Frontend/pictures/Screenshot 2024-04-30 142304.png"
-              alt=""
-            />
-          </button>
-        </div>
-      </div>
       <div class="extrabuttons">
-        <button class="add">Voeg product toe</button>
-        <button class="search">Zoek gebruiker</button>
-        <button>go Home</button>
+        <button class="add" id="add">Voeg product toe</button>
+        <button id="search">Zoek gebruiker</button>
+        <button><a href="HoofdMenuAdmin.html">Go home</a></button>
       </div>
+      
+
+      <div class="container-producten">
+        <!-- Voorbeeld box -->
+        <div class="box">
+          <img src="../pictures/Afbeelding-microfoon.jpg" alt="Afbeelding 1" />
+          <div>
+            <h2>Devine: DM10</h2>
+            <!-- Span om dit specifiek deel met JS te kunnen veranderen -->
+            <h3>ID: <span>0377</span></h3>
+            <p>Korte beschrijving van product 1.</p>
+            <button class="edit"><img src="/Frontend/pictures/potlood_edited.jpg" alt="potlood-icoon" id="potlood-icoon"/></button>
+            <button class="delete"><img src="/Frontend/pictures/vuilbak_edited.jpg" alt="vuilbak-icoon" id="vuilbak-icoon"/></button>
+          </div>
+        </div>
+
+      </div>
+
+
+
     </main>
 
     <footer>
-      <div id="school">© 2024 Erasmushogeschool Brussel</div>
+      <div id="school">&COPY; 2024 Erasmushogeschool Brussel</div>
       <div id="taal">Nederlands</div>
     </footer>
+    <script src="../../Backend/admin/voegProductToe.js"></script>
+    <script src="../../Backend/admin/productenadmin.js"></script>
   </body>
+  
 </html>
