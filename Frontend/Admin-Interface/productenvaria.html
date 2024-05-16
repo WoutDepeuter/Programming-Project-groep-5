@@ -37,7 +37,7 @@
     <main>
       <div class="extrabuttons">
         <button class="add" id="add">Voeg product toe</button>
-        <button class="search">Zoek gebruiker</button>
+        <button class="search" id="search">Zoek gebruiker</button>
         <button><a href="HoofdMenuAdmin.html">Go home</a></button>
       </div>
         
@@ -56,6 +56,14 @@
         </div>
 
       </div>
+      <!-- Popup Overlay en Content -->
+    <div id="popupOverlay" class="overlay">
+      <div class="popup">
+          <div id="popupContent">
+              <!-- hier word de popup geplaatst -->
+          </div>
+      </div>
+  </div>
     </main>
 
     <footer>
@@ -63,6 +71,8 @@
       <div id="taal">Nederlands</div>
     </footer>
   </body>
-  <script src="../../Backend/admin/voegProductToe.js"></script>
-  <script src="../../Backend/admin/productenadmin.js"></script>
+  <script src="/Backend/admin/voegProductToe.js"></script>
+    <script src="/Backend/admin/productenadmin.js"></script>
+    <script src="/Backend/admin/zoekGebruiker.js"></script>
+
 </html>

@@ -28,7 +28,7 @@ header {
 
 .zoekbalk,
 .site-naam,
-.profiel{
+.profiel {
   flex-grow: 1;
   flex-basis: 0;
 }
@@ -67,14 +67,21 @@ header {
   text-align: right;
 }
 #profiel {
-  width: 50px;
-  height: 50px;
+  margin-right: 10px;
+  width: 35px;
+  height: 35px;
 }
 
-.audio{
-  margin-top: 70px;
+#audio {
+  margin-top: 100px;
+  margin-bottom: 0;
 }
 
+.audio {
+  bottom: 0;
+  margin-top: 0px;
+  margin-bottom: 0;
+}
 .prodnav ul {
   padding: 0;
   border-radius: 10px;
@@ -102,7 +109,7 @@ header {
   transition: all 0.5s ease;
 }
 
-.producten{
+.producten {
   display: flex;
   margin-left: 20px;
   margin-top: 50px;
@@ -161,7 +168,7 @@ header {
   margin: 0 auto;
 }
 
-.arrow{
+.arrow {
   z-index: 1;
   font-size: 30px;
   background-color: transparent;
@@ -171,28 +178,25 @@ header {
   transition: transform 0.3s ease;
 }
 
-.arrow:hover{
+.arrow:hover {
   transform: scale(1.1); /* Pijlen vergroten */
   font-size: 35px;
 }
 
-.arrow-left{
+.arrow-left {
   position: absolute;
   left: 15px;
   top: 50%;
   transform: translateY(-50%);
 }
 
-.arrow-right{
+.arrow-right {
   position: absolute;
   right: 15px;
   top: 50%;
   transform: translateY(-50%);
 }
 
-.button:hover {
-  background-color: darkred;
-}
 
 footer {
   bottom: 0;
@@ -224,7 +228,7 @@ footer {
 }
 
 #breakline {
-  width: 70%;
+  width: 90%;
   height: 3px;
   background-color: red;
   border: none;
@@ -334,4 +338,3 @@ footer {
   background: #ff0000;
   border-radius: 10px;
 }
-

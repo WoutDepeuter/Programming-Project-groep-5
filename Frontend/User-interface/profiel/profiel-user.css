@@ -16,6 +16,7 @@ header {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  height: 50px;
   width: 100%;
   flex-grow: 1;
   flex-basis: 0;
@@ -94,13 +95,53 @@ main {
     border-style: solid;
     border-radius: 1em;
     border-color: red;
-    width: 2em;
-    height: 2em;
 }
 
 .annuleer-knop:hover {
     color: white;
     background-color: red;
+}
+
+h4 a:hover {
+  color: red;
+}
+
+.volledig-probleem-form {
+  text-align: center;
+  border-style: solid;
+  border-radius: 3em;
+  padding: 0 0 2em 0;
+}
+
+.radio-container {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+}
+
+.textarea-probleem {
+  border-radius: 0.5em;
+}
+
+.knop-probleem-versturen {
+  border-style: none;
+  border-radius: 1em;
+  color: white;
+  background-color: red;
+  padding: 0.5em 1em 0.5em 1em;
+}
+
+.volledig-annulatie-form {
+  text-align: center;
+  border-style: solid;
+  border-radius: 3em;
+  padding: 0 0 2em 0;
+}
+
+.annulatieForm {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
 }
 
 footer {
