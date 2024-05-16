@@ -9,12 +9,18 @@ body {
   background-color: white;
   font-family: "Poppins";
 }
+main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 header {
   background-color: red;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  height: 50px;
   width: 100%;
 }
 
@@ -59,42 +65,53 @@ header {
   text-align: right;
 }
 #profiel {
-  width: 50px;
-  height: 50px;
+  margin-right: 10px;
+  width: 35px;
+  height: 35px;
 }
-nav ul {
+.prodnav ul {
+  padding: 0;
+  border-radius: 10px;
+  color: white;
   display: flex;
-  flex-direction: row;
   list-style: none;
-  gap: 70px;
-  padding: 5px 0 0 100px;
-}
-nav ul a {
-  color: #231f20;
+  font-size: large;
   text-decoration: none;
-  letter-spacing: 0.1em;
-  font-weight: bolder;
+  flex-direction: row;
+  justify-content: space-around;
 }
-nav ul a:hover {
-  color: red;
-}
-nav ul .huidigepagina {
-  color: red;
-}
-nav .icon {
+.prodnav a {
+  text-decoration: none;
   color: black;
-}
-hr {
-  color: red;
-  width: 95%;
-  border-radius: 50%;
+  font-size: 32px;
+  font-weight: 600;
 }
 
-main {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+.prodnav a:hover {
+  color: #ff0000;
 }
+
+.prodnav a.active {
+  color: #ff0000;
+  border-bottom: #ff0000 2px solid;
+}
+.producten-categorien {
+  text-decoration: none;
+  font-size: 25px;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  padding-left: 40px;
+}
+
+
+
+hr {
+  width: 97%;
+  height: 1px;
+  background-color: rgb(0, 0, 0);
+  border: none;
+}
+
 .box {
   border-style: solid;
   border-width: 2px;
