@@ -1,7 +1,7 @@
-let addproduct = document.getElementById('add');
-addproduct.addEventListener("click", voegProductToeButton);
+let bevestig = document.getElementById('bevestig-knop');
+bevestig.addEventListener("click", bevestiging);
 
-function voegProductToeButton() {
+function bevestiging() {
     let popupContent = document.getElementById("popupContent");
 
     popupContent.innerHTML = `

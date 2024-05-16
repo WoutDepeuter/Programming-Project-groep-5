@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>&lt;EHBLoanHub&gt;</title>
     <link rel="stylesheet" href="producten.css">
@@ -36,12 +37,12 @@
         </ul>
 
 
-    </nav> 
-    <hr>       
+    </nav>
+    <hr>
     <main>
         <div class="extrabuttons">
             <button class="add" id="add">Voeg product toe</button>
-            <button class="search">Zoek gebruiker</button>
+            <button class="search" id="search">Zoek gebruiker</button>
             <button><a href="HoofdMenuAdmin.html">Go home</a></button>
         </div>
 
@@ -54,11 +55,21 @@
                     <!-- Span om dit specifiek deel met JS te kunnen veranderen -->
                     <h3>ID: <span>0426</span></h3>
                     <p>Korte beschrijving van product 1.</p>
-                    <button class="edit"><img src="/Frontend/pictures/potlood_edited.jpg" alt="potlood-icoon" id="potlood-icoon"></button>
-                    <button class="delete"><img src="/Frontend/pictures/vuilbak_edited.jpg" alt="vuilbak-icoon" id="vuilbak-icoon"></button>
+                    <button class="edit"><img src="/Frontend/pictures/potlood_edited.jpg" alt="potlood-icoon"
+                            id="potlood-icoon"></button>
+                    <button class="delete"><img src="/Frontend/pictures/vuilbak_edited.jpg" alt="vuilbak-icoon"
+                            id="vuilbak-icoon"></button>
                 </div>
             </div>
 
+        </div>
+        <!-- Popup Overlay en Content -->
+        <div id="popupOverlay" class="overlay">
+            <div class="popup">
+                <div id="popupContent">
+                    <!-- hier word de popup geplaatst -->
+                </div>
+            </div>
         </div>
     </main>
 
@@ -70,7 +81,8 @@
     </footer>
 
 </body>
-<script src="../../Backend/admin/voegProductToe.js"></script>
-<script src="../../Backend/admin/productenadmin.js"></script>
+<script src="/Backend/admin/zoekGebruiker.js"></script>
+<script src="/Backend/admin/voegProductToe.js"></script>
+<script src="/Backend/admin/productenadmin.js"></script>
 
 </html>
