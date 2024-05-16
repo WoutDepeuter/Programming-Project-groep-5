@@ -37,12 +37,27 @@
 
         <div class="audio">
 
-            <a class="producten" href="/Frontend/User-interface/catalogus/audio-catalogus.html">Audio</a>
+            <nav class="prodnav">
 
+            <ul class="producten-categorien">
+                <li><a href="../User-interface/catalogus/audio-catalogus.html">Audio</a></li>
+                <li><a href="../User-interface/catalogus/belichting-catalogus.html">Belichting</a></li>
+                <li><a href="../User-interface/catalogus/video-catalogus.html">Video</a></li>
+                <li><a href="../User-interface/catalogus/varia-catalogus.html">Varia</a></li>
+                <li><a href="../User-interface/catalogus/xr-catalogus.html">XR</a></li>
+              </ul>
+
+            </nav>
+           
+
+
+            <div class="audio">
+
+            <a id="Video" class="producten">Audio</a>
             <div class="producten-container">
                 <button class="arrow arrow-left" onclick="moveLeft('audio-slider')">&#10094</button>
                 <div id="audio-slider" class="slider">
-                    <div class="product-box">
+                    <div id="Audio" class="product-box">
                         <img src="../../Frontend/pictures/audio-pictures/RodeSmartLav+.png"
                             alt="Afbeelding Rode SmartLav +">
                         <h2>Rode SmartLav +</h2>
@@ -94,18 +109,19 @@
                 <button class="arrow arrow-right" onclick="moveRight('audio-slider')">&#10095;</button>
             </div>
         </div>
+    </div>
 
         <hr id="breakprod">
 
         <div class="belichting">
 
-            <a class="producten" href="/Frontend/User-interface/catalogus/belichting-catalogus.html">Belichting</a>
+            <a id="Belichting" class="producten">Belichting</a>
 
 
             <div class="producten-container">
                 <button class="arrow arrow-left" onclick="moveLeft('belichting-slider')">&#10094;</button>
                 <div id="belichting-slider" class="slider">
-                    <div class="product-box">
+                    <div  class="product-box">
                         <img src="../../Frontend/pictures/belichting-pictures/Placeholder.png"
                             alt="Afbeelding Placeholder">
                         <h2>Productnaam</h2>
@@ -167,7 +183,7 @@
 
         <div class="varia">
 
-            <a class="producten" href="/Frontend/User-interface/catalogus/varia-catalogus.html">Varia</a>
+            <a id="Varia" class="producten">Varia</a>
 
             <div class="producten-container">
                 <button class="arrow arrow-left" onclick="moveLeft('varia-slider')">&#10094</button>
@@ -234,7 +250,7 @@
 
         <div class="video">
 
-            <a class="producten" href="/Frontend/User-interface/catalogus/video-catalogus.html">Video</a>
+            <a id="Video" class="producten">Video</a>
 
             <div class="producten-container">
                 <button class="arrow arrow-left" onclick="moveLeft('video-slider')">&#10094</button>
@@ -301,7 +317,7 @@
 
         <div class="xr">
 
-            <a class="producten" href="/Frontend/User-interface/catalogus/xr-catalogus.html">Xr</a>
+            <a id="Xr" class="producten">Xr</a>
 
             <div class="producten-container">
                 <button class="arrow arrow-left" onclick="moveLeft('xr-slider')">&#10094</button>
@@ -385,6 +401,7 @@
             </div>
         </div>
     </main>
+
     <footer>
         <div id="school">© 2024 Erasmushogeschool Brussel</div>
         <div id="taal">Nederlands</div>
