@@ -16,23 +16,29 @@ body {
 }
 
 .signup-box {
+  display: flex;
+  flex-direction: column;
+  align-items:center ;
   width: 360px;
-  height: 550px;
+  height: 450px;
   margin: auto;
   margin-top: 50px;
   background-color: rgb(0, 0, 0);
   box-shadow: 2px 2px 40px black;
-  border-radius: 13px;
+  border-radius: 13px;  
 }
 
 .login-box {
+  display: flex;
+  flex-direction: column;
+  align-items:center ;
   width: 360px;
-  height: 360px;
+  height: 350px;
   margin: auto;
-  margin-top: 150px;
-  background-color: black;
+  margin-top: 50px;
+  background-color: rgb(0, 0, 0);
   box-shadow: 2px 2px 40px black;
-  border-radius: 13px;
+  border-radius: 13px;  
 }
 
 h1 {
@@ -43,7 +49,6 @@ h1 {
 
 form {
   width: 320px;
-  margin-left: 20px;
 }
 
 form label {
@@ -57,7 +62,6 @@ form input {
   width: 100%;
   padding: 7px;
   border: none;
-  /* border: 1px solid gray; */
   border-radius: 10px;
   outline: none;
 }
@@ -111,4 +115,39 @@ footer {
 #taal {
   padding: 10px;
   color: white;
+}
+
+#sign-btn{
+  margin-top: 10px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+}
+#log-btn{
+  margin-top: 10px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+}
+#log-btn:hover {
+  background-color: #d33a3a;
+}
+#sign-btn:hover {
+  background-color: #d33a3a;
+}
+#signform{
+  display: flex;
+  flex-direction: column;
 }
