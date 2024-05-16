@@ -1854,3 +1854,4 @@ Backend/node_modules/seq-queue/lib/seq-queue.js
 Backend/node_modules/seq-queue/test/seq-queue-test.js
 Backend/.env
 
+/Backend/node_modules
