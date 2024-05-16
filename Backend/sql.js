@@ -31,7 +31,7 @@ con.connect(function(err) {
 //     console.log('Selected from database:', result);
 // });
 
-con.query('insert into test (id, name) values (1, "test")', function(err, result) {
+con.query('insert into test (id, name) values (14, "test")', function(err, result) {
     if (err) {
         console.error('Error inserting into database:', err);
         return;
@@ -39,7 +39,7 @@ con.query('insert into test (id, name) values (1, "test")', function(err, result
     console.log('Inserted into database');
 });
 
-con.query('select * from PRODUCT', function(err, result) {
+con.query('select * from test', function(err, result) {
     if (err) {
         console.error('Error selecting from database:', err);
         return;
