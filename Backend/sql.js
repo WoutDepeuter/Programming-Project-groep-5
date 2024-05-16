@@ -23,6 +23,23 @@ con.connect(function(err) {
 //     }
 //     console.log('Inserted into database');
 // });
+// con.query('select * from product', function(err, result) {
+//     if (err) {
+//         console.error('Error selecting from database:', err);
+//         return;
+//     }
+//     console.log('Selected from database:', result);
+// });
+
+let randomnumber = Math.floor(Math.random() * 1000);
+con.query('insert into test (id, name) values (' + randomnumber + ',"test")', function(err, result) {
+    if (err) {
+        console.error('Error inserting into database:', err);
+        return;
+    }
+    console.log('Inserted into database');
+});
+
 con.query('select * from test', function(err, result) {
     if (err) {
         console.error('Error selecting from database:', err);
@@ -30,3 +47,4 @@ con.query('select * from test', function(err, result) {
     }
     console.log('Selected from database:', result);
 });
+con.end();
