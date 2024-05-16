@@ -289,7 +289,7 @@ main button a {
 #productbeschrijving-product-toevoegen,
 #fotouploaden-product-toevoegen,
 #lijstMetCategorien-product-toevoegen {
-  width: 100%;
+ 
   border-radius: 5px;
   background-color: #f2f2f2;
   margin: 10px 0;
@@ -303,11 +303,15 @@ main button a {
 #lijstMetCategorien-product-toevoegen {
   width: 100%;
   background-color: transparent;
-  border: none;
   margin: 0;
   padding: 0;
   height: 100%;
   color: #000;
+}
+#productnaam-product-toevoegen input,
+#fotouploaden-product-toevoegen,
+#lijstMetCategorien-product-toevoegen {
+  border: none;
 }
 
 #productnaam-product-toevoegen input::placeholder,
@@ -317,28 +321,15 @@ main button a {
   color: #000;
 }
 
-.close-btn {
-  margin-top: 10px;
-  padding: 10px 20px;
-  background: red;
-  color: white;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  transition: all 0.3s ease;
+#productbeschrijving-product-toevoegen::placeholder{
+  padding: 10px;
 }
 
 .close-btn:hover {
   background-color: darkred;
 }
 
-/* POPUP product toevoegen (einde CSS) */
-/* Add your previous CSS here */
 
-/* Overlay and Popup CSS */
 .overlay {
   display: none;
   position: fixed;
@@ -364,7 +355,7 @@ main button a {
 
 .popup-buttons {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   gap: 10px;
   margin-top: 20px;
 }
@@ -395,4 +386,51 @@ main button a {
 
 .toevoegen-btn:hover {
   background-color: rgb(36, 168, 163)
+}
+/* opzoeken van gebruikers: */
+#popup-gebruiker-zoeken {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#zoekgebruiker-input {
+  margin-bottom: 20px;
+}
+
+#searchInput {
+  border: none;
+  background-color: #f2f2f2;
+  height: 30px;
+  padding-left: 10px;
+  border-radius: 30px;
+  width: 300px;
+  margin-right: 10px;
+}
+
+#searchButton {
+  background-color: #ff0000;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+#searchButton:hover {
+  background-color: darkred;
+}
+
+#zoekgebruiker-resultaat {
+  width: 100%;
+  max-width: 500px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
 }

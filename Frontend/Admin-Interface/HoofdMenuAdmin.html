@@ -32,8 +32,11 @@
 
         <!-- Template: wijzigen met JavaScript (innerText/innerHTML) -->
         <div class="klantinfo">
-          <img src="../pictures/blank-profile-picture.webp" alt="profile" />
+          <div id="profielHoek">
+            <img src="../pictures/blank-profile-picture.webp" alt="profile" />
           <h3 id="naam">Tom De Ridder</h3>
+          </div>
+          
           <div class="product">
             <img
               src="../pictures/camera-picture-lumix.jpg"
@@ -46,8 +49,8 @@
               - ...
             </p>
             <div class="buttonsAdmin">
-              <button class="bevestig-knop">✓</button>
-              <button class="annuleer-knop">x</button>
+              <button class="bevestig-knop" id="bevestig-knop0">✓</button>
+              <button class="annuleer-knop" id="annuleer-knop0">x</button>
             </div>
           </div>
         </div>
@@ -59,8 +62,11 @@
 
         <!-- Template: wijzigen met JavaScript (innerText/innerHTML) -->
         <div class="klantinfo">
-          <img src="../pictures/blank-profile-picture.webp" alt="profile" />
+          <div id="profielHoek">
+            <img src="../pictures/blank-profile-picture.webp" alt="profile" />
           <h3 id="klantnaam">Henk Jansen</h3>
+          </div>
+          
           <div class="product">
             <img id="product-image"
               src="../pictures/camera-picture-lumix.jpg"
@@ -70,17 +76,25 @@
             <p>
               Extra's/accessoires: 
               <br>
-              <h1 class ="product-id">tfrghrgrhj</h1>
+              <h1 class ="product-id"></h1>
             </p>
             <div class="buttonsAdmin">
-              <button class="bevestig-knop">✓</button>
-              <button class="annuleer-knop">x</button>
+              <button class="bevestig-knop" id="bevestig-knop1">✓</button>
+              <button class="annuleer-knop" id="annuleer-knop0">x</button>
             </div>
           </div>
         </div>
         <!-- Einde template -->
       </div>
+      <div id="popupOverlay" class="overlay">
+      <div class="popup">
+        <div id="popupContent">
+          <!-- hier word de popup geplaatst -->
+        </div>
+      </div>
     </div>
+    </div>
+    
     <!-- Einde body/main -->
 
     <!-- Begin footer -->
@@ -89,6 +103,8 @@
       <div id="taal-tekst-footer">Nederlands</div>
     </footer>
     <!-- Einde footer -->
+    <!-- <script src="/Backend/admin/productIndienen.js"></script> -->
     <script src="/Backend/admin/return.js"></script>
   </body>
+  
 </html>
