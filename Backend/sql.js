@@ -16,14 +16,14 @@ con.connect(function(err) {
     console.log('Connected to MySQL database');
 });
 
-con.query('insert into product (name,price,description,image,category,stock) values ("test",24,"test","test","test",1)', function(err, result) {
-    if (err) {
-        console.error('Error inserting into database:', err);
-        return;
-    }
-    console.log('Inserted into database');
-});
-con.query('select * from product', function(err, result) {
+// con.query('insert into product (name,price,description,image,category,stock) values ("test",24,"test","test","test",1)', function(err, result) {
+//     if (err) {
+//         console.error('Error inserting into database:', err);
+//         return;
+//     }
+//     console.log('Inserted into database');
+// });
+con.query('select * from test', function(err, result) {
     if (err) {
         console.error('Error selecting from database:', err);
         return;
