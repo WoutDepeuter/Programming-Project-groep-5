@@ -4,6 +4,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 /*verlengen*/
 @import url("https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&display=swap");
+
+html {
+  /* allows me to scroll when I click on the nav */
+  scroll-behavior: smooth;
+}
 body {
   margin: 0;
   padding: 0;
@@ -23,7 +28,7 @@ header {
 
 .zoekbalk,
 .site-naam,
-.profiel {
+.profiel{
   flex-grow: 1;
   flex-basis: 0;
 }
@@ -66,9 +71,45 @@ header {
   height: 50px;
 }
 
+.audio{
+  margin-top: 70px;
+}
+
+.prodnav ul {
+  padding: 0;
+  border-radius: 10px;
+  color: white;
+  display: flex;
+  list-style: none;
+  font-size: large;
+  text-decoration: none;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.prodnav a {
+  text-decoration: none;
+  color: black;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.prodnav a:hover {
+  color: #ff0000;
+}
+
 .slider {
   display: flex;
   transition: all 0.5s ease;
+}
+
+.producten{
+  display: flex;
+  margin-left: 20px;
+  margin-top: 50px;
+  text-decoration: none;
+  color: black;
+  font-size: 25px;
+  font-weight: 550;
 }
 
 .producten-container {
@@ -196,7 +237,7 @@ footer {
   margin-left: 100px;
 }
 
-.producten {
+.producten-categorien {
   text-decoration: none;
   font-size: 25px;
   color: rgb(0, 0, 0);
@@ -208,7 +249,6 @@ footer {
   height: 1px;
   background-color: rgb(0, 0, 0);
   border: none;
-  border-radius: 50px;
 }
 .producten-container {
   margin-top: 50px;
@@ -238,7 +278,7 @@ footer {
   padding-left: 20px;
 }
 .plusEen {
-  background-color: rgb(43, 205, 199);
+  background-color: #2bcdc7;
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
   margin-right: 150px;
@@ -277,3 +317,21 @@ footer {
   font-size: 24px;
   cursor: pointer;
 }
+
+/* Scrollbar begin */
+/* Scrollbar dikte */
+::-webkit-scrollbar {
+  width: 7.5px;
+}
+
+/* Scrollbar achtergrondkleur */
+::-webkit-scrollbar-track {
+  background: #222831;
+}
+
+/* Scrollbar voorgrondkleur */
+::-webkit-scrollbar-thumb {
+  background: #ff0000;
+  border-radius: 10px;
+}
+
