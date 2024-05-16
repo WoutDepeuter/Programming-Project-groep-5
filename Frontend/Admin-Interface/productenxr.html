@@ -5,13 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home</title>
+    <title>&lt;EHBLoanHub&gt;</title>
     <link rel="stylesheet" href="producten.css">
     <link rel="icon" href="../pictures/EHB_site_logo-removebg-preview.png">
 </head>
 
 <body>
-
     <header class="adminhead">
         <div class="zoekbalk">
             <input id="zoekbalkNAAM" type="text" placeholder="Persoon zoeken...">
@@ -60,15 +59,23 @@
 
     </main>
 
-
+    <!-- Popup Overlay and Content -->
+    <div id="popupOverlay" class="overlay">
+        <div class="popup">
+            <div id="popupContent">
+                <!-- Popup content will be injected here -->
+            </div>
+            <button id="closePopupBtn" class="close-btn">Close</button>
+        </div>
+    </div>
 
     <footer>
         <div id="school">&COPY;2024 Erasmushogeschool Brussel</div>
         <div id="taal">Nederlands</div>
     </footer>
 
-<script src="/Backend/admin/voegProductToe.js"></script>
-<script src="../../Backend/admin/productenadmin.js"></script>
+    <script src="/Backend/admin/voegProductToe.js"></script>
+    <script src="/Backend/admin/productenadmin.js"></script>
 </body>
 
 </html>
