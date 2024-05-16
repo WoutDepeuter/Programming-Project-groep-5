@@ -7,21 +7,43 @@ function popUpReservatie(event){
     let van = document.getElementById('van-tijd').value;
     let tot = document.getElementById('tot-tijd').value;
     let antwoord = "";
-    console.log(new Date());
+    let vanDatum = van.split('-');
+    let vandaag = new Date();
 
     if(van == "" || tot == ""){
         antwoord = `<p>Je hebt nog niet ingevuld van wanneer tot wanneer je het product wil reserveren</p><hr>`;
 
         document.getElementById('pop-up-gebruikersvoorwaarden').innerHTML = antwoord;
     }
-    else if(van >= Date.now()){
-        console.log("test");
-    }
-    else if(tot < van){
-        antwoord = `<p>De van datum moet vroeger zijn dan de tot datum!</p><hr>`;
+    else if(vanDatum[0] < vandaag.getFullYear()){
+        antwoord = `<p>De <i>van datum</i> mag niet voor vandaag!</p><hr>`;
 
         document.getElementById('pop-up-gebruikersvoorwaarden').innerHTML = antwoord;
     }
+    else if(vanDatum[1] < vandaag.getMonth() + 1 && vanDatum[0] <= vandaag.getFullYear()){
+        antwoord = `<p>De <i>van datum</i> mag niet voor vandaag!</p><hr>`;
+
+        document.getElementById('pop-up-gebruikersvoorwaarden').innerHTML = antwoord;
+    }
+    else if(vanDatum[2] < vandaag.getDate() && vanDatum[1] <= vandaag.getMonth() + 1 && vanDatum[0] <= vandaag.getFullYear()){
+        antwoord = `<p>De <i>van datum</i> mag niet voor vandaag!</p><hr>`;
+
+        document.getElementById('pop-up-gebruikersvoorwaarden').innerHTML = antwoord;
+    }
+    else if(tot < van){
+        antwoord = `<p>De <i>van datum</i> moet vroeger zijn dan de <i>tot datum</i>!</p><hr>`;
+
+        document.getElementById('pop-up-gebruikersvoorwaarden').innerHTML = antwoord;
+    }
+    /*
+    else if(gebruiker == student){
+        if(tot > van + 7 dagen){
+            antwoord = `<p>Als student mag je maar een reservatieperiode van 7 dagen kiezen</p><hr>`;
+
+            document.getElementById('pop-up-gebruikersvoorwaarden').innerHTML = antwoord;
+        }
+    }
+    */
     else{
         antwoord = `<form id="reservatieformulier-na-voorwaarden">
         <p><input id="akkoord-voorwaarden" type="checkbox" required>Ik ga akkoord met
