@@ -14,7 +14,6 @@ const pool = mysql.createPool({
   queueLimit: 0,
 });
 
-
 // Set EJS as the view engine
 app.set("view engine", "ejs");
 
@@ -26,7 +25,7 @@ app.use(express.static(path.join(__dirname, "..", "frontend", "public")));
 
 // Route to render the index page
 app.get('/', (req, res) => {
-    res.render('Admin-interface/HoofdMenuAdmin');
+    res.render('productenadmin/HoofdMenuAdmin');
 });
 
 app.get("/audio", (req, res) => {
@@ -124,24 +123,78 @@ app.get("/productenxr", (req, res) => {
 });
 
 app.get("/audio-catalogus", (req, res) => {
-  res.render("User-interface/catalogus/audio-catalogus");
+  pool.query(
+    "SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?",
+    [1],
+    (err, results) => {
+      if (err) {
+        console.error("Error fetching products:", err);
+        res.status(500).send("Internal Server Error");
+        return;
+      }
+      res.render("User-interface/catalogus/audio-catalogus", { products: results });
+    }
+  );
 });
 
 app.get("/belichting-catalogus", (req, res) => {
-  res.render("User-interface/catalogus/belichting-catalogus");
+  pool.query(
+    "SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?",
+    [2],
+    (err, results) => {
+      if (err) {
+        console.error("Error fetching products:", err);
+        res.status(500).send("Internal Server Error");
+        return;
+      }
+      res.render("User-interface/catalogus/belichting-catalogus", { products: results });
+    }
+  );
 });
 
 app.get("/varia-catalogus", (req, res) => {
-  res.render("User-interface/catalogus/varia-catalogus");
+  pool.query(
+    "SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?",
+    [3],
+    (err, results) => {
+      if (err) {
+        console.error("Error fetching products:", err);
+        res.status(500).send("Internal Server Error");
+        return;
+      }
+      res.render("User-interface/catalogus/varia-catalogus", { products: results });
+    }
+  );
 });
 
 app.get("/video-catalogus", (req, res) => {
-
-  res.render("User-interface/catalogus/video-catalogus");
+  pool.query(
+    "SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?",
+    [4],
+    (err, results) => {
+      if (err) {
+        console.error("Error fetching products:", err);
+        res.status(500).send("Internal Server Error");
+        return;
+      }
+      res.render("User-interface/catalogus/video-catalogus", { products: results });
+    }
+  );
 });
 
 app.get("/xr-catalogus", (req, res) => {
-  res.render("User-interface/catalogus/xr-catalogus");
+  pool.query(
+    "SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?",
+    [5],
+    (err, results) => {
+      if (err) {
+        console.error("Error fetching products:", err);
+        res.status(500).send("Internal Server Error");
+        return;
+      }
+      res.render("User-interface/catalogus/xr-catalogus", { products: results });
+    }
+  );
 });
 app.get
 
