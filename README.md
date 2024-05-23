@@ -24,7 +24,12 @@ Welkom bij EHBLoanHub! EHBLoanHub is een gebruiksvriendelijke website die we heb
 **Server:** MySQL, Express JS, Node.JS, EJS
 
 ## Documentatie
-- ...
+  - [Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+  - [Node.JS](https://nodejs.org/docs/latest/api/)
+  - [Express JS](https://expressjs.com/en/guide/database-integration.html)
+  - [EJS](https://ejs.co/#docs)
+  - [Auth0](https://auth0.com/docs/quickstart/webapp/express/interactive)
+  - ...
 
 ## Auteurs
 - [@Ismael Charia Jimenez](https://github.com/IsmaelCH)
