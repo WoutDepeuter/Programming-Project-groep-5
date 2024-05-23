@@ -32,5 +32,5 @@ function moveLeft(sliderId) {
       currentIndex[sliderName] = 0;
     }
     slider.style.transform = `translateX(-${currentIndex[sliderName] * boxWidth}px)`;
-  }
+  } 
   
