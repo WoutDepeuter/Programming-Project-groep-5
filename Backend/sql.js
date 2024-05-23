@@ -21,20 +21,29 @@ con.connect((err) => {
 });
 
 
-// Define endpoint to retrieve products
-app.get('/products', (req, res) => {
-    con.query('SELECT * FROM PRODUCTMODEL WHERE cat_ID = 1', (err, result) => {
-        if (err) {
-            console.error('Error selecting from database:', err);
-            res.status(500).send('Internal Server Error');
-            return;
-        }
-        console.log('Selected from database:', result);
-        res.json(result);
-    });
-});
+// // Define endpoint to retrieve products
+// app.get('/product', (req, res) => {
+//     con.query('SELECT * FROM PRODUCTMODEL WHERE cat_ID = 1', (err, result) => {
+//         if (err) {
+//             console.error('Error selecting from database:', err);
+//             res.status(500).send('Internal Server Error');
+//             return;
+//         }
+//         console.log('Selected from database:', result);
+//         res.json(result);
+//     });
+// });
 
-// Start the Express server
-app.listen(port, () => {
-    console.log(`Server listening at http://localhost:${port}`);
-});
+// // Start the Express server
+// app.listen(port, () => {
+//     console.log(`Server listening at http://localhost:${port}`);
+// });
+
+// con.query('SELECT * FROM PRODUCTMODEL WHERE cat_ID = 1', (err, result) => {
+//     if (err) {
+//         console.error('Error selecting from database:', err);
+//             return;
+//     }
+//     console.log('Selected from database:', result);
+// }
+// );
