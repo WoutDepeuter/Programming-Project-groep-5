@@ -150,6 +150,10 @@ app.get("/profiel-user", (req, res) => {
   res.render("User-interface/profiel/profiel-user");
 });
 
+app.get("/verlenging", (req, res) => {
+  res.render("User-interface/Verlenging");
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
