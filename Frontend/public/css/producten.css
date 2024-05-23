@@ -171,19 +171,20 @@
   }
 
   .box {
-    flex: 1 0 30%;
+    flex: 1 0 10%;
     border-style: solid;
     border-width: 2px;
     padding: 5px;
     margin: 8px;
     border-radius: 1em;
     display: flex;
-    max-width: 40%;
+    /* max-width: 40%; */
+    width: 30%;
   }
 
   .box img {
-    height: 200px;
-    width: 200px;
+    height: 100px;
+    max-width: 100px;
     height: auto;
     float: left;
   }
