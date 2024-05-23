@@ -19,7 +19,7 @@
         <input id="zoekbalkID" type="text" placeholder="ID zoeken..." />
       </div>
       <div class="site-naam">
-        <a href="/Frontend/Admin-Interface/HoofdMenuAdmin.html" id="site-naam">&lt;EHBLoanHub&gt;</a>
+        <a href="/HoofdMenuAdmin" id="site-naam">&lt;EHBLoanHub&gt;</a>
       </div>
       <div class="producten"></div>
     </header>
@@ -43,26 +43,7 @@
         <button><a href="HoofdMenuAdmin.html">Go home</a></button>
       </div>
         
-      <div class="container-producten">
-          <!-- Voorbeeld box -->
-          <% products.forEach(product => { %>
-            <div class="box">
-                <% if (product.afbeelding) { %>
-                    <% const imageUrl = `data:image/png;base64,${product.afbeelding.toString('base64')}`; %>
-                    <img src="<%= imageUrl %>" alt="Product Image" />
-                <% } else { %>
-                    <p>No image available</p>
-                <% } %>
-                <div>
-                    <h2><%= product.MERK %>: <%= product.naam %></h2>
-                    <p><%= product.Beschrijving %></p>
-                    <button class="edit"><img src="/Frontend/pictures/potlood_edited.jpg" alt="Edit Icon" id="potlood-icoon" /></button>
-                    <button class="delete"><img src="/Frontend/pictures/vuilbak_edited.jpg" alt="Delete Icon" id="vuilbak-icoon" /></button>
-                </div>
-            </div>
-        <% }); %>
 
-      </div>
 <!-- Popup Overlay en Content -->
 <div id="popupOverlay" class="overlay">
   <div class="popup">
