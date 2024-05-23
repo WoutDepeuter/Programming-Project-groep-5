@@ -150,15 +150,15 @@ app.get("/audio-catalogus", (req, res) => {
   res.render("User-interface/catalogus/audio-catalogus");
 });
 
-app.get("/catalogusbelichting", (req, res) => {
+app.get("/belichting-catalogus", (req, res) => {
   res.render("User-interface/catalogus/belichting-catalogus");
 });
 
-app.get("/belichting-catalogu", (req, res) => {
+app.get("/varia-catalogus", (req, res) => {
   res.render("User-interface/catalogus/varia-catalogus");
 });
 
-app.get("/catalogusvideo", (req, res) => {
+app.get("/video-catalogus", (req, res) => {
 
   res.render("User-interface/catalogus/video-catalogus");
 });
