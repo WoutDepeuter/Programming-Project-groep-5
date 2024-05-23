@@ -1,53 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-    />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>&lt;EHBLoanHub&gt;</title>
-    <link rel="stylesheet" href="/css/producten.css" />
-    <link rel="icon" href="../pictures/EHB_site_logo-removebg-preview.png" />
-  </head>
 
-  <body>
-    <header class="adminhead">
-      <div class="zoekbalk">
-        <input id="zoekbalkNAAM" type="text" placeholder="Persoon zoeken..." />
-        <input id="zoekbalkID" type="text" placeholder="ID zoeken..." />
-      </div>
-      <div class="site-naam">
-        <a href="/HoofdMenuAdmin" id="site-naam">&lt;EHBLoanHub&gt;</a>
-      </div>
-      <div class="producten"></div>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>&lt;EHBLoanHub&gt;</title>
+  <link rel="stylesheet" href="/css/producten.css" />
+  <link rel="icon" href="../pictures/EHB_site_logo-removebg-preview.png" />
+</head>
 
+<body>
+  <header class="adminhead">
+    <div class="zoekbalk">
+      <input id="zoekbalkNAAM" type="text" placeholder="Persoon zoeken..." />
+      <input id="zoekbalkID" type="text" placeholder="ID zoeken..." />
+    </div>
+    <div class="site-naam">
+      <a href="/HoofdMenuAdmin" id="site-naam">&lt;EHBLoanHub&gt;</a>
+    </div>
+    <div class="producten"></div>
+  </header>
+  <nav class="prodnav">
+    <ul class="product-categorien">
+      <li><a href="/audio">Audio</a></li>
+      <li><a href="/belichting">Belichting</a></li>
+      <li><a href="/video" class="active">Video</a></li>
+      <li><a href="/varia">Varia</a></li>
+      <li><a href="/xr">XR</a></li>
+    </ul>
+  </nav>
+  <hr />
 
+  <main>
+    <div class="extrabuttons">
+      <button class="add" id="add">Voeg product toe</button>
+      <button class="search" id="search">Zoek gebruiker</button>
+      <button><a href="HoofdMenuAdmin.html">Go home</a></button>
+    </div>
 
-    <nav class="prodnav">
-      <ul class="product-categorien">
-        <li><a href="/audio">Audio</a></li>
-            <li><a href="/belichting" >Belichting</a></li>
-            <li><a href="/video" class="active">Video</a></li>
-            <li><a href="/varia">Varia</a></li>
-            <li><a href="/xr">XR</a></li>
-      </ul>
-    </nav>
-
-    <hr/>
-
-    <main>
-      <div class="extrabuttons">
-        <button class="add" id="add">Voeg product toe</button>
-        <button class="search" id="search">Zoek gebruiker</button>
-        <button><a href="HoofdMenuAdmin.html">Go home</a></button>
-      </div>
-        
-      <div class="container-producten">
-          <!-- Voorbeeld box -->
-          <% products.forEach(product => { %>
+    <div class="container-producten">
+      <!-- Voorbeeld box -->
+      <% products.forEach(product => { %>
             <div class="box">
                 <% if (product.afbeelding) { %>
                     <% const imageUrl = `data:image/png;base64,${product.afbeelding.toString('base64')}`; %>
@@ -64,24 +59,24 @@
             </div>
         <% }); %>
 
-      </div>
-<!-- Popup Overlay en Content -->
-<div id="popupOverlay" class="overlay">
-  <div class="popup">
-      <div id="popupContent">
+    </div>
+    <!-- Popup Overlay en Content -->
+    <div id="popupOverlay" class="overlay">
+      <div class="popup">
+        <div id="popupContent">
           <!-- hier word de popup geplaatst -->
+        </div>
       </div>
-  </div>
-</div>
-    </main>
+    </div>
+  </main>
 
-    <footer>
-      <div id="school">&COPY; 2024 Erasmushogeschool Brussel</div>
-      <div id="taal">Nederlands</div>
-    </footer>
-  </body>
-  <script src="/Backend/admin/voegProductToe.js"></script>
-  <script src="/Backend/admin/productenadmin.js"></script>
-  <script src="/Backend/admin/zoekGebruiker.js"></script>
+  <footer>
+    <div id="school">&COPY; 2024 Erasmushogeschool Brussel</div>
+    <div id="taal">Nederlands</div>
+  </footer>
+</body>
+<script src="/Backend/admin/voegProductToe.js"></script>
+<script src="/Backend/admin/productenadmin.js"></script>
+<script src="/Backend/admin/zoekGebruiker.js"></script>
 
 </html>
