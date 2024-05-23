@@ -24,8 +24,8 @@ app.set("views", path.join(__dirname, "..", "frontend", "views"));
 app.use(express.static(path.join(__dirname, "..", "frontend", "public")));
 
 // Route to render the index page
-app.get("/", (req, res) => {
-  res.render("index");
+app.get('/', (req, res) => {
+    res.render('Admin-interface/HoofdMenuAdmin');
 });
 
 app.get("/audio", (req, res) => {
@@ -88,20 +88,6 @@ app.get("/xr", (req, res) => {
     }
   );
 });
-<<<<<<< HEAD
-app.get('/video', (req, res) => {
-    pool.query('SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?', [4], (err, results) => {
-        if (err) {
-            console.error('Error fetching products:', err);
-            // Render an error page or handle the error appropriately
-            res.status(500).send('Internal Server Error');
-            return;
-            
-
-        }
-        res.render('productenadmin/productenvideo', { products: results });
-    });
-=======
 app.get("/video", (req, res) => {
   pool.query(
     "SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?",
@@ -115,14 +101,13 @@ app.get("/video", (req, res) => {
       }
     }
   );
->>>>>>> 6675921dc9e3f0819bb7f10ae01b8b5cce2d347f
 });
 
-app.get("/homepageadmin", (req, res) => {
+app.get("/HoofdMenuAdmin", (req, res) => {
   res.render("Admin-interface/HoofdMenuAdmin");
 });
 
-app.get("/catalogusaudio", (req, res) => {
+app.get("/audio-catalogus", (req, res) => {
   res.render("User-interface/catalogus/audio-catalogus");
 });
 
@@ -130,15 +115,15 @@ app.get("/catalogusbelichting", (req, res) => {
   res.render("User-interface/catalogus/belichting-catalogus");
 });
 
-app.get("/catalogusvaria", (req, res) => {
+app.get("/belichting-catalogu", (req, res) => {
   res.render("User-interface/catalogus/varia-catalogus");
 });
 
-app.get("/catalogusvideo", (req, res) => {
+app.get("/video-catalogus", (req, res) => {
   res.render("User-interface/catalogus/video-catalogus");
 });
 
-app.get("/catalogusxr", (req, res) => {
+app.get("/xr-catalogus", (req, res) => {
   res.render("User-interface/catalogus/xr-catalogus");
 });
 app.get
@@ -163,6 +148,10 @@ app.get("/reservatie-van-producten", (req, res) => {
 
 app.get("/profiel-user", (req, res) => {
   res.render("User-interface/profiel/profiel-user");
+});
+
+app.get("/verlenging", (req, res) => {
+  res.render("User-interface/Verlenging");
 });
 
 const PORT = process.env.PORT || 3000;
