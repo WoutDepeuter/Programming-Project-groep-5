@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname,'..','frontend','public')));
 
 // Route to render the index page
 app.get('/', (req, res) => {
-    res.render('index');
+    res.render('Admin-interface/HoofdMenuAdmin');    
 });
 
 
