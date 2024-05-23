@@ -103,31 +103,98 @@ app.get("/video", (req, res) => {
   );
 });
 
-
-
-app.get("/homepageadmin", (req, res) => {
-  res.render("Admin-interface/HoofdMenuAdmin");
+app.get("/HoofdMenuAdmin", (req, res) => {
+  res.render("productenadmin/HoofdMenuAdmin");
+});
+app.get("/producten", (req, res) => {
+  res.render("productenadmin/producten");
+});
+app.get("/productenbelichting", (req, res) => {
+  res.render("productenadmin/productenbelichting");
+});
+app.get("/productenvaria", (req, res) => {
+  res.render("productenadmin/productenvaria");
+});
+app.get("/productenvideo", (req, res) => {
+  res.render("productenadmin/productenvideo");
+});
+app.get("/productenxr", (req, res) => {
+  res.render("productenadmin/productenxr");
 });
 
 app.get("/audio-catalogus", (req, res) => {
-  res.render("User-interface/catalogus/audio-catalogus");
+  pool.query(
+    "SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?",
+    [1],
+    (err, results) => {
+      if (err) {
+        console.error("Error fetching products:", err);
+        res.status(500).send("Internal Server Error");
+        return;
+      }
+      res.render("User-interface/catalogus/audio-catalogus", { products: results });
+    }
+  );
 });
 
-app.get("/catalogusbelichting", (req, res) => {
-  res.render("User-interface/catalogus/belichting-catalogus");
+app.get("/belichting-catalogus", (req, res) => {
+  pool.query(
+    "SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?",
+    [2],
+    (err, results) => {
+      if (err) {
+        console.error("Error fetching products:", err);
+        res.status(500).send("Internal Server Error");
+        return;
+      }
+      res.render("User-interface/catalogus/belichting-catalogus", { products: results });
+    }
+  );
 });
 
-app.get("/belichting-catalogu", (req, res) => {
-  res.render("User-interface/catalogus/varia-catalogus");
+app.get("/varia-catalogus", (req, res) => {
+  pool.query(
+    "SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?",
+    [3],
+    (err, results) => {
+      if (err) {
+        console.error("Error fetching products:", err);
+        res.status(500).send("Internal Server Error");
+        return;
+      }
+      res.render("User-interface/catalogus/varia-catalogus", { products: results });
+    }
+  );
 });
 
-app.get("/catalogusvideo", (req, res) => {
-
-  res.render("User-interface/catalogus/video-catalogus");
+app.get("/video-catalogus", (req, res) => {
+  pool.query(
+    "SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?",
+    [4],
+    (err, results) => {
+      if (err) {
+        console.error("Error fetching products:", err);
+        res.status(500).send("Internal Server Error");
+        return;
+      }
+      res.render("User-interface/catalogus/video-catalogus", { products: results });
+    }
+  );
 });
 
 app.get("/xr-catalogus", (req, res) => {
-  res.render("User-interface/catalogus/xr-catalogus");
+  pool.query(
+    "SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?",
+    [5],
+    (err, results) => {
+      if (err) {
+        console.error("Error fetching products:", err);
+        res.status(500).send("Internal Server Error");
+        return;
+      }
+      res.render("User-interface/catalogus/xr-catalogus", { products: results });
+    }
+  );
 });
 app.get
 

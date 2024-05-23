@@ -119,6 +119,7 @@ hr {
   margin: 8px;
   border-radius: 1em;
   display: flex;
+  width: 25%;
 }
 .box img {
   height: 200px;
