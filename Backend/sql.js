@@ -83,13 +83,23 @@ app.get('/video', (req, res) => {
             // Render an error page or handle the error appropriately
             res.status(500).send('Internal Server Error');
             return;
+            
+
         }
+        res.render('productenadmin/productenvideo', { products: results });
     });
 });
 
 app.get('/homepageadmin', (req, res) => {
     res.render('Admin-interface/HoofdMenuAdmin');
 });
+app.get
+
+app.get('/homescreen', (req,res) => {
+    res.render('User-interface/homescreen');
+});
+
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
