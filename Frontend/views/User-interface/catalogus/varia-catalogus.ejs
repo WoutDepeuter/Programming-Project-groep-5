@@ -43,9 +43,19 @@
         <li><a href="/Frontend/User-interface/catalogus/audio-catalogus.html">Audio</a></li>
           <li><a href="/Frontend/User-interface/catalogus/belichting-catalogus.html">Belichting</a></li>
           <li><a href="/Frontend/User-interface/catalogus/video-catalogus.html">Video</a></li>
-          <li><a href="/Frontend/User-interface/catalogus/varia-catalogus.html">Varia</a></li>
-          <li><a href="/Frontend/User-interface/catalogus/xr-catalogus.html" class="active">XR</a></li>
+          <li><a href="/Frontend/User-interface/catalogus/varia-catalogus.html" class="active">Varia</a></li>
+          <li><a href="/Frontend/User-interface/catalogus/xr-catalogus.html">XR</a></li>
+          <li><button type="button" id="filter">Filter: <span>&#9660;</span></button></li>   
         </ul>
+        <div class="popup-background" id="popupBackground">
+          <div class="popup-content" id="popupContent">
+              <h2>Selecteer Filters</h2>
+              <div class="checkbox-list">
+                  <label><input type="checkbox" name="type" value="type1"> Type 1</label>
+              </div>
+              <button class="close-btn" id="closeButton">Sluiten</button>
+          </div>
+      </div>
 
       </nav>
       <hr />
