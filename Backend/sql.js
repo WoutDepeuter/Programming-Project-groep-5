@@ -88,20 +88,6 @@ app.get("/xr", (req, res) => {
     }
   );
 });
-<<<<<<< HEAD
-app.get('/video', (req, res) => {
-    pool.query('SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?', [4], (err, results) => {
-        if (err) {
-            console.error('Error fetching products:', err);
-            // Render an error page or handle the error appropriately
-            res.status(500).send('Internal Server Error');
-            return;
-            
-
-        }
-        res.render('productenadmin/productenvideo', { products: results });
-    });
-=======
 app.get("/video", (req, res) => {
   pool.query(
     "SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?",
@@ -115,7 +101,6 @@ app.get("/video", (req, res) => {
       }
     }
   );
->>>>>>> 6675921dc9e3f0819bb7f10ae01b8b5cce2d347f
 });
 
 app.get("/homepageadmin", (req, res) => {
