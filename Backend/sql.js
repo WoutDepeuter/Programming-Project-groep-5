@@ -149,6 +149,22 @@ app.get('/homescreen', (req,res) => {
 
 
 
+app.get("/login", (req, res) => {
+  res.render("User-interface/Login/login");
+});
+
+app.get("/signUp", (req, res) => {
+  res.render("User-interface/Login/signUp");
+});
+
+app.get("/reservatie-van-producten", (req, res) => {
+  res.render("User-interface/product-reservatie/reservatie-van-producten");
+});
+
+app.get("/profiel-user", (req, res) => {
+  res.render("User-interface/profiel/profiel-user");
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
