@@ -104,7 +104,22 @@ app.get("/video", (req, res) => {
 });
 
 app.get("/HoofdMenuAdmin", (req, res) => {
-  res.render("Admin-interface/HoofdMenuAdmin");
+  res.render("productenadmin/HoofdMenuAdmin");
+});
+app.get("/producten", (req, res) => {
+  res.render("productenadmin/producten");
+});
+app.get("/productenbelichting", (req, res) => {
+  res.render("productenadmin/productenbelichting");
+});
+app.get("/productenvaria", (req, res) => {
+  res.render("productenadmin/productenvaria");
+});
+app.get("/productenvideo", (req, res) => {
+  res.render("productenadmin/productenvideo");
+});
+app.get("/productenxr", (req, res) => {
+  res.render("productenadmin/productenxr");
 });
 
 app.get("/audio-catalogus", (req, res) => {
