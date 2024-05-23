@@ -369,7 +369,7 @@ footer {
 button {
   background-color: transparent;
   border: none;
-  padding: 5  px;
+  padding: 5 px;
   cursor: pointer;
   transition: transform 0.2s, opacity 0.2s;
   display: inline-flex;
@@ -379,8 +379,7 @@ button {
 }
 
 button img {
-  max-width: 40px;
-  height: auto;
+  width: 40px;
 }
 
 button:hover {
