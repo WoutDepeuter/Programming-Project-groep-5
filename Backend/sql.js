@@ -103,38 +103,39 @@ app.get("/video", (req, res) => {
   );
 });
 
+// Admin-interface-------------------------------------------------------------------------------
 
-
-app.get("/homepageadmin", (req, res) => {
-  res.render("Admin-interface/HoofdMenuAdmin");
+app.get("/HoofdMenuAdmin", (req, res) => {
+  res.render("productenadmin/HoofdMenuAdmin");
 });
 
-app.get("/catalogusaudio", (req, res) => {
-  res.render("User-interface/catalogus/audio-catalogus");
+app.get("/productenbelichting", (req, res) => {
+  res.render("productenadmin/productenbelichting");
 });
 
-app.get("/catalogusbelichting", (req, res) => {
-  res.render("User-interface/catalogus/belichting-catalogus");
+app.get("/productenvaria", (req, res) => {
+  res.render("productenadmin/productenvaria");
 });
 
-app.get("/catalogusvaria", (req, res) => {
-  res.render("User-interface/catalogus/varia-catalogus");
+app.get("/productenvideo", (req, res) => {
+  res.render("productenadmin/productenvideo");
 });
 
-app.get("/catalogusvideo", (req, res) => {
-  res.render("User-interface/catalogus/video-catalogus");
-});
-
-app.get("/catalogusxr", (req, res) => {
-  res.render("User-interface/catalogus/xr-catalogus");
+app.get("/productenxr", (req, res) => {
+  res.render("productenadmin/productenxr");
 });
 app.get
+app.get("/producten", (req, res) => {
+  res.render("productenadmin/producten");
+});
+app.get
+
+
+// user-interface-------------------------------------------------------------------------------
 
 app.get('/homescreen', (req,res) => {
     res.render('User-interface/homescreen');
 });
-
-
 
 app.get("/login", (req, res) => {
   res.render("User-interface/Login/login");
@@ -150,6 +151,21 @@ app.get("/reservatie-van-producten", (req, res) => {
 
 app.get("/profiel-user", (req, res) => {
   res.render("User-interface/profiel/profiel-user");
+});
+app.get("/audio-catalogus", (req, res) => {
+  res.render("User-interface/catalogus/audio-catalogus");
+});
+app.get("/belichting-catalogus", (req, res) => {
+  res.render("User-interface/catalogus/belichting-catalogus");
+});
+app.get("/varia-catalogus", (req, res) => {
+  res.render("User-interface/catalogus/varia-catalogus");
+});
+app.get("/video-catalogus", (req, res) => {
+  res.render("User-interface/catalogus/video-catalogus");
+});
+app.get("/xr-catalogus", (req, res) => {
+  res.render("User-interface/catalogus/xr-catalogus");
 });
 
 const PORT = process.env.PORT || 3000;
