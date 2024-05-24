@@ -24,8 +24,8 @@ app.set("views", path.join(__dirname, "..", "frontend", "views"));
 app.use(express.static(path.join(__dirname, "..", "frontend", "public")));
 
 // Route to render the index page
-app.get('/', (req, res) => {
-    res.render('productenadmin/HoofdMenuAdmin');
+app.get("/", (req, res) => {
+  res.render("index");
 });
 
 app.get("/audio", (req, res) => {
@@ -103,110 +103,43 @@ app.get("/video", (req, res) => {
   );
 });
 
+// Admin-interface-------------------------------------------------------------------------------
+
 app.get("/HoofdMenuAdmin", (req, res) => {
   res.render("productenadmin/HoofdMenuAdmin");
 });
-app.get("/producten", (req, res) => {
-  res.render("productenadmin/producten");
-});
+
 app.get("/productenbelichting", (req, res) => {
   res.render("productenadmin/productenbelichting");
 });
+
 app.get("/productenvaria", (req, res) => {
   res.render("productenadmin/productenvaria");
 });
+
 app.get("/productenvideo", (req, res) => {
   res.render("productenadmin/productenvideo");
 });
+
 app.get("/productenxr", (req, res) => {
   res.render("productenadmin/productenxr");
 });
-
-app.get("/audio-catalogus", (req, res) => {
-  pool.query(
-    "SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?",
-    [1],
-    (err, results) => {
-      if (err) {
-        console.error("Error fetching products:", err);
-        res.status(500).send("Internal Server Error");
-        return;
-      }
-      res.render("User-interface/catalogus/audio-catalogus", { products: results });
-    }
-  );
-});
-
-app.get("/belichting-catalogus", (req, res) => {
-  pool.query(
-    "SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?",
-    [2],
-    (err, results) => {
-      if (err) {
-        console.error("Error fetching products:", err);
-        res.status(500).send("Internal Server Error");
-        return;
-      }
-      res.render("User-interface/catalogus/belichting-catalogus", { products: results });
-    }
-  );
-});
-
-app.get("/varia-catalogus", (req, res) => {
-  pool.query(
-    "SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?",
-    [3],
-    (err, results) => {
-      if (err) {
-        console.error("Error fetching products:", err);
-        res.status(500).send("Internal Server Error");
-        return;
-      }
-      res.render("User-interface/catalogus/varia-catalogus", { products: results });
-    }
-  );
-});
-
-app.get("/video-catalogus", (req, res) => {
-  pool.query(
-    "SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?",
-    [4],
-    (err, results) => {
-      if (err) {
-        console.error("Error fetching products:", err);
-        res.status(500).send("Internal Server Error");
-        return;
-      }
-      res.render("User-interface/catalogus/video-catalogus", { products: results });
-    }
-  );
-});
-
-app.get("/xr-catalogus", (req, res) => {
-  pool.query(
-    "SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?",
-    [5],
-    (err, results) => {
-      if (err) {
-        console.error("Error fetching products:", err);
-        res.status(500).send("Internal Server Error");
-        return;
-      }
-      res.render("User-interface/catalogus/xr-catalogus", { products: results });
-    }
-  );
+app.get
+app.get("/producten", (req, res) => {
+  res.render("productenadmin/producten");
 });
 app.get
+
+
+// user-interface-------------------------------------------------------------------------------
 
 app.get('/homescreen', (req,res) => {
     res.render('User-interface/homescreen');
 });
 
-
-
-// app.get("/login", (req, res) => {
-//   res.render("User-interface/Login/login");
-// });
+app.get("/login", (req, res) => {
+  res.render("User-interface/Login/login");
+});
 
 app.get("/signUp", (req, res) => {
   res.render("User-interface/Login/signUp");
@@ -219,9 +152,20 @@ app.get("/reservatie-van-producten", (req, res) => {
 app.get("/profiel-user", (req, res) => {
   res.render("User-interface/profiel/profiel-user");
 });
-
-app.get("/verlenging", (req, res) => {
-  res.render("User-interface/Verlenging");
+app.get("/audio-catalogus", (req, res) => {
+  res.render("User-interface/catalogus/audio-catalogus");
+});
+app.get("/belichting-catalogus", (req, res) => {
+  res.render("User-interface/catalogus/belichting-catalogus");
+});
+app.get("/varia-catalogus", (req, res) => {
+  res.render("User-interface/catalogus/varia-catalogus");
+});
+app.get("/video-catalogus", (req, res) => {
+  res.render("User-interface/catalogus/video-catalogus");
+});
+app.get("/xr-catalogus", (req, res) => {
+  res.render("User-interface/catalogus/xr-catalogus");
 });
 
 const PORT = process.env.PORT || 3000;
