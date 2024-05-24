@@ -171,20 +171,18 @@ footer {
 }
 
   .box {
-    flex: 1 0 10%;
+    flex: 1 0 30%;
     border-style: solid;
     border-width: 2px;
     padding: 5px;
     margin: 8px;
     border-radius: 1em;
     display: flex;
-    /* max-width: 40%; */
-    width: 30%;
   }
 
   .box img {
+    width: 100px;
     height: 100px;
-    max-width: 100px;
     height: auto;
     float: left;
   }
