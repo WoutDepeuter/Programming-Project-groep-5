@@ -10,6 +10,7 @@ function voegProductToeButton() {
             <div id="productnaam-product-toevoegen">
                 <input type="text" id="productName" placeholder="Productnaam">
             </div>
+            <input type="text" id="merk" placeholder="merk">
             <textarea name="beschrijving" id="productbeschrijving-product-toevoegen" cols="50" rows="10" placeholder="Product beschrijving"></textarea>
             <br>
             <div id="fotouploaden-product-toevoegen">
@@ -49,15 +50,19 @@ function voegProductToeButton() {
 
 function addProduct() {
     const productName = document.getElementById('productName').value;
+    const merk = document.getElementById('merk').value;
     const productDescription = document.getElementById('productbeschrijving-product-toevoegen').value;
     const photoUploader = document.getElementById('fotoUploader').files[0];
     const category = document.getElementById('lijstMetCategorien').value;
 
     const formData = new FormData();
     formData.append('productName', productName);
+    formData.append('merk', merk);
     formData.append('productDescription', productDescription);
     formData.append('productFoto', photoUploader);
     formData.append('category', category);
+
+
 
     fetch('/addProduct', {
         method: 'POST',

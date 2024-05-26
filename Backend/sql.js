@@ -103,11 +103,11 @@ app.get("/productenvideo", (req, res) => {
 
 // Route for adding a product
 app.post("/addProduct", upload.single('productFoto'), (req, res) => {
-  const { productName, productDescription, category } = req.body;
+  const { productName, productDescription, category,merk} = req.body;
   const productFoto = req.file.buffer;
 
-  const query = "INSERT INTO PRODUCTMODEL (Naam,Beschrijving, Afbeelding, Cat_ID) VALUES (?, ?, ?, ?)";
-  pool.query(query, [productName, productDescription, productFoto, category], (err, result) => {
+  const query = "INSERT INTO PRODUCTMODEL (Naam,MERK,Beschrijving, Afbeelding, Cat_ID) VALUES (?, ?, ?, ?, ?)";
+  pool.query(query, [productName,merk,productDescription, productFoto, category], (err, result) => {
     if (err) {
       console.error("Error executing query:", err);
       res.status(500).send("Internal Server Error");
@@ -183,7 +183,7 @@ app.get("/video-catalogus", (req, res) => {
   });
 });
 
-x
+
 
 
 const PORT = process.env.PORT || 3000;
