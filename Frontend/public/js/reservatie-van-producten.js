@@ -1,5 +1,4 @@
-'use strict'
-
+'use strict';
 document.getElementById('reserveren').addEventListener("click", popUpReservatie);
 
 function popUpReservatie(event){
