@@ -101,6 +101,7 @@ header {
   color: black;
   font-size: 32px;
   font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 .prodnav .active {
   color: #ff0000;
@@ -109,6 +110,19 @@ header {
 
 .prodnav a:hover {
   color: #ff0000;
+}
+
+#filter{
+  background-color: #ff0000;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* Filter foto */
@@ -178,13 +192,15 @@ footer {
   margin: 8px;
   border-radius: 1em;
   display: flex;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .box img {
-  width: 100px;
-  height: 100px;
+  max-width: 100px;
+  max-height: 100px;
   height: auto;
   float: left;
+  height: auto;
 }
 h2 {
   font-size: 1.2em;
@@ -204,10 +220,7 @@ h2 {
   text-decoration: none;
   display: inline-block;
   transition: background-color 0.3s ease;
-}
-
-.extrabuttons button:hover {
-  background-color: darkred;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .extrabuttons {
