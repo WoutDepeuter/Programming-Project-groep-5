@@ -1,88 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-  
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-    />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>&lt;EHBLoanHub&gt;</title>
-    <link rel="stylesheet" href="/css/producten.css" />
-    <link rel="icon" href="/Frontend/public/pictures/other/EHB LOGO.png" />
-  </head>
 
-  <body>
-    <header class="adminhead">
-      <div class="zoekbalk">
-        <input id="zoekbalkNAAM" type="text" placeholder="Persoon zoeken..." />
-        <input id="zoekbalkID" type="text" placeholder="ID zoeken..." />
-      </div>
-      <div class="site-naam">
-        <a href="/HoofdMenuAdmin" id="site-naam">&lt;EHBLoanHub&gt;</a>
-      </div>
-      <div class="producten"></div>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>&lt;EHBLoanHub&gt;</title>
+  <link rel="stylesheet" href="/css/producten.css" />
+  <link rel="icon" href="/Frontend/public/pictures/other/EHB LOGO.png" />
+</head>
 
-    <nav class="prodnav">
-      <ul class="product-categorien">
-        <li><a href="/producten"class="active">Audio</a></li>
-            <li><a href="/productenbelichting" >Belichting</a></li>
-            <li><a href="/productenvideo" >Video</a></li>
-            <li><a href="/productenvaria">Varia</a></li>
-            <li><a href="/productenxr">XR</a></li>
-            <li><button type="button" id="filter">Filter: <span>&#9660;</span></button></li>
-      </ul>
-    </nav>
+<body>
+  <header class="adminhead">
+    <div class="zoekbalk">
+      <input id="zoekbalkNAAM" type="text" placeholder="Persoon zoeken..." />
+      <input id="zoekbalkID" type="text" placeholder="ID zoeken..." />
+    </div>
+    <div class="site-naam">
+      <a href="/HoofdMenuAdmin" id="site-naam">&lt;EHBLoanHub&gt;</a>
+    </div>
+    <div class="producten"></div>
+  </header>
 
-    <hr/>
+  <nav class="prodnav">
+    <ul class="product-categorien">
+      <li><a href="/producten" class="active">Audio</a></li>
+      <li><a href="/productenbelichting">Belichting</a></li>
+      <li><a href="/productenvideo">Video</a></li>
+      <li><a href="/productenvaria">Varia</a></li>
+      <li><a href="/productenxr">XR</a></li>
+      <li><button type="button" id="filter">Filter: <span>&#9660;</span></button></li>
+    </ul>
+  </nav>
 
-    <main>
-      <div class="extrabuttons">
-        <button class="add" id="add">Voeg product toe</button>
-        <button class="search" id="search">Zoek gebruiker</button>
-        <button><a id="GoHome" href="/HoofdMenuAdmin">Go home</a></button>
-      </div>
+  <hr />
 
-      
-      <div class="container-producten">
-        <% products .forEach(product => { %>
-            <div class="box">
-                <% if (product.afbeelding) { %>
-                    <% const imageUrl = `data:image/png;base64,${product.afbeelding.toString('base64')}`; %>
-                    <img src="<%= imageUrl %>" alt="Product Image" />
-                <% } else { %>
-                    <p>No image available</p>
+  <main>
+    <div class="extrabuttons">
+      <button class="add" id="add">Voeg product toe</button>
+      <button class="search" id="search">Zoek gebruiker</button>
+      <button><a id="GoHome" href="/HoofdMenuAdmin">Go home</a></button>
+    </div>
+
+
+    <div class="container-producten">
+      <% products .forEach(product=> { %>
+        <div class="box">
+          <% if (product.afbeelding) { %>
+            <% const imageUrl=`data:image/png;base64,${product.afbeelding.toString('base64')}`; %>
+              <img src="<%= imageUrl %>" alt="Product Image" />
+              <% } else { %>
+                <p>No image available</p>
                 <% } %>
-                <div>
-                    <h2><%= product.MERK %>: <%= product.naam %></h2>
-                    <p><%= product.Beschrijving %></p>
-                    <button class="edit"><img src="pictures/edit-icoon.png" alt="Edit Icon" id="potlood-icoon" /></button>
-                    <button class="delete"><img src="pictures/delete-icoon.png" alt="Delete Icon" id="vuilbak-icoon" /></button>
-                </div>
-            </div>
+                  <div>
+                    <h2>
+                      <%= product.MERK %>: <%= product.naam %>
+                    </h2>
+                    <p>
+                      <%= product.Beschrijving %>
+                    </p>
+                    <button class="edit"><img src="pictures/edit-icoon.png" alt="Edit Icon"
+                        id="potlood-icoon" /></button>
+                    <button class="delete"><img src="pictures/delete-icoon.png" alt="Delete Icon"
+                        id="vuilbak-icoon" /></button>
+                  </div>
+        </div>
         <% }); %>
-        
 
-<!-- Popup Overlay en Content -->
-<div id="popupOverlay" class="overlay">
-  <div class="popup">
-      <div id="popupContent">
-          <!-- hier word de popup geplaatst -->
-      </div>
-  </div>
-</div>
-    </main>
 
-    <footer>
-      <div id="school">&COPY; 2024 Erasmushogeschool Brussel</div>
-      <div id="taal">Nederlands</div>
-    </footer>
-  </body>
-  <script src="/js/admin/zoekGebruiker.js"></script>
-  <script src="/js/admin/voegProductToe.js"></script>
-  <script src="/js/admin/productenadmin.js"></script>
-  <script src="/js/filter.js"></script>
+          <!-- Popup Overlay en Content -->
+          <div id="popupOverlay" class="overlay">
+            <div class="popup">
+              <div id="popupContent">
+                <!-- hier word de popup geplaatst -->
+              </div>
+            </div>
+          </div>
+  </main>
+
+  <footer>
+    <div id="school">&COPY; 2024 Erasmushogeschool Brussel</div>
+    <div id="taal">Nederlands</div>
+  </footer>
+</body>
+<script src="/js/admin/filters.js"></script>
+<script src="/js/admin/zoekGebruiker.js"></script>
+<script src="/js/admin/voegProductToe.js"></script>
+<script src="/js/admin/productenadmin.js"></script>
 
 </html>
