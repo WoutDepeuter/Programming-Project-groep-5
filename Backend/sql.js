@@ -43,8 +43,27 @@ app.get("/", (req, res) => {
 // Admin-interface-------------------------------------------------------------------------------
 
 app.get("/HoofdMenuAdmin", (req, res) => {
-  res.render("productenadmin/HoofdMenuAdmin");
+  // Perform the database query
+  pool.query(`
+    SELECT RESERVATIE.*, PRODUCT.*, PRODUCTMODEL.*, USER.email
+    FROM RESERVATIE
+    LEFT JOIN PRODUCT ON RESERVATIE.product_ID = PRODUCT.product_ID
+    LEFT JOIN PRODUCTMODEL ON PRODUCT.model_ID = PRODUCTMODEL.model_ID
+    LEFT JOIN USER ON RESERVATIE.user_ID = USER.user_ID
+  `, (err, results) => {
+    if (err) {
+      console.error("Error fetching data:", err);
+      res.status(500).send("Internal Server Error");
+      return;
+    }
+
+    console.log(results);
+
+    // Render the template with the fetched results
+    res.render("productenadmin/HoofdMenuAdmin", { data: results });
+  });
 });
+
 
 app.get("/producten", (req, res) => {
   pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [1], (err, results) => {
