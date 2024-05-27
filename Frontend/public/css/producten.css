@@ -170,27 +170,27 @@ footer {
   margin-right: 12em;
 }
 
-  .box {
-    flex: 1 0 30%;
-    border-style: solid;
-    border-width: 2px;
-    padding: 5px;
-    margin: 8px;
-    border-radius: 1em;
-    display: flex;
-  }
+.box {
+  flex: 1 0 30%;
+  border-style: solid;
+  border-width: 2px;
+  padding: 5px;
+  margin: 8px;
+  border-radius: 1em;
+  display: flex;
+}
 
-  .box img {
-    width: 100px;
-    height: 100px;
-    height: auto;
-    float: left;
-  }
-  h2 {
-    font-size: 1.2em;
-    margin: 0;
-    padding: 0;
-  }
+.box img {
+  width: 100px;
+  height: 100px;
+  height: auto;
+  float: left;
+}
+h2 {
+  font-size: 1.2em;
+  margin: 0;
+  padding: 0;
+}
 
 .extrabuttons button {
   background-color: #ff0000;
@@ -203,7 +203,7 @@ footer {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 .extrabuttons button:hover {
@@ -217,8 +217,10 @@ footer {
   flex-direction: column;
   max-width: 200px;
   max-height: 100%;
-  margin-left: auto;
   opacity: 80%;
+  float: right;
+  margin-top: 20px;
+  margin-right: 20px;
 }
 
 #potlood-icoon,
@@ -436,4 +438,9 @@ button:active {
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 20px;
+}
+
+#GoHome {
+  color: white;
+  text-decoration: none;
 }
