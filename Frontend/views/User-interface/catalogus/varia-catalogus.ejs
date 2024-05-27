@@ -60,23 +60,35 @@
       </nav>
       <hr />
     <main>
-      <!-- Voorbeeld box -->
-      <% products.forEach(product => { %>
-        <div class="box">
-            <img src="../pictures/<%= product.afbeelding %>" alt="Product Image" />
+      <div id="alleProducten">
+        <!-- Voorbeeld box -->
+        <% products.forEach(product => { %>
+          <div class="box">
             <div>
-                <h2><%= product.MERK %>: <%= product.naam %></h2>
-                <p><%= product.Beschrijving %></p>
-                <a id="reserveren" href="/reservatie-van-producten">reserveren</a>
+              <% if (product.afbeelding) { %>
+                <% const imageUrl = `data:image/png;base64,${product.afbeelding.toString('base64')}`; %>
+                <img src="<%= imageUrl %>" alt="Product Image" />
+            <% } else { %>
+                <p>No image available</p>
+            <% } %>
+            <a id="reserveren" href="/reservatie-van-producten">reserveren</a>
             </div>
-        </div>
-    <% }); %>
-    <br>
+              <div>
+                  <h2><%= product.MERK %>: <%= product.naam %></h2>
+                  <p><%= product.Beschrijving %></p>
+              </div>
+          </div>
+      <% }); %>
+      </div>
     </main>
     <footer>
       <div id="school">© 2024 Erasmushogeschool Brussel</div>
       <div id="taal">Nederlands</div>
     </footer>
+<<<<<<< Updated upstream
     <script src="/Frontend/public/js/filter.js"></script>
+=======
+    <script src="/js/user/zoekProduct.js"></script>
+>>>>>>> Stashed changes
   </body>
 </html>
