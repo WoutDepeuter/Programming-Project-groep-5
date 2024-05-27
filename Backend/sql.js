@@ -66,7 +66,7 @@ app.get("/HoofdMenuAdmin", (req, res) => {
 
 
 app.get("/producten", (req, res) => {
-  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [1], (err, results) => {
+  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK", [1], (err, results) => {
     if (err) {
       console.error("Error fetching products:", err);
       res.status(500).send("Internal Server Error");
@@ -77,7 +77,7 @@ app.get("/producten", (req, res) => {
 });
 
 app.get("/productenbelichting", (req, res) => {
-  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [2], (err, results) => {
+  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK", [2], (err, results) => {
     if (err) {
       console.error("Error fetching products:", err);
       res.status(500).send("Internal Server Error");
@@ -88,7 +88,7 @@ app.get("/productenbelichting", (req, res) => {
 });
 
 app.get("/productenvaria", (req, res) => {
-  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [3], (err, results) => {
+  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK", [3], (err, results) => {
     if (err) {
       console.error("Error fetching products:", err);
       res.status(500).send("Internal Server Error");
@@ -99,7 +99,7 @@ app.get("/productenvaria", (req, res) => {
 });
 
 app.get("/productenxr", (req, res) => {
-  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [5], (err, results) => {
+  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK", [5], (err, results) => {
     if (err) {
       console.error("Error fetching products:", err);
       res.status(500).send("Internal Server Error");
@@ -110,7 +110,7 @@ app.get("/productenxr", (req, res) => {
 });
 
 app.get("/productenvideo", (req, res) => {
-  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [4], (err, results) => {
+  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK", [4], (err, results) => {
     if (err) {
       console.error("Error fetching products:", err);
       res.status(500).send("Internal Server Error");
