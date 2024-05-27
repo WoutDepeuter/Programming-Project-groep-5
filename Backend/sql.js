@@ -37,7 +37,7 @@ const upload = multer({ storage: storage });
 
 // Route to render the index page
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("User-interface/Login/login");
 });
 
 // Admin-interface-------------------------------------------------------------------------------
