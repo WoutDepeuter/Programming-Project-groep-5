@@ -69,7 +69,7 @@ app.get("/producten", (req, res) => {
   pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK", [1], (err, results) => {
     if (err) {
       console.error("Error fetching products:", err);
-      res.status(500).send("Internal Server Error");
+      res.status(500).send("Internal Server Error test");
       return;
     }
     res.render("productenadmin/producten", { products: results });
