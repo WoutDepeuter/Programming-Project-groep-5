@@ -186,6 +186,11 @@ footer {
     height: auto;
     float: left;
   }
+  h2 {
+    font-size: 1.2em;
+    margin: 0;
+    padding: 0;
+  }
 
 .extrabuttons button {
   background-color: #ff0000;
@@ -216,17 +221,12 @@ footer {
   opacity: 80%;
 }
 
-#potlood-icoon:hover,
-#vuilbak-icoon:hover {
-  background-color: #cdcdcd;
-}
-
-#filter-icoon {
-  width: 60px;
-  height: 50px;
+#potlood-icoon,
+#vuilbak-icoon {
+  width: 25px;
+  height: 25px;
   margin: 0;
 }
-
 /* POPUP product toevoegen CSS */
 .overlay {
   display: none;
