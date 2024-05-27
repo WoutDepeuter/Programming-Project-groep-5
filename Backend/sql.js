@@ -9,10 +9,10 @@ const env = require("dotenv").config().parsed;
 
 // Create a MySQL pool
 const pool = mysql.createPool({
-  host: 'localhost',
-  user: 'root',
-  password: 'test',
-  database: 'project',
+  host: env.HOST,
+  user: env.USER,
+  password: env.PASSWORD,
+  database: env.DATABASE,
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,
@@ -180,6 +180,16 @@ app.get("/video-catalogus", (req, res) => {
       return;
     }
     res.render("User-interface/catalogus/video-catalogus", { products: results });
+  });
+});
+app.get("/xr-catalogus", (req, res) => {
+  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [(5)], (err, results) => {
+    if (err) {
+      console.error("Error fetching products:", err);
+      res.status(500).send("Internal Server Error");
+      return;
+    }
+    res.render("User-interface/catalogus/xr-catalogus", { products: results });
   });
 });
 
