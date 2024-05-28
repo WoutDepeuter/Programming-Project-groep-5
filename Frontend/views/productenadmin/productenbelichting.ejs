@@ -36,7 +36,7 @@
         <div class="extrabuttons">
             <button class="add" id="add">Voeg product toe</button>
             <button class="search" id="search">Zoek gebruiker</button>
-            <button><a id="GoHome" href="HoofdMenuAdmin.html">Go home</a></button>
+            <button><a id="GoHome" href="/HoofdMenuAdmin">Go home</a></button>
         </div>
 
         <div class="container-producten">
@@ -51,8 +51,12 @@
                     <div>
                         <h2><%= product.MERK %>: <%= product.naam %></h2>
                         <p><%= product.Beschrijving %></p>
-                        <button class="edit"><img src="pictures/edit-icoon.png" alt="Edit Icon" id="potlood-icoon" /></button>
-                        <button class="delete"><img src="pictures/delete-icoon.png" alt="Delete Icon" id="vuilbak-icoon" /></button>
+                        <div class="buttonsss">
+                            <button class="edit"><img src="pictures/edit-icoon.png" alt="Edit Icon"
+                                id="potlood-icoon" /></button>
+                            <button class="delete"><img src="pictures/delete-icoon.png" alt="Delete Icon"
+                                id="vuilbak-icoon" /></button>
+                          </div>
                     </div>
                 </div>
             <% }); %>

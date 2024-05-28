@@ -75,7 +75,8 @@ Array.from(deleteButtons).forEach(button => {
         popupBackground.style.display = 'flex';
 
         yesButton.onclick = () => {
-            
+            const productId = button.getAttribute('data-product-id');
+            deleteProduct(productId);
             console.log('Item deleted');
 
             alert('Item deleted');
@@ -84,6 +85,21 @@ Array.from(deleteButtons).forEach(button => {
     });
 });
 
-function deleteItem() {
-    
+function deleteItem(productId) {
+    fetch('/deleteProduct', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ id: productId }),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Error deleting product');
+        }
+        console.log('Product deleted successfully');
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 }
