@@ -1,3 +1,5 @@
+// Knoppen dat je door producten laat bladeren (met linker- en rechterpijltje)
+
 let currentIndex = {
   audio: 0,
   belichting: 0,

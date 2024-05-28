@@ -1,9 +1,9 @@
 // app.js
 const express = require("express");
-const mysql = require("mysql2");
 const multer = require("multer");
 const path = require("path");
-
+const argon2 = require('argon2');
+const mysql = require("mysql2/promise");
 const app = express();
 const env = require("dotenv").config().parsed;
 
@@ -149,9 +149,47 @@ app.get("/login", (req, res) => {
   res.render("User-interface/Login/login");
 });
 
+app.post('/login', async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const connection = await mysql.createConnection(dbConfig);
+    const [rows] = await connection.execute('SELECT * FROM users WHERE username = ?', [username]);
+    await connection.end();
+
+    if (rows.length > 0) {
+      const user = rows[0];
+      if (await argon2.verify(user.password, password)) {
+        const token = jwt.sign({ username }, JWT_SECRET, { expiresIn: '1h' });
+        res.json({ token });
+      } else {
+        res.status(401).send('Invalid credentials');
+      }
+    } else {
+      res.status(401).send('Invalid credentials');
+    }
+  } catch (err) {
+    console.error('Error during login:', err);
+    res.status(500).send('Error during login');
+  }
+});
+
 app.get("/signUp", (req, res) => {
   res.render("User-interface/Login/signUp");
 });
+
+app.post('/signUp', async (req, res) => {
+  const { username, password, email } = req.body;
+  try {
+    const hashedPassword = await argon2.hash(password);
+    const [result] = await pool.query('INSERT INTO users(email,password) VALUES (?,?)', [email, hashedPassword]);
+    res.status(201).send('User registered');
+  } catch (err) {
+    console.error('Error registering user:', err);
+    res.status(500).send('Error registering user');
+  }
+});
+
+
 
 app.get("/reservatie-van-producten", (req, res) => {
   res.render("User-interface/product-reservatie/reservatie-van-producten");
@@ -214,9 +252,6 @@ app.get("/xr-catalogus", (req, res) => {
     res.render("User-interface/catalogus/xr-catalogus", { products: results });
   });
 });
-
-
-
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
