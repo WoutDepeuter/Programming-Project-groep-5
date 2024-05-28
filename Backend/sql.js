@@ -201,7 +201,7 @@ app.get("/profiel-user", (req, res) => {
 });
 
 app.get("/audio-catalogus", (req, res) => {
-  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [1], (err, results) => {
+  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK", [1], (err, results) => {
     if (err) {
       console.error("Error fetching products:", err);
       res.status(500).send("Internal Server Error");
@@ -212,7 +212,7 @@ app.get("/audio-catalogus", (req, res) => {
 });
 
 app.get("/belichting-catalogus", (req, res) => {
-  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [2], (err, results) => {
+  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK", [2], (err, results) => {
     if (err) {
       console.error("Error fetching products:", err);
       res.status(500).send("Internal Server Error");
@@ -223,7 +223,7 @@ app.get("/belichting-catalogus", (req, res) => {
 });
 
 app.get("/varia-catalogus", (req, res) => {
-  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [3], (err, results) => {
+  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK", [3], (err, results) => {
     if (err) {
       console.error("Error fetching products:", err);
       res.status(500).send("Internal Server Error");
@@ -234,7 +234,7 @@ app.get("/varia-catalogus", (req, res) => {
 });
 
 app.get("/video-catalogus", (req, res) => {
-  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [4], (err, results) => {
+  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK", [4], (err, results) => {
     if (err) {
       console.error("Error fetching products:", err);
       res.status(500).send("Internal Server Error");
@@ -244,7 +244,7 @@ app.get("/video-catalogus", (req, res) => {
   });
 });
 app.get("/xr-catalogus", (req, res) => {
-  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [(5)], (err, results) => {
+  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK", [(5)], (err, results) => {
     if (err) {
       console.error("Error fetching products:", err);
       res.status(500).send("Internal Server Error");
