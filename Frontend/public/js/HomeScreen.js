@@ -1,5 +1,3 @@
-// Knoppen dat je door producten laat bladeren (met linker- en rechterpijltje)
-
 let currentIndex = {
   audio: 0,
   belichting: 0,
@@ -10,29 +8,27 @@ let currentIndex = {
 
 function moveLeft(sliderId) {
     let slider = document.getElementById(sliderId);
-    let visibleWidth = slider.offsetWidth; //Breedte van zichtbare slider
-    let visibleBoxes = 4;
-    let boxWidth = visibleWidth / visibleBoxes;
-    let sliderName = sliderId.split('-')[0]; //Naam van slider ophalen
+    let sliderName = sliderId.replace('Slider', '');
+    let productBoxes = slider.querySelectorAll('.product-box');
+    let boxWidth = productBoxes[0].offsetWidth + 40; // De 40px komt van de margin
 
-    if(currentIndex[sliderName] > 0){
-      currentIndex[sliderName]--;
+    if (currentIndex[sliderName] > 0) {
+        currentIndex[sliderName]--;
     }
+
     slider.style.transform = `translateX(-${currentIndex[sliderName] * boxWidth}px)`;
-  }
-  
-  function moveRight(sliderId) {
+}
+
+function moveRight(sliderId) {
     let slider = document.getElementById(sliderId);
-    let visibleWidth = slider.offsetWidth; //Breedte van zichtbare slider
-    let visibleBoxes = 4;
-    let boxWidth = visibleWidth / visibleBoxes;
-    let sliderName = sliderId.split('-')[0]; //Naam van slider ophalen
-  
-    if (currentIndex[sliderName] < 3) {
-      currentIndex[sliderName]++;
-    } else {
-      currentIndex[sliderName] = 0;
+    let sliderName = sliderId.replace('Slider', '');
+    let productBoxes = slider.querySelectorAll('.product-box');
+    let boxWidth = productBoxes[0].offsetWidth + 40; // De 40px komt van de margin
+    let maxIndex = productBoxes.length - Math.floor(slider.offsetWidth / boxWidth);
+
+    if (currentIndex[sliderName] < maxIndex) {
+        currentIndex[sliderName]++;
     }
+
     slider.style.transform = `translateX(-${currentIndex[sliderName] * boxWidth}px)`;
-  } 
-  
+}
