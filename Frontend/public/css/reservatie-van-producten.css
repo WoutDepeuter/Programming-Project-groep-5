@@ -97,6 +97,11 @@ main {
   padding: 5px 15px;
 }
 
+#terug-knop {
+  color: red;
+  text-decoration: none;
+}
+
 .alle-extra-producten {
   display: flex;
 }

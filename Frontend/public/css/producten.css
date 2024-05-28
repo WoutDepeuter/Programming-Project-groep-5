@@ -41,31 +41,18 @@ header {
 .zoekbalk {
   margin-left: 10px;
   height: auto;
-  display: flex;
 }
 
-#zoekbalkNAAM {
+#zoekbalk {
   border: none;
   background-color: #f2f2f2;
   height: 30px;
   padding-left: 10px;
   border-radius: 30px;
-  width: 300px;
-  margin-right: 10px;
+  width: 400px;
 }
-#zoekbalkID {
-  border: none;
-  background-color: #f2f2f2;
-  height: 30px;
-  padding-left: 10px;
-  border-radius: 30px;
-  width: 100px;
-}
-#zoekbalkNAAM::placeholder {
-  color: #ff0000;
-  font-weight: bold;
-}
-#zoekbalkID::placeholder {
+
+#zoekbalk::placeholder {
   color: #ff0000;
   font-weight: bold;
 }
@@ -103,6 +90,7 @@ header {
   font-weight: 600;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
+
 .prodnav .active {
   color: #ff0000;
   border-bottom: #ff0000 2px solid;
@@ -134,8 +122,8 @@ header {
 
 hr {
   border: none;
-  border-top: 1px solid #ccc; /* You can adjust the color as needed */
-  margin: 20px 0; /* You can adjust the margin as needed */
+  border-top: 1px solid #ccc;
+  margin: 20px 0;
 }
 #school {
   padding: 10px;

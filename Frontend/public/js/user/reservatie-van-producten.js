@@ -3,46 +3,46 @@ document.getElementById('reserveren').addEventListener("click", popUpReservatie)
 
 function popUpReservatie(event){
     event.preventDefault();
-    let van = document.getElementById('van-tijd').value;
-    let tot = document.getElementById('tot-tijd').value;
+    let van = new Date(document.getElementById('van-tijd').value);
+    let tot = new Date(document.getElementById('tot-tijd').value);
     let antwoord = "";
-    let vanDatum = van.split('-');
     let vandaag = new Date();
 
-    if(van == "" || tot == ""){
-        antwoord = `<p>Je hebt nog niet ingevuld van wanneer tot wanneer je het product wil reserveren</p><hr>`;
-
-        document.getElementById('pop-up-gebruikersvoorwaarden').innerHTML = antwoord;
+    if(document.getElementById('van-tijd').value == "" || document.getElementById('tot-tijd').value == ""){
+        document.getElementById('pop-up-gebruikersvoorwaarden').innerHTML = "";
+        alert("Je hebt nog niet ingevuld van wanneer tot wanneer je het product wil reserveren");
     }
-    else if(vanDatum[0] < vandaag.getFullYear()){
-        antwoord = `<p>De <i>van datum</i> mag niet voor vandaag!</p><hr>`;
-
-        document.getElementById('pop-up-gebruikersvoorwaarden').innerHTML = antwoord;
-    }
-    else if(vanDatum[1] < vandaag.getMonth() + 1 && vanDatum[0] <= vandaag.getFullYear()){
-        antwoord = `<p>De <i>van datum</i> mag niet voor vandaag!</p><hr>`;
-
-        document.getElementById('pop-up-gebruikersvoorwaarden').innerHTML = antwoord;
-    }
-    else if(vanDatum[2] < vandaag.getDate() && vanDatum[1] <= vandaag.getMonth() + 1 && vanDatum[0] <= vandaag.getFullYear()){
-        antwoord = `<p>De <i>van datum</i> mag niet voor vandaag!</p><hr>`;
-
-        document.getElementById('pop-up-gebruikersvoorwaarden').innerHTML = antwoord;
+    else if(van <= vandaag){
+        document.getElementById('pop-up-gebruikersvoorwaarden').innerHTML = "";
+        alert("De van datum mag niet vandaag of vroeger zijn!");
     }
     else if(tot < van){
-        antwoord = `<p>De <i>van datum</i> moet vroeger zijn dan de <i>tot datum</i>!</p><hr>`;
-
-        document.getElementById('pop-up-gebruikersvoorwaarden').innerHTML = antwoord;
+        document.getElementById('pop-up-gebruikersvoorwaarden').innerHTML = "";
+        alert("De van datum moet vroeger zijn dan de tot datum!");
     }
-    /*
-    else if(gebruiker == student){
-        if(tot > van + 7 dagen){
-            antwoord = `<p>Als student mag je maar een reservatieperiode van 7 dagen kiezen</p><hr>`;
-
+    // specifiek voor studenten
+    else if(true){
+        let week = 7 * 24 * 60 * 60 * 1000
+        if(van - vandaag >= week * 2){
+            document.getElementById('pop-up-gebruikersvoorwaarden').innerHTML = "";
+            alert("Je mag maximum 2 weken vooraf reserveren");
+        }
+        else if(tot - van >= week){
+            document.getElementById('pop-up-gebruikersvoorwaarden').innerHTML = "";
+            alert("Als student mag je maar een reservatieperiode van 7 dagen kiezen");
+        }
+        else{
+            antwoord = `<form id="reservatieformulier-na-voorwaarden">
+            <p><input id="akkoord-voorwaarden" type="checkbox" required>Ik ga akkoord met
+            de <a id="link-gebruiksvoorwaarden" href="#nowhere">gebruikersvoorwaarden</a> voor het huren van materiaal</p>
+            <button id="echte-reservatie" type="submit">Reserveren</button>
+            </form><hr>`;
+    
             document.getElementById('pop-up-gebruikersvoorwaarden').innerHTML = antwoord;
+            document.getElementById('link-gebruiksvoorwaarden').addEventListener("click", popUpGebruiksvoorwaarden);
+            document.getElementById('reservatieformulier-na-voorwaarden').addEventListener("submit", reservatieProduct);
         }
     }
-    */
     else{
         antwoord = `<form id="reservatieformulier-na-voorwaarden">
         <p><input id="akkoord-voorwaarden" type="checkbox" required>Ik ga akkoord met
@@ -59,8 +59,10 @@ function popUpReservatie(event){
 function reservatieProduct(){
     let test = document.getElementById('akkoord-voorwaarden');
     console.log(test.value);
-    let antwoord = `<p>Reservatie succesvol ingevoerd!</p><hr>`;
+    let antwoord = `<p>Reservatie succesvol ingevoerd! <a id="terug-knop" href="/HomeScreen">Terug</a></p><hr>`;
     document.getElementById('pop-up-gebruikersvoorwaarden').innerHTML = antwoord;
+    document.getElementById('pop-up-gebruikersvoorwaarden').style.color = 'green';
+
 }
 
 function popUpGebruiksvoorwaarden(){
