@@ -1,7 +1,5 @@
-const productenLijst = document.getElementById('alleProducten');
+const productenLijst = document.querySelector('.container-producten');
 const productenNamen = productenLijst.getElementsByTagName('h2');
-const producten = productenLijst.getElementsByClassName('box');
-
 document.getElementById('zoekbalk').addEventListener('keyup', zoekProduct);
 
 function zoekProduct(event){

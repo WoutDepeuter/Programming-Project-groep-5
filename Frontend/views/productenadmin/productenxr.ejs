@@ -7,17 +7,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>&lt;EHBLoanHub&gt;</title>
     <link rel="stylesheet" href="/css/producten.css">
-    <link rel="icon" href="../pictures/EHB_site_logo-removebg-preview.png">
+    <link rel="icon" href="/pictures/other/EHB LOGO.png">
 </head>
 
 <body>
     <header class="adminhead">
         <div class="zoekbalk">
-            <input id="zoekbalkNAAM" type="text" placeholder="Persoon zoeken...">
-            <input id="zoekbalkID" type="text" placeholder="ID zoeken...">
+            <input id="zoekbalk" type="text" placeholder="Zoeken...">
         </div>
         <div class="site-naam">
-            <a href="/" id="site-naam">&lt;EHBLoanHub&gt;</a>
+            <a href="/HoofdMenuAdmin" id="site-naam">&lt;EHBLoanHub&gt;</a>
         </div>
         <div class="producten"></div>
     </header>
@@ -39,7 +38,7 @@
         <div class="extrabuttons">
             <button class="add" id="add">Voeg product toe</button>
             <button class="search" id="search">Zoek gebruiker</button>
-            <button><a href="HoofdMenuAdmin.html">Go home</a></button>
+            <button><a id="GoHome" href="HoofdMenuAdmin.html">Go home</a></button>
         </div>
 
         <div class="container-producten">
@@ -76,12 +75,11 @@
         <div id="school">&COPY;2024 Erasmushogeschool Brussel</div>
         <div id="taal">Nederlands</div>
     </footer>
-
+    <script src="/js/admin/zoekProductAdmin.js"></script>
     <script src="/js/admin/zoekGebruiker.js"></script>
     <script src="/js/admin/voegProductToe.js"></script>
     <script src="/js/admin/productenadmin.js"></script>
     <script src="/Frontend/public/js/filter.js"></script>
-
 </body>
 
 </html>
