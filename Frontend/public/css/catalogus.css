@@ -350,25 +350,3 @@ footer {
 .close-btn:hover {
   background-color: #ff4444;
 }
-
-.no-button{
-  background-color: red;
-  color: white;
-  border: none;
-  border-radius: 20px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.yes-button{
-  background-color: #2bcdc7;
-  color: white;
-  border: none;
-  border-radius: 20px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}

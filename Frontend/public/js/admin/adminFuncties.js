@@ -75,11 +75,15 @@ Array.from(deleteButtons).forEach(button => {
         popupBackground.style.display = 'flex';
 
         yesButton.onclick = () => {
-            // Perform the delete action here
+            
             console.log('Item deleted');
 
-            // Hide the popup after performing the delete action
+            alert('Item deleted');
             popupBackground.style.display = 'none';
         };
     });
 });
+
+function deleteItem() {
+    
+}
