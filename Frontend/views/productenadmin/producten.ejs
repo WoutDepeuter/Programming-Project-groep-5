@@ -53,12 +53,19 @@
                 <p>No image available</p>
                 <% } %>
                   <div>
-                    <h2><%= product.MERK %>: <%= product.naam %></h2>
-                    <p><%= product.Beschrijving %></p>
-                    <button class="edit"><img src="pictures/edit-icoon.png" alt="Edit Icon"
-                        id="potlood-icoon" /></button>
-                    <button class="delete"><img src="pictures/delete-icoon.png" alt="Delete Icon"
-                        id="vuilbak-icoon" /></button>
+                    <h2>
+                      <%= product.MERK %>: <%= product.naam %>
+                    </h2>
+                    <p>
+                      <%= product.Beschrijving %>
+                    </p>
+                    <div class="buttonsss">
+                      <button class="edit"><img src="pictures/edit-icoon.png" alt="Edit Icon"
+                          id="potlood-icoon" /></button>
+                      <button class="delete"><img src="pictures/delete-icoon.png" alt="Delete Icon"
+                          id="vuilbak-icoon" /></button>
+                    </div>
+
                   </div>
         </div>
         <% }); %>
@@ -73,22 +80,20 @@
             </div>
           </div>
 
-          <
-        
-  </main>
+          < </main>
 
-  <footer>
-    <div id="school">&COPY; 2024 Erasmushogeschool Brussel</div>
-    <div id="taal">Nederlands</div>
-  </footer>
+            <footer>
+              <div id="school">&COPY; 2024 Erasmushogeschool Brussel</div>
+              <div id="taal">Nederlands</div>
+            </footer>
 
-  
-  <script src="/js/admin/zoekProductAdmin.js"></script>
-  <script src="/js/admin/filter.js"></script>
-  <script src="/js/admin/zoekGebruiker.js"></script>
-  <script src="/js/admin/voegProductToe.js"></script>
-  <script src="/js/admin/productenadmin.js"></script>
-  <script src="/js/admin/adminFuncties.js"></script>
+
+            <script src="/js/admin/zoekProductAdmin.js"></script>
+            <script src="/js/admin/filter.js"></script>
+            <script src="/js/admin/zoekGebruiker.js"></script>
+            <script src="/js/admin/voegProductToe.js"></script>
+            <script src="/js/admin/productenadmin.js"></script>
+            <script src="/js/admin/adminFuncties.js"></script>
 </body>
 
 </html>
