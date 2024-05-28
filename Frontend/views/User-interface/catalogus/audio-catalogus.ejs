@@ -48,6 +48,7 @@
   <hr />
 
   <main>
+
     <div id="alleProducten">
       <!-- Voorbeeld box -->
       <% products.forEach(product=> { %>
@@ -67,7 +68,7 @@
                     </p>
                   </div>
                   <div>
-                    <a id="reserveren" href="/reservatie-van-producten">reserveren</a>
+                    <a id="reserveren" href="#">reserveren</a>
                   </div>
         </div>
         <% }); %>
@@ -78,8 +79,18 @@
     <div id="school">© 2024 Erasmushogeschool Brussel</div>
     <div id="taal">Nederlands</div>
   </footer>
+
+    <div id="productPopup" class="popup-background">
+    <div class="popup-content">
+      <h2>Product Reservation</h2>
+      <div id="productDetails"></div>
+      <button id="closePopup" class="close-btn">Close</button>
+    </div>
+  </div>
+
   <script src="/js/user/zoekProduct.js"></script>
   <script src="/Frontend/public/js/filter.js"></script>
+  <script src="/js/user/productenLijst.js"></script>
 </body>
 
 </html>
