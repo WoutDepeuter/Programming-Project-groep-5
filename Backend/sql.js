@@ -141,6 +141,9 @@ app.post("/addProduct", upload.single('productFoto'), (req, res) => {
 app.get('/homescreen', (req, res) => {
   res.render('User-interface/homescreen');
 });
+app.get('/verlenging', (req, res) => {
+  res.render('User-interface\Verlenging');
+});
 
 app.get("/login", (req, res) => {
   res.render("User-interface/Login/login");
