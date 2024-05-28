@@ -69,13 +69,12 @@ function createDelPopup() {
 // Create the popup once when DOM is loaded
 const { yesButton, popupBackground } = createDelPopup();
 
-// Function to open the popup for each delete button
 Array.from(deleteButtons).forEach(button => {
     button.addEventListener('click', function () {
         popupBackground.style.display = 'flex';
-
         yesButton.onclick = () => {
-            const productId = button.getAttribute('data-product-id');
+            const productId = button.getAttribute('data-product-id'); 
+            console.log('Deleting product with ID:', productId); // Log the productId
             deleteProduct(productId);
             console.log('Item deleted');
 
@@ -85,21 +84,50 @@ Array.from(deleteButtons).forEach(button => {
     });
 });
 
-function deleteItem(productId) {
-    fetch('/deleteProduct', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ id: productId }),
+document.addEventListener('DOMContentLoaded', () => {
+    const deleteButtons = document.querySelectorAll('.delete');
+    const popupBackground = document.getElementById('popupOverlay');
+    const yesButton = document.getElementById('yesButton');
+    
+    deleteButtons.forEach(button => {
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
+        const productId = button.getAttribute('data-product-id');
+        console.log('Deleting product with ID:', productId);
+        popupBackground.style.display = 'flex';
+        
+        yesButton.onclick = () => {
+          deleteProduct(productId);
+          console.log('Item deleted');
+          alert('Item deleted');
+          popupBackground.style.display = 'none';
+        };
+      });
+    });
+  
+    popupBackground.addEventListener('click', (e) => {
+      if (e.target === popupBackground) {
+        popupBackground.style.display = 'none';
+      }
+    });
+  });
+  
+  function deleteProduct(productId) {
+    fetch('/deleteproduct', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ id: productId }),
     })
     .then(response => {
-        if (!response.ok) {
-            throw new Error('Error deleting product');
-        }
-        console.log('Product deleted successfully');
+      if (!response.ok) {
+        throw new Error('Error deleting product');
+      }
+      console.log('Product deleted successfully');
     })
     .catch(error => {
-        console.error('Error:', error);
+      console.error('Error:', error);
     });
-}
+  }
+  

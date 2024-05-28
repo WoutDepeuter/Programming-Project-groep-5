@@ -2,20 +2,29 @@ const express = require("express");
 const multer = require("multer");
 const path = require("path");
 const argon2 = require("argon2");
-const mysql = require("mysql2/promise");
+const mysql = require("mysql2");
 const app = express();
 const env = require("dotenv").config().parsed;
 
 // Create a MySQL pool
 const pool = mysql.createPool({
-    host: env.HOST,
-    user: env.USER,
-    password: env.PASSWORD,
-    database: env.DATABASE,
+    host: 'localhost',
+    user: 'root',
+    password: 'test',
+    database: 'project',
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0,
 });
+// const pool = mysql.createPool({
+//   host: env.HOST,
+//   user: env.USER,
+//   password: env.PASSWORD,
+//   database: env.DATABASE,
+//   waitForConnections: true,
+//   connectionLimit: 10,
+//   queueLimit: 0,
+// });
 
 // Set EJS as the view engine
 app.set("view engine", "ejs");
@@ -41,117 +50,130 @@ app.get("/", (req, res) => {
 
 // Admin-interface-------------------------------------------------------------------------------
 
-app.get("/HoofdMenuAdmin", async (req, res) => {
-  try {
-    const [results] = await pool.query(`
-      SELECT RESERVATIE.*, PRODUCT.*, PRODUCTMODEL.*, USER.email
-      FROM RESERVATIE
-      LEFT JOIN PRODUCT ON RESERVATIE.product_ID = PRODUCT.product_ID
-      LEFT JOIN PRODUCTMODEL ON PRODUCT.model_ID = PRODUCTMODEL.model_ID
-      LEFT JOIN USER ON RESERVATIE.user_ID = USER.user_ID
-    `);
+app.get("/HoofdMenuAdmin", (req, res) => {
+  // Perform the database query
+  pool.query(`
+    SELECT RESERVATIE.*, PRODUCT.*, PRODUCTMODEL.*, USER.email
+    FROM RESERVATIE
+    LEFT JOIN PRODUCT ON RESERVATIE.product_ID = PRODUCT.product_ID
+    LEFT JOIN PRODUCTMODEL ON PRODUCT.model_ID = PRODUCTMODEL.model_ID
+    LEFT JOIN USER ON RESERVATIE.user_ID = USER.user_ID
+  `, (err, results) => {
+    if (err) {
+      console.error("Error fetching data:", err);
+      res.status(500).send("Internal Server Error");
+      return;
+    }
+
     console.log(results);
+
+    // Render the template with the fetched results
     res.render("productenadmin/HoofdMenuAdmin", { data: results });
-  } catch (err) {
-    console.error("Error fetching data:", err);
-    res.status(500).send("Internal Server Error");
-  }
+  });
 });
 
-
-app.get("/producten", async (req, res) => {
-  try {
-    const [results] = await pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK", [1]);
+app.get("/producten", (req, res) => {
+  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK", [1], (err, results) => {
+    if (err) {
+      console.error("Error fetching products:", err);
+      res.status(500).send("Internal Server Error test");
+      return;
+    }
+    console.log("Products retrieved from database:", results); // Log the results object
     res.render("productenadmin/producten", { products: results });
-  } catch (err) {
-    console.error("Error fetching products:", err);
-    res.status(500).send("Internal Server Error test");
-  }
+  });
 });
 
-app.get("/productenbelichting", async (req, res) => {
-  try {
-    const [results] = await pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK", [2]);
+app.get("/productenbelichting", (req, res) => {
+  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK", [2], (err, results) => {
+    if (err) {
+      console.error("Error fetching products:", err);
+      res.status(500).send("Internal Server Error");
+      return;
+    }
     res.render("productenadmin/productenbelichting", { products: results });
-  } catch (err) {
-    console.error("Error fetching products:", err);
-    res.status(500).send("Internal Server Error");
-  }
+  });
 });
 
-app.get("/productenvaria", async (req, res) => {
-  try {
-    const [results] = await pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK", [3]);
+app.get("/productenvaria", (req, res) => {
+  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK", [3], (err, results) => {
+    if (err) {
+      console.error("Error fetching products:", err);
+      res.status(500).send("Internal Server Error");
+      return;
+    }
     res.render("productenadmin/productenvaria", { products: results });
-  } catch (err) {
-    console.error("Error fetching products:", err);
-    res.status(500).send("Internal Server Error");
-  }
+  });
 });
 
-app.get("/productenxr", async (req, res) => {
-  try {
-    const [results] = await pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK", [5]);
+app.get("/productenxr", (req, res) => {
+  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK", [5], (err, results) => {
+    if (err) {
+      console.error("Error fetching products:", err);
+      res.status(500).send("Internal Server Error");
+      return;
+    }
     res.render("productenadmin/productenxr", { products: results });
-  } catch (err) {
-    console.error("Error fetching products:", err);
-    res.status(500).send("Internal Server Error");
-  }
+  });
 });
 
-app.get("/productenvideo", async (req, res) => {
-  try {
-    const [results] = await pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK", [4]);
+app.get("/productenvideo", (req, res) => {
+  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK", [4], (err, results) => {
+    if (err) {
+      console.error("Error fetching products:", err);
+      res.status(500).send("Internal Server Error");
+      return;
+    }
     res.render("productenadmin/productenvideo", { products: results });
-  } catch (err) {
-    console.error("Error fetching products:", err);
-    res.status(500).send("Internal Server Error");
-  }
+  });
 });
 
 // Route for adding a product
-app.post("/addProduct", upload.single('productFoto'), async (req, res) => {
-  const { productName, productDescription, category, merk } = req.body;
+app.post("/addProduct", upload.single('productFoto'), (req, res) => {
+  const { productName, productDescription, category,merk} = req.body;
   const productFoto = req.file.buffer;
 
-  try {
-    const query = "INSERT INTO PRODUCTMODEL (Naam, MERK, Beschrijving, Afbeelding, Cat_ID) VALUES (?, ?, ?, ?, ?)";
-    await pool.query(query, [productName, merk, productDescription, productFoto, category]);
-    res.send("Product added successfully");
-  } catch (err) {
-    console.error("Error executing query:", err);
-    res.status(500).send("Internal Server Error");
-  }
-});
-app.post("/deleteproduct", (req, res) => {
-  const {Product} = req.body;
-  const query = "Delete FROM PRODUCTMODEL WHERE model_ID = ?";
-  pool.query(query, [Product_ID], (err, result) => {
+  const query = "INSERT INTO PRODUCTMODEL (Naam,MERK,Beschrijving, Afbeelding, Cat_ID) VALUES (?, ?, ?, ?, ?)";
+  pool.query(query, [productName,merk,productDescription, productFoto, category], (err, result) => {
     if (err) {
       console.error("Error executing query:", err);
       res.status(500).send("Internal Server Error");
       return;
     }
-    res.send("deleted product successfully");
+    res.send("Product added successfully");
   });
 });
+
+app.post("/deleteproduct", (req, res) => {
+  const {id} = req.body;
+  const query = "DELETE FROM PRODUCTMODEL WHERE model_ID = ?";
+  pool.query(query, [id], (err, result) => { // Pass id as parameter to query
+    if (err) {
+      console.error("Error executing query:", err);
+      res.status(500).send("Internal Server Error");
+      return;
+    }
+    res.send("Product deleted successfully");
+  });
+});
+
 
 // User-interface-------------------------------------------------------------------------------
 
 app.get('/homescreen', async (req, res) => {
   try {
-    const [audioSlider] = await pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [1]);
-    const [belichtingSlider] = await pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [2]);
-    const [variaSlider] = await pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [3]);
-    const [videoSlider] = await pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [4]);
-    const [xrSlider] = await pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [5]);
+    const audioSlider = await pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [1]);
+    const belichtingSlider = await pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [2]);
+    const variaSlider = await pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [3]);
+    const videoSlider = await pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [4]);
+    const xrSlider = await pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [5]);
     
     res.render("User-interface/homescreen", {
-      audioSlider,
-      belichtingSlider,
-      variaSlider,
-      videoSlider,
-      xrSlider
+      audioSlider: audioSlider[0],
+      belichtingSlider: belichtingSlider[0],
+      variaSlider: variaSlider[0],
+      videoSlider: videoSlider[0],
+      xrSlider: xrSlider[0]
     });
   } catch (err) {
     console.error("Error fetching products:", err);
@@ -203,7 +225,7 @@ app.post('/signUp', async (req, res) => {
   const { username, password, email } = req.body;
   try {
     const hashedPassword = await argon2.hash(password);
-    const [result] = await pool.query('INSERT INTO users(email,password) VALUES (?,?)', [email, hashedPassword]);
+    await pool.query('INSERT INTO users(email,password) VALUES (?,?)', [email, hashedPassword]);
     res.status(201).send('User registered');
   } catch (err) {
     console.error('Error registering user:', err);
@@ -220,7 +242,7 @@ app.get("/profiel-user", (req, res) => {
 });
 
 app.get("/audio-catalogus", (req, res) => {
-  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK", [1], (err, results) => {
+  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [1], (err, results) => {
     if (err) {
       console.error("Error fetching products:", err);
       res.status(500).send("Internal Server Error");
@@ -231,7 +253,7 @@ app.get("/audio-catalogus", (req, res) => {
 });
 
 app.get("/belichting-catalogus", (req, res) => {
-  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK", [2], (err, results) => {
+  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [2], (err, results) => {
     if (err) {
       console.error("Error fetching products:", err);
       res.status(500).send("Internal Server Error");
@@ -242,7 +264,7 @@ app.get("/belichting-catalogus", (req, res) => {
 });
 
 app.get("/varia-catalogus", (req, res) => {
-  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK", [3], (err, results) => {
+  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [3], (err, results) => {
     if (err) {
       console.error("Error fetching products:", err);
       res.status(500).send("Internal Server Error");
@@ -253,7 +275,7 @@ app.get("/varia-catalogus", (req, res) => {
 });
 
 app.get("/video-catalogus", (req, res) => {
-  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK", [4], (err, results) => {
+  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [4], (err, results) => {
     if (err) {
       console.error("Error fetching products:", err);
       res.status(500).send("Internal Server Error");
@@ -263,20 +285,19 @@ app.get("/video-catalogus", (req, res) => {
   });
 });
 app.get("/xr-catalogus", (req, res) => {
-  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK", [(5)], (err, results) => {
+  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [(5)], (err, results) => {
     if (err) {
       console.error("Error fetching products:", err);
       res.status(500).send("Internal Server Error");
       return;
     }
     res.render("User-interface/catalogus/xr-catalogus", { products: results });
-  } catch (err) {
-    console.error("Error fetching products:", err);
-    res.status(500).send("Internal Server Error");
-  }
+  });
 });
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+  console.log(`Server running on port ${PORT}`);
+}); // Add closing parenthesis here
+
