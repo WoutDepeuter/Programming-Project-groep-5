@@ -157,6 +157,7 @@ app.get('/homescreen', async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 });
+
 app.get('/verlenging', (req, res) => {
   res.render('User-interface\Verlenging');
 });
