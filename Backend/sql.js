@@ -2,7 +2,7 @@ const express = require("express");
 const multer = require("multer");
 const path = require("path");
 const argon2 = require("argon2");
-const mysql = require("mysql2");
+const mysql = require("mysql2/promise");
 const app = express();
 const env = require("dotenv").config().parsed;
 
