@@ -5,7 +5,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="/pictures/other/EHB LOGO.png" rel="icon" />
-
   <title>&lt;EHBLoanHub&gt;</title>
   <link rel="stylesheet" href="css/catalogus.css" />
 </head>
@@ -25,7 +24,6 @@
     </div>
   </header>
   <nav class="prodnav">
-
     <ul class="producten-categorien">
       <li><a href="#" class="active">Audio</a></li>
       <li><a href="/belichting-catalogus">Belichting</a></li>
@@ -43,35 +41,28 @@
         <button class="close-btn" id="closeButton">Sluiten</button>
       </div>
     </div>
-
   </nav>
   <hr />
 
   <main>
-
     <div id="alleProducten">
-      <!-- Voorbeeld box -->
-      <% products.forEach(product=> { %>
+      <% products.forEach((product, index) => { %>
         <div class="box">
           <% if (product.afbeelding) { %>
-            <% const imageUrl=`data:image/png;base64,${product.afbeelding.toString('base64')}`; %>
-              <img src="<%= imageUrl %>" alt="Product Image" />
-              <% } else { %>
-                <p>No image available</p>
-                <% } %>
-                  <div class="naam-en-besch">
-                    <h2>
-                      <%= product.MERK %>: <%= product.naam %>
-                    </h2>
-                    <p>
-                      <%= product.Beschrijving %>
-                    </p>
-                  </div>
-                  <div>
-                    <a id="reserveren" href="#">reserveren</a>
-                  </div>
+            <% const imageUrl = `data:image/png;base64,${product.afbeelding.toString('base64')}`; %>
+            <img src="<%= imageUrl %>" alt="Product Image" />
+          <% } else { %>
+            <p>No image available</p>
+          <% } %>
+          <div class="naam-en-besch">
+            <h2 id="naam<%= index %>"><%= product.MERK %>: <%= product.naam %></h2>
+            <p><%= product.Beschrijving %></p>
+          </div>
+          <div>
+            <a class="reserveren" href="#" data-product-id="<%= index %>">reserveren</a>
+          </div>
         </div>
-        <% }); %>
+      <% }); %>
     </div>
     <div id="bericht"></div>
   </main>
@@ -80,7 +71,7 @@
     <div id="taal">Nederlands</div>
   </footer>
 
-  <div id="productPopup" class="popup-background">
+  <div id="productPopup" class="popup-background" style="display: none;">
     <div class="popup-content">
       <h2>Product Reservation</h2>
       <div id="productDetails"></div>
@@ -91,6 +82,7 @@
   <script src="/js/user/zoekProduct.js"></script>
   <script src="/Frontend/public/js/filter.js"></script>
   <script src="/js/user/productenLijst.js"></script>
+
 </body>
 
 </html>
