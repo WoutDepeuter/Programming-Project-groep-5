@@ -149,6 +149,30 @@ app.get("/login", (req, res) => {
   res.render("User-interface/Login/login");
 });
 
+app.post('/login', async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const connection = await mysql.createConnection(dbConfig);
+    const [rows] = await connection.execute('SELECT * FROM users WHERE username = ?', [username]);
+    await connection.end();
+
+    if (rows.length > 0) {
+      const user = rows[0];
+      if (await argon2.verify(user.password, password)) {
+        const token = jwt.sign({ username }, JWT_SECRET, { expiresIn: '1h' });
+        res.json({ token });
+      } else {
+        res.status(401).send('Invalid credentials');
+      }
+    } else {
+      res.status(401).send('Invalid credentials');
+    }
+  } catch (err) {
+    console.error('Error during login:', err);
+    res.status(500).send('Error during login');
+  }
+});
+
 app.get("/signUp", (req, res) => {
   res.render("User-interface/Login/signUp");
 });
