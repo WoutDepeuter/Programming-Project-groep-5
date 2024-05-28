@@ -8,33 +8,28 @@ function popUpReservatie(event){
     let antwoord = "";
     let vandaag = new Date();
 
-    if(van == "" || tot == ""){
-        antwoord = `<p>Je hebt nog niet ingevuld van wanneer tot wanneer je het product wil reserveren</p><hr>`;
-
-        document.getElementById('pop-up-gebruikersvoorwaarden').innerHTML = antwoord;
+    if(document.getElementById('van-tijd').value == "" || document.getElementById('tot-tijd').value == ""){
+        document.getElementById('pop-up-gebruikersvoorwaarden').innerHTML = "";
+        alert("Je hebt nog niet ingevuld van wanneer tot wanneer je het product wil reserveren");
     }
     else if(van <= vandaag){
-        antwoord = `<p>De <i>van datum</i> mag niet vandaag of vroeger zijn!</p><hr>`;
-
-        document.getElementById('pop-up-gebruikersvoorwaarden').innerHTML = antwoord;
+        document.getElementById('pop-up-gebruikersvoorwaarden').innerHTML = "";
+        alert("De van datum mag niet vandaag of vroeger zijn!");
     }
     else if(tot < van){
-        antwoord = `<p>De <i>van datum</i> moet vroeger zijn dan de <i>tot datum</i>!</p><hr>`;
-
-        document.getElementById('pop-up-gebruikersvoorwaarden').innerHTML = antwoord;
+        document.getElementById('pop-up-gebruikersvoorwaarden').innerHTML = "";
+        alert("De van datum moet vroeger zijn dan de tot datum!");
     }
     // specifiek voor studenten
     else if(true){
         let week = 7 * 24 * 60 * 60 * 1000
         if(van - vandaag >= week * 2){
-            antwoord = `<p>Je mag maximum 2 weken vooraf reserveren</p><hr>`;
-
-            document.getElementById('pop-up-gebruikersvoorwaarden').innerHTML = antwoord;
+            document.getElementById('pop-up-gebruikersvoorwaarden').innerHTML = "";
+            alert("Je mag maximum 2 weken vooraf reserveren");
         }
         else if(tot - van >= week){
-            antwoord = `<p>Als student mag je maar een reservatieperiode van 7 dagen kiezen</p><hr>`;
-
-            document.getElementById('pop-up-gebruikersvoorwaarden').innerHTML = antwoord;
+            document.getElementById('pop-up-gebruikersvoorwaarden').innerHTML = "";
+            alert("Als student mag je maar een reservatieperiode van 7 dagen kiezen");
         }
         else{
             antwoord = `<form id="reservatieformulier-na-voorwaarden">
