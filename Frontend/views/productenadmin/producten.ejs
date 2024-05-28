@@ -14,8 +14,7 @@
 <body>
   <header class="adminhead">
     <div class="zoekbalk">
-      <input id="zoekbalkNAAM" type="text" placeholder="Persoon zoeken..." />
-      <input id="zoekbalkID" type="text" placeholder="ID zoeken..." />
+      <input id="zoekbalk" type="text" placeholder="Zoeken...">
     </div>
     <div class="site-naam">
       <a href="/HoofdMenuAdmin" id="site-naam">&lt;EHBLoanHub&gt;</a>
@@ -54,12 +53,8 @@
                 <p>No image available</p>
                 <% } %>
                   <div>
-                    <h2>
-                      <%= product.MERK %>: <%= product.naam %>
-                    </h2>
-                    <p>
-                      <%= product.Beschrijving %>
-                    </p>
+                    <h2><%= product.MERK %>: <%= product.naam %></h2>
+                    <p><%= product.Beschrijving %></p>
                     <button class="edit"><img src="pictures/edit-icoon.png" alt="Edit Icon"
                         id="potlood-icoon" /></button>
                     <button class="delete"><img src="pictures/delete-icoon.png" alt="Delete Icon"
@@ -83,10 +78,12 @@
     <div id="school">&COPY; 2024 Erasmushogeschool Brussel</div>
     <div id="taal">Nederlands</div>
   </footer>
+
+  <script src="/js/admin/zoekProductAdmin.js"></script>
+  <script src="/js/admin/filters.js"></script>
+  <script src="/js/admin/zoekGebruiker.js"></script>
+  <script src="/js/admin/voegProductToe.js"></script>
+  <script src="/js/admin/productenadmin.js"></script>
 </body>
-<script src="/js/admin/filters.js"></script>
-<script src="/js/admin/zoekGebruiker.js"></script>
-<script src="/js/admin/voegProductToe.js"></script>
-<script src="/js/admin/productenadmin.js"></script>
 
 </html>
