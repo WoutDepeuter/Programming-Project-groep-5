@@ -1,9 +1,9 @@
 // app.js
 const express = require("express");
-const mysql = require("mysql2");
 const multer = require("multer");
 const path = require("path");
-
+const argon2 = require('argon2');
+const mysql = require("mysql2/promise");
 const app = express();
 const env = require("dotenv").config().parsed;
 
@@ -150,6 +150,20 @@ app.get("/signUp", (req, res) => {
   res.render("User-interface/Login/signUp");
 });
 
+app.post('/signUp', async (req, res) => {
+  const { username, password, email } = req.body;
+  try {
+    const hashedPassword = await argon2.hash(password);
+    const [result] = await pool.query('INSERT INTO users(email,password) VALUES (?,?)', [email, hashedPassword]);
+    res.status(201).send('User registered');
+  } catch (err) {
+    console.error('Error registering user:', err);
+    res.status(500).send('Error registering user');
+  }
+});
+
+
+
 app.get("/reservatie-van-producten", (req, res) => {
   res.render("User-interface/product-reservatie/reservatie-van-producten");
 });
@@ -211,9 +225,6 @@ app.get("/xr-catalogus", (req, res) => {
     res.render("User-interface/catalogus/xr-catalogus", { products: results });
   });
 });
-
-
-
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
