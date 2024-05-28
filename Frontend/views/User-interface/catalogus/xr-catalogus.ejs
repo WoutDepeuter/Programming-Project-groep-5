@@ -1,91 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="/Frontend/pictures/EHB_site_logo-removebg-preview.jpg"
-      rel="icon"
-    />
 
-    <title>&lt;EHBLoanHub&gt;</title>
-    <link rel="stylesheet" href="css/catalogus.css" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="/Frontend/pictures/EHB_site_logo-removebg-preview.jpg" rel="icon" />
 
-  <body>
-    <header>
-      <div class="zoekbalk">
-        <input id="zoekbalk" type="text" placeholder="Zoeken..." />
-      </div>
-      <div class="homescreen" id="site-naam"
-          >&lt;EHBLoanHub&gt;</a
-        >
-      </div>
-      <div class="profiel">
-        <a href="#"
-          ><img
-            id="profiel"
-            src="/Frontend/pictures/winkelkar.png"
-            alt="winkelkar"
-        /></a>
-        <a href="/Frontend/User-interface/profiel/profiel-user.html"
-          ><img
-            id="profiel"
-            src="/Frontend/pictures/circle-profile.png"
-            alt="profiel"
-        /></a>
-      </div>
-    </header>
-    <nav class="prodnav">
+  <title>&lt;EHBLoanHub&gt;</title>
+  <link rel="stylesheet" href="css/catalogus.css" />
+</head>
 
-      <ul class="producten-categorien">
-        <li><a href="/audio-catalogus">Audio</a></li>
-        <li><a href="/belichting-catalogus">Belichting</a></li>
-        <li><a href="/video-catalogus">Video</a></li>
-        <li><a href="/varia-catalogus">Varia</a></li>
-        <li><a href="#" class="active">XR</a></li>
-        <li><button type="button" id="filter">Filter: <span>&#9660;</span></button></li>
-      </ul>
-        <div class="popup-background" id="popupBackground">
-          <div class="popup-content" id="popupContent">
-              <h2>Selecteer Filters</h2>
-              <div class="checkbox-list">
-                  <label><input type="checkbox" name="type" value="type1"> Type 1</label>
-              </div>
-              <button class="close-btn" id="closeButton">Sluiten</button>
-          </div>
-      </div>
+<body>
+  <header>
+    <div class="zoekbalk">
+      <input id="zoekbalk" type="text" placeholder="Zoeken..." />
+    </div>
+    <div class="homescreen" id="site-naam">&lt;EHBLoanHub&gt;</a>
+    </div>
+    <div class="profiel">
+      <a href="#"><img id="profiel" src="/pictures/winkelkar.png" alt="winkelkar" /></a>
+      <a href="/Frontend/User-interface/profiel/profiel-user.html"><img id="profiel"
+          src="/pictures/circle-profile.png" alt="profiel" /></a>
+    </div>
+  </header>
+  <nav class="prodnav">
 
-      </nav>
-      <hr />
-    <main>
-      <div id="alleProducten">
-        <!-- Voorbeeld box -->
-        <% products.forEach(product => { %>
-          <div class="box">
-            <div>
-              <% if (product.afbeelding) { %>
-                <% const imageUrl = `data:image/png;base64,${product.afbeelding.toString('base64')}`; %>
+    <ul class="producten-categorien">
+      <li><a href="/audio-catalogus">Audio</a></li>
+      <li><a href="/belichting-catalogus">Belichting</a></li>
+      <li><a href="/video-catalogus">Video</a></li>
+      <li><a href="/varia-catalogus">Varia</a></li>
+      <li><a href="#" class="active">XR</a></li>
+      <li><button type="button" id="filter">Filter: <span>&#9660;</span></button></li>
+    </ul>
+    <div class="popup-background" id="popupBackground">
+      <div class="popup-content" id="popupContent">
+        <h2>Selecteer Filters</h2>
+        <div class="checkbox-list">
+          <label><input type="checkbox" name="type" value="type1"> Type 1</label>
+        </div>
+        <button class="close-btn" id="closeButton">Sluiten</button>
+      </div>
+    </div>
+
+  </nav>
+  <hr />
+  <main>
+    <div id="alleProducten">
+      <!-- Voorbeeld box -->
+      <% products.forEach(product=> { %>
+        <div class="box">
+          <div>
+            <% if (product.afbeelding) { %>
+              <% const imageUrl=`data:image/png;base64,${product.afbeelding.toString('base64')}`; %>
                 <img src="<%= imageUrl %>" alt="Product Image" />
-            <% } else { %>
-                <p>No image available</p>
-            <% } %>
-            <a id="reserveren" href="/reservatie-van-producten">reserveren</a>
-            </div>
-              <div>
-                  <h2><%= product.MERK %>: <%= product.naam %></h2>
-                  <p><%= product.Beschrijving %></p>
-              </div>
+                <% } else { %>
+                  <p>No image available</p>
+                  <% } %>
           </div>
-      <% }); %>
-      </div>
-      <div id="bericht"></div>
-    </main>
-    <footer>
-      <div id="school">© 2024 Erasmushogeschool Brussel</div>
-      <div id="taal">Nederlands</div>
-    </footer>
-    <script src="/js/user/zoekProduct.js"></script>
-    <script src="/Frontend/public/js/filter.js"></script>
-  </body>
+          <div class="naam-en-besch">
+            <h2>
+              <%= product.MERK %>: <%= product.naam %>
+            </h2>
+            <p>
+              <%= product.Beschrijving %>
+            </p>
+          </div>
+          <div>
+            <a id="reserveren" href="/reservatie-van-producten">reserveren</a>
+          </div>
+        </div>
+        <% }); %>
+    </div>
+    <div id="bericht"></div>
+  </main>
+  <footer>
+    <div id="school">© 2024 Erasmushogeschool Brussel</div>
+    <div id="taal">Nederlands</div>
+  </footer>
+  <script src="/js/user/zoekProduct.js"></script>
+  <script src="/Frontend/public/js/filter.js"></script>
+</body>
+
 </html>

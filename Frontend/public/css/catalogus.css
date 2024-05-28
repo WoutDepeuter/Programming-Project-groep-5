@@ -138,8 +138,17 @@ p{
   margin: 8px;
   border-radius: 1em;
   display: flex;
+  flex-direction: row;
+  justify-content: space-between; /* Ensure content is spaced evenly */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  position: relative; /* Enable absolute positioning within the box */
 }
+
+
+.naam-en-besch {
+  flex-grow: 1; /* Ensure the description section takes up available space */
+}
+
 .box img {
   max-width: 100px;
   max-height: 100px;
@@ -147,6 +156,7 @@ p{
   float: left;
   height: auto;
 }
+
 #reserveren {
   background-color: red;
   color: white;
@@ -158,10 +168,15 @@ p{
   transition: background-color 0.3s ease;
   text-decoration: none;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  }
+  position: absolute; 
+  bottom: 10px; 
+  right: 10px; 
+}
+
 #reserveren:hover {
   background-color: #ff4444;
 }
+
 
 footer {
   position: fixed;
