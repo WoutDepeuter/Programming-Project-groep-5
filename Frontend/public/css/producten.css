@@ -19,6 +19,10 @@ body {
   padding: 0 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+#GoHome{
+  color: white;
+  text-decoration: none;
+}
 
 .zoekbalk {
   flex: 1;
@@ -118,6 +122,37 @@ hr {
   margin: 0 2em;
 }
 
+.product-categorien a:hover{
+  color: red;
+}
+.product-categorien a.active {
+  color: red;
+  text-decoration: underline;
+}
+
+footer {
+  bottom: 0;
+  left: 0;
+  height: 44px;
+  background-color: red;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: auto;
+}
+#school {
+  padding: 10px;
+  color: white;
+}
+
+#taal{
+  padding: 10px;
+  color: white;
+}
+
+
 .box {
   flex: 1 0 18%; /* 18% width for each box */
   margin: 1em;
@@ -130,6 +165,14 @@ hr {
   flex-direction: column;
   justify-content: space-between;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#vuilbak-icoon{
+  margin: 0 auto;
+}
+
+#potlood-icoon{
+  margin: 0 auto;
 }
 
 .box:hover {
