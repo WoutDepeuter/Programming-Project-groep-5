@@ -134,6 +134,18 @@ app.post("/addProduct", upload.single('productFoto'), (req, res) => {
     res.send("Product added successfully");
   });
 });
+app.post("/deleteproduct", (req, res) => {
+  const {Product} = req.body;
+  const query = "Delete FROM PRODUCTMODEL WHERE model_ID = ?";
+  pool.query(query, [Product_ID], (err, result) => {
+    if (err) {
+      console.error("Error executing query:", err);
+      res.status(500).send("Internal Server Error");
+      return;
+    }
+    res.send("deleted product successfully");
+  });
+});
 
 // User-interface-------------------------------------------------------------------------------
 
@@ -219,7 +231,7 @@ app.get("/profiel-user", (req, res) => {
 });
 
 app.get("/audio-catalogus", (req, res) => {
-  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK", [1], (err, results) => {
+  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [1], (err, results) => {
     if (err) {
       console.error("Error fetching products:", err);
       res.status(500).send("Internal Server Error");
@@ -230,7 +242,7 @@ app.get("/audio-catalogus", (req, res) => {
 });
 
 app.get("/belichting-catalogus", (req, res) => {
-  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK", [2], (err, results) => {
+  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [2], (err, results) => {
     if (err) {
       console.error("Error fetching products:", err);
       res.status(500).send("Internal Server Error");
@@ -241,7 +253,7 @@ app.get("/belichting-catalogus", (req, res) => {
 });
 
 app.get("/varia-catalogus", (req, res) => {
-  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK", [3], (err, results) => {
+  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [3], (err, results) => {
     if (err) {
       console.error("Error fetching products:", err);
       res.status(500).send("Internal Server Error");
@@ -252,7 +264,7 @@ app.get("/varia-catalogus", (req, res) => {
 });
 
 app.get("/video-catalogus", (req, res) => {
-  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK", [4], (err, results) => {
+  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [4], (err, results) => {
     if (err) {
       console.error("Error fetching products:", err);
       res.status(500).send("Internal Server Error");
@@ -262,7 +274,7 @@ app.get("/video-catalogus", (req, res) => {
   });
 });
 app.get("/xr-catalogus", (req, res) => {
-  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK", [(5)], (err, results) => {
+  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [(5)], (err, results) => {
     if (err) {
       console.error("Error fetching products:", err);
       res.status(500).send("Internal Server Error");
