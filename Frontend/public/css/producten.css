@@ -265,7 +265,7 @@ hr {
 .extrabuttons button {
   margin: 0 10px;
   padding: 10px 20px;
-  background-color: #ff4444;
+  background-color: #2bcdc7;
   color: white;
   border: none;
   border-radius: 20px;
@@ -275,7 +275,7 @@ hr {
 }
 
 .extrabuttons button:hover {
-  background-color: #2bcdc7;
+  background-color: #ff4444;
 }
 
 .buttonsss{
