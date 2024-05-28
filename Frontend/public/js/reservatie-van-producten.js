@@ -105,3 +105,4 @@ function popUpGebruiksvoorwaarden(){
     <hr>`
     document.getElementById('reservatieformulier-na-voorwaarden').addEventListener("submit", reservatieProduct);
 }
+
