@@ -2,7 +2,7 @@ const express = require("express");
 const multer = require("multer");
 const path = require("path");
 const argon2 = require("argon2");
-const mysql = require("mysql2");
+const mysql = require("mysql2/promise");
 const app = express();
 const env = require("dotenv").config().parsed;
 
@@ -137,9 +137,27 @@ app.post("/addProduct", upload.single('productFoto'), (req, res) => {
 
 // User-interface-------------------------------------------------------------------------------
 
-app.get("/homescreen", (req, res) => {
-    res.render("User-interface/homescreen");
+app.get('/homescreen', async (req, res) => {
+  try {
+    const [audioSlider] = await pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [1]);
+    const [belichtingSlider] = await pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [2]);
+    const [variaSlider] = await pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [3]);
+    const [videoSlider] = await pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [4]);
+    const [xrSlider] = await pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [5]);
+    
+    res.render("User-interface/homescreen", {
+      audioSlider,
+      belichtingSlider,
+      variaSlider,
+      videoSlider,
+      xrSlider
+    });
+  } catch (err) {
+    console.error("Error fetching products:", err);
+    res.status(500).send("Internal Server Error");
+  }
 });
+
 app.get('/verlenging', (req, res) => {
   res.render('User-interface\Verlenging');
 });
