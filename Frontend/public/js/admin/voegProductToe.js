@@ -10,7 +10,7 @@ function voegProductToeButton() {
             <div id="productnaam-product-toevoegen">
                 <input type="text" id="productName" placeholder="Productnaam">
             </div>
-            <input type="text" id="merk" placeholder="merk">
+            <input type="text" id="merk" placeholder="Merk">
             <textarea name="beschrijving" id="productbeschrijving-product-toevoegen" cols="50" rows="10" placeholder="Product beschrijving"></textarea>
             <br>
             <div id="fotouploaden-product-toevoegen">
