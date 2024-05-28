@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     const filterButton = document.getElementById('filter');
-    
+
     // Function to create the popup elements
     function createPopup() {
         // Create popup background
