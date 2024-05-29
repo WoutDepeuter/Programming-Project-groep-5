@@ -1,8 +1,12 @@
 // voegProductToe.js
 document.getElementById("add").addEventListener("click", voegProductToeButton);
 
+
 function voegProductToeButton() {
   let popupContent = document.getElementById("popupContent");
+
+  document.querySelector(".extrabuttons").classList.add("hidden");
+
 
   popupContent.innerHTML = `
     <div id="popup-voeg-product-toe" class="popup-content">
@@ -44,6 +48,8 @@ function voegProductToeButton() {
     .getElementById("closePopupBtn")
     .addEventListener("click", function () {
       document.getElementById("popupOverlay").style.display = "none";
+      document.querySelector(".extrabuttons").classList.remove("hidden");
+
     });
 
   document
@@ -51,7 +57,15 @@ function voegProductToeButton() {
     .addEventListener("click", function () {
       addProduct();
       document.getElementById("popupOverlay").style.display = "none";
+      document.querySelector(".extrabuttons").classList.remove("hidden");
+
     });
+
+    popupBackground.addEventListener('click', function (event) {
+      if (event.target === popupBackground) {
+          popupBackground.style.display = 'none';
+      }
+  });
 }
 
 function addProduct() {

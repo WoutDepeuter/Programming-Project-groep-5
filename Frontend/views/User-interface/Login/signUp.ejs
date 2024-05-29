@@ -10,31 +10,33 @@
 </head>
 
 <body>
-  <div class="signup-box">
-    <h1>Sign up</h1>
-    <form action="" id="signform">
+  <div class="container">
+    <div class="logo-box">
+      <img src="pictures/logo_login.png" alt="logo" class="logo" />
+    </div>
+    <div class="signup-box">
+      <h1>Sign up</h1>
+      <form action="" id="signform">
+        <label for="">E-mail</label>
+        <input type="email" placeholder="Voer je e-mail in" />
 
-      <label for="">E-mail</label>
-      <input type="email" placeholder="" />
+        <label for="">Wachtwoord</label>
+        <input type="password" placeholder="Voer je wachtwoord in" id="password" />
 
-      <label for="">Wachtwoord</label>
-      <input type="password" placeholder="" id="password" />
+        <label for="">Wachtwoord bevestigen</label>
+        <input type="password" placeholder="Voer je wachtwoord opnieuw in" minlength="8" id="confirmpassword"/>
+        <button type="button" id="sign-btn">Sign Up</button>
+      </form>
 
-      <label for="">Wachtwoord bevestigen</label>
-      <input type="password" placeholder="" minlength="8" id="confirmpassword"/>
-
-      <button type="button" id="sign-btn">Sign Up</button>
-    </form>
+      <p>Heb je al een account? <a href="/login">Log in</a></p>
+    </div>
   </div>
-
-
-  <p>Heb je al een account? <a href="/login">Log in</a></p>
 
   <footer>
     <div id="school">&COPY; 2024 Erasmushogeschool Brussel</div>
     <div id="taal">Nederlands</div>
   </footer>
+  <script src="/js/login/Signup.js"></script>
 </body>
-<script src="/js/login/Signup.js"></script>
 
 </html>
