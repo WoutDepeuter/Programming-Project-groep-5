@@ -245,8 +245,19 @@ app.post('/signUp', async (req, res) => {
   }
 });
 
-app.get("/reservatie-van-producten", (req, res) => {
-    res.render("User-interface/product-reservatie/reservatie-van-producten");
+app.get("/reservatie-van-producten/:id", async (req, res) => {
+  const productId = req.params.id;
+  try {
+    const [productInfo] = await poolPromise.query("SELECT * FROM PRODUCT INNER JOIN PRODUCTMODEL ON PRODUCT.Model_ID = PRODUCTMODEL.Model_ID WHERE PRODUCT.product_ID = ?", [productId]);
+    if (productInfo.length === 0) {
+      res.status(404).send("Product not found");
+      return;
+    }
+    res.render("User-interface/product-reservatie/reservatie-van-producten", { product: productInfo[0] });
+  } catch (err) {
+    console.error("Error fetching product information:", err);
+    res.status(500).send("Internal Server Error");
+  }
 });
 
 app.get("/profiel-user", (req, res) => {
