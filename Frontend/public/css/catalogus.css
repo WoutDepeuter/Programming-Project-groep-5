@@ -137,7 +137,7 @@ hr {
 }
 
 .box {
-  flex: 1 0 18%; /* 18% width for each box */
+  flex: 1 0 18%;
   margin: 1em;
   padding: 1em;
   max-width: 18%;
@@ -183,7 +183,6 @@ hr {
 }
 
 footer {
-  position: fixed;
   bottom: 0;
   left: 0;
   background-color: red;
@@ -351,4 +350,39 @@ footer {
 
 .close-btn:hover {
   background-color: #ff4444;
+}
+
+.scroll-to-top-btn {
+  position: fixed;
+  bottom: 50px;
+  right: 5px;
+  background-color: #2bcdc7;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  padding: 15px;
+  cursor: pointer;
+  opacity: 0; /* Begin met een onzichtbare knop */
+  transform: translateY(100%);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.scroll-to-top-btn:hover {
+  background-color: #ff4444;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.scroll-to-top-btn img {
+  width: 80%;
+  height: 80%;
+  display: block;
+  margin: auto;
+}
+
+.scroll-to-top-btn.show {
+  opacity: 1; /* Maak de knop zichtbaar */
+  transform: translateY(0); /* Verplaats de knop naar zijn normale positie */
 }
