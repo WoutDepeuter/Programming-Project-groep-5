@@ -32,7 +32,7 @@ const poolPromise = mysqlPromise.createPool({
 //sql schooldb
 
 // const poolPromise = mysqlPromise.createPool({
-//   host: env.HOST,
+//   host: env.HOST, 
 //   user: env.USER,
 //   password: env.PASSWORD,
 //   database: env.DATABASE,
