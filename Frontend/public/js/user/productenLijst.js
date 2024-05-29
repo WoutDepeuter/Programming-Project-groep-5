@@ -1,55 +1,47 @@
-  document.addEventListener('DOMContentLoaded', () => {
-    const reserveButtons = document.querySelectorAll('.reserveren');
-    const productPopup = document.getElementById('productPopup');
-    const closePopupButton = document.getElementById('closePopup');
-    const productDetails = document.getElementById('productDetails');
+document.addEventListener('DOMContentLoaded', () => {
+  const reserveButtons = document.querySelectorAll('.reserveren');
+  const productPopup = document.getElementById('productPopup');
+  const closePopupButton = document.getElementById('closePopup');
+  const productDetails = document.getElementById('productDetails');
 
-    reserveButtons.forEach(button => {
-      button.addEventListener('click', (e) => {
-        e.preventDefault();
-        const productId = button.getAttribute('data-product-id');
-        
-        const productDescription = button.closest('.box').querySelector('.naam-en-besch p').textContent;
+  reserveButtons.forEach(button => {
+    button.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const productId = button.getAttribute('data-product-id');
+      
+      try {
+        const response = await fetch(`/getproducteninfo/${productId}`);
+        if (!response.ok) {
+          throw new Error('Error fetching product information');
+        }
+        const productInfo = await response.json();
 
-        console.log(productId)
+        const productDescription = productInfo.productDescription;
+
+        // Generate links for reservation pages based on model_ID
+        const reservationLinks = productInfo.relatedProducts.map(product => `<a href="/reservatie-van-producten/${product.product_ID}">${product.model_ID}</a>`).join('<br>');
+
         productDetails.innerHTML = `
           <div class="popup-box">
-         
             <p>${productDescription}</p>
+            <p>Related Products: ${reservationLinks}</p>
           </div>
         `;
 
         productPopup.style.display = 'flex';
-      });
-    });
-
-    closePopupButton.addEventListener('click', () => {
-      productPopup.style.display = 'none';
-    });
-
-    productPopup.addEventListener('click', (e) => {
-      if (e.target === productPopup) {
-        productPopup.style.display = 'none';
+      } catch (error) {
+        console.error('Error:', error);
       }
     });
   });
 
-  function zoek(productId) {
-    fetch('/lijst', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ id: productId }),
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Error deleting product');
-      }
-      console.log('Product deleted successfully');
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-  }
-  
+  closePopupButton.addEventListener('click', () => {
+    productPopup.style.display = 'none';
+  });
+
+  productPopup.addEventListener('click', (e) => {
+    if (e.target === productPopup) {
+      productPopup.style.display = 'none';
+    }
+  });
+});
