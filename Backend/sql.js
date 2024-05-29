@@ -291,6 +291,7 @@ app.get("/profiel-user", (req, res) => {
     res.render("User-interface/profiel/profiel-user");
 });
 
+
 app.get("/audio-catalogus", (req, res) => {
   pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [1], (err, results) => {
     if (err) {

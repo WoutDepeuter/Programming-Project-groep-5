@@ -179,7 +179,8 @@ header {
   transition: all 0.5s ease;
 }
 
-.arrow-left, .arrow-right {
+.arrow-left,
+.arrow-right {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
