@@ -263,21 +263,29 @@ app.get("/reservatie-van-producten/:id", async (req, res) => {
 app.get("/getproducteninfo/:id", async (req, res) => {
   const productId = req.params.id;
   try {
-    // Fetch product information
-    const [productInfo] = await poolPromise.query("SELECT * FROM PRODUCT INNER JOIN PRODUCTMODEL ON PRODUCT.Model_ID = PRODUCTMODEL.Model_ID WHERE PRODUCT.product_ID = ?", [productId]);
+    const [productInfo] = await poolPromise.query(
+      "SELECT * FROM PRODUCT INNER JOIN PRODUCTMODEL ON PRODUCT.Model_ID = PRODUCTMODEL.Model_ID WHERE PRODUCT.Model_ID = ?",
+      [productId]
+    );
 
     if (productInfo.length === 0) {
       res.status(404).json({ error: "Product not found" });
       return;
     }
+
     // Fetch all products with the same model_ID
-    const [relatedProducts] = await poolPromise.query("SELECT * FROM PRODUCT WHERE Model_ID = ?", [productInfo[0].Model_ID]);
+    const [relatedProducts] = await poolPromise.query(
+      "SELECT * FROM PRODUCT WHERE Model_ID = ?",
+      [productInfo[0].Model_ID]
+    );
+
     res.json({ product: productInfo[0], relatedProducts: relatedProducts });
   } catch (err) {
     console.error("Error fetching product information:", err);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
+
 
 app.get("/profiel-user", (req, res) => {
     res.render("User-interface/profiel/profiel-user");
