@@ -29,7 +29,7 @@ const pool = mysql.createPool({
 // });
 
 // const poolPromise = mysqlPromise.createPool({
-//   host: env.HOST,
+//   host: env.HOST, 
 //   user: env.USER,
 //   password: env.PASSWORD,
 //   database: env.DATABASE,
