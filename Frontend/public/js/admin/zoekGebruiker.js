@@ -3,6 +3,8 @@ zoek.addEventListener("click", zoekGebruiker);
 
 function zoekGebruiker() {
   let popupContent = document.getElementById("popupContent");
+  document.querySelector(".extrabuttons").classList.add("hidden");
+
 
   popupContent.innerHTML = `
     <div id="popup-gebruiker-zoeken" class="popup-content">
@@ -27,6 +29,8 @@ function zoekGebruiker() {
     .getElementById("closePopupBtn")
     .addEventListener("click", function () {
       document.getElementById("popupOverlay").style.display = "none";
+      document.querySelector(".extrabuttons").classList.remove("hidden");
+
     });
 
   // Add event listener to the search button
