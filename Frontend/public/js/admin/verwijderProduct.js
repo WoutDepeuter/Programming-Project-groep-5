@@ -10,9 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log('Deleting product with ID:', productId);
                 deleteProduct(productId);
                 console.log('Item deleted');
-                alert('Item deleted');
                 popupBackground.style.display = 'none';
+                setInterval(() => {            window.location.reload();
+                }, 500);
             };
+
         });
     });
 
