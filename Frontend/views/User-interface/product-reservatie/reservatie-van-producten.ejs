@@ -1,106 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="/pictures/other/EHB LOGO.png" />
-    <title>&lt;EHBLoanHub&gt;</title>
-    <link
-      rel="stylesheet"
-      href="css/reservatie-van-producten.css"
-    />
-  </head>
 
-  <body>
-    <header>
-      <div>
-        <span class="icon">&#9776;</span>
-        <span class="icon">&#8617;</span>
-      </div>
-      <div class="site-naam">
-        <a href="/homescreen" id="site-naam"
-          >&lt;EHBLoanHub&gt;</a
-        >
-      </div>
-      <div></div>
-    </header>
-    <main id="main">
-      <div class="container">
-        <div class="foto-en-knop-reservatie">
-          <% if (product.afbeelding) { %>
-            <% const imageUrl = `data:image/png;base64,${product.afbeelding.toString('base64')}`; %>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/pictures/logo_login.png" />
+  <title>&lt;EHBLoanHub&gt;</title>
+  <link rel="stylesheet" href="css/reservatie-van-producten.css" />
+</head>
+
+<body>
+  <header>
+    <div>
+      <span class="icon">&#9776;</span>
+      <span class="icon">&#8617;</span>
+    </div>
+    <div class="site-naam">
+      <a href="/homescreen" id="site-naam">&lt;EHBLoanHub&gt;</a>
+    </div>
+    <div></div>
+  </header>
+  <main id="main">
+    <div class="container">
+      <div class="foto-en-knop-reservatie">
+        <% if (product.afbeelding) { %>
+          <% const imageUrl=`data:image/png;base64,${product.afbeelding.toString('base64')}`; %>
             <img src="<%= imageUrl %>" alt="Product Image" />
-          <% } else { %>
-            <p>No image available</p>
-          <% } %>
-          <h1><%product.product_ID%></h1>
-          <br>
-          <a
-            href="#"
-            id="reserveren"
-            >Reserveren</a
-          >
+            <% } else { %>
+              <p>No image available</p>
+              <% } %>
+                <h1>
+                  <%product.product_ID%>
+                </h1>
+                <br>
+                <a href="#" id="reserveren">Reserveren</a>
+      </div>
+      <div class="tijd-en-beschikbaarheid">
+        <h2>
+          <%= product.MERK %>: <%= product.naam %>
+        </h2>
+        <div class="datum-forms-uitlening">
+          <form>
+            <label for="van-tijd">Van:</label>
+            <input id="van-tijd" type="date" required>
+            <label for="tot-tijd">Tot:</label>
+            <input id="tot-tijd" type="date" required>
+          </form>
         </div>
-        <div class="tijd-en-beschikbaarheid">
-          <h2><%= product.MERK %>: <%= product.naam %></h2>
-          <div class="datum-forms-uitlening">
-            <form>
-              <label for="van-tijd">Van:</label>
-              <input id="van-tijd" type="date" required>
-              <label for="tot-tijd">Tot:</label>
-              <input id="tot-tijd" type="date" required>
-            </form>
-          </div>
-          <div class="melding-uitleentermijn">
-            <p>Uitleentermijn voor <span>studenten</span>: <span class="uitleentermijn">1 week</span></p>
-          </div>
-          <br>
-          <p>Nog <span class="aantal-beschikbaar">3</span> beschikbaar</p>
+        <div class="melding-uitleentermijn">
+          <p>Uitleentermijn voor <span>studenten</span>: <span class="uitleentermijn">1 week</span></p>
+        </div>
+        <br>
+        <p>Nog <span class="aantal-beschikbaar">3</span> beschikbaar</p>
+      </div>
+    </div>
+    <br>
+    <hr>
+    <div id="pop-up-gebruikersvoorwaarden"></div>
+    <h1>Extra's:</h1>
+    <div class="alle-extra-producten">
+      <div class="extra-product">
+        <div>
+          <img src="/Frontend/pictures/Afbeelding-microfoon.jpg" alt="Afbeelding 1" />
+          <p>Beschikbaar: <span class="extra-aantal-beschikbaar">3/4</span></p>
+        </div>
+        <div>
+          <h4>Titel</h4>
+          <form class="checkbox-extra"><input type="checkbox"></form>
         </div>
       </div>
-      <br>
-      <hr>
-      <div id="pop-up-gebruikersvoorwaarden"></div>
-      <h1>Extra's:</h1>
-      <div class="alle-extra-producten">
-        <div class="extra-product">
-          <div>
-            <img src="/Frontend/pictures/Afbeelding-microfoon.jpg" alt="Afbeelding 1"/>
-            <p>Beschikbaar: <span class="extra-aantal-beschikbaar">3/4</span></p>
-          </div>
-          <div>
-            <h4>Titel</h4>
-            <form class="checkbox-extra"><input type="checkbox"></form>
-          </div>
-        </div>
-      </div>
-      <h1>Description:</h1>
-      <div class="beschrijving">
-        <p>
-          De Lumix Z100 is een veelzijdige camera die perfect is voor zowel professionele fotografen als enthousiaste amateurs die streven naar
-          hoogwaardige beeldkwaliteit en geavanceerde functies. Met een 24-megapixel full-frame sensor en een krachtige Venus Engine-processor
-          levert de Lumix Z100 adembenemende foto's en video's.
-        </p>
-        <p>Belangrijkste specificaties:</p>
-        <u>
-          <li>24-megapixel full-frame MOS-sensor</li>
-          <li>Venus Engine-processor voor snelle verwerking</li>
-          <li>4K UHD-video-opname met 30fps</li>
-          <li>5-assige beeldstabilisatie voor scherpe beelden, zelfs bij langere brandpuntsafstanden</li>
-          <li>ISO-bereik van 100-25600 voor uitstekende prestaties bij weinig licht</li>
-          <li>3,2-inch kantelbaar touchscreen LCD-scherm voor eenvoudige bediening en compositie</li>
-          <li>9-punts autofocus met snelle en nauwkeurige prestaties</li>
-          <li>Draadloze connectiviteit via ingebouwde wifi en Bluetooth voor eenvoudig delen en bedienen op afstand</li>
-          <li>Weerbestendige body die bestand is tegen stof en vocht, ideaal voor gebruik in verschillende omstandigheden</li>
-          <li>Dual SD-kaartsleuven voor uitgebreide opslagmogelijkheden en back-upfunctionaliteit</li>
-        </u>
-      </div>
-      <br>
-    </main>
-    <footer>
-      <div id="school">© 2024 Erasmushogeschool Brussel</div>
-      <div id="taal">Nederlands</div>
-    </footer>
-    <script src="/js/user/reservatie-van-producten.js"></script>
-  </body>
+    </div>
+    <h1>Description:</h1>
+    <div class="beschrijving">
+      <p>
+        De Lumix Z100 is een veelzijdige camera die perfect is voor zowel professionele fotografen als enthousiaste
+        amateurs die streven naar
+        hoogwaardige beeldkwaliteit en geavanceerde functies. Met een 24-megapixel full-frame sensor en een krachtige
+        Venus Engine-processor
+        levert de Lumix Z100 adembenemende foto's en video's.
+      </p>
+      <p>Belangrijkste specificaties:</p>
+      <u>
+        <li>24-megapixel full-frame MOS-sensor</li>
+        <li>Venus Engine-processor voor snelle verwerking</li>
+        <li>4K UHD-video-opname met 30fps</li>
+        <li>5-assige beeldstabilisatie voor scherpe beelden, zelfs bij langere brandpuntsafstanden</li>
+        <li>ISO-bereik van 100-25600 voor uitstekende prestaties bij weinig licht</li>
+        <li>3,2-inch kantelbaar touchscreen LCD-scherm voor eenvoudige bediening en compositie</li>
+        <li>9-punts autofocus met snelle en nauwkeurige prestaties</li>
+        <li>Draadloze connectiviteit via ingebouwde wifi en Bluetooth voor eenvoudig delen en bedienen op afstand</li>
+        <li>Weerbestendige body die bestand is tegen stof en vocht, ideaal voor gebruik in verschillende omstandigheden
+        </li>
+        <li>Dual SD-kaartsleuven voor uitgebreide opslagmogelijkheden en back-upfunctionaliteit</li>
+      </u>
+    </div>
+    <br>
+  </main>
+  <footer>
+    <div id="school">© 2024 Erasmushogeschool Brussel</div>
+    <div id="taal">Nederlands</div>
+  </footer>
+  <script src="/js/user/reservatie-van-producten.js"></script>
+</body>
+
 </html>
