@@ -7,28 +7,33 @@ let currentIndex = {
 };
 
 function moveLeft(sliderId) {
-    let slider = document.getElementById(sliderId);
-    let sliderName = sliderId.replace('Slider', '');
-    let productBoxes = slider.querySelectorAll('.product-box');
-    let boxWidth = productBoxes[0].offsetWidth + 40; // De 40px komt van de margin
+  let slider = document.getElementById(sliderId);
+  let sliderName = sliderId.replace('Slider', '');
+  let productBoxes = slider.querySelectorAll('.product-box');
+  let boxWidth = productBoxes[0].offsetWidth + 40; // De 40px komt van de margin
+  let maxIndex = productBoxes.length - Math.floor(slider.offsetWidth / boxWidth);
 
-    if (currentIndex[sliderName] > 0) {
-        currentIndex[sliderName]--;
-    }
+  if (currentIndex[sliderName] > 0) {
+      currentIndex[sliderName]--;
+  } else {
+      currentIndex[sliderName] = maxIndex;
+  }
 
-    slider.style.transform = `translateX(-${currentIndex[sliderName] * boxWidth}px)`;
+  slider.style.transform = `translateX(-${currentIndex[sliderName] * boxWidth}px)`;
 }
 
 function moveRight(sliderId) {
-    let slider = document.getElementById(sliderId);
-    let sliderName = sliderId.replace('Slider', '');
-    let productBoxes = slider.querySelectorAll('.product-box');
-    let boxWidth = productBoxes[0].offsetWidth + 40; // De 40px komt van de margin
-    let maxIndex = productBoxes.length - Math.floor(slider.offsetWidth / boxWidth);
+  let slider = document.getElementById(sliderId);
+  let sliderName = sliderId.replace('Slider', '');
+  let productBoxes = slider.querySelectorAll('.product-box');
+  let boxWidth = productBoxes[0].offsetWidth + 40; // De 40px komt van de margin
+  let maxIndex = productBoxes.length - Math.floor(slider.offsetWidth / boxWidth);
 
-    if (currentIndex[sliderName] < maxIndex) {
-        currentIndex[sliderName]++;
-    }
+  if (currentIndex[sliderName] < maxIndex) {
+      currentIndex[sliderName]++;
+  } else {
+      currentIndex[sliderName] = 0;
+  }
 
-    slider.style.transform = `translateX(-${currentIndex[sliderName] * boxWidth}px)`;
+  slider.style.transform = `translateX(-${currentIndex[sliderName] * boxWidth}px)`;
 }
