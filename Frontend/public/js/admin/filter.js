@@ -1,24 +1,23 @@
 document.addEventListener('DOMContentLoaded', function () {
     const filterButton = document.getElementById('filter');
 
-    // Function to create the popup elements
-    function createPopup() {
-        // Create popup background
+    function createFilterPopup() {
+        if (document.getElementById('filterPopupBackground')) {
+            return;
+        }
+
         const popupBackground = document.createElement('div');
-        popupBackground.classList.add('popup-background');
-        popupBackground.id = 'popupBackground';
+        popupBackground.classList.add('popup-background-filter');
+        popupBackground.id = 'filterPopupBackground';
         
-        // Create popup content
         const popupContent = document.createElement('div');
-        popupContent.classList.add('popup-content');
-        popupContent.id = 'popupContent';
+        popupContent.classList.add('popup-content-filter');
+        popupContent.id = 'filterPopupContent';
         
-        // Create popup title
         const title = document.createElement('h2');
         title.textContent = 'Selecteer Filters';
         popupContent.appendChild(title);
         
-        // Create checkbox list
         const checkboxList = document.createElement('div');
         checkboxList.classList.add('checkbox-list');
         const checkboxLabel = document.createElement('label');
@@ -31,25 +30,78 @@ document.addEventListener('DOMContentLoaded', function () {
         checkboxList.appendChild(checkboxLabel);
         popupContent.appendChild(checkboxList);
         
-        // Create close button
         const closeButton = document.createElement('button');
-        closeButton.classList.add('close-btn');
+        closeButton.classList.add('close-btn-filter');
         closeButton.id = 'closeButton';
         closeButton.textContent = 'Sluiten';
         popupContent.appendChild(closeButton);
         
-        // Append popup content to background
         popupBackground.appendChild(popupContent);
         
-        // Append popup background to body
         document.body.appendChild(popupBackground);
         
-        // Add event listener to close button
         closeButton.addEventListener('click', function () {
             popupBackground.style.display = 'none';
         });
         
-        // Close the popup when clicking outside its content
+        popupBackground.addEventListener('click', function (event) {
+            if (event.target === popupBackground) {
+                popupBackground.style.display = 'none';
+            }
+        });
+
+        const deleteButton = document.createElement('button');
+        deleteButton.classList.add('delete-btn-filter');
+        deleteButton.textContent = 'Verwijder';
+        popupContent.appendChild(deleteButton);
+
+        deleteButton.addEventListener('click', function () {
+            createDeletePopup();
+            const deletePopupBackground = document.getElementById('deletePopupBackground');
+            deletePopupBackground.style.display = 'flex';
+        });
+    }
+
+    function createDeletePopup() {
+        if (document.getElementById('deletePopupBackground')) {
+            return;
+        }
+
+        const popupBackground = document.createElement('div');
+        popupBackground.classList.add('popup-background');
+        popupBackground.id = 'deletePopupBackground';
+        
+        const popupContent = document.createElement('div');
+        popupContent.classList.add('popup-content');
+        popupContent.id = 'deletePopupContent';
+        
+        const title = document.createElement('h2');
+        title.textContent = 'Are you sure you want to delete this item?';
+        popupContent.appendChild(title);
+        
+        const buttonContainer = document.createElement('div');
+        buttonContainer.classList.add('button-container');
+        
+        const yesButton = document.createElement('button');
+        yesButton.classList.add('yes-btn-filter');
+        yesButton.id = 'yesButton';
+        yesButton.textContent = 'Yes';
+        buttonContainer.appendChild(yesButton);
+        
+        const noButton = document.createElement('button');
+        noButton.classList.add('no-btn-filter');
+        noButton.id = 'noButton';
+        noButton.textContent = 'No';
+        buttonContainer.appendChild(noButton);
+        
+        popupContent.appendChild(buttonContainer);
+        popupBackground.appendChild(popupContent);
+        document.body.appendChild(popupBackground);
+        
+        noButton.addEventListener('click', function () {
+            popupBackground.style.display = 'none';
+        });
+        
         popupBackground.addEventListener('click', function (event) {
             if (event.target === popupBackground) {
                 popupBackground.style.display = 'none';
@@ -57,10 +109,9 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
     
-    // Function to open the popup
     filterButton.addEventListener('click', function () {
-        createPopup();
-        const popupBackground = document.getElementById('popupBackground');
+        createFilterPopup();
+        const popupBackground = document.getElementById('filterPopupBackground');
         popupBackground.style.display = 'flex';
     });
 });
