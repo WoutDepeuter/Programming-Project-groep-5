@@ -81,4 +81,6 @@ function addProduct() {
     .catch((error) => {
       console.error("Error:", error);
     });
+    setInterval(() => {            window.location.reload();
+    }, 500);
 }

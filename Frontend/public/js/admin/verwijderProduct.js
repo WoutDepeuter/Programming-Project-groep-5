@@ -10,9 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log('Deleting product with ID:', productId);
                 deleteProduct(productId);
                 console.log('Item deleted');
-                alert('Item deleted');
                 popupBackground.style.display = 'none';
+                setInterval(() => {            window.location.reload();
+                }, 500);
             };
+
         });
     });
 
@@ -32,29 +34,29 @@ function createDelPopup() {
     }
 
     const popupBackground = document.createElement('div');
-    popupBackground.classList.add('popup-background');
+    popupBackground.classList.add('popup-background-verwijderen');
     popupBackground.id = 'popupBackground';
     popupBackground.style.display = 'none';
 
     const popupContent = document.createElement('div');
-    popupContent.classList.add('popup-content');
+    popupContent.classList.add('popup-content-verwijderen');
     popupContent.id = 'popupContent';
 
     const title = document.createElement('h2');
-    title.textContent = 'Bent je zeker dat je dit product wilt verwijderen?';
+    title.textContent = 'Bent u zeker dat u dit product wilt verwijderen?';
     popupContent.appendChild(title);
 
     const buttonContainer = document.createElement('div');
-    buttonContainer.classList.add('button-container');
+    buttonContainer.classList.add('button-container-verwijderen');
 
     const yesButton = document.createElement('button');
-    yesButton.classList.add('yes-btn');
+    yesButton.classList.add('yes-btn-verwijderen');
     yesButton.id = 'yesButton';
     yesButton.textContent = 'Ja';
     buttonContainer.appendChild(yesButton);
 
     const noButton = document.createElement('button');
-    noButton.classList.add('no-btn');
+    noButton.classList.add('no-btn-verwijderen');
     noButton.id = 'noButton';
     noButton.textContent = 'Nee';
     buttonContainer.appendChild(noButton);
