@@ -7,29 +7,25 @@
       href="/Frontend/pictures/EHB_site_logo-removebg-preview.png"
       rel="icon"
     />
-
     <title>&lt;EHBLoanHub&gt;</title>
-    <link
-      rel="stylesheet"
-      href="css/profiel-user.css"
-    />
+    <link rel="stylesheet" href="css/profiel-user.css" />
   </head>
 
   <body>
     <header>
       <div class="icons">
-        <span class="icon">&#9776;</span>
-        <span class="icon">&#8617;</span>
+        <a href="/homescreen"><span class="icon">&#8617;</span></a>
       </div>
       <div class="site-naam">
-        <a href="/homescreen" id="site-naam"
-          >&lt;EHBLoanHub&gt;</a
-        >
+        <a href="/homescreen" id="site-naam">&lt;EHBLoanHub&gt;</a>
       </div>
     </header>
     <main id="main">
       <div class="profiel-informatie">
-        <img src="/Frontend/pictures/blank-profile-picture.webp" alt="profielfoto">
+        <img
+          src="/Frontend/pictures/blank-profile-picture.webp"
+          alt="profielfoto"
+        />
         <div>
           <h3>Voornaam Achternaam</h3>
           <h3>####.####@student.ehb.be</h3>
@@ -65,6 +61,52 @@
       <div id="school">© 2024 Erasmushogeschool Brussel</div>
       <div id="taal">Nederlands</div>
     </footer>
+
+    <div id="probleemModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('probleemModal')">&times;</span>
+        <div class="volledig-probleem-form">
+          <div>
+            <h1>Is het product beschadigd?</h1>
+          </div>
+          <form id="probleemForm">
+            <div class="radio-container">
+              <label for="schade1"><h2>JA</h2></label>
+              <input type="radio" name="schade" id="schade1">
+              <label for="schade2"><h2>NEE</h2></label>
+              <input type="radio" name="schade" id="schade2">
+              <br>
+            </div>
+            <div class="beschrijving">
+              <h2>Beschrijving probleem:</h2>
+              <textarea class="textarea-probleem" type="text" name="beschrijving" rows="8" cols="40"></textarea>
+              <br>
+              <button class="knop-probleem-versturen" type="submit">Verstuur</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div id="annulatieModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('annulatieModal')">&times;</span>
+        <div class="volledig-annulatie-form">
+          <div>
+            <h1>Ben je zeker dat je de reservatie wilt annuleren?</h1>
+          </div>
+          <form id="annulatieForm">
+            <label for="schade1"><h2>JA</h2></label>
+            <input type="radio" name="schade" id="schade1">
+            <label for="schade2"><h2>NEE</h2></label>
+            <input type="radio" name="schade" id="schade2">
+            <br>
+            <button class="knop-probleem-versturen" type="submit">Verstuur</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
     <script src="js/profiel-user.js"></script>
   </body>
 </html>
