@@ -66,7 +66,7 @@
             </p>
           </div>
           <div>
-            <a id="reserveren" href="/reservatie-van-producten">reserveren</a>
+            <a class="reserveren" href="/info" data-product-id="<%= product.Model_ID %>">reserveren</a>
           </div>
         </div>
         <% }); %>
@@ -91,6 +91,7 @@
   <script src="/js/user/zoekProduct.js"></script>
   <script src="/Frontend/public/js/filter.js"></script>
   <script src="/js/user/productenLijst.js"></script>
+  <script src="/js/user/productPopupScript.js"></script>
 </body>
 
 </html>

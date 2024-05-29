@@ -8,31 +8,40 @@ const mysqlPromise = require("mysql2/promise");
 const app = express();
 const env = require("dotenv").config().parsed;
 
-// Create a MySQL pool
-// const pool = mysql.createPool({
-//     host: 'localhost',
-//     user: 'root',
-//     password: 'test',
-//     database: 'project',
-//     waitForConnections: true,
-//     connectionLimit: 10,
-//     queueLimit: 0,
-// });
-const pool = mysql.createPool({
-  host: env.HOST,
-  user: env.USER,
-  password: env.PASSWORD,
-  database: env.DATABASE,
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0,
-});
 
-const poolPromise = mysqlPromise.createPool({
-  host: env.HOST,
-  user: env.USER,
-  password: env.PASSWORD,
-  database: env.DATABASE,
+const pool = mysql.createPool({
+    host: 'localhost',
+    user: 'root',
+    password: 'test',
+    database: 'project',
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0,
+});
+// const pool = mysql.createPool({
+//   host: env.HOST,
+//   user: env.USER,
+//   password: env.PASSWORD,
+//   database: env.DATABASE,
+//   waitForConnections: true,
+//   connectionLimit: 10,
+//   queueLimit: 0,
+// });
+
+// const poolPromise = mysqlPromise.createPool({
+//   host: env.HOST,
+//   user: env.USER,
+//   password: env.PASSWORD,
+//   database: env.DATABASE,
+//   waitForConnections: true,
+//   connectionLimit: 10,
+//   queueLimit: 0,
+// });
+const poolPromise = mysql.createPool({
+  host: 'localhost',
+  user: 'root',
+  password: 'test',
+  database: 'project',
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,
@@ -144,7 +153,6 @@ app.get("/productenvideo", (req, res) => {
 app.post("/addProduct", upload.single('productFoto'), (req, res) => {
   const { productName, productDescription, category,merk} = req.body;
   const productFoto = req.file.buffer;
-
   const query = "INSERT INTO PRODUCTMODEL (Naam,MERK,Beschrijving, Afbeelding, Cat_ID) VALUES (?, ?, ?, ?, ?)";
   pool.query(query, [productName,merk,productDescription, productFoto, category], (err, result) => {
     if (err) {
@@ -179,7 +187,6 @@ app.get('/homescreen', async (req, res) => {
     const variaSlider = await poolPromise.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [3]);
     const videoSlider = await poolPromise.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [4]);
     const xrSlider = await poolPromise.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [5]);
-    
     res.render("User-interface/homescreen", {
       audioSlider: audioSlider[0],
       belichtingSlider: belichtingSlider[0],
@@ -291,7 +298,6 @@ app.get("/profiel-user", (req, res) => {
     res.render("User-interface/profiel/profiel-user");
 });
 
-
 app.get("/audio-catalogus", (req, res) => {
   pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [1], (err, results) => {
     if (err) {
@@ -310,7 +316,7 @@ app.get("/belichting-catalogus", (req, res) => {
       res.status(500).send("Internal Server Error");
       return;
     }
-    res.render("User-interface/catalogus/belichting-catalogus", { products: results });
+    res.render("User-interface/catalogus/belichting-catalogus", { products:results });
   });
 });
 
