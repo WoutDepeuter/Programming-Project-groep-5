@@ -49,17 +49,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 popupBackground.style.display = 'none';
             }
         });
-
-        const deleteButton = document.createElement('button');
-        deleteButton.classList.add('delete-btn-filter');
-        deleteButton.textContent = 'Verwijder';
-        popupContent.appendChild(deleteButton);
-
-        deleteButton.addEventListener('click', function () {
-            createDeletePopup();
-            const deletePopupBackground = document.getElementById('deletePopupBackground');
-            deletePopupBackground.style.display = 'flex';
-        });
     }
 
     function createDeletePopup() {
