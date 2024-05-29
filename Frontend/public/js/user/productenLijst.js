@@ -8,13 +8,13 @@
       button.addEventListener('click', (e) => {
         e.preventDefault();
         const productId = button.getAttribute('data-product-id');
-        const productName = document.getElementById(`naam${productId}`).textContent;
+        
         const productDescription = button.closest('.box').querySelector('.naam-en-besch p').textContent;
 
         console.log(productId)
         productDetails.innerHTML = `
           <div class="popup-box">
-            <h2>${productName}</h2>
+         
             <p>${productDescription}</p>
           </div>
         `;
@@ -33,3 +33,23 @@
       }
     });
   });
+
+  function zoek(productId) {
+    fetch('/lijst', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ id: productId }),
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Error deleting product');
+      }
+      console.log('Product deleted successfully');
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  }
+  
