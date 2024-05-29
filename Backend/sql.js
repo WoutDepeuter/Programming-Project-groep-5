@@ -4,6 +4,7 @@ const path = require("path");
 const argon2 = require("argon2");
 const jwt = require("jsonwebtoken");
 const mysql = require("mysql2");
+const mysqlPromise = require("mysql2/promise");
 const app = express();
 const env = require("dotenv").config().parsed;
 
@@ -18,6 +19,16 @@ const env = require("dotenv").config().parsed;
 //     queueLimit: 0,
 // });
 const pool = mysql.createPool({
+  host: env.HOST,
+  user: env.USER,
+  password: env.PASSWORD,
+  database: env.DATABASE,
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0,
+});
+
+const poolPromise = mysqlPromise.createPool({
   host: env.HOST,
   user: env.USER,
   password: env.PASSWORD,
@@ -163,11 +174,11 @@ app.post("/deleteproduct", (req, res) => {
 
 app.get('/homescreen', async (req, res) => {
   try {
-    const audioSlider = await pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [1]);
-    const belichtingSlider = await pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [2]);
-    const variaSlider = await pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [3]);
-    const videoSlider = await pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [4]);
-    const xrSlider = await pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [5]);
+    const audioSlider = await poolPromise.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [1]);
+    const belichtingSlider = await poolPromise.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [2]);
+    const variaSlider = await poolPromise.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [3]);
+    const videoSlider = await poolPromise.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [4]);
+    const xrSlider = await poolPromise.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [5]);
     
     res.render("User-interface/homescreen", {
       audioSlider: audioSlider[0],
