@@ -8,7 +8,7 @@ const mysqlPromise = require("mysql2/promise");
 const app = express();
 const env = require("dotenv").config().parsed;
 
-
+ //sql lokaal 
 const pool = mysql.createPool({
     host: 'localhost',
     user: 'root',
@@ -18,15 +18,18 @@ const pool = mysql.createPool({
     connectionLimit: 10,
     queueLimit: 0,
 });
-// const pool = mysql.createPool({
-//   host: env.HOST,
-//   user: env.USER,
-//   password: env.PASSWORD,
-//   database: env.DATABASE,
-//   waitForConnections: true,
-//   connectionLimit: 10,
-//   queueLimit: 0,
-// });
+const poolPromise = mysqlPromise.createPool({
+  host: 'localhost',
+  user: 'root',
+  password: 'test',
+  database: 'project',
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0,
+});
+
+//_______________________________________________________
+//sql schooldb
 
 // const poolPromise = mysqlPromise.createPool({
 //   host: env.HOST,
@@ -38,15 +41,18 @@ const pool = mysql.createPool({
 //   queueLimit: 0,
 // });
 
-const poolPromise = mysqlPromise.createPool({
-  host: 'localhost',
-  user: 'root',
-  password: 'test',
-  database: 'project',
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0,
-});
+// const pool = mysql.createPool({
+//   host: env.HOST,
+//   user: env.USER,
+//   password: env.PASSWORD,
+//   database: env.DATABASE,
+//   waitForConnections: true,
+//   connectionLimit: 10,
+//   queueLimit: 0,
+// });
+
+
+
 
 // Set EJS as the view engine
 app.set("view engine", "ejs");

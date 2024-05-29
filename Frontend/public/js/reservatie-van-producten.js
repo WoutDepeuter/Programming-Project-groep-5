@@ -4,7 +4,7 @@ document.getElementById('reserveren').addEventListener("click", popUpReservatie)
 function popUpReservatie(event){
     event.preventDefault();
     let van = document.getElementById('van-tijd').value;
-    let tot = document.getElementById('tot-tijd').value;
+    let tot = document.getElementById('tot-tijd').value + 7;
     let antwoord = "";
     let vanDatum = van.split('-');
     let vandaag = new Date();
