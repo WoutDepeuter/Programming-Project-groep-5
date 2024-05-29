@@ -464,12 +464,12 @@ footer {
   cursor: pointer;
 }
 
-.yes-btn-verwijderen {
+.yes-btn-verwijderen:hover {
   background-color: #d9534f; 
   color: white;
 }
 
-.no-btn-verwijderen {
+.no-btn-verwijderen:hover {
   background-color: #5bc0de; 
   color: white;
 }

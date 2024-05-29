@@ -27,10 +27,13 @@
     <main id="main">
       <div class="container">
         <div class="foto-en-knop-reservatie">
-          <img
-            src="/Frontend/pictures/Afbeelding-microfoon.jpg"
-            alt="foto-product"
-          />
+          <% if (product.afbeelding) { %>
+            <% const imageUrl = `data:image/png;base64,${product.afbeelding.toString('base64')}`; %>
+            <img src="<%= imageUrl %>" alt="Product Image" />
+          <% } else { %>
+            <p>No image available</p>
+          <% } %>
+          <h1><%product.product_ID%></h1>
           <br>
           <a
             href="#"
@@ -39,7 +42,7 @@
           >
         </div>
         <div class="tijd-en-beschikbaarheid">
-          <h2>Titel</h2>
+          <h2><%= product.MERK %>: <%= product.naam %></h2>
           <div class="datum-forms-uitlening">
             <form>
               <label for="van-tijd">Van:</label>
