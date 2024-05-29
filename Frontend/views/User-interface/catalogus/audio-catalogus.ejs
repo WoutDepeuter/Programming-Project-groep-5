@@ -46,23 +46,27 @@
 
   <main>
     <div id="alleProducten">
-      <% products.forEach((product, index) => { %>
+      <% products.forEach((product, index)=> { %>
         <div class="box">
           <% if (product.afbeelding) { %>
-            <% const imageUrl = `data:image/png;base64,${product.afbeelding.toString('base64')}`; %>
-            <img src="<%= imageUrl %>" alt="Product Image" />
-          <% } else { %>
-            <p>No image available</p>
-          <% } %>
-          <div class="naam-en-besch">
-            <h2 id="naam<%= index %>"><%= product.MERK %>: <%= product.naam %></h2>
-            <p><%= product.Beschrijving %></p>
-          </div>
-          <div>
-            <a class="reserveren" href="/info"data-product-id="<%= index %>">reserveren</a>
-          </div>
+            <% const imageUrl=`data:image/png;base64,${product.afbeelding.toString('base64')}`; %>
+              <img src="<%= imageUrl %>" alt="Product Image" />
+              <% } else { %>
+                <p>No image available</p>
+                <% } %>
+                  <div class="naam-en-besch">
+                    <h2 id="naam<%= index %>">
+                      <%= product.MERK %>: <%= product.naam %>
+                    </h2>
+                    <p>
+                      <%= product.Beschrijving %>
+                    </p>
+                  </div>
+                  <div>
+                    <a class="reserveren" href="/info" data-product-id="<%= index %>">reserveren</a>
+                  </div>
         </div>
-      <% }); %>
+        <% }); %>
     </div>
     <div id="bericht"></div>
   </main>
@@ -78,6 +82,9 @@
       <button id="closePopup" class="close-btn">Close</button>
     </div>
   </div>
+
+  <a class="scroll-to-top-btn"><img src="/pictures/arrow-up.png" alt=""></a>
+
 
   <script src="/js/user/zoekProduct.js"></script>
   <script src="/Frontend/public/js/filter.js"></script>
