@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Popup verbergen wanneer op de achtergrond wordt geklikt
     popupBackground.addEventListener('click', (event) => {
         if (event.target === popupBackground) {
             popupBackground.style.display = 'none';
@@ -24,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Functie om de popup te maken
 function createDelPopup() {
     if (document.getElementById('popupBackground')) {
         return {
