@@ -37,7 +37,8 @@ const pool = mysql.createPool({
 //   connectionLimit: 10,
 //   queueLimit: 0,
 // });
-const poolPromise = mysql.createPool({
+
+const poolPromise = mysqlPromise.createPool({
   host: 'localhost',
   user: 'root',
   password: 'test',
@@ -209,31 +210,26 @@ app.get("/login", (req, res) => {
 });
 
 app.post("/login", async (req, res) => {
-    const { email, password } = req.body;
-    try {
-        const connection = await mysql.createConnection(dbConfig);
-        const [rows] = await connection.execute(
-            "SELECT * FROM users WHERE email = ?",
-            [email]
-        );
-        await connection.end();
-        if (rows.length > 0) {
-            const user = rows[0];
-            if (await argon2.verify(email.password, password)) {
-                const token = jwt.sign({ username }, JWT_SECRET, {
-                    expiresIn: "1h",
-                });
-                res.json({ token });
-            } else {
-                res.status(401).send("Invalid credentials");
-            }
-        } else {
-            res.status(401).send("Invalid credentials");
-        }
-    } catch (err) {
-        console.error("Error during login:", err);
-        res.status(500).send("Error during login");
+  const { email, password } = req.body;
+  try {
+    const [rows] = await poolPromise.query("SELECT * FROM users WHERE email = ?", [email]);
+    if (rows.length > 0) {
+      const user = rows[0];
+      if (await argon2.verify(user.password, password)) {
+        const token = jwt.sign({ username: user.username }, process.env.JWT_SECRET, {
+          expiresIn: "1h",
+        });
+        res.json({ token });
+      } else {
+        res.status(401).send("Invalid credentials");
+      }
+    } else {
+      res.status(401).send("Invalid credentials");
     }
+  } catch (err) {
+    console.error("Error during login:", err);
+    res.status(500).send("Error during login");
+  }
 });
 
 app.get("/signUp", (req, res) => {
@@ -241,10 +237,11 @@ app.get("/signUp", (req, res) => {
 });
 
 app.post('/signUp', async (req, res) => {
-  const { username, password, email } = req.body;
+  const { password, email } = req.body;
+  const username = email.split('@')[0]; // Extracting username from email
   try {
     const hashedPassword = await argon2.hash(password);
-    await pool.query('INSERT INTO users(email,password) VALUES (?,?)', [email, hashedPassword]);
+    await poolPromise.query('INSERT INTO users (username, email, password) VALUES (?, ?, ?)', [username, email, hashedPassword]);
     res.status(201).send('User registered');
   } catch (err) {
     console.error('Error registering user:', err);
