@@ -387,7 +387,7 @@ app.get("/user-info", async (req, res) => {
   const token = authHeader.split(' ')[1];
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    const [rows] = await poolPromise.query("SELECT * FROM users WHERE username = ?", [decoded.username]);
+    const [rows] = await poolPromise.query("SELECT * FROM USER WHERE username = ?", [decoded.username]);
     if (rows.length > 0) {
       const user = rows[0];
       return res.json({ username: user.username, email: user.email });
