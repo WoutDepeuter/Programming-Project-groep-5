@@ -11,31 +11,38 @@
 
 .uitgeleend {
   flex: 1;
-  background-color: #ffc107;
+  background-color: rgba(255, 193, 7, 0.5); 
   padding: 20px;  
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
+}
+.uitgeleend:hover {
+  background-color: rgba(255, 193, 7, 0.7);
 }
 
 .te-laat {
   flex: 1;
-  background-color: #dc3545;
+  background-color: rgba(220, 53, 69, 0.5);
   padding: 20px;  
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
-
+}
+.te-laat:hover {
+  background-color: rgba(220, 53, 69, 0.7);
 }
 
 .aantal-producten {
   flex: 1;
-  background-color: #007bff;
+  background-color: rgba(0, 123, 255, 0.5); 
   padding: 20px;  
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
-
+}
+.aantal-producten:hover {
+  background-color: rgba(0, 123, 255, 0.7);
 }
 
 html {
