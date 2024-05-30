@@ -221,18 +221,13 @@ app.post("/login", async (req, res) => {
           expiresIn: "1h",
         });
         res.json({ token });
-
         return;
       } else {
         res.status(401).send("Invalid credentials");
-
-   
         return;
       }
     } else {
       res.status(401).send("Invalid credentials");
-
-    
       return;
     }
   } catch (err) {
@@ -240,6 +235,7 @@ app.post("/login", async (req, res) => {
     res.status(500).send("Error during login");
   }
 });
+
 
 app.get("/signUp", (req, res) => {
     res.render("User-interface/Login/signUp");
@@ -257,7 +253,6 @@ app.post('/signUp', async (req, res) => {
     res.status(500).send('Error registering user');
   }
 });
-
 
 app.get("/reservatie-van-producten/:id", async (req, res) => {
   const productId = req.params.id;
@@ -302,7 +297,7 @@ app.get("/getproducteninfo/:id", async (req, res) => {
 
 
 app.post("/reservatie-van-producten/:id", async (req, res) => {
-  const ProductId = req.params.id;
+  const product_ID  = req.params.id;
   const { van, tot } = req.body;
   const authHeader = req.headers.authorization;
   if (!authHeader) {
@@ -317,7 +312,7 @@ app.post("/reservatie-van-producten/:id", async (req, res) => {
     }
     const userId = user[0].user_ID;
     console.log("User ID:", userId);
-    await poolPromise.query("INSERT INTO RESERVATIE (user_ID, Product_ID, begin_datum, eind_datum) VALUES (?, ?, ?, ?)", [userId, ProductId, van, tot]);
+    await poolPromise.query("INSERT INTO RESERVATIE (user_ID, product_ID , begin_datum, eind_datum) VALUES (?, ?, ?, ?)", [userId, product_ID , van, tot]);
     return res.status(201).json({ message: "Product reserved" });
   } catch (err) {
     console.error("Error reserving product:", err);
@@ -326,8 +321,9 @@ app.post("/reservatie-van-producten/:id", async (req, res) => {
 });
 
 app.get("/profiel-user", (req, res) => {
+ 
   pool.query(`
-    SELECT r.reservatie_ID, r.product_ID, DATE_FORMAT(r.eind_datum, '%d-%m-%Y') AS formatted_eind_datum, p.Model_ID, pm.naam AS product_name
+    SELECT r.reservatie_ID, r.product_ID, r.eind_datum, p.Model_ID, pm.naam AS product_name
     FROM RESERVATIE r
     JOIN PRODUCT p ON r.product_ID = p.product_ID
     JOIN PRODUCTMODEL pm ON p.Model_ID = pm.Model_ID
@@ -342,7 +338,6 @@ app.get("/profiel-user", (req, res) => {
     res.render("User-interface/profiel/profiel-user", { reservations: results }); 
   });
 });
-
 
 app.get("/audio-catalogus", (req, res) => {
   pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [1], (err, results) => {

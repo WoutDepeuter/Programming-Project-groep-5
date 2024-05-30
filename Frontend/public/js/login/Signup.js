@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(response => {
             if (response.ok) {
-                // Handle successful signup
+                window.location.href = '/login'; // Adjust the URL to your home screen route
             } else {
                 // Handle failed signup
             }
