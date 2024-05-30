@@ -281,7 +281,6 @@ app.get("/getproducteninfo/:id", async (req, res) => {
       res.status(404).json({ error: "Product not found" });
       return;
     }
-
     // Fetch all products with the same model_ID
     const [relatedProducts] = await poolPromise.query(
       "SELECT * FROM PRODUCT WHERE Model_ID = ?",
@@ -297,8 +296,8 @@ app.get("/getproducteninfo/:id", async (req, res) => {
 
 
 app.post("/reservatie-van-producten/:id", async (req, res) => {
-  const product_ID  = req.params.id;
-  const { van, tot } = req.body;
+  
+  const {product_ID,van, tot } = req.body;
   const authHeader = req.headers.authorization;
   if (!authHeader) {
     return res.status(401).json({ error: "No token provided" });
