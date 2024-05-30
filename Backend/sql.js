@@ -250,8 +250,9 @@ app.get("/signUp", (req, res) => {
 });
 
 app.post('/signUp', async (req, res) => {
-  const { password, email } = req.body;
-  const username = email.split('@')[0];
+  try {
+    const { password, email } = req.body;
+    const username = email.split('@')[0];
     const hashedPassword = await argon2.hash(password);
     await poolPromise.query('INSERT INTO USER (username, email, password) VALUES (?, ?, ?)', [username, email, hashedPassword]);
     res.status(201).send('User registered');
@@ -260,6 +261,7 @@ app.post('/signUp', async (req, res) => {
     res.status(500).send('Error registering user');
   }
 });
+
 
 app.get("/reservatie-van-producten/:id", async (req, res) => {
   const productId = req.params.id;
@@ -328,9 +330,8 @@ app.post("/reservatie-van-producten/:id", async (req, res) => {
 });
 
 app.get("/profiel-user", (req, res) => {
- 
   pool.query(`
-    SELECT r.reservatie_ID, r.product_ID, r.eind_datum, p.Model_ID, pm.naam AS product_name
+    SELECT r.reservatie_ID, r.product_ID, DATE_FORMAT(r.eind_datum, '%d-%m-%Y') AS formatted_eind_datum, p.Model_ID, pm.naam AS product_name
     FROM RESERVATIE r
     JOIN PRODUCT p ON r.product_ID = p.product_ID
     JOIN PRODUCTMODEL pm ON p.Model_ID = pm.Model_ID
@@ -345,6 +346,7 @@ app.get("/profiel-user", (req, res) => {
     res.render("User-interface/profiel/profiel-user", { reservations: results }); 
   });
 });
+
 
 app.get("/audio-catalogus", (req, res) => {
   pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [1], (err, results) => {
