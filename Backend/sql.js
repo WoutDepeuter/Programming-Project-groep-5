@@ -18,45 +18,9 @@ const env = require("dotenv").config().parsed;
 //     connectionLimit: 10,
 //     queueLimit: 0,
 // });
-const pool = mysql.createPool({
-  host: env.HOST,
-  user: env.USER,
-  password: env.PASSWORD,
-  database: env.DATABASE,
->>>>>>> Stashed changes
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0,
-});
-<<<<<<< Updated upstream
 
 //_______________________________________________________
 //sql schooldb
-
-// const poolPromise = mysqlPromise.createPool({
-//   host: env.HOST, 
-//   user: env.USER,
-//   password: env.PASSWORD,
-//   database: env.DATABASE,
-//   waitForConnections: true,
-//   connectionLimit: 10,
-//   queueLimit: 0,
-// });
-
-// const pool = mysql.createPool({
-//   host: env.HOST,
-//   user: env.USER,
-//   password: env.PASSWORD,
-//   database: env.DATABASE,
-//   waitForConnections: true,
-//   connectionLimit: 10,
-//   queueLimit: 0,
-// });
-
-
-
-=======
->>>>>>> Stashed changes
 
 const poolPromise = mysqlPromise.createPool({
   host: env.HOST, 
@@ -278,17 +242,19 @@ app.get("/signUp", (req, res) => {
     res.render("User-interface/Login/signUp");
 });
 
-app.post('/signUp', async (req, res) => {
-  const { password, email } = req.body;
-  const username = email.split('@')[0];
+try {
+  app.post('/signUp', async (req, res) => {
+    const { password, email } = req.body;
+    const username = email.split('@')[0];
     const hashedPassword = await argon2.hash(password);
     await poolPromise.query('INSERT INTO USER (username, email, password) VALUES (?, ?, ?)', [username, email, hashedPassword]);
     res.status(201).send('User registered');
-  } catch (err) {
-    console.error('Error registering user:', err);
-    res.status(500).send('Error registering user');
-  }
-});
+  });
+} catch (err) {
+  console.error('Error registering user:', err);
+  res.status(500).send('Error registering user');
+}
+
 
 app.get("/reservatie-van-producten/:id", async (req, res) => {
   const productId = req.params.id;
@@ -340,7 +306,7 @@ app.post("/reservatie-van-producten/:id", async (req, res) => {
   const token = authHeader.split(' ')[1];
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    const [user] = await poolPromise.query("SELECT * FROM users WHERE username = ?", [decoded.username]);
+    const [user] = await poolPromise.query("SELECT * FROM USER WHERE username = ?", [decoded.username]);
     if (user.length === 0) {
       return res.status(404).json({ error: "User not found" });
     }
