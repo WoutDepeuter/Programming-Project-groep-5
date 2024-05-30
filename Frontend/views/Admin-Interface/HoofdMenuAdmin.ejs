@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <link href="../pictures/EHB_site_logo-removebg-preview.png" rel="icon"/>
+    <title>&lt;EHBLoanHub&gt;</title>
+    <link rel="stylesheet" href="css/styleadmin"/>
+  </head>
+
+  <body>
+    <!-- Begin header -->
+    <header class="adminhead">
+      <div class="zoekbalk">
+        <input id="zoekbalkNaam" type="text" placeholder="Persoon zoeken..." />
+        <input id="zoekbalkID" type="number" placeholder="ID zoeken..." />
+      </div>
+      <div class="site-naam">
+        <a href="/Frontend/Admin-Interface/HoofdMenuAdmin.html" id="site-naam">&lt;EHBLoanHub&gt;</a>
+      </div>
+      <div class="producten">
+        <a href="/video">Producten</a>
+      </div>
+    </header>
+    <!-- Einde header -->
+
+    <!-- Begin body/main -->
+    <div class="container">
+      <div class="ontvangen">
+        <h1 id="vandaag-te-ontvangen">Vandaag te ontvangen:</h1>
+
+        <!-- Template: wijzigen met JavaScript (innerText/innerHTML) -->
+        <div class="klantinfo">
+          <div id="profielHoek">
+            <img src="../pictures/blank-profile-picture.webp" alt="profile" />
+          <h3 id="naam">Tom De Ridder</h3>
+          </div>
+          
+          <div class="product">
+            <img
+              src="../pictures/camera-picture-lumix.jpg"
+              alt="lumix-camera"
+            />
+            <h5>Lumix Z100</h5>
+            <p>
+              Extra's/accessoires: 
+              <br>
+              - ...
+            </p>
+            <div class="buttonsAdmin">
+              <button class="bevestig-knop" id="bevestig-knop0">✓</button>
+              <button class="annuleer-knop" id="annuleer-knop0">x</button>
+            </div>
+          </div>
+        </div>
+        <!-- Einde template -->
+      </div>
+
+      <div class="uitlenen">
+        <h1 id="vandaag-uit-te-lenen">Vandaag uit te lenen</h1>
+
+        <!-- Template: wijzigen met JavaScript (innerText/innerHTML) -->
+        <div class="klantinfo">
+          <div id="profielHoek">
+            <img src="../pictures/blank-profile-picture.webp" alt="profile" />
+          <h3 id="klantnaam">Henk Jansen</h3>
+          </div>
+          
+          <div class="product">
+            <img id="product-image"
+              src="../pictures/camera-picture-lumix.jpg"
+              alt="camera-lumix"
+            />
+            <h5 id="product-naam">Lumix Z100</h5>
+            <p>
+              Extra's/accessoires: 
+              <br>
+              <h1 class ="product-id"></h1>
+            </p>
+            <div class="buttonsAdmin">
+              <button class="bevestig-knop" id="bevestig-knop1">✓</button>
+              <button class="annuleer-knop" id="annuleer-knop0">x</button>
+            </div>
+          </div>
+        </div>
+        <!-- Einde template -->
+      </div>
+      <div id="popupOverlay" class="overlay">
+      <div class="popup">
+        <div id="popupContent">
+          <!-- hier word de popup geplaatst -->
+        </div>
+      </div>
+    </div>
+    </div>
+    
+    <!-- Einde body/main -->
+
+    <!-- Begin footer -->
+    <footer>
+      <div id="school-tekst-footer">© 2024 Erasmushogeschool Brussel</div>
+      <div id="taal-tekst-footer">Nederlands</div>
+    </footer>
+    <!-- Einde footer -->
+    <!-- <script src="/Backend/admin/productIndienen.js"></script> -->
+    <script src="/Backend/admin/return.js"></script>
+  </body>
+  
+</html>
