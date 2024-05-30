@@ -172,6 +172,9 @@ header {
   width: 50%;
 }
 
+.ontvangen, .uitlenen {
+  border-top: #222831 solid 3px;
+}
 .klantinfo {
   display: flex;
   align-items: center;
