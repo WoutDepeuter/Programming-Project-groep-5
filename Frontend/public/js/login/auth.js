@@ -48,7 +48,7 @@ function showUserInfo(userInfo) {
 }
 
 function redirectToLogin() {
-    window.location.href = '/login.html'; // Adjust the login page URL as needed
+    window.location.href = '/login'; // Adjust the login page URL as needed
 }
 
 // Check if logged in when the page loads

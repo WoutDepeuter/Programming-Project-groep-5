@@ -18,15 +18,6 @@ const env = require("dotenv").config().parsed;
 //     connectionLimit: 10,
 //     queueLimit: 0,
 // });
-// const poolPromise = mysqlPromise.createPool({
-//   host: 'localhost',
-//   user: 'root',
-//   password: 'test',
-//   database: 'project',
-//   waitForConnections: true,
-//   connectionLimit: 10,
-//   queueLimit: 0,
-// });
 
 //_______________________________________________________
 //sql schooldb
@@ -54,25 +45,6 @@ const pool = mysql.createPool({
 
 
 
-// const poolPromise = mysqlPromise.createPool({
-//   host: env.HOST, 
-//   user: env.USER,
-//   password: env.PASSWORD,
-//   database: env.DATABASE,
-//   waitForConnections: true,
-//   connectionLimit: 10,
-//   queueLimit: 0,
-// });
-
-// const poolPromise = mysqlPromise.createPool({
-//   host: 'localhost',
-//   user: 'root',
-//   password: 'test',
-//   database: 'project',
-//   waitForConnections: true,
-//   connectionLimit: 10,
-//   queueLimit: 0,
-// });
 
 // Set EJS as the view engine
 app.set("view engine", "ejs");
@@ -238,7 +210,7 @@ app.get("/login", (req, res) => {
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
   try {
-    const [rows] = await poolPromise.query("SELECT * FROM users WHERE email = ?", [email]);
+    const [rows] = await poolPromise.query("SELECT * FROM USER WHERE email = ?", [email]);
     if (rows.length > 0) {
       const user = rows[0];
       if (await argon2.verify(user.password, password)) {
@@ -246,16 +218,19 @@ app.post("/login", async (req, res) => {
           expiresIn: "1h",
         });
         res.json({ token });
-        if (user.admin) {
-          res.redirect("/HoofdMenuAdmin");
-        } else {  
-          res.redirect("/homescreen");
-        }
+
+        return;
       } else {
         res.status(401).send("Invalid credentials");
+
+   
+        return;
       }
     } else {
       res.status(401).send("Invalid credentials");
+
+    
+      return;
     }
   } catch (err) {
     console.error("Error during login:", err);
@@ -267,17 +242,19 @@ app.get("/signUp", (req, res) => {
     res.render("User-interface/Login/signUp");
 });
 
-app.post('/signUp', async (req, res) => {
-  const { password, email } = req.body;
-  const username = email.split('@')[0];
+try {
+  app.post('/signUp', async (req, res) => {
+    const { password, email } = req.body;
+    const username = email.split('@')[0];
     const hashedPassword = await argon2.hash(password);
-    await poolPromise.query('INSERT INTO users (username, email, password) VALUES (?, ?, ?)', [username, email, hashedPassword]);
+    await poolPromise.query('INSERT INTO USER (username, email, password) VALUES (?, ?, ?)', [username, email, hashedPassword]);
     res.status(201).send('User registered');
-  } catch (err) {
-    console.error('Error registering user:', err);
-    res.status(500).send('Error registering user');
-  }
-});
+  });
+} catch (err) {
+  console.error('Error registering user:', err);
+  res.status(500).send('Error registering user');
+}
+
 
 app.get("/reservatie-van-producten/:id", async (req, res) => {
   const productId = req.params.id;
@@ -307,11 +284,11 @@ app.get("/getproducteninfo/:id", async (req, res) => {
       return;
     }
 
+    // Fetch all products with the same model_ID
     const [relatedProducts] = await poolPromise.query(
       "SELECT * FROM PRODUCT WHERE Model_ID = ?",
       [productInfo[0].Model_ID]
     );
-
     res.json({ product: productInfo[0], relatedProducts: relatedProducts });
   } catch (err) {
     console.error("Error fetching product information:", err);
@@ -319,6 +296,29 @@ app.get("/getproducteninfo/:id", async (req, res) => {
   }
 });
 
+app.post("/reservatie-van-producten/:id", async (req, res) => {
+  const ProductId = req.params.id;
+  const { van, tot } = req.body;
+  const authHeader = req.headers.authorization;
+  if (!authHeader) {
+    return res.status(401).json({ error: "No token provided" });
+  }
+  const token = authHeader.split(' ')[1];
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const [user] = await poolPromise.query("SELECT * FROM USER WHERE username = ?", [decoded.username]);
+    if (user.length === 0) {
+      return res.status(404).json({ error: "User not found" });
+    }
+    const userId = user[0].user_ID;
+    console.log("User ID:", userId);
+    await poolPromise.query("INSERT INTO RESERVATIE (user_ID, Product_ID, begin_datum, eind_datum) VALUES (?, ?, ?, ?)", [userId, ProductId, van, tot]);
+    return res.status(201).json({ message: "Product reserved" });
+  } catch (err) {
+    console.error("Error reserving product:", err);
+    return res.status(500).json({ error: "Error reserving product" });
+  }
+});
 
 app.get("/profiel-user", (req, res) => {
     res.render("User-interface/profiel/profiel-user");
@@ -367,6 +367,7 @@ app.get("/video-catalogus", (req, res) => {
     res.render("User-interface/catalogus/video-catalogus", { products: results });
   });
 });
+
 app.get("/xr-catalogus", (req, res) => {
   pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [(5)], (err, results) => {
     if (err) {
@@ -389,13 +390,13 @@ app.get("/user-info", async (req, res) => {
     const [rows] = await poolPromise.query("SELECT * FROM users WHERE username = ?", [decoded.username]);
     if (rows.length > 0) {
       const user = rows[0];
-      res.json({ username: user.username, email: user.email });
+      return res.json({ username: user.username, email: user.email });
     } else {
-      res.status(404).send("User not found");
+      return res.status(404).send("User not found");
     }
   } catch (err) {
     console.error("Error fetching user info:", err);
-    res.status(500).send("Error fetching user info");
+    return res.status(500).send("Error fetching user info");
   }
 });
 
