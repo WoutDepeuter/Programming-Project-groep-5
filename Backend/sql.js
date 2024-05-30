@@ -107,10 +107,6 @@ app.get("/producten", (req, res) => {
 
 
 
-
-
-
-
 app.get("/productenbelichting", (req, res) => {
   pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK", [2], (err, results) => {
     if (err) {
