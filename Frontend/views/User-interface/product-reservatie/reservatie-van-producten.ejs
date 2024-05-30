@@ -1,72 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="/pictures/other/EHB LOGO.png" />
-    <title>&lt;EHBLoanHub&gt;</title>
-    <link
-      rel="stylesheet"
-      href="/css/reservatie-van-producten.css"
-    />
-  </head>
-
-  <body>
-    <header>
-      <div>
-        <span class="icon">&#9776;</span>
-        <span class="icon">&#8617;</span>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/pictures/other/EHB LOGO.png" />
+  <title>&lt;EHBLoanHub&gt;</title>
+  <link rel="stylesheet" href="/css/reservatie-van-producten.css" />
+</head>
+<body>
+  <header>
+    <div>
+      <span class="icon">&#9776;</span>
+      <span class="icon">&#8617;</span>
+    </div>
+    <div class="site-naam">
+      <a href="/homescreen" id="site-naam">&lt;EHBLoanHub&gt;</a>
+    </div>
+    <div></div>
+  </header>
+  <main id="main">
+    <div class="container">
+      <div class="foto-en-knop-reservatie">
+        <% if (product.afbeelding) { %>
+          <% const imageUrl = `data:image/png;base64,${product.afbeelding.toString('base64')}`; %>
+          <img src="<%= imageUrl %>" alt="Product Image" />
+        <% } else { %>
+          <p>No image available</p>
+        <% } %>
+        <h1><%= product.product_ID %></h1>
+        <br>
+        <a href="#" id="reserveren">Reserveren</a>
       </div>
-      <div class="site-naam">
-        <a href="/homescreen" id="site-naam"
-          >&lt;EHBLoanHub&gt;</a
-        >
-      </div>
-      <div></div>
-    </header>
-    <main id="main">
-      <div class="container">
-        <div class="foto-en-knop-reservatie">
-          <% if (product.afbeelding) { %>
-            <% const imageUrl = `data:image/png;base64,${product.afbeelding.toString('base64')}`; %>
-            <img src="<%= imageUrl %>" alt="Product Image" />
-          <% } else { %>
-            <p>No image available</p>
-          <% } %>
-          <h1><%product.product_ID%></h1>
-          <br>
-          <a
-            href="#"
-            id="reserveren"
-            >Reserveren</a
-          >
+      <div class="tijd-en-beschikbaarheid">
+        <h2><%= product.MERK %>: <%= product.naam %></h2>
+        <div class="datum-forms-uitlening">
+          <form id="reservatie-form">
+            <label for="van-tijd">Van:</label>
+            <input id="van-tijd" type="date" required>
+            <label for="tot-tijd">Tot:</label>
+            <input id="tot-tijd" type="date" required>
+            <button type="submit">Reserveren</button>
+          </form>
         </div>
-        <div class="tijd-en-beschikbaarheid">
-          <h2><%= product.MERK %>: <%= product.naam %></h2>
-          <div class="datum-forms-uitlening">
-            <form>
-              <label for="van-tijd">Van:</label>
-              <input id="van-tijd" type="date" required>
-              <label for="tot-tijd">Tot:</label>
-              <input id="tot-tijd" type="date" required>
-            </form>
-          </div>
-          <div class="melding-uitleentermijn">
-            <p>Uitleentermijn voor <span>studenten</span>: <span class="uitleentermijn">1 week</span></p>
-          </div>
-          <br>
-          <p>Nog <span class="aantal-beschikbaar">3</span> beschikbaar</p>
+        <div class="melding-uitleentermijn">
+          <p>Uitleentermijn voor <span>studenten</span>: <span class="uitleentermijn">1 week</span></p>
         </div>
+        <br>
+        <p>Nog <span class="aantal-beschikbaar">3</span> beschikbaar</p>
       </div>
-      <br>
+    </div>
+    <br>
+    <hr>
+    <div id="pop-up-gebruikersvoorwaarden"></div>
+    <h1>Beschrijving:</h1>
+    <div class="beschrijving">
+      <h4><%= product.Beschrijving %></h4>
       <hr>
-      <div id="pop-up-gebruikersvoorwaarden"></div>  
-      <h1>Beschrijving:</h1>
-      <div class="beschrijving">
-        <h4>
-          <%= product.Beschrijving %>
-        </h4>
-        <hr>
       <h1>Extra's:</h1>
       <div class="alle-extra-producten">
         <div class="extra-product">
@@ -80,16 +69,13 @@
           </div>
         </div>
       </div>
-    
-
-
-      </div>
-      <br>
-    </main>
-    <footer>
-      <div id="school">© 2024 Erasmushogeschool Brussel</div>
-      <div id="taal">Nederlands</div>
-    </footer>
-    <script src="/js/user/reservatie-van-producten.js"></script>
-  </body>
+    </div>
+    <br>
+  </main>
+  <footer>
+    <div id="school">© 2024 Erasmushogeschool Brussel</div>
+    <div id="taal">Nederlands</div>
+  </footer>
+  <script src="/js/reservatie-van-producten.js"></script>
+</body>
 </html>
