@@ -23,14 +23,12 @@
     <main id="main">
       <div class="bezit-en-ophalen">
         <div class="in-bezit">
-          <h2>Momenteel in bezit:</h2>
-          <div class="in-bezit">
-            <h2>Momenteel in bezit:</h2>
+          <h2>Momenteel in bezit:</h2>  
             <% reservations.forEach(r => { %>
               <div class="product-in-bezit">
-                <h4><%= r.product_name %></h4>
+                <h4>Product: <%= r.product_name %></h4>
                 <h4>ID: <%= r.product_ID %></h4>
-                <h4>Inleverdatum: <%= r.eind_datum %></h4>
+                <h4>Inleverdatum: <%= r.formatted_eind_datum %></h4>
                 <div>
                   <h4><a id="probleem-bezitting" href="#">Probleem?</a></h4>
                   <h4><a href="/Frontend/User-interface/Verlenging.html">Verlengen?</a></h4>
