@@ -32,18 +32,7 @@
       <li><a href="/xr-catalogus">XR</a></li>
       <li><button type="button" id="filter">Filter: <span>&#9660;</span></button></li>
     </ul>
-    <div class="popup-background" id="popupBackground">
-      <div class="popup-content" id="popupContent">
-        <h2>Selecteer Filters</h2>
-        <div class="checkbox-list">
-          <label><input type="checkbox" name="type" value="type1"> Type 1</label>
-        </div>
-        <button class="close-btn" id="closeButton">Sluiten</button>
-      </div>
-    </div>
-  </nav>
-  <hr />
-
+  <hr>
   <main>
     <div id="alleProducten">
       <% products.forEach((product, index)=> { %>
@@ -83,11 +72,19 @@
     </div>
   </div>
 
+  <div id="merkPopup" class="popup-background" style="display: none;">
+    <div class="popup-content">
+      <h2>Kies een Merk</h2>
+      <div id="merkenLijst"></div>
+      <button id="closeMerkPopup" class="close-btn">Sluiten</button>
+    </div>
+  </div>
+
   <a class="scroll-to-top-btn"><img src="/pictures/arrow-up.png" alt=""></a>
 
 
   <script src="/js/user/zoekProduct.js"></script>
-  <script src="/Frontend/public/js/filter.js"></script>
+  <script src="/js/user/filter.js"></script>
   <script src="/js/user/productenLijst.js"></script>
   <script src="/js/user/productPopupScript.js"></script>
 
