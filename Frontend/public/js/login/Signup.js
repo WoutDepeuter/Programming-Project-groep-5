@@ -5,6 +5,16 @@ document.addEventListener('DOMContentLoaded', function() {
         const password = document.getElementById('password').value;
         const confirmPassword = document.getElementById('confirmpassword').value;
 
+        // Checken of email eindigt op @student.ehb.be
+        function isGeldigStudentEmail(email) {
+            const emailValidatie = /^[a-zA-Z0-9._%+-]+@student\.ehb\.be$/;
+            return emailValidatie.test(email);
+        }
+
+        if(isGeldigStudentEmail(email) !== true){
+            alert("De email die je hebt ingegeven is geen geldig student email");
+        }
+
         if (password !== confirmPassword) {
             alert("Passwords do not match");
             return;
