@@ -1,5 +1,33 @@
 console.log('Login page loaded');
 
+document.addEventListener('DOMContentLoaded', () => {
+    checkIfAlreadyLoggedIn();
+});
+
+async function checkIfAlreadyLoggedIn() {
+    const token = localStorage.getItem('token');
+    if (token) {
+        try {
+            const userInfoResponse = await fetch('/user-info', {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            if (userInfoResponse.ok) {
+                const userInfo = await userInfoResponse.json();
+                showLoggedInMessage(userInfo.username);
+                showUserInfo(userInfo);
+                console.log('Already logged in');
+            } else {
+                console.error('Failed to fetch user info');
+                localStorage.removeItem('token'); // Clear invalid token
+            }
+        } catch (error) {
+            console.error('Error fetching user info:', error);
+        }
+    }
+}
+
 async function login() {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
@@ -37,9 +65,9 @@ async function login() {
 
 function showLoggedInMessage(username) {
     // Show login success message
-    const loggedInMessage = document.getElementById('logged-in-message');
-    loggedInMessage.textContent = `Logged in as ${username}`;
-    loggedInMessage.style.display = 'block';
+    const loginMessage = document.getElementById('login-message');
+    loginMessage.textContent = `Logged in as ${username}`;
+    loginMessage.style.display = 'block';
 }
 
 function showUserInfo(userInfo) {
@@ -50,13 +78,4 @@ function showUserInfo(userInfo) {
         <p>Email: ${userInfo.email}</p>
     `;
     userInfoElement.style.display = 'block';
-}
-
-function showLoggedInMessage(username) {
-    // Show login success message
-    const loginMessage = document.getElementById('login-message');
-    loginMessage.textContent = `Logged in as ${username}`;
-
-
-    loginMessage.style.display = 'block';
 }

@@ -354,6 +354,27 @@ app.get("/xr-catalogus", (req, res) => {
     res.render("User-interface/catalogus/xr-catalogus", { products: results });
   });
 });
+app.get("/user-info", async (req, res) => {
+  const authHeader = req.headers.authorization;
+  if (!authHeader) {
+    return res.status(401).send("Authorization header missing");
+  }
+
+  const token = authHeader.split(' ')[1];
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const [rows] = await poolPromise.query("SELECT * FROM users WHERE username = ?", [decoded.username]);
+    if (rows.length > 0) {
+      const user = rows[0];
+      res.json({ username: user.username, email: user.email });
+    } else {
+      res.status(404).send("User not found");
+    }
+  } catch (err) {
+    console.error("Error fetching user info:", err);
+    res.status(500).send("Error fetching user info");
+  }
+});
 
 
 const PORT = process.env.PORT || 3000;
