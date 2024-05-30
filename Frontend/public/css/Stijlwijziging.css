@@ -1,0 +1,161 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #f0f0f0, #fafafa);
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+}
+
+/* Popup Styles */
+.popup {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+
+  background-color: rgba(0, 0, 0, 0.4);
+  padding-top: 20px;
+  margin-bottom: 40px;
+}
+
+.popup-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 40%; /* Adjusted width */
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* style btn */
+
+
+/* about-product (no changes needed) */
+.about-product {
+  color: black;
+  padding: 20px;
+  margin-right: 0px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.about-product .about-content {
+  max-width: 100px;
+  margin: auto;
+}
+
+.about-product h2 {
+  margin: 10px 0;
+  font-size: 24px;
+  text-align: center;
+  /* padding: 10px 0; */
+}
+
+.about-product .row {
+  display: flex;
+}
+
+.about-product .row .col {
+  width: 50%;
+}
+
+.about-product .row .col h3,
+#titel-status {
+  font-size: 15px;
+  margin-bottom: 22px;
+}
+
+.about-product .row .col #titel-status {
+  margin-left: 20px;
+}
+
+.about-product .row .col p {
+  text-align: left;
+}
+
+.about-product .row .col .content-status {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+  width: calc(100% - 22px); /* Adjust width to account for padding and border */
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.form-textarea {
+  resize: vertical;
+}
+.vertical-line {
+  width: 2px;
+  background-color: #000;
+  margin: 0 20px;
+}
+
+#status {
+  margin-left: 20px;
+  width: 100%;
+}
+#saveContainer {
+  text-align: center;
+  margin-top: 5px;
+}
+
+#saveButton,
+#closeButton {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  flex: 1;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  line-height: 1.5;
+}
+
+#saveButton:hover,
+#closeButton:hover {
+  background-color: #2bcdc7;
+}
+
+input,
+textarea {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  width: 100%;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #2bcdc7;
+  box-shadow: 0 0 5px rgba(43, 205, 199, 0.5);
+}
