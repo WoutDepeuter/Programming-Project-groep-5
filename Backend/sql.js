@@ -8,24 +8,7 @@ const mysqlPromise = require("mysql2/promise");
 const app = express();
 const env = require("dotenv").config().parsed;
 
-<<<<<<< Updated upstream
  //sql lokaal 
-const pool = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: 'test',
-    database: 'project',
-    waitForConnections: true,
-    connectionLimit: 10,
-    queueLimit: 0,
-});
-const poolPromise = mysqlPromise.createPool({
-  host: 'localhost',
-  user: 'root',
-  password: 'test',
-  database: 'project',
-=======
-
 // const pool = mysql.createPool({
 //     host: 'localhost',
 //     user: 'root',
@@ -35,45 +18,18 @@ const poolPromise = mysqlPromise.createPool({
 //     connectionLimit: 10,
 //     queueLimit: 0,
 // });
-const pool = mysql.createPool({
-  host: env.HOST,
-  user: env.USER,
-  password: env.PASSWORD,
-  database: env.DATABASE,
->>>>>>> Stashed changes
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0,
-});
-<<<<<<< Updated upstream
+// const poolPromise = mysqlPromise.createPool({
+//   host: 'localhost',
+//   user: 'root',
+//   password: 'test',
+//   database: 'project',
+//   waitForConnections: true,
+//   connectionLimit: 10,
+//   queueLimit: 0,
+// });
 
 //_______________________________________________________
 //sql schooldb
-
-// const poolPromise = mysqlPromise.createPool({
-//   host: env.HOST, 
-//   user: env.USER,
-//   password: env.PASSWORD,
-//   database: env.DATABASE,
-//   waitForConnections: true,
-//   connectionLimit: 10,
-//   queueLimit: 0,
-// });
-
-// const pool = mysql.createPool({
-//   host: env.HOST,
-//   user: env.USER,
-//   password: env.PASSWORD,
-//   database: env.DATABASE,
-//   waitForConnections: true,
-//   connectionLimit: 10,
-//   queueLimit: 0,
-// });
-
-
-
-=======
->>>>>>> Stashed changes
 
 const poolPromise = mysqlPromise.createPool({
   host: env.HOST, 
@@ -84,6 +40,29 @@ const poolPromise = mysqlPromise.createPool({
   connectionLimit: 10,
   queueLimit: 0,
 });
+
+const pool = mysql.createPool({
+  host: env.HOST,
+  user: env.USER,
+  password: env.PASSWORD,
+  database: env.DATABASE,
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0,
+});
+
+
+
+
+// const poolPromise = mysqlPromise.createPool({
+//   host: env.HOST, 
+//   user: env.USER,
+//   password: env.PASSWORD,
+//   database: env.DATABASE,
+//   waitForConnections: true,
+//   connectionLimit: 10,
+//   queueLimit: 0,
+// });
 
 // const poolPromise = mysqlPromise.createPool({
 //   host: 'localhost',
@@ -290,8 +269,7 @@ app.get("/signUp", (req, res) => {
 
 app.post('/signUp', async (req, res) => {
   const { password, email } = req.body;
-  const username = email.split('@')[0]; // Extracting username from email
-  try {
+  const username = email.split('@')[0];
     const hashedPassword = await argon2.hash(password);
     await poolPromise.query('INSERT INTO users (username, email, password) VALUES (?, ?, ?)', [username, email, hashedPassword]);
     res.status(201).send('User registered');
@@ -329,7 +307,6 @@ app.get("/getproducteninfo/:id", async (req, res) => {
       return;
     }
 
-    // Fetch all products with the same model_ID
     const [relatedProducts] = await poolPromise.query(
       "SELECT * FROM PRODUCT WHERE Model_ID = ?",
       [productInfo[0].Model_ID]
