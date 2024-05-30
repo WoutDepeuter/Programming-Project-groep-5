@@ -1,3 +1,11 @@
+document.addEventListener("DOMContentLoaded", function() {
+    const volledigeUrlLink = window.location.pathname;
+    const deelVanDeUrl = volledigeUrlLink.split('/');
+    const productId = deelVanDeUrl[deelVanDeUrl.length - 1];
+    console.log("Product ID:", productId);
+    document.getElementById('reserveren').setAttribute('value', productId);
+});
+
 document.getElementById('reserveren').addEventListener("click", popUpReservatie);
 
 function popUpReservatie(event){
@@ -40,13 +48,14 @@ function reservatieProduct(event){
     let user_ID = localStorage.getItem('user_ID'); // Assuming user_ID is stored in localStorage
     console.log(ProductId, van, tot, user_ID, 'reservatieProduct')
 
+    
     fetch(`/reservatie-van-producten/${ProductId}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         },
-        body: JSON.stringify({ van, tot, ProductId, user_ID})
+        body: JSON.stringify({ van, tot, ProductId, user_ID })
     })
     .then(response => response.json())
     .then(data => {
