@@ -96,6 +96,12 @@ app.get("/producten", (req, res) => {
   });
 });
 
+
+
+
+
+
+
 app.get("/productenbelichting", (req, res) => {
   pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK", [2], (err, results) => {
     if (err) {
@@ -234,19 +240,17 @@ app.get("/signUp", (req, res) => {
     res.render("User-interface/Login/signUp");
 });
 
-try {
-  app.post('/signUp', async (req, res) => {
-    const { password, email } = req.body;
-    const username = email.split('@')[0];
+app.post('/signUp', async (req, res) => {
+  const { password, email } = req.body;
+  const username = email.split('@')[0];
     const hashedPassword = await argon2.hash(password);
     await poolPromise.query('INSERT INTO USER (username, email, password) VALUES (?, ?, ?)', [username, email, hashedPassword]);
     res.status(201).send('User registered');
-  });
-} catch (err) {
-  console.error('Error registering user:', err);
-  res.status(500).send('Error registering user');
-}
-
+  } catch (err) {
+    console.error('Error registering user:', err);
+    res.status(500).send('Error registering user');
+  }
+});
 
 app.get("/reservatie-van-producten/:id", async (req, res) => {
   const productId = req.params.id;
@@ -288,6 +292,8 @@ app.get("/getproducteninfo/:id", async (req, res) => {
   }
 });
 
+
+
 app.post("/reservatie-van-producten/:id", async (req, res) => {
   const ProductId = req.params.id;
   const { van, tot } = req.body;
@@ -313,7 +319,22 @@ app.post("/reservatie-van-producten/:id", async (req, res) => {
 });
 
 app.get("/profiel-user", (req, res) => {
-    res.render("User-interface/profiel/profiel-user");
+ 
+  pool.query(`
+    SELECT r.reservatie_ID, r.product_ID, r.eind_datum, p.Model_ID, pm.naam AS product_name
+    FROM RESERVATIE r
+    JOIN PRODUCT p ON r.product_ID = p.product_ID
+    JOIN PRODUCTMODEL pm ON p.Model_ID = pm.Model_ID
+    ORDER BY r.reservatie_ID
+  `, (err, results) => {
+    if (err) {
+      console.error("Error fetching reservations:", err);
+      res.status(500).send("Internal Server Error");
+      return;
+    }
+    console.log("Reservations retrieved from database:", results);
+    res.render("User-interface/profiel/profiel-user", { reservations: results }); 
+  });
 });
 
 app.get("/audio-catalogus", (req, res) => {
@@ -396,5 +417,5 @@ app.get("/user-info", async (req, res) => {
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
-}); // Add closing parenthesis here
+}); 
 
