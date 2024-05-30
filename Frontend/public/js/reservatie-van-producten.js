@@ -46,6 +46,8 @@ function reservatieProduct(event){
     let ProductId = document.getElementById('reserveren').getAttribute('value');
     let token = localStorage.getItem('token'); // Assuming token is stored in localStorage
     let user_ID = localStorage.getItem('user_ID'); // Assuming user_ID is stored in localStorage
+    console.log(ProductId, van, tot, user_ID, 'reservatieProduct')
+
     
     fetch(`/reservatie-van-producten/${ProductId}`, {
         method: 'POST',

@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
             alert("Passwords do not match");
             return;
         }
+        
 
         fetch('/signup', {
             method: 'POST',
