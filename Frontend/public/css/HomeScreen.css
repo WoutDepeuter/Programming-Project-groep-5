@@ -341,3 +341,20 @@ footer {
   background: #ff0000;
   border-radius: 10px;
 }
+
+.progress-bar {
+  height: 8px;
+  background-color: #ddd;
+  margin: 10px auto;
+  width: 90%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 3px;
+}
+
+.progress-bar-inner {
+  height: 100%;
+  background-color: #ff0000;
+  width: 0;
+  transition: width 0.3s;
+}
