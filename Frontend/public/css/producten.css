@@ -485,65 +485,48 @@ footer {
   background-color: #5bc0de; 
   color: white;
 }
-.popup-background-filter {
+
+
+/* filter pop-up */
+.popup-background {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  display: none; 
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
 }
 
-.popup-content-filter {
-  background-color: white;
+.popup-content {
+  background: white;
   padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
-  max-width: 500px;
-  width: 100%;
-  box-sizing: border-box;
-  text-align: center; 
+  border-radius: 5px;
+  text-align: center;
 }
 
-.popup-content-filter h2 {
-  margin-top: 0;
-  font-size: 24px;
-  color: #333;
-}
-
-.checkbox-list {
-  text-align: left;
-  margin: 20px 0;
-}
-
-.checkbox-list label {
+#merkenLijst {
   display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-  font-size: 18px;
+  flex-wrap: wrap;
+  max-height: 400px;
+  overflow-y: auto;
 }
 
-.checkbox-list input[type="checkbox"] {
-  margin-right: 10px;
+#merkenLijst div {
+  flex: 1 1 30%;
+  box-sizing: border-box;
+  margin: 5px;
+  text-align: center;
 }
 
-.close-btn-filter {
-  margin-top: 20px;
-  background-color: red;
-  color: white;
-  border: none;
-  border-radius: 20px;
-  padding: 10px 20px;
-  font-size: 16px;
+#merkenLijst a {
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
-.close-btn-filter:hover {
-  background-color: #ff4444;
+.close-btn {
+  margin-top: 10px;
 }
 
 

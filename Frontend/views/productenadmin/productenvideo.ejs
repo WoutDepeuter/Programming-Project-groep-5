@@ -38,7 +38,7 @@
       <button><a id="GoHome" href="/HoofdMenuAdmin">Go home</a></button>
     </div>
 
-    <div class="container-producten">
+    <div class="container-producten" id="alleProducten">
       <% products.forEach(product => { %>
         <div class="box">
           <% if (product.afbeelding) { %>
@@ -67,6 +67,14 @@
         <div id="popupContent">
           <!-- hier word de popup geplaatst -->
         </div>
+      </div>
+    </div>
+
+    <div id="merkPopup" class="popup-background" style="display: none;">
+      <div class="popup-content">
+        <h2>Kies een Merk</h2>
+        <div id="merkenLijst"></div>
+        <button id="closeMerkPopup" class="close-btn">Sluiten</button>
       </div>
     </div>
   </main>
