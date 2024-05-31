@@ -486,6 +486,83 @@ footer {
   color: white;
 }
 
+/* CSS VOOR POPUP WIJZIGEN */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transform: scale(0.95);
+  transition: transform 0.2s ease-in-out;
+}
+
+.overlay.flex {
+  display: flex;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+.popup label {
+  display: block;
+  margin: 10px 0 5px;
+}
+
+.popup input[type="text"],
+.popup input[type="file"],
+.popup textarea,
+.popup select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.popup textarea {
+  resize: vertical;
+}
+
+.popup #saveContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.popup button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.popup #closeButton,
+.popup #saveButton {
+  background: #f44336;
+  color: #fff;
+  padding: 10px 20px;
+  margin-top: 20px;
+}
 
 /* filter pop-up */
 .popup-background {
