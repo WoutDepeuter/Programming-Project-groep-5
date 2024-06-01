@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h1 style="font-size: 20px;">Merk: ${MERK}</h1>
                 <h1 style="font-size: 20px;">Naam: ${productnaam}</h1 >
                 <hr>
-                <h2 style="font-size: 20px;">Artikels:<br> ${productnaam} nr.<span style="text-decoration: none; color: black !important;">${reservationLinks}</span></h2>
+                <h2 style="font-size: 20px;">Artikels:<br> ${productnaam} nr.>${reservationLinks}</h2>
                 </div>
           `;
   
