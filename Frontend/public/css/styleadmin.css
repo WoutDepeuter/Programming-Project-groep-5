@@ -7,6 +7,7 @@
   justify-content: space-between;
   padding: 20px;
   gap: 20px;
+  flex-direction: row;
 }
 
 .uitgeleend {
@@ -169,7 +170,8 @@ header {
 
 .container {
   display: flex;
-  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
 }
 
 .ontvangen {
@@ -577,4 +579,65 @@ footer {
 }
 #cancelButton:hover {
   background-color: darkred;
+}
+
+
+.reservations li {
+  display: flex;
+  list-style-type: none;
+  margin: 10px;
+  border: 1px solid #ccc;
+  flex-direction: row;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  gap: 10px;
+}
+
+.reservations li p {
+  margin: 5px 0;
+  flex-basis: 0;
+  flex-grow: 1;
+}
+
+.uitgaande-reservaties,
+.inkomende-reservaties {
+  flex-grow: 1;
+  flex-basis: 0;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.uitgaande-reservaties h2,
+.inkomende-reservaties h2 {
+  margin-bottom: 10px;
+  color: #333; 
+}
+
+.links{
+  display: flex;
+  flex-direction: row;
+  gap: 200px;
+  justify-content: center;
+
+}
+.links a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #ff0000;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+}
+.streepje hr{
+  border: 1px solid rgb(43, 205, 199);
+  width: 95%;
+  border-radius: 50%;
+}
+#active{
+  background-color: rgb(50, 230, 224);
 }

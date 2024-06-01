@@ -74,6 +74,7 @@ app.get("/HoofdMenuAdmin", (req, res) => {
     LEFT JOIN PRODUCT ON RESERVATIE.product_ID = PRODUCT.product_ID
     LEFT JOIN PRODUCTMODEL ON PRODUCT.model_ID = PRODUCTMODEL.model_ID
     LEFT JOIN USER ON RESERVATIE.user_ID = USER.user_ID
+    WHERE RESERVATIE.begin_datum >= CURDATE()
   `,
     (err, results) => {
       if (err) {
@@ -81,14 +82,38 @@ app.get("/HoofdMenuAdmin", (req, res) => {
         res.status(500).send("Internal Server Error");
         return;
       }
-
       console.log(results);
-
-      // Render the template with the fetched results
-      res.render("productenadmin/HoofdMenuAdmin", { data: results });
+      res.render("productenadmin/HoofdMenuAdmin", { reservations: results });
     }
   );
+
+  
 });
+app.get("/HoofdMenuAdminInkomend", (req, res) => {
+  // Perform the database query
+  pool.query(
+    `
+    SELECT RESERVATIE.*, PRODUCT.*, PRODUCTMODEL.*, USER.email, USER.username
+    FROM RESERVATIE
+    LEFT JOIN PRODUCT ON RESERVATIE.product_ID = PRODUCT.product_ID
+    LEFT JOIN PRODUCTMODEL ON PRODUCT.model_ID = PRODUCTMODEL.model_ID
+    LEFT JOIN USER ON RESERVATIE.user_ID = USER.user_ID
+    WHERE RESERVATIE.eind_datum >= CURDATE()
+  `,
+    (err, results) => {
+      if (err) {
+        console.error("Error fetching data:", err);
+        res.status(500).send("Internal Server Error");
+        return;
+      }
+      console.log(results);
+      res.render("productenadmin/HoofdMenuAdminInkomend", { reservations: results });
+    }
+  );
+
+  
+});
+
 
 app.get("/producten", (req, res) => {
   pool.query(

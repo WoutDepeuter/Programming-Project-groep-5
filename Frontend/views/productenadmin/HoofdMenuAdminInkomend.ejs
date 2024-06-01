@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link href="/pictures/other/EHB LOGO.png" rel="icon" />
+    <title>&lt;EHBLoanHub&gt;</title>
+    <link rel="stylesheet" href="css/styleadmin.css" />
+</head>
+
+<body>
+    <!-- Begin header -->
+    <header class="adminhead">
+        <div class="zoekbalk">
+            <input id="zoekbalkNaam" type="text" placeholder="Persoon zoeken..." />
+            <input id="zoekbalkID" type="number" placeholder="ID zoeken..." />
+        </div>
+        <div class="site-naam">
+            <a href="/HoofdMenuAdmin" id="site-naam">&lt;EHBLoanHub&gt;</a>
+        </div>
+        <div class="producten">
+            <a href="/producten">Producten</a>
+        </div>
+    </header>
+    <!-- Einde header -->
+
+    <!-- Begin body/main -->
+    <div class="dashboard">
+        <div class="uitgeleend">
+            <h2>Uitgeleend.</h2>
+            <p>Aantal</p>
+        </div>
+        <div class="te-laat">
+            <h2>Te laat...</h2>
+            <p>Aantal</p>
+        </div>
+        <div class="aantal-producten">
+            <h2>Vandaag uit te lenen.</h2>
+            <p>
+                <%= reservations.length %>
+            </p>
+        </div>
+    </div>
+    <div class="streepje">
+        <hr>
+        <div class="links">
+            <a  href="/HoofdMenuAdmin">Uitgaande reservaties</a>
+            <a  id="active" href="#">Inkomende Reservaties</a>
+        </div>
+        <hr>
+    </div>
+    <div class="container">
+        <!-- productenadmin/HoofdMenuAdmin.ejs -->
+        <!-- Other HTML code -->
+
+        <!-- Begin body/main -->
+        <div class="dashboard">
+            <div class="inkomende-reservaties">
+                <% if (reservations && reservations.length> 0) { %>
+                    <div class="reservations">
+                        <h2>Terug</h2>
+
+                        <% reservations.forEach((reservation, index)=> { %>
+                            <li>
+                                <p>Naam: <br>
+                                    <%= reservation.username %>
+                                </p>
+                                <hr>
+                                <p>Reservation ID: <br>
+                                    <%= reservation.reservatie_ID %>
+                                </p>
+                                <hr>
+                                <p>Product ID: <br>
+                                    <%=reservation.product_ID %>
+                                </p>
+                                <hr>
+                                <p>Product Name: <br>
+                                    <%= reservation.naam %>
+                                </p>
+                            </li>
+                            <% }); %>
+
+                    </div>
+                    <% } else { %>
+                        <h2>Terug</h2>
+                        <p>Geen reservaties gevonden.</p>
+                        <% } %>
+            </div>
+
+
+
+        </div>
+        <!-- Other HTML code -->
+
+    </div>
+    </div>
+
+    <!-- Einde body/main -->
+
+    <!-- Begin footer -->
+    <footer>
+        <div id="school-tekst-footer">© 2024 Erasmushogeschool Brussel</div>
+        <div id="taal-tekst-footer">Nederlands</div>
+    </footer>
+    <!-- Einde footer -->
+    <!-- <script src="/Backend/admin/productIndienen.js"></script> -->
+</body>
+
+</html>
