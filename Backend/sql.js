@@ -222,7 +222,6 @@ app.get("/getProductInfo/:id", (req, res) => {
   });
 });
 
-
 app.post("/editProduct", upload.single("productFoto"), (req, res) => {
   const { productId, productName, productDescription, category, merk } = req.body;
   const productFoto = req.file ? req.file.buffer : null;
