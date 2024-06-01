@@ -6,6 +6,9 @@ body {
   padding: 0;
   background-color: white;
   font-family: "Poppins";
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 3em;
 }
 
 header {
@@ -64,12 +67,12 @@ main {
 }
 .bezit-en-ophalen {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .in-bezit,
 .op-te-halen {
-  width: 48%; /* Adjust as needed */
+  width: 50%; /* Adjust as needed */
 }
 
 .product {
@@ -87,12 +90,17 @@ main {
   box-shadow: 0 5px 8px rgba(0, 0, 0, 0.15);
 }
 
-.op-te-halen {
-  padding-left: 2em; /* Adjust as needed */
+.in-bezit {
+  padding-right: 2em; /* Adjust as needed */
 }
+
+/* .op-te-halen {
+  padding-left: 2em; /* Adjust as needed */
+/* } */
 
 .product-in-bezit {
   display: flex;
+  justify-content: space-between;
   flex-direction: row;
   align-items: center;
   margin: 1em 0;
@@ -109,9 +117,8 @@ main {
   box-shadow: 0 5px 8px rgba(0, 0, 0, 0.15);
 }
 
-
 .product-in-bezit h4 {
-  margin: 0 3em 0 0;
+  margin: 0;
 }
 
 .product-in-bezit h4 a {
@@ -125,6 +132,7 @@ main {
 }
 
 .annuleer-knop {
+  margin: 10px 0 6px 0;
   font-size: large;
   color: red;
   background-color: white;
@@ -132,14 +140,14 @@ main {
   border-radius: 0.5em;
   padding: 0.25em 0.75em;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease; 
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .annuleer-knop:hover {
   color: white;
   background-color: red;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 h4 a:hover {
@@ -185,6 +193,7 @@ h4 a:hover {
 }
 
 footer {
+  position: absolute;
   bottom: 0;
   left: 0;
   background-color: red;
