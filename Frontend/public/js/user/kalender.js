@@ -29,4 +29,5 @@ document.addEventListener('DOMContentLoaded', function() {
       totTijdInput.setAttribute('min', formattedTotTijd);
       totTijdInput.disabled = true;
     });
-  });
+  }); 
+
