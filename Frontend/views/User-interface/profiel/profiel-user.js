@@ -1,5 +1,7 @@
 'use strict'
 
+
+
 document.getElementById('probleem-bezitting').addEventListener("click", probleemStellen);
 
 document.getElementById('annulatie-reservatie').addEventListener("click", annulerenReservatie);

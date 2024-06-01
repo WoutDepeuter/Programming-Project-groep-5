@@ -432,37 +432,60 @@ app.post("/reservatie-van-producten/:productID", async (req, res) => {
   }
 });
 app.get("/profiel-user", (req, res) => {
+  const { email } = req.query; // Retrieve email from query parameters
+
+  if (!email) {
+    return res.status(400).json({ error: "Email is required" });
+  }
+
   pool.query(
-    `
-    SELECT 
-      r.reservatie_ID, 
-      r.product_ID, 
-      DATE_FORMAT(r.eind_datum, '%d-%m-%Y') AS formatted_eind_datum, 
-      DATE_FORMAT(r.begin_datum, '%d-%m-%Y') AS formatted_begin_datum, 
-      p.Model_ID, 
-      pm.naam AS product_name    
-    FROM 
-      RESERVATIE r
-    JOIN 
-      PRODUCT p ON r.product_ID = p.product_ID
-    JOIN 
-      PRODUCTMODEL pm ON p.Model_ID = pm.Model_ID
-    ORDER BY 
-      r.reservatie_ID
-  `,
-    (err, results) => {
+    `SELECT user_ID FROM USERS WHERE email = ?`,
+    [email],
+    (err, userResults) => {
       if (err) {
-        console.error("Error fetching reservations:", err);
-        res.status(500).send("Internal Server Error");
-        return;
+        console.error("Error fetching user ID:", err);
+        return res.status(500).json({ error: "Internal Server Error" });
       }
-      console.log("Reservations retrieved from database:", results);
-      res.render("User-interface/profiel/profiel-user", {
-        reservations: results,
-      });
+
+      if (userResults.length === 0) {
+        return res.status(404).json({ error: "User not found" });
+      }
+
+      const userID = userResults[0].user_ID;
+
+      pool.query(
+        `
+        SELECT 
+          r.reservatie_ID, 
+          r.product_ID, 
+          DATE_FORMAT(r.eind_datum, '%d-%m-%Y') AS formatted_eind_datum, 
+          DATE_FORMAT(r.begin_datum, '%d-%m-%Y') AS formatted_begin_datum, 
+          p.Model_ID, 
+          pm.naam AS product_name    
+        FROM 
+          RESERVATIE r
+        JOIN 
+          PRODUCT p ON r.product_ID = p.product_ID
+        JOIN 
+          PRODUCTMODEL pm ON p.Model_ID = pm.Model_ID
+        WHERE 
+          r.user_ID = ?
+        ORDER BY 
+          r.reservatie_ID
+      `,
+        [userID],
+        (err, results) => {
+          if (err) {
+            console.error("Error fetching reservations:", err);
+            return res.status(500).json({ error: "Internal Server Error" });
+          }
+          res.json({ reservations: results });
+        }
+      );
     }
   );
 });
+
 
 app.get("/audio-catalogus", (req, res) => {
   pool.query(

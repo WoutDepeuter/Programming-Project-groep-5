@@ -47,7 +47,9 @@ async function login() {
         const data = await response.json();
         localStorage.setItem('user_ID', username);
 
-        localStorage.setItem('token', data.token);
+        localStorage.setItem('token', data.token);    
+        localStorage .setItem('email', username);
+
         showLoggedInMessage(username);
         console.log('Login successful');
         window.location.href = '/homescreen'; // Adjust the URL to your home screen route
