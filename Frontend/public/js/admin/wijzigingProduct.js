@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     button.addEventListener("click", async () => {
       const productId = button.getAttribute("data-product-id");
       const productInfo = await getProductInfo(productId);
+      const realProducts = await getRealProducts(productId);
 
       if (productInfo) {
         popupContent.innerHTML = `
@@ -30,13 +31,18 @@ document.addEventListener("DOMContentLoaded", () => {
               <option value="5" ${productInfo.Cat_ID == 5 ? "selected" : ""}>XR</option>
             </select>
           </form>
-          <div id="extraProductContainer">
-            <h4>Extra product toevoegen:</h4><button id="addRealProductButton" data-product-id="${productId}">Voeg Echt Product Toe</button>
-          </div>
-          <div id="saveContainer">
-            <button id="closeButton">Sluiten</button>
-            <button id="saveButton" data-product-id="${productId}">Opslaan</button>
-          </div>
+            <h3>Echte producten beheren:</h3>
+            <div id="extraProductContainer">
+              <button id="addRealProductButton" data-product-id="${productId}">Voeg Echt Product Toe</button>
+              <select id="realProductSelect" data-product-id="${productId}">
+                ${realProducts.map(product => `<option value="${product.product_ID}">${product.product_ID}</option>`).join('')}
+              </select>
+              <button id="removeRealProductButton" data-product-id="${productId}">Verwijder Echt Product</button>
+            </div>
+            <div id="saveContainer">
+              <button id="closeButton">Sluiten</button>
+              <button id="saveButton" data-product-id="${productId}">Opslaan</button>
+            </div>
         </div>
         `;
 
@@ -48,6 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         document.getElementById("saveButton").addEventListener("click", saveProductChanges);
         document.getElementById("addRealProductButton").addEventListener("click", addRealProduct);
+        document.getElementById("removeRealProductButton").addEventListener("click", removeRealProduct);
       }
     });
   });
@@ -63,6 +70,19 @@ async function getProductInfo(productId) {
   } catch (error) {
     console.error('Error:', error);
     return null;
+  }
+}
+
+async function getRealProducts(productId) {
+  try {
+    const response = await fetch(`/getRealProducts/${productId}`);
+    if (!response.ok) {
+      throw new Error('Error fetching real products');
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Error:', error);
+    return [];
   }
 }
 
@@ -108,6 +128,26 @@ function addRealProduct(event) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({ modelId: modelId })
+  })
+  .then(response => response.text())
+  .then(data => {
+    console.log(data);
+    setTimeout(() => { window.location.reload(); }, 500);
+  })
+  .catch(error => {
+    console.error("Error:", error);
+  });
+}
+
+function removeRealProduct() {
+  const realProductId = document.getElementById('realProductSelect').value;
+
+  fetch("/removeRealProduct", {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ realProductId: realProductId })
   })
   .then(response => response.text())
   .then(data => {

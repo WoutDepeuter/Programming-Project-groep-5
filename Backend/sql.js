@@ -213,6 +213,19 @@ app.get("/getProductInfo/:id", (req, res) => {
   });
 });
 
+app.get("/getRealProducts/:modelId", (req, res) => {
+  const { modelId } = req.params;
+  const query = "SELECT * FROM PRODUCT WHERE Model_ID = ?";
+  pool.query(query, [modelId], (err, result) => {
+    if (err) {
+      console.error("Error executing query:", err);
+      res.status(500).send("Internal Server Error");
+      return;
+    }
+    res.json(result);
+  });
+});
+
 app.post("/editProduct", upload.single("productFoto"), (req, res) => {
   const { productId, productName, productDescription, category, merk } = req.body;
   const productFoto = req.file ? req.file.buffer : null;
@@ -248,6 +261,19 @@ app.post("/addRealProduct", (req, res) => {
       return;
     }
     res.send("Real product added successfully");
+  });
+});
+
+app.post("/removeRealProduct", (req, res) => {
+  const { realProductId } = req.body;
+  const query = "DELETE FROM PRODUCT WHERE product_ID = ?";
+  pool.query(query, [realProductId], (err, result) => {
+    if (err) {
+      console.error("Error executing query:", err);
+      res.status(500).send("Internal Server Error");
+      return;
+    }
+    res.send("Real product removed successfully");
   });
 });
 
