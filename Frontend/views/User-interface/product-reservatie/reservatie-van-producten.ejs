@@ -9,10 +9,7 @@
 </head>
 <body>
   <header>
-    <div>
-      <span class="icon">&#9776;</span>
-      <span class="icon">&#8617;</span>
-    </div>
+    <div></div>
     <div class="site-naam">
       <a href="/homescreen" id="site-naam">&lt;EHBLoanHub&gt;</a>
     </div>
@@ -39,8 +36,8 @@
             <label for="van-tijd">Van:</label>
             <input id="van-tijd" type="date" required>
             <label for="tot-tijd">Tot:</label>
-            <input id="tot-tijd" type="date" required>
-            <button type="submit">Reserveren</button>
+            <input id="tot-tijd" type="date" required disabled>
+            <!-- <button type="submit">Reserveren</button> -->
           </form>
         </div>
         <div class="melding-uitleentermijn">
@@ -55,7 +52,7 @@
     <div id="pop-up-gebruikersvoorwaarden"></div>
     <h1>Beschrijving:</h1>
     <div class="beschrijving">
-      <h4><%= product.Beschrijving %></h4>
+      <p><%= product.Beschrijving %></p>
       <hr>
       <h1>Extra's:</h1>
       <div class="alle-extra-producten">
@@ -79,5 +76,6 @@
   </footer>
   <script src="/js/reservatie-van-producten.js"></script>
   <script src="/js/login/auth.js/"></script>
+  <script src="/js/user/kalender.js"></script>
 </body>
 </html>
