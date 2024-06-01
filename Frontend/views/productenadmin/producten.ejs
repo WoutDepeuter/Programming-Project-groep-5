@@ -42,7 +42,7 @@
       <button><a id="GoHome" href="/HoofdMenuAdmin">Go home</a></button>
     </div>
 
-    <div class="container-producten">
+    <div class="container-producten" id="alleProducten">
       <% products.forEach(product=> { %>
         <div class="box">
           <% if (product.afbeelding) { %>
@@ -59,8 +59,8 @@
                       <%= product.Beschrijving %>
                     </p>
                     <div class="buttonsss">
-                      <button class="edit"><img src="pictures/edit-icoon.png" alt="Edit Icon"
-                          id="potlood-icoon" /></button>
+                      <button class="edit" data-product-id="<%= product.Model_ID %>">
+                        <img src="pictures/edit-icoon.png" alt="Edit Icon" id="potlood-icoon" /></button>
                       <button class="delete" data-product-id="<%= product.Model_ID %>">
                         <img src="pictures/delete-icoon.png" alt="Delete Icon" id="vuilbak-icoon" />
                       </button>
@@ -68,7 +68,7 @@
                   </div>
         </div>
         <% }); %>
-
+      </div>
 
 
 
@@ -78,6 +78,14 @@
               <div id="popupContent">
                 <!-- hier word de popup geplaatst -->
               </div>
+            </div>
+          </div>
+
+          <div id="merkPopup" class="popup-background" style="display: none;">
+            <div class="popup-content">
+              <h2>Kies een Merk</h2>
+              <div id="merkenLijst"></div>
+              <button id="closeMerkPopup" class="close-btn">Sluiten</button>
             </div>
           </div>
 
@@ -93,8 +101,8 @@
   <script src="/js/admin/filter.js"></script>
   <script src="/js/admin/zoekGebruiker.js"></script>
   <script src="/js/admin/voegProductToe.js"></script>
-  <script src="/js/admin/productenadmin.js"></script>
   <script src="/js/admin/verwijderProduct.js"></script>
+  <script src="/js/admin/wijzigingProduct.js"></script>
 </body>
 
 </html>

@@ -63,19 +63,35 @@ main {
   border-radius: 3em;
   margin: 0 1em 0 0;
 }
-.bezit-en-ophalen{
+.bezit-en-ophalen {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  align-items: center;
-
 }
 
 .in-bezit,
 .op-te-halen {
-  flex-grow: 1;
-  flex-basis: 0;
+  width: 48%; /* Adjust as needed */
 }
+
+.product {
+  margin-bottom: 1em;
+  padding: 1em;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.15);
+}
+
+.op-te-halen {
+  padding-left: 2em; /* Adjust as needed */
+}
+
 .product-in-bezit {
   display: flex;
   flex-direction: row;

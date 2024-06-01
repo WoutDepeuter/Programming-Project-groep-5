@@ -8,7 +8,7 @@ const mysqlPromise = require("mysql2/promise");
 const app = express();
 const env = require("dotenv").config().parsed;
 
- //sql lokaal 
+//sql lokaal
 // const pool = mysql.createPool({
 //     host: 'localhost',
 //     user: 'root',
@@ -22,8 +22,6 @@ const env = require("dotenv").config().parsed;
 //_______________________________________________________
 //sql schooldb
 
-
-
 const pool = mysql.createPool({
   host: env.HOST,
   user: env.USER,
@@ -33,7 +31,7 @@ const pool = mysql.createPool({
   connectionLimit: 10,
   queueLimit: 0,
 });
-const poolPromise= mysqlPromise.createPool({
+const poolPromise = mysqlPromise.createPool({
   host: env.HOST,
   user: env.USER,
   password: env.PASSWORD,
@@ -42,10 +40,6 @@ const poolPromise= mysqlPromise.createPool({
   connectionLimit: 10,
   queueLimit: 0,
 });
-
-
-
-
 
 // Set EJS as the view engine
 app.set("view engine", "ejs");
@@ -66,110 +60,137 @@ const upload = multer({ storage: storage });
 
 // Route to render the index page
 app.get("/", (req, res) => {
-    res.render("User-interface/Login/login");
+  res.render("User-interface/Login/login");
 });
 
 // Admin-interface-------------------------------------------------------------------------------
 
 app.get("/HoofdMenuAdmin", (req, res) => {
   // Perform the database query
-  pool.query(`
+  pool.query(
+    `
     SELECT RESERVATIE.*, PRODUCT.*, PRODUCTMODEL.*, USER.email
     FROM RESERVATIE
     LEFT JOIN PRODUCT ON RESERVATIE.product_ID = PRODUCT.product_ID
     LEFT JOIN PRODUCTMODEL ON PRODUCT.model_ID = PRODUCTMODEL.model_ID
     LEFT JOIN USER ON RESERVATIE.user_ID = USER.user_ID
-  `, (err, results) => {
-    if (err) {
-      console.error("Error fetching data:", err);
-      res.status(500).send("Internal Server Error");
-      return;
+  `,
+    (err, results) => {
+      if (err) {
+        console.error("Error fetching data:", err);
+        res.status(500).send("Internal Server Error");
+        return;
+      }
+
+      console.log(results);
+
+      // Render the template with the fetched results
+      res.render("productenadmin/HoofdMenuAdmin", { data: results });
     }
-
-    console.log(results);
-
-    // Render the template with the fetched results
-    res.render("productenadmin/HoofdMenuAdmin", { data: results });
-  });
+  );
 });
 
 app.get("/producten", (req, res) => {
-  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK", [1], (err, results) => {
-    if (err) {
-      console.error("Error fetching products:", err);
-      res.status(500).send("Internal Server Error test");
-      return;
+  pool.query(
+    "SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK",
+    [1],
+    (err, results) => {
+      if (err) {
+        console.error("Error fetching products:", err);
+        res.status(500).send("Internal Server Error test");
+        return;
+      }
+      console.log("Products retrieved from database:", results); // Log the results object
+      res.render("productenadmin/producten", { products: results });
     }
-    console.log("Products retrieved from database:", results); // Log the results object
-    res.render("productenadmin/producten", { products: results });
-  });
+  );
 });
 
-
-
 app.get("/productenbelichting", (req, res) => {
-  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK", [2], (err, results) => {
-    if (err) {
-      console.error("Error fetching products:", err);
-      res.status(500).send("Internal Server Error");
-      return;
+  pool.query(
+    "SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK",
+    [2],
+    (err, results) => {
+      if (err) {
+        console.error("Error fetching products:", err);
+        res.status(500).send("Internal Server Error");
+        return;
+      }
+      res.render("productenadmin/productenbelichting", { products: results });
     }
-    res.render("productenadmin/productenbelichting", { products: results });
-  });
+  );
 });
 
 app.get("/productenvaria", (req, res) => {
-  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK", [3], (err, results) => {
-    if (err) {
-      console.error("Error fetching products:", err);
-      res.status(500).send("Internal Server Error");
-      return;
+  pool.query(
+    "SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK",
+    [3],
+    (err, results) => {
+      if (err) {
+        console.error("Error fetching products:", err);
+        res.status(500).send("Internal Server Error");
+        return;
+      }
+      res.render("productenadmin/productenvaria", { products: results });
     }
-    res.render("productenadmin/productenvaria", { products: results });
-  });
+  );
 });
 
 app.get("/productenxr", (req, res) => {
-  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK", [5], (err, results) => {
-    if (err) {
-      console.error("Error fetching products:", err);
-      res.status(500).send("Internal Server Error");
-      return;
+  pool.query(
+    "SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK",
+    [5],
+    (err, results) => {
+      if (err) {
+        console.error("Error fetching products:", err);
+        res.status(500).send("Internal Server Error");
+        return;
+      }
+      res.render("productenadmin/productenxr", { products: results });
     }
-    res.render("productenadmin/productenxr", { products: results });
-  });
+  );
 });
 
 app.get("/productenvideo", (req, res) => {
-  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK", [4], (err, results) => {
-    if (err) {
-      console.error("Error fetching products:", err);
-      res.status(500).send("Internal Server Error");
-      return;
+  pool.query(
+    "SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK",
+    [4],
+    (err, results) => {
+      if (err) {
+        console.error("Error fetching products:", err);
+        res.status(500).send("Internal Server Error");
+        return;
+      }
+      res.render("productenadmin/productenvideo", { products: results });
     }
-    res.render("productenadmin/productenvideo", { products: results });
-  });
+  );
 });
 
 // Route for adding a product
-app.post("/addProduct", upload.single('productFoto'), (req, res) => {
-  const { productName, productDescription, category,merk} = req.body;
+app.post("/addProduct", upload.single("productFoto"), (req, res) => {
+  const { productName, productDescription, category, merk } = req.body;
   const productFoto = req.file.buffer;
-  const query = "INSERT INTO PRODUCTMODEL (Naam,MERK,Beschrijving, Afbeelding, Cat_ID) VALUES (?, ?, ?, ?, ?)";
-  pool.query(query, [productName,merk,productDescription, productFoto, category], (err, result) => {
-    if (err) {
-      console.error("Error executing query:", err);
-      res.status(500).send("Internal Server Error");
-      return;
+  const query =
+    "INSERT INTO PRODUCTMODEL (Naam,MERK,Beschrijving, Afbeelding, Cat_ID) VALUES (?, ?, ?, ?, ?)";
+  pool.query(
+    query,
+    [productName, merk, productDescription, productFoto, category],
+    (err, result) => {
+      if (err) {
+        console.error("Error executing query:", err);
+        res.status(500).send("Internal Server Error");
+        return;
+      }
+      res.send("Product added successfully");
     }
-    res.send("Product added successfully");
-  });
+  );
 });
 
 app.post("/deleteproduct", (req, res) => {
-  const {id} = req.body;
+  const { id } = req.body;
   const query = "DELETE FROM PRODUCTMODEL WHERE model_ID = ?";
-  pool.query(query, [id], (err, result) => { // Pass id as parameter to query
+  pool.query(query, [id], (err, result) => {
+    // Pass id as parameter to query
     if (err) {
       console.error("Error executing query:", err);
       res.status(500).send("Internal Server Error");
@@ -179,22 +200,76 @@ app.post("/deleteproduct", (req, res) => {
   });
 });
 
+app.get("/getProductInfo/:id", (req, res) => {
+  const { id } = req.params;
+  const query = "SELECT * FROM PRODUCTMODEL WHERE model_ID = ?";
+  pool.query(query, [id], (err, result) => {
+    if (err) {
+      console.error("Error executing query:", err);
+      res.status(500).send("Internal Server Error");
+      return;
+    }
+    res.json(result[0]);
+  });
+});
+
+
+app.post("/editProduct", upload.single("productFoto"), (req, res) => {
+  const { productId, productName, productDescription, category, merk } = req.body;
+  const productFoto = req.file ? req.file.buffer : null;
+
+  let query;
+  let queryParams;
+
+  if (productFoto) {
+    query = "UPDATE PRODUCTMODEL SET Naam = ?, MERK = ?, Beschrijving = ?, Afbeelding = ?, Cat_ID = ? WHERE model_ID = ?";
+    queryParams = [productName, merk, productDescription, productFoto, category, productId];
+  } else {
+    query = "UPDATE PRODUCTMODEL SET Naam = ?, MERK = ?, Beschrijving = ?, Cat_ID = ? WHERE model_ID = ?";
+    queryParams = [productName, merk, productDescription, category, productId];
+  }
+
+  pool.query(query, queryParams, (err, result) => {
+    if (err) {
+      console.error("Error executing query:", err);
+      res.status(500).send("Internal Server Error");
+      return;
+    }
+    res.send("Product updated successfully");
+  });
+});
+
 
 // User-interface-------------------------------------------------------------------------------
 
-app.get('/homescreen', async (req, res) => {
+app.get("/homescreen", async (req, res) => {
   try {
-    const audioSlider = await poolPromise.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [1]);
-    const belichtingSlider = await poolPromise.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [2]);
-    const variaSlider = await poolPromise.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [3]);
-    const videoSlider = await poolPromise.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [4]);
-    const xrSlider = await poolPromise.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [5]);
+    const audioSlider = await poolPromise.query(
+      "SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?",
+      [1]
+    );
+    const belichtingSlider = await poolPromise.query(
+      "SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?",
+      [2]
+    );
+    const variaSlider = await poolPromise.query(
+      "SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?",
+      [3]
+    );
+    const videoSlider = await poolPromise.query(
+      "SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?",
+      [4]
+    );
+    const xrSlider = await poolPromise.query(
+      "SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?",
+      [5]
+    );
     res.render("User-interface/homescreen", {
       audioSlider: audioSlider[0],
       belichtingSlider: belichtingSlider[0],
       variaSlider: variaSlider[0],
       videoSlider: videoSlider[0],
-      xrSlider: xrSlider[0]
+      xrSlider: xrSlider[0],
     });
   } catch (err) {
     console.error("Error fetching products:", err);
@@ -202,24 +277,31 @@ app.get('/homescreen', async (req, res) => {
   }
 });
 
-app.get('/verlenging', (req, res) => {
-  res.render('User-interface\Verlenging');
+app.get("/verlenging", (req, res) => {
+  res.render("User-interfaceVerlenging");
 });
 
 app.get("/login", (req, res) => {
-    res.render("User-interface/Login/login");
+  res.render("User-interface/Login/login");
 });
 
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
   try {
-    const [rows] = await poolPromise.query("SELECT * FROM USER WHERE email = ?", [email]);
+    const [rows] = await poolPromise.query(
+      "SELECT * FROM USER WHERE email = ?",
+      [email]
+    );
     if (rows.length > 0) {
       const user = rows[0];
       if (await argon2.verify(user.password, password)) {
-        const token = jwt.sign({ username: user.username }, process.env.JWT_SECRET, {
-          expiresIn: "1h",
-        });
+        const token = jwt.sign(
+          { username: user.username },
+          process.env.JWT_SECRET,
+          {
+            expiresIn: "1h",
+          }
+        );
         res.json({ token });
         return;
       } else {
@@ -236,33 +318,40 @@ app.post("/login", async (req, res) => {
   }
 });
 
-
 app.get("/signUp", (req, res) => {
-    res.render("User-interface/Login/signUp");
+  res.render("User-interface/Login/signUp");
 });
 
-app.post('/signUp', async (req, res) => {
+app.post("/signUp", async (req, res) => {
   try {
     const { password, email } = req.body;
-    const username = email.split('@')[0];
+    const username = email.split("@")[0];
     const hashedPassword = await argon2.hash(password);
-    await poolPromise.query('INSERT INTO USER (username, email, password) VALUES (?, ?, ?)', [username, email, hashedPassword]);
-    res.status(201).send('User registered');
+    await poolPromise.query(
+      "INSERT INTO USER (username, email, password) VALUES (?, ?, ?)",
+      [username, email, hashedPassword]
+    );
+    res.status(201).send("User registered");
   } catch (err) {
-    console.error('Error registering user:', err);
-    res.status(500).send('Error registering user');
+    console.error("Error registering user:", err);
+    res.status(500).send("Error registering user");
   }
 });
 
 app.get("/reservatie-van-producten/:id", async (req, res) => {
   const productId = req.params.id;
   try {
-    const [productInfo] = await poolPromise.query("SELECT * FROM PRODUCT INNER JOIN PRODUCTMODEL ON PRODUCT.Model_ID = PRODUCTMODEL.Model_ID WHERE PRODUCT.product_ID = ?", [productId]);
+    const [productInfo] = await poolPromise.query(
+      "SELECT * FROM PRODUCT INNER JOIN PRODUCTMODEL ON PRODUCT.Model_ID = PRODUCTMODEL.Model_ID WHERE PRODUCT.product_ID = ?",
+      [productId]
+    );
     if (productInfo.length === 0) {
       res.status(404).send("Product not found");
       return;
     }
-    res.render("User-interface/product-reservatie/reservatie-van-producten", { product: productInfo[0] });
+    res.render("User-interface/product-reservatie/reservatie-van-producten", {
+      product: productInfo[0],
+    });
   } catch (err) {
     console.error("Error fetching product information:", err);
     res.status(500).send("Internal Server Error");
@@ -293,25 +382,28 @@ app.get("/getproducteninfo/:id", async (req, res) => {
   }
 });
 
-
-
 app.post("/reservatie-van-producten/:id", async (req, res) => {
-  
-  const {product_ID,van, tot } = req.body;
+  const { product_ID, van, tot } = req.body;
   const authHeader = req.headers.authorization;
   if (!authHeader) {
     return res.status(401).json({ error: "No token provided" });
   }
-  const token = authHeader.split(' ')[1];
+  const token = authHeader.split(" ")[1];
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    const [user] = await poolPromise.query("SELECT * FROM USER WHERE username = ?", [decoded.username]);
+    const [user] = await poolPromise.query(
+      "SELECT * FROM USER WHERE username = ?",
+      [decoded.username]
+    );
     if (user.length === 0) {
       return res.status(404).json({ error: "User not found" });
     }
     const userId = user[0].user_ID;
     console.log("User ID:", userId);
-    await poolPromise.query("INSERT INTO RESERVATIE (user_ID, product_ID , begin_datum, eind_datum) VALUES (?, ?, ?, ?)", [userId, product_ID , van, tot]);
+    await poolPromise.query(
+      "INSERT INTO RESERVATIE (user_ID, product_ID , begin_datum, eind_datum) VALUES (?, ?, ?, ?)",
+      [userId, product_ID, van, tot]
+    );
     return res.status(201).json({ message: "Product reserved" });
   } catch (err) {
     console.error("Error reserving product:", err);
@@ -320,77 +412,121 @@ app.post("/reservatie-van-producten/:id", async (req, res) => {
 });
 
 app.get("/profiel-user", (req, res) => {
- 
-  pool.query(`
-    SELECT r.reservatie_ID, r.product_ID, r.eind_datum, p.Model_ID, pm.naam AS product_name
-    FROM RESERVATIE r
-    JOIN PRODUCT p ON r.product_ID = p.product_ID
-    JOIN PRODUCTMODEL pm ON p.Model_ID = pm.Model_ID
-    ORDER BY r.reservatie_ID
-  `, (err, results) => {
-    if (err) {
-      console.error("Error fetching reservations:", err);
-      res.status(500).send("Internal Server Error");
-      return;
+  pool.query(
+    `
+    SELECT 
+      r.reservatie_ID, 
+      r.product_ID, 
+      DATE_FORMAT(r.eind_datum, '%d-%m-%Y') AS formatted_eind_datum, 
+      DATE_FORMAT(r.begin_datum, '%d-%m-%Y') AS formatted_begin_datum, 
+      p.Model_ID, 
+      pm.naam AS product_name    
+    FROM 
+      RESERVATIE r
+    JOIN 
+      PRODUCT p ON r.product_ID = p.product_ID
+    JOIN 
+      PRODUCTMODEL pm ON p.Model_ID = pm.Model_ID
+    ORDER BY 
+      r.reservatie_ID
+  `,
+    (err, results) => {
+      if (err) {
+        console.error("Error fetching reservations:", err);
+        res.status(500).send("Internal Server Error");
+        return;
+      }
+      console.log("Reservations retrieved from database:", results);
+      res.render("User-interface/profiel/profiel-user", {
+        reservations: results,
+      });
     }
-    console.log("Reservations retrieved from database:", results);
-    res.render("User-interface/profiel/profiel-user", { reservations: results }); 
-  });
+  );
 });
 
 app.get("/audio-catalogus", (req, res) => {
-  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [1], (err, results) => {
-    if (err) {
-      console.error("Error fetching products:", err);
-      res.status(500).send("Internal Server Error");
-      return;
+  pool.query(
+    "SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?",
+    [1],
+    (err, results) => {
+      if (err) {
+        console.error("Error fetching products:", err);
+        res.status(500).send("Internal Server Error");
+        return;
+      }
+      res.render("User-interface/catalogus/audio-catalogus", {
+        products: results,
+      });
     }
-    res.render("User-interface/catalogus/audio-catalogus", { products: results });
-  });
+  );
 });
 
 app.get("/belichting-catalogus", (req, res) => {
-  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [2], (err, results) => {
-    if (err) {
-      console.error("Error fetching products:", err);
-      res.status(500).send("Internal Server Error");
-      return;
+  pool.query(
+    "SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?",
+    [2],
+    (err, results) => {
+      if (err) {
+        console.error("Error fetching products:", err);
+        res.status(500).send("Internal Server Error");
+        return;
+      }
+      res.render("User-interface/catalogus/belichting-catalogus", {
+        products: results,
+      });
     }
-    res.render("User-interface/catalogus/belichting-catalogus", { products:results });
-  });
+  );
 });
 
 app.get("/varia-catalogus", (req, res) => {
-  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [3], (err, results) => {
-    if (err) {
-      console.error("Error fetching products:", err);
-      res.status(500).send("Internal Server Error");
-      return;
+  pool.query(
+    "SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?",
+    [3],
+    (err, results) => {
+      if (err) {
+        console.error("Error fetching products:", err);
+        res.status(500).send("Internal Server Error");
+        return;
+      }
+      res.render("User-interface/catalogus/varia-catalogus", {
+        products: results,
+      });
     }
-    res.render("User-interface/catalogus/varia-catalogus", { products: results });
-  });
+  );
 });
 
 app.get("/video-catalogus", (req, res) => {
-  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [4], (err, results) => {
-    if (err) {
-      console.error("Error fetching products:", err);
-      res.status(500).send("Internal Server Error");
-      return;
+  pool.query(
+    "SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?",
+    [4],
+    (err, results) => {
+      if (err) {
+        console.error("Error fetching products:", err);
+        res.status(500).send("Internal Server Error");
+        return;
+      }
+      res.render("User-interface/catalogus/video-catalogus", {
+        products: results,
+      });
     }
-    res.render("User-interface/catalogus/video-catalogus", { products: results });
-  });
+  );
 });
 
 app.get("/xr-catalogus", (req, res) => {
-  pool.query("SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?", [(5)], (err, results) => {
-    if (err) {
-      console.error("Error fetching products:", err);
-      res.status(500).send("Internal Server Error");
-      return;
+  pool.query(
+    "SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?",
+    [5],
+    (err, results) => {
+      if (err) {
+        console.error("Error fetching products:", err);
+        res.status(500).send("Internal Server Error");
+        return;
+      }
+      res.render("User-interface/catalogus/xr-catalogus", {
+        products: results,
+      });
     }
-    res.render("User-interface/catalogus/xr-catalogus", { products: results });
-  });
+  );
 });
 app.get("/user-info", async (req, res) => {
   const authHeader = req.headers.authorization;
@@ -398,10 +534,13 @@ app.get("/user-info", async (req, res) => {
     return res.status(401).send("Authorization header missing");
   }
 
-  const token = authHeader.split(' ')[1];
+  const token = authHeader.split(" ")[1];
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    const [rows] = await poolPromise.query("SELECT * FROM USER WHERE username = ?", [decoded.username]);
+    const [rows] = await poolPromise.query(
+      "SELECT * FROM USER WHERE username = ?",
+      [decoded.username]
+    );
     if (rows.length > 0) {
       const user = rows[0];
       return res.json({ username: user.username, email: user.email });
@@ -414,9 +553,7 @@ app.get("/user-info", async (req, res) => {
   }
 });
 
-
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
-}); 
-
+});

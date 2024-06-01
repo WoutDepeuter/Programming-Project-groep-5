@@ -291,19 +291,23 @@ footer {
 #merkenLijst {
   display: flex;
   flex-wrap: wrap;
-  max-height: 400px; /* Beperk de hoogte van de lijst indien nodig */
-  overflow-y: auto;  /* Voeg een scrollbalk toe indien de lijst te lang is */
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 #merkenLijst div {
-  flex: 1 1 30%;  /* Zorg ervoor dat elke merknaam 30% van de breedte inneemt, pas dit aan indien nodig */
-  box-sizing: border-box; /* Zorg ervoor dat de padding en border bij de breedte worden opgeteld */
-  margin: 5px; /* Voeg wat marge toe rond elk element voor een nette uitstraling */
-  text-align: center; /* Optioneel: centreer de tekst */
+  flex: 1 1 30%;
+  box-sizing: border-box;
+  margin: 5px;
+  text-align: center;
 }
 
 .close-btn {
   margin-top: 10px;
+}
+
+#merkenLijst a {
+  cursor: pointer;
 }
 
 /* pop-up */
