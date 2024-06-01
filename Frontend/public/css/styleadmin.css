@@ -85,7 +85,7 @@ header {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 50px;
+  height: 60px;
 }
 
 .zoekbalk,
@@ -135,9 +135,8 @@ header {
 
 #site-naam {
   text-decoration: none;
-  font-size: 25px;
+  font-size: 30px;
   color: white;
-  font-weight: bold;
   font-family: "JetBrains Mono", monospace;
 }
 

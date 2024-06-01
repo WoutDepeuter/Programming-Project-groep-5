@@ -97,7 +97,7 @@ header {
 .prodnav a {
   text-decoration: none;
   color: black;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 600;
   transition: color 0.3s ease;
 }
