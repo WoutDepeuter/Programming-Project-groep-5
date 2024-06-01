@@ -9,37 +9,46 @@ const app = express();
 const env = require("dotenv").config().parsed;
 
 //sql lokaal
-// const pool = mysql.createPool({
-//     host: 'localhost',
-//     user: 'root',
-//     password: 'test',
-//     database: 'project',
-//     waitForConnections: true,
-//     connectionLimit: 10,
-//     queueLimit: 0,
-// });
+const pool = mysql.createPool({
+    host: 'localhost',
+    user: 'root',
+    password: 'test',
+    database: 'project',
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0,
+});
+const poolPromise = mysqlPromise.createPool({
+  host: 'localhost',
+  user: 'root',
+  password: 'test',
+  database: 'project',
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0,
+});
 
 //_______________________________________________________
 //sql schooldb
 
-const pool = mysql.createPool({
-  host: env.HOST,
-  user: env.USER,
-  password: env.PASSWORD,
-  database: env.DATABASE,
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0,
-});
-const poolPromise = mysqlPromise.createPool({
-  host: env.HOST,
-  user: env.USER,
-  password: env.PASSWORD,
-  database: env.DATABASE,
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0,
-});
+// const pool = mysql.createPool({
+//   host: env.HOST,
+//   user: env.USER,
+//   password: env.PASSWORD,
+//   database: env.DATABASE,
+//   waitForConnections: true,
+//   connectionLimit: 10,
+//   queueLimit: 0,
+// });
+// const poolPromise = mysqlPromise.createPool({
+//   host: env.HOST,
+//   user: env.USER,
+//   password: env.PASSWORD,
+//   database: env.DATABASE,
+//   waitForConnections: true,
+//   connectionLimit: 10,
+//   queueLimit: 0,
+// });
 
 // Set EJS as the view engine
 app.set("view engine", "ejs");
@@ -362,7 +371,7 @@ app.get("/getproducteninfo/:id", async (req, res) => {
   const productId = req.params.id;
   try {
     const [productInfo] = await poolPromise.query(
-      "SELECT * FROM PRODUCT INNER JOIN PRODUCTMODEL ON PRODUCT.Model_ID = PRODUCTMODEL.Model_ID WHERE PRODUCT.Model_ID = ?",
+      "SELECT * FROM PRODUCT INNER JOIN PRODUCTMODEL ON PRODUCT.Model_ID = PRODUCTMODEL.Model_ID WHERE PRODUCT.Model_ID = ? AND PRODUCT.status = 0",
       [productId]
     );
 
@@ -370,9 +379,9 @@ app.get("/getproducteninfo/:id", async (req, res) => {
       res.status(404).json({ error: "Product not found" });
       return;
     }
-    // Fetch all products with the same model_ID
+   
     const [relatedProducts] = await poolPromise.query(
-      "SELECT * FROM PRODUCT WHERE Model_ID = ?",
+      "SELECT * FROM PRODUCT WHERE Model_ID = ? AND status = 0",
       [productInfo[0].Model_ID]
     );
     res.json({ product: productInfo[0], relatedProducts: relatedProducts });
@@ -382,9 +391,10 @@ app.get("/getproducteninfo/:id", async (req, res) => {
   }
 });
 
-app.post("/reservatie-van-producten/:id", async (req, res) => {
-  const { product_ID, van, tot } = req.body;
+app.post("/reservatie-van-producten/:productID", async (req, res) => {
+  const { van, tot } = req.body;
   const authHeader = req.headers.authorization;
+  const product_ID = req.params.productID; 
   if (!authHeader) {
     return res.status(401).json({ error: "No token provided" });
   }
@@ -400,17 +410,28 @@ app.post("/reservatie-van-producten/:id", async (req, res) => {
     }
     const userId = user[0].user_ID;
     console.log("User ID:", userId);
+
+    await poolPromise.query("BEGIN;");
+    
     await poolPromise.query(
       "INSERT INTO RESERVATIE (user_ID, product_ID , begin_datum, eind_datum) VALUES (?, ?, ?, ?)",
       [userId, product_ID, van, tot]
     );
+    
+    await poolPromise.query(
+      "UPDATE product SET status = 1 WHERE product_ID = ?",
+      [product_ID]
+    );
+ 
+    await poolPromise.query("COMMIT;");
     return res.status(201).json({ message: "Product reserved" });
   } catch (err) {
     console.error("Error reserving product:", err);
+  
+    await poolPromise.query("ROLLBACK;");
     return res.status(500).json({ error: "Error reserving product" });
   }
 });
-
 app.get("/profiel-user", (req, res) => {
   pool.query(
     `

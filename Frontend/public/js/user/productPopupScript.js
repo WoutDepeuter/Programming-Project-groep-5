@@ -26,7 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h1>${productnaam}</h1>
 
               <h1>${productDescription}</h1>
-              <h2>Artiekelen: ${reservationLinks}</h2>
+              <h2>Artiekelen: </h2>
+              
+              <H2>${reservationLinks}</h2>
             </div>
           `;
   
