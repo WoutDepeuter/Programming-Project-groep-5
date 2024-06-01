@@ -213,7 +213,6 @@ app.get("/getProductInfo/:id", (req, res) => {
   });
 });
 
-
 app.post("/editProduct", upload.single("productFoto"), (req, res) => {
   const { productId, productName, productDescription, category, merk } = req.body;
   const productFoto = req.file ? req.file.buffer : null;
@@ -239,6 +238,18 @@ app.post("/editProduct", upload.single("productFoto"), (req, res) => {
   });
 });
 
+app.post("/addRealProduct", (req, res) => {
+  const { modelId } = req.body;
+  const query = "INSERT INTO PRODUCT (Model_ID) VALUES (?)";
+  pool.query(query, [modelId], (err, result) => {
+    if (err) {
+      console.error("Error executing query:", err);
+      res.status(500).send("Internal Server Error");
+      return;
+    }
+    res.send("Real product added successfully");
+  });
+});
 
 // User-interface-------------------------------------------------------------------------------
 

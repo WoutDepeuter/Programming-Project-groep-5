@@ -30,6 +30,9 @@ document.addEventListener("DOMContentLoaded", () => {
               <option value="5" ${productInfo.Cat_ID == 5 ? "selected" : ""}>XR</option>
             </select>
           </form>
+          <div id="extraProductContainer">
+            <h4>Extra product toevoegen:</h4><button id="addRealProductButton" data-product-id="${productId}">Voeg Echt Product Toe</button>
+          </div>
           <div id="saveContainer">
             <button id="closeButton">Sluiten</button>
             <button id="saveButton" data-product-id="${productId}">Opslaan</button>
@@ -44,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         document.getElementById("saveButton").addEventListener("click", saveProductChanges);
+        document.getElementById("addRealProductButton").addEventListener("click", addRealProduct);
       }
     });
   });
@@ -93,4 +97,24 @@ function saveProductChanges(event) {
     .catch(error => {
       console.error("Error:", error);
     });
+}
+
+function addRealProduct(event) {
+  const modelId = event.target.getAttribute('data-product-id');
+
+  fetch("/addRealProduct", {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ modelId: modelId })
+  })
+  .then(response => response.text())
+  .then(data => {
+    console.log(data);
+    setTimeout(() => { window.location.reload(); }, 500);
+  })
+  .catch(error => {
+    console.error("Error:", error);
+  });
 }
