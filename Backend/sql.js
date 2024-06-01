@@ -69,12 +69,12 @@ app.get("/HoofdMenuAdmin", (req, res) => {
   // Perform the database query
   pool.query(
     `
-    SELECT RESERVATIE.*, PRODUCT.*, PRODUCTMODEL.*, USER.email
+    SELECT RESERVATIE.*, PRODUCT.*, PRODUCTMODEL.*, USER.email, USER.username
     FROM RESERVATIE
     LEFT JOIN PRODUCT ON RESERVATIE.product_ID = PRODUCT.product_ID
     LEFT JOIN PRODUCTMODEL ON PRODUCT.model_ID = PRODUCTMODEL.model_ID
     LEFT JOIN USER ON RESERVATIE.user_ID = USER.user_ID
-    WHERE RESERVATIE.begin_datum >= CURDATE()
+    WHERE RESERVATIE.begin_datum = CURDATE()
   `,
     (err, results) => {
       if (err) {
@@ -98,7 +98,7 @@ app.get("/HoofdMenuAdminInkomend", (req, res) => {
     LEFT JOIN PRODUCT ON RESERVATIE.product_ID = PRODUCT.product_ID
     LEFT JOIN PRODUCTMODEL ON PRODUCT.model_ID = PRODUCTMODEL.model_ID
     LEFT JOIN USER ON RESERVATIE.user_ID = USER.user_ID
-    WHERE RESERVATIE.eind_datum >= CURDATE()
+    WHERE RESERVATIE.eind_datum = CURDATE()
   `,
     (err, results) => {
       if (err) {

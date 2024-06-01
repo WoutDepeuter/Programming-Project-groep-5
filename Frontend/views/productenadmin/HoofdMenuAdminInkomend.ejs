@@ -47,8 +47,8 @@
     <div class="streepje">
         <hr>
         <div class="links">
-            <a  href="/HoofdMenuAdmin">Uitgaande reservaties</a>
-            <a  id="active" href="#">Inkomende Reservaties</a>
+            <a href="/HoofdMenuAdmin">Uitgaande reservaties</a>
+            <a id="active" href="#">Inkomende Reservaties</a>
         </div>
         <hr>
     </div>
@@ -65,21 +65,26 @@
 
                         <% reservations.forEach((reservation, index)=> { %>
                             <li>
-                                <p>Naam: <br>
+                                <p><span id="titels">Naam: </span> <br>
                                     <%= reservation.username %>
                                 </p>
                                 <hr>
-                                <p>Reservation ID: <br>
+                                <p><span id="titels">ReservationID: </span><br>
                                     <%= reservation.reservatie_ID %>
                                 </p>
                                 <hr>
-                                <p>Product ID: <br>
+                                <p><span id="titels">Product ID: </span> <br>
                                     <%=reservation.product_ID %>
                                 </p>
                                 <hr>
-                                <p>Product Name: <br>
+                                <p><span id="titels">Product Name:</span> <br>
                                     <%= reservation.naam %>
                                 </p>
+                                <div class="buttons">
+                                    <button id="Verkregen">Verkregen</button>
+                                    <button id="TeLaat">Te laat</button>
+                                </div>
+
                             </li>
                             <% }); %>
 

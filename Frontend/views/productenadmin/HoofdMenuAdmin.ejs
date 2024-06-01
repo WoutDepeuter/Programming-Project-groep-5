@@ -61,19 +61,19 @@
 
             <% reservations.forEach((reservation, index)=> { %>
               <li>
-                <p>Naam: <br>
+                <p><span id="titels">Naam: </span><br>
                   <%= reservation.username %>
                 </p>
                 <hr>
-                <p>Reservation ID: <br>
+                <p><span id="titels">Reservation ID: </span><br>
                   <%= reservation.reservatie_ID %>
                 </p>
                 <hr>
-                <p>Product ID: <br>
+                <p><span id="titels">Product ID: </span><br>
                   <%=reservation.product_ID %>
                 </p>
                 <hr>
-                <p>Product Name: <br>
+                <p><span id="titels">Product Name:</span> <br>
                   <%= reservation.naam %>
                 </p>
               </li>
