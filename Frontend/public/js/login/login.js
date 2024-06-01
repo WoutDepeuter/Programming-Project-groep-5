@@ -31,17 +31,22 @@ async function checkIfAlreadyLoggedIn() {
 async function login() {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
+    console.log(username);
+
+
 
     const response = await fetch('/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ email: username, password })
+        body: JSON.stringify({ email: username, password})
     });
 
     if (response.ok) {
         const data = await response.json();
+        localStorage.setItem('user_ID', username);
+
         localStorage.setItem('token', data.token);
         showLoggedInMessage(username);
         console.log('Login successful');
