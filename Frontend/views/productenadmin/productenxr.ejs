@@ -54,7 +54,7 @@
                   <h2><%= product.MERK %>: <%= product.naam %></h2>
                   <p><%= product.Beschrijving %></p>
                   <div class="buttonsss">
-                    <button class="edit"><img src="pictures/edit-icoon.png" alt="Edit Icon" id="potlood-icoon" /></button>
+                    <button class="edit" data-product-id="<%= product.Model_ID %>"><img src="pictures/edit-icoon.png" alt="Edit Icon" id="potlood-icoon" /></button>
                     <button class="delete" data-product-id="<%= product.Model_ID %>">
                       <img src="pictures/delete-icoon.png" alt="Delete Icon" id="vuilbak-icoon" />
                     </button>
@@ -92,6 +92,7 @@
     <script src="/js/admin/voegProductToe.js"></script>
     <script src="/js/admin/productenadmin.js"></script>
     <script src="/js/admin/verwijderProduct.js"></script>
+    <script src="/js/admin/wijzigingProduct.js"></script>
 </body>
 
 </html>

@@ -200,6 +200,46 @@ app.post("/deleteproduct", (req, res) => {
   });
 });
 
+app.get("/getProductInfo/:id", (req, res) => {
+  const { id } = req.params;
+  const query = "SELECT * FROM PRODUCTMODEL WHERE model_ID = ?";
+  pool.query(query, [id], (err, result) => {
+    if (err) {
+      console.error("Error executing query:", err);
+      res.status(500).send("Internal Server Error");
+      return;
+    }
+    res.json(result[0]);
+  });
+});
+
+
+app.post("/editProduct", upload.single("productFoto"), (req, res) => {
+  const { productId, productName, productDescription, category, merk } = req.body;
+  const productFoto = req.file ? req.file.buffer : null;
+
+  let query;
+  let queryParams;
+
+  if (productFoto) {
+    query = "UPDATE PRODUCTMODEL SET Naam = ?, MERK = ?, Beschrijving = ?, Afbeelding = ?, Cat_ID = ? WHERE model_ID = ?";
+    queryParams = [productName, merk, productDescription, productFoto, category, productId];
+  } else {
+    query = "UPDATE PRODUCTMODEL SET Naam = ?, MERK = ?, Beschrijving = ?, Cat_ID = ? WHERE model_ID = ?";
+    queryParams = [productName, merk, productDescription, category, productId];
+  }
+
+  pool.query(query, queryParams, (err, result) => {
+    if (err) {
+      console.error("Error executing query:", err);
+      res.status(500).send("Internal Server Error");
+      return;
+    }
+    res.send("Product updated successfully");
+  });
+});
+
+
 // User-interface-------------------------------------------------------------------------------
 
 app.get("/homescreen", async (req, res) => {
