@@ -7,6 +7,7 @@
   justify-content: space-between;
   padding: 20px;
   gap: 20px;
+  flex-direction: row;
 }
 
 .uitgeleend {
@@ -102,30 +103,33 @@ header {
 }
 
 #zoekbalkNaam {
-  border: none;
-  background-color: #f2f2f2;
   height: 30px;
-  padding-left: 10px;
-  border-radius: 30px;
-  width: 300px;
   margin-right: 10px;
+  padding-left: 10px;
+  width: 100%;
+  max-width: 300px;
+  border: none;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  transition: all 0.3s ease;
 }
 #zoekbalkID {
-  border: none;
-  background-color: #f2f2f2;
   height: 30px;
   padding-left: 10px;
-  border-radius: 30px;
-  width: 100px;
+  width: 100%;
+  max-width: 100px;
+  border: none;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  transition: all 0.3s ease;
 }
 
-#zoekbalkNaam::placeholder {
-  color: #ff0000;
-  font-weight: bold;
-}
-
-#zoekbalkID::placeholder {
-  color: #ff0000;
+#zoekbalkNaam::placeholder, #zoekbalkID::placeholder {
+  color: #2bcdc7;
   font-weight: bold;
 }
 
@@ -135,9 +139,8 @@ header {
 
 #site-naam {
   text-decoration: none;
-  font-size: 25px;
+  font-size: 30px;
   color: white;
-  font-weight: bold;
   font-family: "JetBrains Mono", monospace;
 }
 
@@ -167,7 +170,8 @@ header {
 
 .container {
   display: flex;
-  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
 }
 
 .ontvangen {
@@ -575,4 +579,114 @@ footer {
 }
 #cancelButton:hover {
   background-color: darkred;
+}
+
+
+.reservations li {
+  display: flex;
+  list-style-type: none;
+  margin: 10px;
+  border: 1px solid #ccc;
+  flex-direction: row;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  gap: 10px;
+}
+
+.reservations li p {
+  margin: 5px 0;
+  flex-basis: 0;
+  flex-grow: 1;
+}
+
+.uitgaande-reservaties,
+.inkomende-reservaties {
+  flex-grow: 1;
+  flex-basis: 0;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.uitgaande-reservaties h2,
+.inkomende-reservaties h2 {
+  margin-bottom: 10px;
+  color: #333; 
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+  gap: 200px; 
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px; 
+}
+
+.links a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px; 
+  border-radius: 10px;
+  background-color: #ff0000;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+}
+
+.links a:hover {
+  background-color: #ff4d4d; 
+  transform: translateY(-2px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); 
+}
+
+.streepje hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(to right, rgba(43, 205, 199, 0), rgb(43, 205, 199), rgba(43, 205, 199, 0));
+  width: 95%;
+  border-radius: 1px;
+  margin: 20px auto;
+}
+
+#active {
+  background-color: rgb(50, 230, 224);
+  color: black; 
+}
+
+button{
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  height: fit-content;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+}
+#TeLaat:hover {
+  background-color: darkred;
+}
+#Verkregen:hover {
+  background-color: #6b926b;
+}
+#TeLaat{
+  background-color: #ff0000;
+}
+#Verkregen{
+  background-color: #95d095;
+}
+.buttons{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+}
+#titels{
+  font-weight: bold;
 }

@@ -78,11 +78,12 @@ app.get("/HoofdMenuAdmin", (req, res) => {
   // Perform the database query
   pool.query(
     `
-    SELECT RESERVATIE.*, PRODUCT.*, PRODUCTMODEL.*, USER.email
+    SELECT RESERVATIE.*, PRODUCT.*, PRODUCTMODEL.*, USER.email, USER.username
     FROM RESERVATIE
     LEFT JOIN PRODUCT ON RESERVATIE.product_ID = PRODUCT.product_ID
     LEFT JOIN PRODUCTMODEL ON PRODUCT.model_ID = PRODUCTMODEL.model_ID
     LEFT JOIN USER ON RESERVATIE.user_ID = USER.user_ID
+    WHERE RESERVATIE.begin_datum = CURDATE()
   `,
     (err, results) => {
       if (err) {
@@ -90,14 +91,38 @@ app.get("/HoofdMenuAdmin", (req, res) => {
         res.status(500).send("Internal Server Error");
         return;
       }
-
       console.log(results);
-
-      // Render the template with the fetched results
-      res.render("productenadmin/HoofdMenuAdmin", { data: results });
+      res.render("productenadmin/HoofdMenuAdmin", { reservations: results });
     }
   );
+
+  
 });
+app.get("/HoofdMenuAdminInkomend", (req, res) => {
+  // Perform the database query
+  pool.query(
+    `
+    SELECT RESERVATIE.*, PRODUCT.*, PRODUCTMODEL.*, USER.email, USER.username
+    FROM RESERVATIE
+    LEFT JOIN PRODUCT ON RESERVATIE.product_ID = PRODUCT.product_ID
+    LEFT JOIN PRODUCTMODEL ON PRODUCT.model_ID = PRODUCTMODEL.model_ID
+    LEFT JOIN USER ON RESERVATIE.user_ID = USER.user_ID
+    WHERE RESERVATIE.eind_datum = CURDATE()
+  `,
+    (err, results) => {
+      if (err) {
+        console.error("Error fetching data:", err);
+        res.status(500).send("Internal Server Error");
+        return;
+      }
+      console.log(results);
+      res.render("productenadmin/HoofdMenuAdminInkomend", { reservations: results });
+    }
+  );
+
+  
+});
+
 
 app.get("/producten", (req, res) => {
   pool.query(
@@ -222,6 +247,7 @@ app.get("/getProductInfo/:id", (req, res) => {
   });
 });
 
+
 app.post("/editProduct", upload.single("productFoto"), (req, res) => {
   const { productId, productName, productDescription, category, merk } = req.body;
   const productFoto = req.file ? req.file.buffer : null;
@@ -247,6 +273,31 @@ app.post("/editProduct", upload.single("productFoto"), (req, res) => {
   });
 });
 
+app.post("/addRealProduct", (req, res) => {
+  const { modelId } = req.body;
+  const query = "INSERT INTO PRODUCT (Model_ID) VALUES (?)";
+  pool.query(query, [modelId], (err, result) => {
+    if (err) {
+      console.error("Error executing query:", err);
+      res.status(500).send("Internal Server Error");
+      return;
+    }
+    res.send("Real product added successfully");
+  });
+});
+
+app.post("/removeRealProduct", (req, res) => {
+  const { realProductId } = req.body;
+  const query = "DELETE FROM PRODUCT WHERE product_ID = ?";
+  pool.query(query, [realProductId], (err, result) => {
+    if (err) {
+      console.error("Error executing query:", err);
+      res.status(500).send("Internal Server Error");
+      return;
+    }
+    res.send("Real product removed successfully");
+  });
+});
 
 // User-interface-------------------------------------------------------------------------------
 

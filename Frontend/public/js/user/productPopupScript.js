@@ -22,14 +22,11 @@ document.addEventListener('DOMContentLoaded', () => {
   
           productDetails.innerHTML = `
             <div class="popup-box">
-                <h1>${MERK}</h1>
-                <h1>${productnaam}</h1>
-
-              <h1>${productDescription}</h1>
-              <h2>Artiekelen: </h2>
-              
-              <H2>${reservationLinks}</h2>
-            </div>
+                <h1 style="font-size: 20px;">Merk: ${MERK}</h1>
+                <h1 style="font-size: 20px;">Naam: ${productnaam}</h1 >
+                <hr>
+                <h2 style="font-size: 20px;">Artikels:<br> ${productnaam} nr.>${reservationLinks}</h2>
+                </div>
           `;
   
           productPopup.style.display = 'flex';

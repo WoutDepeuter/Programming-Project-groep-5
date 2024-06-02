@@ -172,3 +172,27 @@ footer {
   padding: 10px;
   color: white;
 }
+
+input[type="date"] {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type="date"]:hover {
+  opacity: 0.8;
+  transition: 0.3s ease-in-out;
+  background-color: #efefef;
+}
+
+input[type="date"]:not(:hover) {
+  opacity: 1;
+  transition: 0.3s ease-in-out;
+  background-color: #FFFFFF;
+}
+
+#reservatie-form {
+  width: 200px;
+}

@@ -23,7 +23,7 @@ header {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  height: 60px;
+  height: 50px;
   padding: 0 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -33,9 +33,10 @@ header {
 }
 
 #zoekbalk {
+  height: 30px;
+  padding-left: 10px;
   width: 100%;
-  max-width: 400px;
-  padding: 10px 15px;
+  max-width: 300px;
   border: none;
   border-radius: 20px;
   background-color: white;
@@ -97,7 +98,7 @@ header {
 .prodnav a {
   text-decoration: none;
   color: black;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 600;
   transition: color 0.3s ease;
 }
