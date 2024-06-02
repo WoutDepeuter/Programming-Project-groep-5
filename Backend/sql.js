@@ -566,7 +566,8 @@ app.get("/profiel-user/:email", (req, res) => {
       DATE_FORMAT(r.eind_datum, '%d-%m-%Y') AS formatted_eind_datum, 
       DATE_FORMAT(r.begin_datum, '%d-%m-%Y') AS formatted_begin_datum, 
       p.Model_ID, 
-      pm.naam AS product_name    
+      pm.naam AS product_name,
+      p.status
     FROM 
       RESERVATIE r
     JOIN 
