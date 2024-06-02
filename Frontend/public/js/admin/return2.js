@@ -2,15 +2,15 @@ document.addEventListener('DOMContentLoaded', function () {
     const returnButtons = document.querySelectorAll('.return-button');
     returnButtons.forEach(button => {
         button.addEventListener('click', async () => {
+            const reservationId = button.dataset.reservationId;
             const productId = button.dataset.productId;
-            const reservationId = button.dataset.reservationId; // Get the reservation ID from the button's dataset
             try {
                 const response = await fetch('/returnproduct', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ productId: productId, reservationId: reservationId }) // Include reservationId in the body
+                    body: JSON.stringify({ productId: productId, reservationId: reservationId })
                 });
 
                 if (!response.ok) {
