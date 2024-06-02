@@ -1,5 +1,30 @@
 # EHBLoanHub README
 
+## Installatie
+1. Download [node.js](https://nodejs.org/en/download/package-manager)
+
+2. Clone de repo door middel van GitHub Desktop of via de terminal
+
+3. Open de repo in een IDE
+
+4. Ga naar \Backend\
+`cd .\Backend\`
+
+5. Installeer de node modules:
+`npm ci argon2 dotenv ejs express iconv-lite jsonwebtoken multer mysql mysql2 path safe-buffer mul`
+
+6. Maak een .env bestand aan in .\Backend\ de informatie dat in de .env moet staat in de Teams Groep als gepint bericht
+```
+HOST=...
+USER=...
+PASSWORD=...
+DATABASE=...
+PORT=...
+JWT_SECRET=...
+```
+7. Start de server: (je moet in de Backend zitten)
+`node .\sql.js`
+
 ## Overzicht
 
 Welkom bij EHBLoanHub! EHBLoanHub is een gebruiksvriendelijke website die we hebben ontworpen om studenten en docenten te helpen bij het verkrijgen van leningen op een snelle en efficiënte manier. Wij bieden diverse leenopties aan, afgestemd op de specifieke behoeften van onze klanten.
