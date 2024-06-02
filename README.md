@@ -22,8 +22,8 @@ DATABASE=...
 PORT=...
 JWT_SECRET=...
 ```
-7. Start de server: (je moet in )
-`node .\Backend\sql.js`
+7. Start de server: (je moet in de Backend zitten)
+`node .\sql.js`
 
 ## Overzicht
 
