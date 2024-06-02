@@ -42,6 +42,7 @@ async function login() {
 
     if (response.ok) {
         const data = await response.json();
+        localStorage.setItem('username', username);
         localStorage.setItem('token', data.token);
         showLoggedInMessage(username);
         console.log('Login successful');

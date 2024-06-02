@@ -1,110 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="/Frontend/pictures/EHB_site_logo-removebg-preview.png"
-      rel="icon"
-    />
-    <title>&lt;EHBLoanHub&gt;</title>
-    <link rel="stylesheet" href="css/profiel-user.css" />
-  </head>
-
-  <body>
-    <header>
-      <div class="icons">
-        <a href="/homescreen"><span class="icon">&#8617;</span></a>
-      </div>
-      <div class="site-naam">
-        <a href="/homescreen" id="site-naam">&lt;EHBLoanHub&gt;</a>
-      </div>
-    </header>
-    <main id="main">
-      <div class="bezit-en-ophalen">
-        <div class="in-bezit">
-          <h2>Momenteel in bezit:</h2>  
-            <% reservations.forEach(r => { %>
-              <div class="product-in-bezit">
-                <h4>Product: <%= r.product_name %></h4>
-                <h4>Product-ID: <%= r.product_ID %></h4>
-                <h4>Inleverdatum: <%= r.formatted_eind_datum %></h4>
-                <div>
-                  <h4><a id="probleem-bezitting" href="#">Probleem?</a></h4>
-                  <h4><a href="/Frontend/User-interface/Verlenging.html">Verlengen?</a></h4>
-                </div>
-              </div>
-            <% }); %>
-         
-          
-        </div>
-        
-        <hr>
-        <div class="op-te-halen">
-          <h2>Op te halen:</h2>
-          <% reservations.forEach(r => { %>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="/Frontend/pictures/EHB_site_logo-removebg-preview.png" rel="icon" />
+  <title>&lt;EHBLoanHub&gt;</title>
+  <link rel="stylesheet" href="/css/profiel-user.css" />
+</head>
+<body>
+  <header>
+    <div class="icons">
+      <a href="/homescreen"><span class="icon">&#8617;</span></a>
+    </div>
+    <div class="site-naam">
+      <a href="/homescreen" id="site-naam">&lt;EHBLoanHub&gt;</a>
+    </div>
+  </header>
+  <main id="main">
+    <div class="bezit-en-ophalen">
+      <div class="in-bezit">
+        <h2>Momenteel in bezit:</h2>
+        <% reservations.forEach(r => { %>
           <div class="product-in-bezit">
             <h4>Product: <%= r.product_name %></h4>
             <h4>Product-ID: <%= r.product_ID %></h4>
-            <h4>OphaalDatum: <%= r.formatted_begin_datum %></h4>
+            <h4>Inleverdatum: <%= r.formatted_eind_datum %></h4>
             <div>
-              <button id="annulatie-reservatie" class="annuleer-knop">x</button>
+              <h4><a id="probleem-bezitting" href="#">Probleem?</a></h4>
+              <h4><a href="/Frontend/User-interface/Verlenging.html">Verlengen?</a></h4>
             </div>
           </div>
-          <% }); %>
-        </div>
+        <% }); %>
       </div>
-    </main>
-    <footer>
-      <div id="school">© 2024 Erasmushogeschool Brussel</div>
-      <div id="taal">Nederlands</div>
-    </footer>
-
-    <div id="probleemModal" class="modal">
-      <div class="modal-content">
-        <span class="close" onclick="closeModal('probleemModal')">&times;</span>
-        <div class="volledig-probleem-form">
+      <hr>
+      <div class="op-te-halen">
+        <h2>Op te halen:</h2>
+        <% reservations.forEach(r => { %>
+        <div class="product-in-bezit">
+          <h4>Product: <%= r.product_name %></h4>
+          <h4>Product-ID: <%= r.product_ID %></h4>
+          <h4>OphaalDatum: <%= r.formatted_begin_datum %></h4>
           <div>
-            <h1>Is het product beschadigd?</h1>
+            <button id="annulatie-reservatie" class="annuleer-knop">x</button>
           </div>
-          <form id="probleemForm">
-            <div class="radio-container">
-              <label for="schade1"><h2>JA</h2></label>
-              <input type="radio" name="schade" id="schade1">
-              <label for="schade2"><h2>NEE</h2></label>
-              <input type="radio" name="schade" id="schade2">
-              <br>
-            </div>
-            <div class="beschrijving">
-              <h2>Beschrijving probleem:</h2>
-              <textarea class="textarea-probleem" type="text" name="beschrijving" rows="8" cols="40"></textarea>
-              <br>
-              <button class="knop-probleem-versturen" type="submit">Verstuur</button>
-            </div>
-          </form>
         </div>
+        <% }); %>
       </div>
     </div>
+  </main>
+  <footer>
+    <div id="school">© 2024 Erasmushogeschool Brussel</div>
+    <div id="taal">Nederlands</div>
+  </footer>
 
-    <div id="annulatieModal" class="modal">
-      <div class="modal-content">
-        <span class="close" onclick="closeModal('annulatieModal')">&times;</span>
-        <div class="volledig-annulatie-form">
-          <div>
-            <h1>Ben je zeker dat je de reservatie wilt annuleren?</h1>
-          </div>
-          <form id="annulatieForm">
+  <div id="probleemModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('probleemModal')">&times;</span>
+      <div class="volledig-probleem-form">
+        <div>
+          <h1>Is het product beschadigd?</h1>
+        </div>
+        <form id="probleemForm">
+          <div class="radio-container">
             <label for="schade1"><h2>JA</h2></label>
             <input type="radio" name="schade" id="schade1">
             <label for="schade2"><h2>NEE</h2></label>
             <input type="radio" name="schade" id="schade2">
             <br>
+          </div>
+          <div class="beschrijving">
+            <h2>Beschrijving probleem:</h2>
+            <textarea class="textarea-probleem" type="text" name="beschrijving" rows="8" cols="40"></textarea>
+            <br>
             <button class="knop-probleem-versturen" type="submit">Verstuur</button>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
     </div>
+  </div>
 
-    <script src="js/profiel-user.js"></script>
-  </body>
+  <div id="annulatieModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('annulatieModal')">&times;</span>
+      <div class="volledig-annulatie-form">
+        <div>
+          <h1>Ben je zeker dat je de reservatie wilt annuleren?</h1>
+        </div>
+        <form id="annulatieForm">
+          <label for="schade1"><h2>JA</h2></label>
+          <input type="radio" name="schade" id="schade1">
+          <label for="schade2"><h2>NEE</h2></label>
+          <input type="radio" name="schade" id="schade2">
+          <br>
+          <button class="knop-probleem-versturen" type="submit">Verstuur</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/profiel-user.js"></script>
+  <script src="js/fetchuser-info.js"></script>
+</body>
 </html>

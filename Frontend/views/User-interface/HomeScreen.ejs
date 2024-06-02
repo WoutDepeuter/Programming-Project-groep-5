@@ -19,8 +19,9 @@
         </div>
         <div class="profiel">
             <a href="#"><img id="profiel" src="/pictures/winkelkar.png" alt="winkelkar"></a>
-            <a href="/profiel-user">
-                <img id="profiel" src="/pictures/circle-profile.png" alt="profiel"></a>
+            <a href="/profiel-user" id="profile-link">
+              <img id="profiel" src="/pictures/circle-profile.png" alt="profiel">
+          </a>>
         </div>
     </header>
     <main>
@@ -251,6 +252,13 @@
 
     <script src="js/HomeScreen.js"></script>
     <script src="js/login/auth.js"></script>
+    <script>const username = localStorage.getItem('username');
+
+    
+      if (username) {
+          const profileLink = document.getElementById('profile-link');
+          profileLink.href = `/profiel-user/${username}`;
+      }</script>
 </body>
 
 </html>
