@@ -335,9 +335,9 @@ app.post("/geefproduct", (req, res) => {
   console.log("Reservation ID:", reservationId);
   console.log("User ID:", userId);
 
-  const updateProductQuery = "UPDATE PRODUCT SET status = 0 WHERE product_ID = ?";
+  const updateProductQuery = "UPDATE PRODUCT SET status = 2 WHERE product_ID = ?";
   const deleteReservationQuery = "DELETE FROM RESERVATIE WHERE reservatie_ID = ?";
-  const updateuser = "UPDATE USER SET Blacklist = 1 WHERE user_ID = ?";
+  const updateUser = "UPDATE USER SET Blacklist = 1 WHERE user_ID = ?";
 
   pool.query(updateProductQuery, [productId], (err, productResult) => {
     if (err) {
@@ -352,17 +352,22 @@ app.post("/geefproduct", (req, res) => {
         res.status(500).send("Internal Server Error");
         return;
       }
-      pool.query(updateuser, [userId], (err, deleteResult) => {
+
+      pool.query(updateUser, [userId], (err, userResult) => {
         if (err) {
           console.error("Error updating user:", err);
           res.status(500).send("Internal Server Error");
           return;
         }
 
-      res.send("Product given successfully and reservation deleted");
+        res.send("Product given successfully and reservation deleted");
+      }
+      );
     });
   });
-}
+});
+
+
 
 
 
