@@ -427,13 +427,13 @@ app.post("/login", async (req, res) => {
       const user = rows[0];
       if (await argon2.verify(user.password, password)) {
         const token = jwt.sign(
-          { username: user.username },
+          { username: user.username, role: user.rol },
           process.env.JWT_SECRET,
           {
             expiresIn: "1h",
           }
         );
-        res.json({ token });
+        res.json({ token , role: user.rol});
         return;
       } else {
         res.status(401).send("Invalid credentials");
