@@ -20,8 +20,10 @@
     <div class="bezit-en-ophalen">
       <div class="in-bezit">
         <h2>Momenteel in bezit:</h2>
-        <% reservations.forEach(r => {
-          if (r.status === 2) { %>
+        <% let inBezitFound = false; %>
+        <% reservations.forEach(r => { %>
+          <% if (r.status === 2) { %>
+          <% inBezitFound = true; %>
           <div class="product-in-bezit">
             <h4>Product: <%= r.product_name %></h4>
             <h4>Product-ID: <%= r.product_ID %></h4>
@@ -31,22 +33,32 @@
               <h4><a href="/Frontend/User-interface/Verlenging.html">Verlengen?</a></h4>
             </div>
           </div>
-        <% }}); %>
+        <% } %>
+        <% }); %>
+        <% if (!inBezitFound) { %>
+          <p>Geen producten momenteel in bezit.</p>
+        <% } %>
       </div>
       <hr>
       <div class="op-te-halen">
         <h2>Op te halen:</h2>
-        <% reservations.forEach(r => { 
-          if (r.status === 1) { %>
-        <div class="product-in-bezit">
-          <h4>Product: <%= r.product_name %></h4>
-          <h4>Product-ID: <%= r.product_ID %></h4>
-          <h4>OphaalDatum: <%= r.formatted_begin_datum %></h4>
-          <div>
-            <button id="annulatie-reservatie" class="annuleer-knop">x</button>
+        <% let opTeHalenFound = false; %>
+        <% reservations.forEach(r => { %>
+          <% if (r.status === 1) { %>
+          <% opTeHalenFound = true; %>
+          <div class="product-in-bezit">
+            <h4>Product: <%= r.product_name %></h4>
+            <h4>Product-ID: <%= r.product_ID %></h4>
+            <h4>OphaalDatum: <%= r.formatted_begin_datum %></h4>
+            <div>
+              <button id="annulatie-reservatie" class="annuleer-knop">x</button>
+            </div>
           </div>
-        </div>
-        <% }}); %>
+        <% } %>
+        <% }); %>
+        <% if (!opTeHalenFound) { %>
+          <p>Geen reservaties op te halen.</p>
+        <% } %>
       </div>
     </div>
   </main>
