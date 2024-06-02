@@ -152,7 +152,7 @@ hr {
 }
 
 .box:hover {
-  transform: translateY(-5px);
+  transform: scale(1.1);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -179,7 +179,7 @@ hr {
   text-decoration: none;
 }
 
-#reserveren:hover {
+.reserveren:hover {
   background-color: #2bcdc7; /* Accent color */
 }
 
@@ -429,3 +429,4 @@ footer {
   opacity: 1; /* Maak de knop zichtbaar */
   transform: translateY(0); /* Verplaats de knop naar zijn normale positie */
 }
+

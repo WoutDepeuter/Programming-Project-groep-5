@@ -157,7 +157,7 @@ footer {
   flex: 1 0 18%; /* 18% width for each box */
   margin: 1em;
   padding: 1em;
-  max-width: 18%;
+  width: 18%;
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -176,7 +176,7 @@ footer {
 }
 
 .box:hover {
-  transform: translateY(-5px);
+  transform: scale(1.5);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -313,7 +313,7 @@ footer {
   position: fixed;
   bottom: 20px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: scale(1.5);
   z-index: 1000;
 }
 
