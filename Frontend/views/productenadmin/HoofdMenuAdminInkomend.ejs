@@ -81,9 +81,20 @@
                                     <%= reservation.naam %>
                                 </p>
                                 <div class="buttons">
-                                    <button class="return-button" data-reservation-id="<%= reservation.reservatie_ID %>" data-product-id="<%= reservation.product_ID %>">Verkregen</button>                                   
-                                     <button id="TeLaat">Te laat</button>
-                                </div>
+                                    <button class="return-button" 
+                                    data-reservation-id="<%= reservation.reservatie_ID %>" 
+                                    data-product-id="<%= reservation.product_ID %>" 
+                                    data-user-id="<%= reservation.User_ID %>">
+                              Verkregen
+                            </button>
+                            
+                            <button id="TeLaat" class="give-button" 
+                                    data-reservation-id="<%= reservation.reservatie_ID %>" 
+                                    data-product-id="<%= reservation.product_ID %>" 
+                                    data-user-id="<%= reservation.User_ID %>" 
+                                    data-reservatie-id="<%= reservation.reservatie_ID %>">
+                              Te laat
+                            </button>
 
                             </li>
                             <% }); %>
@@ -113,6 +124,7 @@
     <!-- Einde footer -->
     <!-- <script src="/Backend/admin/productIndienen.js"></script> -->
     <script src="/js/admin/return2.js"></script>
+    <script src="/js/admin/geefproductaan.js"></script>
 </body>
 ²
 </html>

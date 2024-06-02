@@ -306,7 +306,6 @@ app.post("/returnproduct", (req, res) => {
   const { productId, reservationId } = req.body;
   console.log("Product ID:", productId);
   console.log("Reservation ID:", reservationId);
-  
 
   const updateProductQuery = "UPDATE PRODUCT SET status = 0 WHERE product_ID = ?";
   const deleteReservationQuery = "DELETE FROM RESERVATIE WHERE reservatie_ID = ?";
@@ -326,6 +325,35 @@ app.post("/returnproduct", (req, res) => {
       }
 
       res.send("Product returned successfully and reservation deleted");
+    });
+  });
+});
+
+app.post("/geefproduct", (req, res) => {
+  const { productId, reservationId, userId } = req.body;
+  console.log("Product ID:", productId);
+  console.log("Reservation ID:", reservationId);
+  console.log("User ID:", userId);
+
+  const updateProductQuery = "UPDATE PRODUCT SET status = 3 WHERE product_ID = ?";
+  const deleteReservationQuery = "DELETE FROM RESERVATIE WHERE reservatie_ID = ?";
+
+  pool.query(updateProductQuery, [productId], (err, productResult) => {
+    if (err) {
+      console.error("Error updating product status:", err);
+      res.status(500).send("Internal Server Error");
+      return;
+    }
+
+    pool.query(deleteReservationQuery, [reservationId], (err, deleteResult) => {
+      if (err) {
+        console.error("Error deleting reservation:", err);
+        res.status(500).send("Internal Server Error");
+        return;
+      }
+      pool.query("UPDATE USER SET blacklist = 1 WHERE user_ID = ?", [userId], (err, result) => {
+
+      res.send("Product given successfully and reservation deleted");
     });
   });
 });
@@ -555,6 +583,7 @@ app.get("/profiel-user/:email", (req, res) => {
     }
   );
 });
+
 
 
 app.get("/audio-catalogus", (req, res) => {
