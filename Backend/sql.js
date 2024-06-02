@@ -444,9 +444,10 @@ app.get("/getproducteninfo/:id", async (req, res) => {
   }
 });
 
-app.post("/reservatie-van-producten/:id", async (req, res) => {
-  const { product_ID, van, tot } = req.body;
+app.post("/reservatie-van-producten/:productID", async (req, res) => {
+  const { van, tot } = req.body;
   const authHeader = req.headers.authorization;
+  const product_ID = req.params.productID; 
   if (!authHeader) {
     return res.status(401).json({ error: "No token provided" });
   }
@@ -462,13 +463,25 @@ app.post("/reservatie-van-producten/:id", async (req, res) => {
     }
     const userId = user[0].user_ID;
     console.log("User ID:", userId);
+
+    await poolPromise.query("BEGIN;");
+    
     await poolPromise.query(
       "INSERT INTO RESERVATIE (user_ID, product_ID , begin_datum, eind_datum) VALUES (?, ?, ?, ?)",
       [userId, product_ID, van, tot]
     );
+    
+    await poolPromise.query(
+      "UPDATE PRODUCT SET status = 1 WHERE product_ID = ?",
+      [product_ID]
+    );
+ 
+    await poolPromise.query("COMMIT;");
     return res.status(201).json({ message: "Product reserved" });
   } catch (err) {
     console.error("Error reserving product:", err);
+  
+    await poolPromise.query("ROLLBACK;");
     return res.status(500).json({ error: "Error reserving product" });
   }
 });
