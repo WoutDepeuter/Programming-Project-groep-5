@@ -672,13 +672,13 @@ button{
 #TeLaat:hover {
   background-color: darkred;
 }
-#Verkregen:hover {
+.return-button:hover {
   background-color: #6b926b;
 }
 #TeLaat{
   background-color: #ff0000;
 }
-#Verkregen{
+.return-button{
   background-color: #95d095;
 }
 .buttons{
