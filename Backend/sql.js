@@ -459,7 +459,7 @@ app.post("/signUp", async (req, res) => {
     const username = email.split("@")[0];
     const hashedPassword = await argon2.hash(password);
     await poolPromise.query(
-      "INSERT INTO USER (username, email, password, rol) VALUES (?, ?, ?, 'student')",
+      "INSERT INTO USER (username, email, password) VALUES (?, ?, ?)",
       [username, email, hashedPassword]
     );
     res.status(201).send("User registered");
@@ -709,5 +709,5 @@ app.get("/user-info", async (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server running on port http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
