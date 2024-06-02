@@ -302,6 +302,36 @@ app.post("/removeRealProduct", (req, res) => {
   });
 });
 
+app.post("/returnproduct", (req, res) => {
+  const { productId, reservationId } = req.body;
+  console.log("Product ID:", productId);
+  console.log("Reservation ID:", reservationId);
+  
+
+  const updateProductQuery = "UPDATE PRODUCT SET status = 0 WHERE product_ID = ?";
+  const deleteReservationQuery = "DELETE FROM RESERVATIE WHERE reservatie_ID = ?";
+
+  pool.query(updateProductQuery, [productId], (err, productResult) => {
+    if (err) {
+      console.error("Error updating product status:", err);
+      res.status(500).send("Internal Server Error");
+      return;
+    }
+
+    pool.query(deleteReservationQuery, [reservationId], (err, deleteResult) => {
+      if (err) {
+        console.error("Error deleting reservation:", err);
+        res.status(500).send("Internal Server Error");
+        return;
+      }
+
+      res.send("Product returned successfully and reservation deleted");
+    });
+  });
+});
+
+
+
 // User-interface-------------------------------------------------------------------------------
 
 app.get("/homescreen", async (req, res) => {
@@ -444,9 +474,10 @@ app.get("/getproducteninfo/:id", async (req, res) => {
   }
 });
 
-app.post("/reservatie-van-producten/:id", async (req, res) => {
-  const { product_ID, van, tot } = req.body;
+app.post("/reservatie-van-producten/:productID", async (req, res) => {
+  const { van, tot } = req.body;
   const authHeader = req.headers.authorization;
+  const product_ID = req.params.productID; 
   if (!authHeader) {
     return res.status(401).json({ error: "No token provided" });
   }
@@ -462,13 +493,25 @@ app.post("/reservatie-van-producten/:id", async (req, res) => {
     }
     const userId = user[0].user_ID;
     console.log("User ID:", userId);
+
+    await poolPromise.query("BEGIN;");
+
     await poolPromise.query(
       "INSERT INTO RESERVATIE (user_ID, product_ID , begin_datum, eind_datum) VALUES (?, ?, ?, ?)",
       [userId, product_ID, van, tot]
     );
+
+    await poolPromise.query(
+      "UPDATE PRODUCT SET status = 1 WHERE product_ID = ?",
+      [product_ID]
+    );
+ 
+    await poolPromise.query("COMMIT;");
     return res.status(201).json({ message: "Product reserved" });
   } catch (err) {
     console.error("Error reserving product:", err);
+
+    await poolPromise.query("ROLLBACK;");
     return res.status(500).json({ error: "Error reserving product" });
   }
 });
