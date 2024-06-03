@@ -16,7 +16,7 @@ function getRoleFromBackend(token) {
             const role = data.role;
             console.log("Leesbare (ontcijferd) rol:", role);
             
-            if (role !== "admin" || role !== "student" || role !== "docent") {
+            if (role == "") {
                 redirectToLogin();
             }
         }
