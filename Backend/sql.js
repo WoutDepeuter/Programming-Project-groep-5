@@ -236,7 +236,7 @@ app.get("/producten", (req, res) => {
         return;
       }
       console.log("Products retrieved from database:", results); // Log the results object
-      res.render("productenadmin/producten", { products: results });
+      res.render("Admin-Interface/productenadmin/producten", { products: results });
     }
   );
 });
@@ -252,7 +252,7 @@ app.get("/productenbelichting", (req, res) => {
         res.status(500).send("Internal Server Error");
         return;
       }
-      res.render("productenadmin/productenbelichting", { products: results });
+      res.render("Admin-Interface/productenadmin/productenbelichting", { products: results });
     }
   );
 });
@@ -267,7 +267,7 @@ app.get("/productenvaria", (req, res) => {
         res.status(500).send("Internal Server Error");
         return;
       }
-      res.render("productenadmin/productenvaria", { products: results });
+      res.render("Admin-Interface/productenadmin/productenvaria", { products: results });
     }
   );
 });
@@ -282,7 +282,7 @@ app.get("/productenxr", (req, res) => {
         res.status(500).send("Internal Server Error");
         return;
       }
-      res.render("productenadmin/productenxr", { products: results });
+      res.render("Admin-Interface/productenadmin/productenxr", { products: results });
     }
   );
 });
@@ -297,7 +297,7 @@ app.get("/productenvideo", (req, res) => {
         res.status(500).send("Internal Server Error");
         return;
       }
-      res.render("productenadmin/productenvideo", { products: results });
+      res.render("Admin-Interface/productenadmin/productenvideo", { products: results });
     }
   );
 });
