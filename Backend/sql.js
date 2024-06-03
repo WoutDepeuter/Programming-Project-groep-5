@@ -712,7 +712,8 @@ app.get("/profiel-user/:email", (req, res) => {
       DATE_FORMAT(r.begin_datum, '%d-%m-%Y') AS formatted_begin_datum, 
       p.Model_ID, 
       pm.naam AS product_name,
-      p.status
+      p.status,
+      u.rol as user_role
     FROM 
       RESERVATIE r
     JOIN 
@@ -733,9 +734,13 @@ app.get("/profiel-user/:email", (req, res) => {
         res.status(500).send("Internal Server Error");
         return;
       }
+      
       console.log("Reservations retrieved from database:", results);
       res.render("User-interface/profiel/profiel-user", {
         reservations: results,
+        user: {
+          role: results.length > 0 ? results[0].user_role : null // Assuming all rows have the same role
+        }
       });
     }
   );
