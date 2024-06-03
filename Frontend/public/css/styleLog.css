@@ -1,11 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family:  "Poppins", Arial, Helvetica, sans-serif;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
 }
 
 body {
@@ -13,21 +12,24 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
   min-height: 100vh;
   flex-direction: column;
+  padding-bottom: 3em;
 }
 
-.container{
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.logo-box{
+.logo-box {
+  margin-top: 20px ;
   margin-bottom: 20px;
 }
 
-.logo{
+.logo {
   width: 150px;
   height: 150px;
   object-fit: cover;
@@ -38,7 +40,8 @@ body {
 .login-box {
   display: flex;
   flex-direction: column;
-  align-items: center ;
+  align-items: center;
+  height:450px ;
   width: 360px;
   padding: 40px 20px;
   background-color: white;
@@ -47,14 +50,14 @@ body {
   transition: transform 0.3s;
 }
 
-.login-box:hover{
+.login-box:hover {
   transform: translateY(-10px);
 }
 
 .signup-box {
   display: flex;
   flex-direction: column;
-  align-items:center ;
+  align-items: center;
   width: 360px;
   padding: 40px 20px;
   background-color: white;
@@ -63,7 +66,7 @@ body {
   transition: transform 0.3s;
 }
 
-.signup-box:hover{
+.signup-box:hover {
   transform: translateY(-10px);
 }
 
@@ -93,11 +96,11 @@ form input {
   transition: border-color 0.3s;
 }
 
-form input:focus{
+form input:focus {
   border-color: #2bcdc7;
 }
 
-#log-btn{
+#log-btn {
   width: 100%;
   padding: 12px;
   border: none;
@@ -109,7 +112,7 @@ form input:focus{
   transition: background-color 0.3s;
 }
 
-#log-btn:hover{
+#log-btn:hover {
   background-color: #239a95;
 }
 
@@ -129,7 +132,7 @@ p a:hover {
 }
 
 footer {
-  /* position: absolute; */
+ position: absolute;
   bottom: 0;
   width: 100%;
   left: 0;
@@ -152,7 +155,7 @@ footer {
   color: white;
 }
 
-#sign-btn{
+#sign-btn {
   margin-top: 10px;
   background-color: red;
   color: white;
@@ -164,7 +167,7 @@ footer {
   transition: background-color 0.3s ease;
   text-decoration: none;
 }
-#log-btn{
+#log-btn {
   margin-top: 10px;
   background-color: red;
   color: white;
@@ -182,7 +185,18 @@ footer {
 #sign-btn:hover {
   background-color: #d33a3a;
 }
-#signform{
+#signform {
   display: flex;
   flex-direction: column;
+}
+
+/* Scrollbar achtergrondkleur */
+::-webkit-scrollbar-track {
+  background: #222831;
+}
+
+/* Scrollbar voorgrondkleur */
+::-webkit-scrollbar-thumb {
+  background: #ff0000;
+  border-radius: 10px;
 }

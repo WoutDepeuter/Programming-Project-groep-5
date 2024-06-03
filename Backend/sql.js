@@ -103,52 +103,119 @@ app.get("/getRole", (req, res) => {
 // Admin-interface-------------------------------------------------------------------------------
 
 app.get("/HoofdMenuAdmin", (req, res) => {
+  const queryReservations = `
+    SELECT 
+      RESERVATIE.*, 
+      PRODUCT.*, 
+      PRODUCTMODEL.*, 
+      USER.email, 
+      USER.username
+    FROM 
+      RESERVATIE
+    LEFT JOIN 
+      PRODUCT ON RESERVATIE.product_ID = PRODUCT.product_ID
+    LEFT JOIN 
+      PRODUCTMODEL ON PRODUCT.model_ID = PRODUCTMODEL.model_ID
+    LEFT JOIN 
+      USER ON RESERVATIE.user_ID = USER.user_ID
+    WHERE 
+      RESERVATIE.begin_datum = CURDATE()
+  `;
 
-  pool.query(
-    `
-    SELECT RESERVATIE.*, PRODUCT.*, PRODUCTMODEL.*, USER.email, USER.username
-    FROM RESERVATIE
-    LEFT JOIN PRODUCT ON RESERVATIE.product_ID = PRODUCT.product_ID
-    LEFT JOIN PRODUCTMODEL ON PRODUCT.model_ID = PRODUCTMODEL.model_ID
-    LEFT JOIN USER ON RESERVATIE.user_ID = USER.user_ID
-    WHERE RESERVATIE.begin_datum = CURDATE()
-  `,
-    (err, results) => {
+  const queryUitgeleend = `SELECT COUNT(*) AS uitgeleend_count FROM PRODUCT WHERE status = 2`;
+  const queryTeLaat = `SELECT COUNT(*) AS telaat_count FROM PRODUCT WHERE status = 3`;
+
+  pool.query(queryReservations, (err, reservations) => {
+    if (err) {
+      console.error("Error fetching reservations:", err);
+      res.status(500).send("Internal Server Error");
+      return;
+    }
+
+    pool.query(queryUitgeleend, (err, uitgeleendResult) => {
       if (err) {
-        console.error("Error fetching data:", err);
+        console.error("Error fetching uitgeleend count:", err);
         res.status(500).send("Internal Server Error");
         return;
       }
-      console.log(results);
-      res.render("productenadmin/HoofdMenuAdmin", { reservations: results });
-    }
-  );
 
-  
+      const uitgeleendCount = uitgeleendResult[0].uitgeleend_count;
+
+      pool.query(queryTeLaat, (err, telaatResult) => {
+        if (err) {
+          console.error("Error fetching telaat count:", err);
+          res.status(500).send("Internal Server Error");
+          return;
+        }
+
+        const telaatCount = telaatResult[0].telaat_count;
+
+        res.render("productenadmin/HoofdMenuAdmin", {
+          reservations: reservations,
+          uitgeleendCount: uitgeleendCount,
+          telaatCount: telaatCount
+        });
+      });
+    });
+  });
 });
-app.get("/HoofdMenuAdminInkomend", (req, res) => {
 
-  pool.query(
-    `
-    SELECT RESERVATIE.*, PRODUCT.*, PRODUCTMODEL.*, USER.email, USER.username
-    FROM RESERVATIE
-    LEFT JOIN PRODUCT ON RESERVATIE.product_ID = PRODUCT.product_ID
-    LEFT JOIN PRODUCTMODEL ON PRODUCT.model_ID = PRODUCTMODEL.model_ID
-    LEFT JOIN USER ON RESERVATIE.user_ID = USER.user_ID
-    WHERE RESERVATIE.eind_datum = CURDATE()
-  `,
-    (err, results) => {
+app.get("/HoofdMenuAdminInkomend", (req, res) => {
+  const queryReservations = `
+    SELECT 
+      RESERVATIE.*, 
+      PRODUCT.*, 
+      PRODUCTMODEL.*, 
+      USER.email, 
+      USER.username
+    FROM 
+      RESERVATIE
+    LEFT JOIN 
+      PRODUCT ON RESERVATIE.product_ID = PRODUCT.product_ID
+    LEFT JOIN 
+      PRODUCTMODEL ON PRODUCT.model_ID = PRODUCTMODEL.model_ID
+    LEFT JOIN 
+      USER ON RESERVATIE.user_ID = USER.user_ID
+    WHERE 
+      RESERVATIE.eind_datum = CURDATE()
+  `;
+
+  const queryUitgeleend = `SELECT COUNT(*) AS uitgeleend_count FROM PRODUCT WHERE status = 2`;
+  const queryTeLaat = `SELECT COUNT(*) AS telaat_count FROM PRODUCT WHERE status = 3`;
+
+  pool.query(queryReservations, (err, reservations) => {
+    if (err) {
+      console.error("Error fetching reservations:", err);
+      res.status(500).send("Internal Server Error");
+      return;
+    }
+
+    pool.query(queryUitgeleend, (err, uitgeleendResult) => {
       if (err) {
-        console.error("Error fetching data:", err);
+        console.error("Error fetching uitgeleend count:", err);
         res.status(500).send("Internal Server Error");
         return;
       }
-      console.log(results);
-      res.render("productenadmin/HoofdMenuAdminInkomend", { reservations: results });
-    }
-  );
 
-  
+      const uitgeleendCount = uitgeleendResult[0].uitgeleend_count;
+
+      pool.query(queryTeLaat, (err, telaatResult) => {
+        if (err) {
+          console.error("Error fetching telaat count:", err);
+          res.status(500).send("Internal Server Error");
+          return;
+        }
+
+        const telaatCount = telaatResult[0].telaat_count;
+
+        res.render("productenadmin/HoofdMenuAdminInkomend", {
+          reservations: reservations,
+          uitgeleendCount: uitgeleendCount,
+          telaatCount: telaatCount
+        });
+      });
+    });
+  });
 });
 
 

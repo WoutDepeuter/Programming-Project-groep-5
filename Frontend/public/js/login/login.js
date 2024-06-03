@@ -1,5 +1,13 @@
 console.log('Login page loaded');
 
+function rot13(str) {
+    return str.replace(/[A-Za-z]/g, function(c) {
+      return String.fromCharCode(
+        c.charCodeAt(0) + (c.toLowerCase() < 'n' ? 13 : -13)
+      );
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     checkIfAlreadyLoggedIn();
 });
@@ -41,7 +49,7 @@ async function login() {
 
     if (response.ok) {
         const data = await response.json();
-        localStorage.setItem('username', username);
+        localStorage.setItem('username', rot13(username));
         localStorage.setItem('token', data.token);
         showLoggedInMessage(username);
         console.log('Login successful');

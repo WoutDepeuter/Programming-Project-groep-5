@@ -46,7 +46,7 @@ header {
 }
 
 #zoekbalk::placeholder {
-  color: #2bcdc7; /* Accent color */
+  color: #2bcdc7;
   font-weight: bold;
 }
 
@@ -105,7 +105,7 @@ header {
 
 .prodnav a:hover,
 .prodnav a.active {
-  color: #2bcdc7; /* Accent color */
+  color: #2bcdc7;
 }
 
 .prodnav #filter {
@@ -120,13 +120,13 @@ header {
 }
 
 .prodnav #filter:hover {
-  background-color: #2bcdc7; /* Accent color */
+  background-color: #2bcdc7;
 }
 
 hr {
   width: 97%;
   height: 1px;
-  background-color: #2bcdc7; /* Accent color */
+  background-color: #2bcdc7;
   border: none;
 }
 
@@ -180,7 +180,7 @@ hr {
 }
 
 .reserveren:hover {
-  background-color: #2bcdc7; /* Accent color */
+  background-color: #2bcdc7;
 }
 
 footer {
@@ -250,7 +250,7 @@ footer {
 }
 
 .close-btn:hover {
-  background-color: #2bcdc7; /* Accent color */
+  background-color: #2bcdc7;
 }
 
 #filter {
@@ -347,16 +347,15 @@ footer {
 }
 
 .close-btn:hover {
-  background-color: #2bcdc7; /* Accent color */
+  background-color: #2bcdc7;
 }
 
 .popup-box {
-  border: 1px solid #2bcdc7; /* Accent color */
+  border: 1px solid #2bcdc7;
   padding: 10px;
   border-radius: 5px;
 }
 
-/* Add this to your CSS */
 .overlay {
   display: none;
   position: fixed;
@@ -407,7 +406,7 @@ footer {
   height: 30px;
   padding: 15px;
   cursor: pointer;
-  opacity: 0; /* Begin met een onzichtbare knop */
+  opacity: 0;
   transform: translateY(100%);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -426,8 +425,8 @@ footer {
 }
 
 .scroll-to-top-btn.show {
-  opacity: 1; /* Maak de knop zichtbaar */
-  transform: translateY(0); /* Verplaats de knop naar zijn normale positie */
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Scrollbar begin */

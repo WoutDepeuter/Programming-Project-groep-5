@@ -19,7 +19,7 @@ body {
   padding: 0 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-#GoHome{
+#GoHome {
   color: white;
   text-decoration: none;
 }
@@ -123,8 +123,8 @@ hr {
   margin: 0 2em;
 }
 
-.product-categorien a:hover{
-  color:  #2bcdc7;
+.product-categorien a:hover {
+  color: #2bcdc7;
 }
 .product-categorien a.active {
   color: #2bcdc7;
@@ -147,11 +147,10 @@ footer {
   color: white;
 }
 
-#taal{
+#taal {
   padding: 10px;
   color: white;
 }
-
 
 .box {
   flex: 1 0 18%; /* 18% width for each box */
@@ -167,11 +166,11 @@ footer {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-#vuilbak-icoon{
+#vuilbak-icoon {
   margin: 0 auto;
 }
 
-#potlood-icoon{
+#potlood-icoon {
   margin: 0 auto;
 }
 
@@ -281,7 +280,7 @@ footer {
   margin: auto;
 }
 
-#closeButton{
+#closeButton {
   margin-top: 20px;
   background-color: red;
   color: white;
@@ -333,11 +332,10 @@ footer {
   background-color: #ff4444;
 }
 
-.buttonsss{
+.buttonsss {
   display: flex;
   flex-direction: row;
 }
-
 
 .button-container {
   display: flex;
@@ -345,7 +343,8 @@ footer {
   margin-top: 20px;
 }
 
-.yes-btn, .no-btn {
+.yes-btn,
+.no-btn {
   color: white;
   border: none;
   border-radius: 10px;
@@ -353,15 +352,15 @@ footer {
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-.no-btn{
+.no-btn {
   background-color: red;
 }
-.yes-btn{
+.yes-btn {
   background-color: #2bcdc7;
 }
 
 .yes-btn:hover {
-  background-color:  #32e4de;
+  background-color: #32e4de;
 }
 .no-btn:hover {
   background-color: #fc5656;
@@ -422,7 +421,6 @@ footer {
   margin-top: 20px;
 }
 
-
 .popup-buttons .btn {
   flex: 1;
   background-color: red;
@@ -442,7 +440,6 @@ footer {
   background-color: #2bcdc7;
 }
 
-
 /* CSS VOOR POPUP VERWIJDEREN */
 .popup-background-verwijderen {
   position: fixed;
@@ -453,7 +450,7 @@ footer {
   background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
 }
 
 .popup-content-verwijderen {
@@ -469,7 +466,8 @@ footer {
   margin-top: 20px;
 }
 
-.yes-btn-verwijderen, .no-btn-verwijderen {
+.yes-btn-verwijderen,
+.no-btn-verwijderen {
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
@@ -477,12 +475,12 @@ footer {
 }
 
 .yes-btn-verwijderen:hover {
-  background-color: #d9534f; 
+  background-color: #d9534f;
   color: white;
 }
 
 .no-btn-verwijderen:hover {
-  background-color: #5bc0de; 
+  background-color: #5bc0de;
   color: white;
 }
 
@@ -550,7 +548,8 @@ footer {
   justify-content: space-between;
 }
 
-#addRealProductButton, #removeRealProductButton {
+#addRealProductButton,
+#removeRealProductButton {
   font-size: small;
   width: 400px;
 }
@@ -623,8 +622,10 @@ footer {
   margin-top: 10px;
 }
 
-
-.close-btn-filter, .delete-btn-filter, .yes-btn-filter, .no-btn-filter {
+.close-btn-filter,
+.delete-btn-filter,
+.yes-btn-filter,
+.no-btn-filter {
   margin-top: 10px;
   padding: 10px 20px;
   cursor: pointer;
@@ -640,7 +641,6 @@ footer {
   display: none;
 }
 
-/* Scrollbar begin */
 /* Scrollbar dikte */
 ::-webkit-scrollbar {
   width: 7.5px;
