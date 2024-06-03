@@ -67,5 +67,5 @@ Welkom bij EHBLoanHub! EHBLoanHub is een gebruiksvriendelijke website die we heb
 
 ## Gebruikt door:
 
-- Erasmus Hogeschool Brussel
+- Erasmushogeschool Brussel
 
