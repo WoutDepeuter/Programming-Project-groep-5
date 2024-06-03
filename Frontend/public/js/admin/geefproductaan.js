@@ -6,12 +6,12 @@
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    const giveButtons = document.querySelectorAll('.give-button'); // Select both buttons
+    const giveButtons = document.querySelectorAll('.give-button');
     giveButtons.forEach(button => {
         button.addEventListener('click', async () => {
             const reservationId = button.dataset.reservationId;
             const productId = button.dataset.productId;
-            const userId = button.dataset.userId;  // Corrected the dataset property
+            const userId = button.dataset.userId;
 
             try {
                 const response = await fetch('/geefproduct', {

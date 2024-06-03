@@ -6,7 +6,6 @@ let currentIndex = {
   xr: 0
 };
 
-//progress bar
 function updateProgressBar(sliderName, currentIndex, maxIndex) {
   let progressBar = document.getElementById(`${sliderName}ProgressBar`);
   if (!progressBar) return;
@@ -32,8 +31,6 @@ function moveLeft(sliderId) {
   slider.style.transform = `translateX(-${currentIndex[sliderName] * boxWidth}px)`;
   updateProgressBar(sliderName, currentIndex[sliderName], maxIndex);
 }
-
-// Move the slider to the right
 
 function moveRight(sliderId) {
   let slider = document.getElementById(sliderId);

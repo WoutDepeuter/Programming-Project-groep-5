@@ -44,8 +44,8 @@ function reservatieProduct(event){
     let van = document.getElementById('van-tijd').value;
     let tot = document.getElementById('tot-tijd').value;
     let ProductId = document.getElementById('reserveren').getAttribute('value');
-    let token = localStorage.getItem('token'); // Assuming token is stored in localStorage
-    let user_ID = localStorage.getItem('user_ID'); // Assuming user_ID is stored in localStorage
+    let token = localStorage.getItem('token');
+    let user_ID = localStorage.getItem('user_ID');
     console.log(ProductId, van, tot, user_ID, 'reservatieProduct')
 
     

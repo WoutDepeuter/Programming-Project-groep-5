@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (response.ok) {
                     window.location.href = '/login'; 
                 } else {
-                    // Handle failed signup
+                    
                 }
             })
             .catch(error => console.error('Error:', error));

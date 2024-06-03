@@ -39,7 +39,7 @@ async function checkIfAlreadyLoggedIn() {
                 console.log('Already logged in');
             } else {
                 console.error('Failed to fetch user info');
-                localStorage.removeItem('token'); // Clear invalid token
+                localStorage.removeItem('token'); 
             }
         } catch (error) {
             console.error('Error fetching user info:', error);
@@ -67,8 +67,6 @@ async function login() {
         console.log('Login successful');
         window.location.href = '/homescreen'; 
 
-
-        // Fetch user info
         const userInfoResponse = await fetch('/user-info', {
             headers: {
                 Authorization: `Bearer ${data.token}`
@@ -86,7 +84,6 @@ async function login() {
 }
 
 function showLoggedInMessage(username) {
-    // Show login success message
     const loginMessage = document.getElementById('login-message');
     loginMessage.textContent = `Logged in as ${username}`;
     loginMessage.style.display = 'block';
