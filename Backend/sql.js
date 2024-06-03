@@ -9,6 +9,8 @@ const app = express();
 const env = require("dotenv").config().parsed;
 const CryptoJS = require('crypto-js');
 
+
+
 // functies om rol uit token onleesbaar te maken en leesbaar te maken
 // update jullie .env bestand met een AES_KEY:... zie discord.
 function decryptAES(ciphertext, key) {
@@ -690,7 +692,16 @@ app.post("/annuleer-besteling", (req, res) => {
 
 
 app.get("/profiel-user/:email", (req, res) => {
-  const userEmail = req.params.email;
+
+  function rot13(str) {
+    return str.replace(/[A-Za-z]/g, function(c) {
+      return String.fromCharCode(
+        c.charCodeAt(0) + (c.toLowerCase() < 'n' ? 13 : -13)
+      );
+    });
+  }
+
+  const userEmail = rot13(req.params.email);
 
   pool.query(
     `
