@@ -608,7 +608,7 @@ app.get("/getproducteninfo/:id", async (req, res) => {
     }
     // Fetch all products with the same model_ID
     const [relatedProducts] = await poolPromise.query(
-      "SELECT * FROM PRODUCT WHERE Model_ID = ?",
+      "SELECT * FROM PRODUCT WHERE Model_ID = ? and status = 0",
       [productInfo[0].Model_ID]
     );
     res.json({ product: productInfo[0], relatedProducts: relatedProducts });
