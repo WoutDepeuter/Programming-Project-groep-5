@@ -11,7 +11,7 @@
 `cd .\Backend\`
 
 5. Installeer de node modules:
-`- npm, ci, argon2, dotenv, ejs, express, iconv-lite, jsonwebtoken, multer, mysql, mysql2, path, safe-buffer, mul,  crypto-js `
+`- npm ci argon2 dotenv ejs express iconv-lite jsonwebtoken multer mysql mysql2 path safe-buffer mul  crypto-js `
 
 6. Maak een .env bestand aan in .\Backend\ de informatie dat in de .env moet staat in de Teams Groep als gepint bericht
 ```
