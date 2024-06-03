@@ -1,3 +1,8 @@
+//functie om te checjen of de gebruiker een admin is
+//Als de gebruiker geen admin is wordt hij terug gestuurd naar de login pagina
+//Als de gebruiker wel een admin is wordt hij doorgestuurd naar de admin pagina
+
+
 function getRoleFromBackend(token) {
     fetch("/getRole", {
         method: "GET",

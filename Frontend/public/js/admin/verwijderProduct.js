@@ -1,3 +1,11 @@
+
+//script om product uit de database te verwijderen
+//er wordt een fetch gedaan naar de backend
+//in de backend wordt het product verwijderd
+//er wordt een popup getoond om te vragen of de gebruiker zeker is dat hij het product wilt verwijderen
+//als de gebruiker op ja klikt wordt het product verwijderd
+//de pagina wordt herladen
+
 document.addEventListener('DOMContentLoaded', () => {
     const deleteButtons = document.querySelectorAll('.delete');
     const { yesButton, popupBackground } = createDelPopup();

@@ -1,3 +1,14 @@
+//script voor het wijzigen van producten in de admin pagina
+//er wordt een fetch gedaan naar de backend om de product informatie op te halen
+//er wordt een fetch gedaan naar de backend om de echte producten op te halen
+//er wordt een popup getoond om de product informatie te wijzigen
+//als de gebruiker op opslaan klikt wordt de informatie opgeslagen
+//als de gebruiker op sluiten klikt wordt de popup gesloten
+//als de gebruiker op voeg echt product toe klikt wordt er een echt product toegevoegd
+//als de gebruiker op verwijder echt product klikt wordt er een echt product verwijderd
+//de pagina wordt herladen
+
+
 document.addEventListener("DOMContentLoaded", () => {
   const editButtons = document.querySelectorAll(".edit");
   const popupOverlay = document.getElementById("popupOverlay");

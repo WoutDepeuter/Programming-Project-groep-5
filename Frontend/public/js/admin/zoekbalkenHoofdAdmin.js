@@ -1,3 +1,8 @@
+// Functie: Filteren van reservaties op naam en productID
+// Deze functie filtert de reservaties op naam en productID.
+// De gebruiker kan zoeken op naam en productID.
+// De functie wordt uitgevoerd wanneer de gebruiker iets typt in de zoekbalken.
+
 document.addEventListener("DOMContentLoaded", () => {
   const zoekbalkNaam = document.getElementById("zoekbalkNaam");
   const zoekbalkID = document.getElementById("zoekbalkID");

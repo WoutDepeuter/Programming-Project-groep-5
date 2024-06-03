@@ -1,3 +1,5 @@
+//toepassingen filter
+
 const filterButton = document.getElementById('filter');
         const popupBackground = document.getElementById('popupBackground');
         const popupContent = document.getElementById('popupContent');

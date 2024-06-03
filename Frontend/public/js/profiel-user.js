@@ -22,4 +22,6 @@ document.getElementById('probleem-bezitting').addEventListener("click", function
       }
     }
   }
+  //script voor het openen en sluiten van de modals
+  
   

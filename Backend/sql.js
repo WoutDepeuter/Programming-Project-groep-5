@@ -8,7 +8,7 @@ const mysqlPromise = require("mysql2/promise");
 const app = express();
 const env = require("dotenv").config().parsed;
 const CryptoJS = require('crypto-js');
-
+//aanmaken alle dependencies
 
 
 // functies om rol uit token onleesbaar te maken en leesbaar te maken
@@ -45,6 +45,7 @@ function decryptRoleFromToken(token) {
 //_______________________________________________________
 //sql schooldb
 
+//opzetten van de connectie met de database
 const pool = mysql.createPool({
   host: env.HOST,
   user: env.USER,
@@ -64,7 +65,7 @@ const poolPromise = mysqlPromise.createPool({
   queueLimit: 0,
 });
 
-// Set EJS as the view engine
+
 app.set("view engine", "ejs");
 
 app.set("views", path.join(__dirname, "..", "frontend", "views"));
@@ -104,6 +105,7 @@ app.get("/getRole", (req, res) => {
 });
 // Admin-interface-------------------------------------------------------------------------------
 
+//route voor de hoofdpagina van de admin-interface
 app.get("/HoofdMenuAdmin", (req, res) => {
   const queryReservations = `
     SELECT 
@@ -162,6 +164,7 @@ app.get("/HoofdMenuAdmin", (req, res) => {
   });
 });
 
+//route voor de pagina van de producten van de admin die binnenkomen
 app.get("/HoofdMenuAdminInkomend", (req, res) => {
   const queryReservations = `
     SELECT 
@@ -221,6 +224,7 @@ app.get("/HoofdMenuAdminInkomend", (req, res) => {
 });
 
 
+//route voor de pagina van de producten van de admin zodat hij ze kan goedkeuren in de categorie audio
 app.get("/producten", (req, res) => {
   pool.query(
     "SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK",
@@ -237,6 +241,7 @@ app.get("/producten", (req, res) => {
   );
 });
 
+//route voor de pagina van de producten van de admin zodat hij ze kan goedkeuren in de categorie belichting
 app.get("/productenbelichting", (req, res) => {
   pool.query(
     "SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK",
@@ -251,7 +256,7 @@ app.get("/productenbelichting", (req, res) => {
     }
   );
 });
-
+//route voor de pagina van de producten van de admin zodat hij ze kan goedkeuren in de categorie varia
 app.get("/productenvaria", (req, res) => {
   pool.query(
     "SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK",
@@ -266,7 +271,7 @@ app.get("/productenvaria", (req, res) => {
     }
   );
 });
-
+//route voor de pagina van de producten van de admin zodat hij ze kan goedkeuren in de categorie xr
 app.get("/productenxr", (req, res) => {
   pool.query(
     "SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK",
@@ -281,7 +286,7 @@ app.get("/productenxr", (req, res) => {
     }
   );
 });
-
+//route voor de pagina van de producten van de admin zodat hij ze kan goedkeuren in de categorie video
 app.get("/productenvideo", (req, res) => {
   pool.query(
     "SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ? ORDER BY MERK",
@@ -297,7 +302,8 @@ app.get("/productenvideo", (req, res) => {
   );
 });
 
-// Route for adding a product
+
+// Route voor het toevoegen van een product
 app.post("/addProduct", upload.single("productFoto"), (req, res) => {
   const { productName, productDescription, category, merk } = req.body;
   const productFoto = req.file.buffer;
@@ -317,11 +323,11 @@ app.post("/addProduct", upload.single("productFoto"), (req, res) => {
   );
 });
 
+//route voor het verwijderen van een product
 app.post("/deleteproduct", (req, res) => {
   const { id } = req.body;
   const query = "DELETE FROM PRODUCTMODEL WHERE model_ID = ?";
   pool.query(query, [id], (err, result) => {
-    // Pass id as parameter to query
     if (err) {
       console.error("Error executing query:", err);
       res.status(500).send("Internal Server Error");
@@ -331,6 +337,7 @@ app.post("/deleteproduct", (req, res) => {
   });
 });
 
+//route voor het verkrijgen van informatie van een product
 app.get("/getProductInfo/:id", (req, res) => {
   const { id } = req.params;
   const query = "SELECT * FROM PRODUCTMODEL WHERE model_ID = ?";
@@ -344,6 +351,7 @@ app.get("/getProductInfo/:id", (req, res) => {
   });
 });
 
+//route voor het verkrijgen van de verschillende producten van een welbepaald model
 app.get("/getRealProducts/:modelId", (req, res) => {
   const { modelId } = req.params;
   const query = "SELECT * FROM PRODUCT WHERE Model_ID = ?";
@@ -357,6 +365,7 @@ app.get("/getRealProducts/:modelId", (req, res) => {
   });
 });
 
+//route voor het aanpassen van een product
 app.post("/editProduct", upload.single("productFoto"), (req, res) => {
   const { productId, productName, productDescription, category, merk } = req.body;
   const productFoto = req.file ? req.file.buffer : null;
@@ -382,6 +391,8 @@ app.post("/editProduct", upload.single("productFoto"), (req, res) => {
   });
 });
 
+//route voor het aanmaken van een exemplaar van een product
+
 app.post("/addRealProduct", (req, res) => {
   const { modelId } = req.body;
   const query = "INSERT INTO PRODUCT (Model_ID) VALUES (?)";
@@ -394,7 +405,7 @@ app.post("/addRealProduct", (req, res) => {
     res.send("Real product added successfully");
   });
 });
-
+//route voor het verwijderen van een exemplaar van een product
 app.post("/removeRealProduct", (req, res) => {
   const { realProductId } = req.body;
   const query = "DELETE FROM PRODUCT WHERE product_ID = ?";
@@ -408,6 +419,7 @@ app.post("/removeRealProduct", (req, res) => {
   });
 });
 
+//route voor het terugbrengen van een product
 app.post("/returnproduct", (req, res) => {
   const { productId, reservationId } = req.body;
   console.log("Product ID:", productId);
@@ -434,7 +446,7 @@ app.post("/returnproduct", (req, res) => {
     });
   });
 });
-
+//route voor het uitlenen van een product
 app.post("/geefproduct", (req, res) => {
   const { productId, reservationId, userId } = req.body;
   console.log("Product ID:", productId);
@@ -479,6 +491,7 @@ app.post("/geefproduct", (req, res) => {
 
 // User-interface-------------------------------------------------------------------------------
 
+//route voor de hoofdpagina van de user-interface
 app.get("/homescreen", async (req, res) => {
   try {
     const audioSlider = await poolPromise.query(
@@ -514,14 +527,15 @@ app.get("/homescreen", async (req, res) => {
   }
 });
 
+
 app.get("/verlenging", (req, res) => {
   res.render("User-interfaceVerlenging");
 });
-
+//route voor de login pagina
 app.get("/login", (req, res) => {
   res.render("User-interface/Login/login");
 });
-
+//route voor de login verwerkingspagina
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -556,10 +570,12 @@ app.post("/login", async (req, res) => {
   }
 });
 
+//route voor de registratie pagina
 app.get("/signUp", (req, res) => {
   res.render("User-interface/Login/signUp");
 });
 
+//route voor de verwerking van de registratie
 app.post("/signUp", async (req, res) => {
   try {
     const { password, email } = req.body;
@@ -576,6 +592,7 @@ app.post("/signUp", async (req, res) => {
   }
 });
 
+//route voor reservatie van product voor de info
 app.get("/reservatie-van-producten/:id", async (req, res) => {
   const productId = req.params.id;
   try {
@@ -595,7 +612,7 @@ app.get("/reservatie-van-producten/:id", async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 });
-
+//route voor reservatie van product voor de inf-verwerking
 app.get("/getproducteninfo/:id", async (req, res) => {
   const productId = req.params.id;
   try {
@@ -619,7 +636,7 @@ app.get("/getproducteninfo/:id", async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
-
+//route voor de reservatie van producten verwerking
 app.post("/reservatie-van-producten/:productID", async (req, res) => {
   const { van, tot } = req.body;
   const authHeader = req.headers.authorization;
@@ -662,6 +679,7 @@ app.post("/reservatie-van-producten/:productID", async (req, res) => {
   }
 });
 
+//route voor het anuleren van een reservatie 
 app.post("/annuleer-besteling", (req, res) => {
   const { productId, reservationId } = req.body;
   console.log("Product ID:", productId);
@@ -690,7 +708,7 @@ app.post("/annuleer-besteling", (req, res) => {
 });
 
 
-
+//route voor de profiel pagina te tonen
 app.get("/profiel-user/:email", (req, res) => {
 
   function rot13(str) {
@@ -747,7 +765,7 @@ app.get("/profiel-user/:email", (req, res) => {
 });
 
 
-
+//route voor de audio catalogus
 app.get("/audio-catalogus", (req, res) => {
   pool.query(
     "SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?",
@@ -764,7 +782,7 @@ app.get("/audio-catalogus", (req, res) => {
     }
   );
 });
-
+//route voor de belichting catalogus
 app.get("/belichting-catalogus", (req, res) => {
   pool.query(
     "SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?",
@@ -781,7 +799,7 @@ app.get("/belichting-catalogus", (req, res) => {
     }
   );
 });
-
+//route voor de varia catalogus
 app.get("/varia-catalogus", (req, res) => {
   pool.query(
     "SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?",
@@ -798,7 +816,7 @@ app.get("/varia-catalogus", (req, res) => {
     }
   );
 });
-
+//route voor de video catalogus
 app.get("/video-catalogus", (req, res) => {
   pool.query(
     "SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?",
@@ -815,7 +833,7 @@ app.get("/video-catalogus", (req, res) => {
     }
   );
 });
-
+//route voor de xr catalogus
 app.get("/xr-catalogus", (req, res) => {
   pool.query(
     "SELECT * FROM PRODUCTMODEL WHERE Cat_ID = ?",
@@ -832,6 +850,7 @@ app.get("/xr-catalogus", (req, res) => {
     }
   );
 });
+//route voor de info van een user wordt gebruikt in verwerking ingelogd of niet
 app.get("/user-info", async (req, res) => {
   const authHeader = req.headers.authorization;
   if (!authHeader) {
@@ -856,7 +875,7 @@ app.get("/user-info", async (req, res) => {
     return res.status(500).send("Error fetching user info");
   }
 });
-
+//openen van de server op poort 3000
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

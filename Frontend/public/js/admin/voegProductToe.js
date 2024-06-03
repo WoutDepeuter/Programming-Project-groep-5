@@ -1,4 +1,10 @@
 // voegProductToe.js
+//script om product toe te voegen
+//er wordt een fetch gedaan naar de backend
+//er wordt een popup getoond om product toe te voegen
+//als de gebruiker op toevoegen klikt wordt het product toegevoegd
+//de pagina wordt herladen
+
 document.getElementById("add").addEventListener("click", voegProductToeButton);
 
 
