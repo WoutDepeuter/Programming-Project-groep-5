@@ -1,29 +1,37 @@
-let token = localStorage.getItem('token');
-let resultnation = getRoleFromToken(token);
-
-function getRoleFromToken(token) {
-    const base64Url = token.split('.')[1];
-    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
-        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-    }).join(''));
-
-    const payload = JSON.parse(jsonPayload);
-    console.log(payload.role);
-    return payload.role;
+function getRoleFromBackend(token) {
+    fetch("/getRole", {
+        method: "GET",
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.error) {
+            console.error("Backend error:", data.error);
+            redirectToLogin();
+        } else {
+            const role = data.role;
+            console.log("Leesbare (ontcijferd) rol:", role);
+            
+            if (role !== "admin") {
+                redirectToLogin();
+            }
+        }
+    })
+    .catch(error => {
+        console.error("Error fetching role:", error);
+        redirectToLogin();
+    });
 }
 
-console.log(`Jones barbeque foot massage: ${resultnation}`);
-
-if (resultnation !== "admin") {
+let token = localStorage.getItem('token');
+if (token) {
+    getRoleFromBackend(token);
+} else {
     redirectToLogin();
 }
 
 function redirectToLogin() {
     window.location.href = '/homescreen';
 }
-
-// let email = localStorage.getItem('email');
-// if (email !== 'admin@ehb.be') {
-//     redirectToLogin();
-// }

@@ -16,7 +16,6 @@ async function checkIfAlreadyLoggedIn() {
             if (userInfoResponse.ok) {
                 const userInfo = await userInfoResponse.json();
                 showLoggedInMessage(userInfo.username);
-                showUserInfo(userInfo);
                 console.log('Already logged in');
             } else {
                 console.error('Failed to fetch user info');
@@ -72,14 +71,3 @@ function showLoggedInMessage(username) {
     loginMessage.textContent = `Logged in as ${username}`;
     loginMessage.style.display = 'block';
 }
-
-function showUserInfo(userInfo) {
-    // Display user info
-    const userInfoElement = document.getElementById('user-info');
-    userInfoElement.innerHTML = `
-        <p>Username: ${userInfo.username}</p>
-        <p>Email: ${userInfo.email}</p>
-    `;
-    userInfoElement.style.display = 'block';
-}
-
