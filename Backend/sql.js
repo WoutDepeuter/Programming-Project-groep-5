@@ -65,21 +65,16 @@ const poolPromise = mysqlPromise.createPool({
 // Set EJS as the view engine
 app.set("view engine", "ejs");
 
-// Set the views directory
 app.set("views", path.join(__dirname, "..", "frontend", "views"));
 
-// Middleware to serve static files from the "public" directory
 app.use(express.static(path.join(__dirname, "..", "frontend", "public")));
 
-// Middleware to parse form data
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Configure multer for file uploads
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
-// Route to render the index page
 app.get("/", (req, res) => {
   res.render("User-interface/Login/login");
 });
@@ -108,7 +103,7 @@ app.get("/getRole", (req, res) => {
 // Admin-interface-------------------------------------------------------------------------------
 
 app.get("/HoofdMenuAdmin", (req, res) => {
-  // Perform the database query
+
   pool.query(
     `
     SELECT RESERVATIE.*, PRODUCT.*, PRODUCTMODEL.*, USER.email, USER.username
@@ -132,7 +127,7 @@ app.get("/HoofdMenuAdmin", (req, res) => {
   
 });
 app.get("/HoofdMenuAdminInkomend", (req, res) => {
-  // Perform the database query
+
   pool.query(
     `
     SELECT RESERVATIE.*, PRODUCT.*, PRODUCTMODEL.*, USER.email, USER.username
@@ -596,6 +591,33 @@ app.post("/reservatie-van-producten/:productID", async (req, res) => {
     await poolPromise.query("ROLLBACK;");
     return res.status(500).json({ error: "Error reserving product" });
   }
+});
+
+app.post("/annuleer-besteling", (req, res) => {
+  const { productId, reservationId } = req.body;
+  console.log("Product ID:", productId);
+  console.log("Reservation ID:", reservationId);
+
+  const updateProductQuery = "UPDATE PRODUCT SET status = 0 WHERE product_ID = ?";
+  const deleteReservationQuery = "DELETE FROM RESERVATIE WHERE reservatie_ID = ?";
+
+  pool.query(updateProductQuery, [productId], (err, productResult) => {
+    if (err) {
+      console.error("Error updating product status:", err);
+      res.status(500).send("Internal Server Error");
+      return;
+    }
+
+    pool.query(deleteReservationQuery, [reservationId], (err, deleteResult) => {
+      if (err) {
+        console.error("Error deleting reservation:", err);
+        res.status(500).send("Internal Server Error");
+        return;
+      }
+
+      res.send("Product returned successfully and reservation deleted");
+    });
+  });
 });
 
 

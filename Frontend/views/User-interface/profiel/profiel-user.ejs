@@ -51,7 +51,7 @@
             <h4>Product-ID: <%= r.product_ID %></h4>
             <h4>OphaalDatum: <%= r.formatted_begin_datum %></h4>
             <div>
-              <button id="annulatie-reservatie" class="annuleer-knop" data-reservation_id="<%= r.reservation_ID %>">x</button>
+              <button id="annulatie-reservatie" class="annuleer-knop" data-reservation-id="<%= r.reservatie_ID %>" data-product-id="<%= r.product_ID %>">x</button>           
             </div>
           </div>
         <% } %>
@@ -114,5 +114,6 @@
 
   <script src="js/profiel-user.js"></script>
   <script src="js/fetchuser-info.js"></script>
+  <script src ="/js/user/verwijderbestelling.js"></script>
 </body>
 </html>
