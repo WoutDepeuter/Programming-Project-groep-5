@@ -43,8 +43,6 @@ if (match) {
             <h4>Product-ID: <%= r.product_ID %></h4>
             <h4>Inleverdatum: <%= r.formatted_eind_datum %></h4>
             <div>
-              <h4><a id="probleem-bezitting" href="#">Probleem?</a></h4>
-              <h4><a href="/Frontend/User-interface/Verlenging.html">Verlengen?</a></h4>
             </div>
           </div>
         <% } %>
@@ -107,24 +105,6 @@ if (match) {
     </div>
   </div>
 
-  <div id="annulatieModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('annulatieModal')">&times;</span>
-      <div class="volledig-annulatie-form">
-        <div>
-          <h1>Ben je zeker dat je de reservatie wilt annuleren?</h1>
-        </div>
-        <form id="annulatieForm">
-          <label for="schade1"><h2>JA</h2></label>
-          <input type="radio" name="schade" id="schade1">
-          <label for="schade2"><h2>NEE</h2></label>
-          <input type="radio" name="schade" id="schade2">
-          <br>
-          <button class="knop-probleem-versturen" type="submit">Verstuur</button>
-        </form>
-      </div>
-    </div>
-  </div>
 
   <script src="/js/profiel-user.js" defer></script>
   <script src="/js/fetchuser-info.js" defer></script>
