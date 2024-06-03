@@ -169,3 +169,15 @@ footer {
 .producten {
   text-align: right;
 }
+
+.admin-link a {
+  color: white;
+  background-color: #FF6347;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-decoration: none; 
+}
+
+.admin-link a:hover {
+  background-color: #D32F2F;
+}

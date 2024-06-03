@@ -8,29 +8,42 @@
   <link rel="stylesheet" href="/css/profiel-user.css" />
 
   <script>
-// ZET DIT IN EEN APPARTE JS DING
-let currentUrl = window.location.href;
-let pattern = /profiel-user\/([^\/]+)/;
-let match = currentUrl.match(pattern);
+// // ZET DIT IN EEN APPARTE JS DING
+// let currentUrl = window.location.href;
+// let pattern = /profiel-user\/([^\/]+)/;
+// let match = currentUrl.match(pattern);
 
-if (match) {
-    let dynamicPart = match[1];
-    let newValue = "";
-    let newUrl = currentUrl.replace(dynamicPart, newValue);
-    history.replaceState(null, '', newUrl);
-}
-  </script>
+// if (match) {
+//     let dynamicPart = match[1];
+//     let newValue = "";
+//     let newUrl = currentUrl.replace(dynamicPart, newValue);
+//     history.replaceState(null, '', newUrl);
+// }
+//   </script>
 </head>
 <body>
   <header>
     <div class="icons">
-      <a href="/homescreen"><span class="icon">&#8617;</span></a>
+      <a href="/homescreen" style="text-decoration: none;"><span class="icon">&#8617;</span></a>
     </div>
     <div class="site-naam">
       <a href="/homescreen" id="site-naam">&lt;EHBLoanHub&gt;</a>
     </div>
   </header>
   <main id="main">
+    <% if (user.role === 'admin') { %>
+      <div class="admin-link">
+        <a href="/hoofdmenuadmin" style="color: white;
+        background-color: red;
+        padding: 5px 10px;
+        border-radius: 5px;
+        text-decoration: none;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+">
+        \Admin Dashboard
+      </a>
+      </div>
+    <% } %>
     <div class="bezit-en-ophalen">
       <div class="in-bezit">
         <h2>Momenteel in bezit:</h2>
@@ -42,10 +55,7 @@ if (match) {
             <h4>Product: <%= r.product_name %></h4>
             <h4>Product-ID: <%= r.product_ID %></h4>
             <h4>Inleverdatum: <%= r.formatted_eind_datum %></h4>
-            <div>
-              <h4><a id="probleem-bezitting" href="#">Probleem?</a></h4>
-              <h4><a href="/Frontend/User-interface/Verlenging.html">Verlengen?</a></h4>
-            </div>
+            
           </div>
         <% } %>
         <% }); %>
