@@ -108,12 +108,6 @@ header {
   color: #2bcdc7;
 }
 
-.slider {
-  display: flex;
-  transition: all 0.5s ease;
-  will-change: transform;
-}
-
 .producten {
   display: flex;
   margin-left: 20px;
@@ -138,19 +132,25 @@ header {
   flex: 0 0 auto;
   margin: 1em;
   padding: 1em;
-  width: 20%;
+  width: 15%;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: space-between;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.product-box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
 .product-box img {
-  max-height: 10em;
-  max-width: 10em;
+  max-width: 100%;
   border-radius: 10px;
+  margin-bottom: 10px;
 }
 
 .product-box h2 {
@@ -179,16 +179,16 @@ header {
 
 .slider {
   display: flex;
-  width: 100%; /* Zorg ervoor dat de slider de volledige breedte van zijn container beslaat */
   transition: all 0.5s ease;
+  will-change: transform;
+  width: 100%;
 }
 
 .arrow-left,
 .arrow-right {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
-  background-color: rgb(43, 205, 199);
+  background-color: #2bcdc7;
   border: none;
   border-radius: 50%;
   width: 50px;
@@ -327,6 +327,11 @@ footer {
   height: 50px;
   font-size: 24px;
   cursor: pointer;
+}
+
+.arrow:hover {
+  background-color: #26b2b1;
+  transform: scale(1.1);
 }
 
 /* Scrollbar begin */
