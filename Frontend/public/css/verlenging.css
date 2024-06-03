@@ -120,3 +120,14 @@ footer {
   flex-direction: column;
   justify-content: center;
 }
+
+/* Scrollbar achtergrondkleur */
+::-webkit-scrollbar-track {
+  background: #222831;
+}
+
+/* Scrollbar voorgrondkleur */
+::-webkit-scrollbar-thumb {
+  background: #ff0000;
+  border-radius: 10px;
+}

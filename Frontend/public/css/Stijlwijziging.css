@@ -7,7 +7,7 @@ body {
   font-family: "Poppins", Arial, Helvetica, sans-serif;
 }
 
-/* Popup Styles */
+/* Popup Styles*/
 .popup {
   display: none;
   justify-content: center;
@@ -35,10 +35,7 @@ body {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* style btn */
-
-
-/* about-product (no changes needed) */
+/* about-product  */
 .about-product {
   color: black;
   padding: 20px;
@@ -55,7 +52,6 @@ body {
   margin: 10px 0;
   font-size: 24px;
   text-align: center;
-  /* padding: 10px 0; */
 }
 
 .about-product .row {
@@ -94,7 +90,7 @@ body {
 .form-input,
 .form-textarea,
 .form-select {
-  width: calc(100% - 22px); /* Adjust width to account for padding and border */
+  width: calc(100% - 22px);
   padding: 10px;
   margin-bottom: 20px;
   border: 1px solid #ccc;
@@ -158,4 +154,15 @@ textarea:focus {
   outline: none;
   border-color: #2bcdc7;
   box-shadow: 0 0 5px rgba(43, 205, 199, 0.5);
+}
+
+/* Scrollbar achtergrondkleur */
+::-webkit-scrollbar-track {
+  background: #222831;
+}
+
+/* Scrollbar voorgrondkleur */
+::-webkit-scrollbar-thumb {
+  background: #ff0000;
+  border-radius: 10px;
 }

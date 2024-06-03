@@ -123,12 +123,11 @@ main {
   font-size: small;
 }
 
-.extra-aantal-beschikbaar {
-  color: lawngreen;
-}
-
 .extra-product h4 {
   padding: 0 0 0 20px;
+}
+.extra-aantal-beschikbaar {
+  color: lawngreen;
 }
 
 .checkbox-extra {
@@ -190,9 +189,20 @@ input[type="date"]:hover {
 input[type="date"]:not(:hover) {
   opacity: 1;
   transition: 0.3s ease-in-out;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 #reservatie-form {
   width: 200px;
+}
+
+/* Scrollbar achtergrondkleur */
+::-webkit-scrollbar-track {
+  background: #222831;
+}
+
+/* Scrollbar voorgrondkleur */
+::-webkit-scrollbar-thumb {
+  background: #ff0000;
+  border-radius: 10px;
 }
