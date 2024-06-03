@@ -11,7 +11,7 @@
 `cd .\Backend\`
 
 5. Installeer de node modules:
-`npm ci argon2 dotenv ejs express iconv-lite jsonwebtoken multer mysql mysql2 path safe-buffer mul`
+`- npm, ci, argon2, dotenv, ejs, express, iconv-lite, jsonwebtoken, multer, mysql, mysql2, path, safe-buffer, mul,  crypto-js `
 
 6. Maak een .env bestand aan in .\Backend\ de informatie dat in de .env moet staat in de Teams Groep als gepint bericht
 ```
@@ -23,7 +23,7 @@ PORT=...
 JWT_SECRET=...
 ```
 7. Start de server: (je moet in de Backend zitten)
-`node .\sql.js`
+`node .\server.js`
 
 ## Overzicht
 
@@ -54,6 +54,7 @@ Welkom bij EHBLoanHub! EHBLoanHub is een gebruiksvriendelijke website die we heb
   - [Express JS](https://expressjs.com/en/guide/database-integration.html)
   - [EJS](https://ejs.co/#docs)
   - [Auth0](https://auth0.com/docs/quickstart/webapp/express/interactive)
+  - [CryptoJS](https://www.npmjs.com/package/crypto-js)
   - ...
 
 ## Auteurs
