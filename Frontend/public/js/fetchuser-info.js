@@ -1,8 +1,14 @@
-// Fetch email from local storage
-const email = localStorage.getItem('username');
+function rot13(str) {
+  return str.replace(/[A-Za-z]/g, function(c) {
+    return String.fromCharCode(
+      c.charCodeAt(0) + (c.toLowerCase() < 'n' ? 13 : -13)
+    );
+  });
+}
+
+const email = rot13(localStorage.getItem('username'));
 console.log(email);
 
-// Function to send the email to the server
 async function fetchUserData() {
   try {
     const response = await fetch('/profiel-user', {
@@ -10,7 +16,7 @@ async function fetchUserData() {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ email: email }) // Pass email in the request body
+      body: JSON.stringify({ email: email })
     });
 
     if (!response.ok) {
@@ -24,5 +30,4 @@ async function fetchUserData() {
   }
 }
 
-// Call the function to fetch user data when the page loads
 window.onload = fetchUserData;
