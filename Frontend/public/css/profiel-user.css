@@ -249,3 +249,20 @@ footer {
   text-decoration: none;
   cursor: pointer;
 }
+
+/* Scrollbar begin */
+/* Scrollbar dikte */
+::-webkit-scrollbar {
+  width: 7.5px;
+}
+
+/* Scrollbar achtergrondkleur */
+::-webkit-scrollbar-track {
+  background: #222831;
+}
+
+/* Scrollbar voorgrondkleur */
+::-webkit-scrollbar-thumb {
+  background: #ff0000;
+  border-radius: 10px;
+}

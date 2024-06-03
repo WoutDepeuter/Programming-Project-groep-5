@@ -430,3 +430,19 @@ footer {
   transform: translateY(0); /* Verplaats de knop naar zijn normale positie */
 }
 
+/* Scrollbar begin */
+/* Scrollbar dikte */
+::-webkit-scrollbar {
+  width: 7.5px;
+}
+
+/* Scrollbar achtergrondkleur */
+::-webkit-scrollbar-track {
+  background: #222831;
+}
+
+/* Scrollbar voorgrondkleur */
+::-webkit-scrollbar-thumb {
+  background: #ff0000;
+  border-radius: 10px;
+}

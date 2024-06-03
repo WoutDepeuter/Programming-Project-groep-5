@@ -681,6 +681,7 @@ button{
 .return-button{
   background-color: #95d095;
 }
+
 .buttons{
   display: flex;
   flex-direction: column;
@@ -689,4 +690,21 @@ button{
 }
 #titels{
   font-weight: bold;
+}
+
+#uitgeleend{
+  background-color: #ff0000;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+#uitgeleend:hover{
+  background-color: #ff4d4d;
 }

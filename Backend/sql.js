@@ -7,6 +7,27 @@ const mysql = require("mysql2");
 const mysqlPromise = require("mysql2/promise");
 const app = express();
 const env = require("dotenv").config().parsed;
+const CryptoJS = require('crypto-js');
+
+// functies om rol uit token onleesbaar te maken en leesbaar te maken
+// update jullie .env bestand met een AES_KEY:... zie discord.
+function decryptAES(ciphertext, key) {
+  let bytes = CryptoJS.AES.decrypt(ciphertext, key);
+  return bytes.toString(CryptoJS.enc.Utf8);
+}
+
+function encryptAES(text, key) {
+  console.log(CryptoJS.AES.encrypt(text, key).toString())
+  return CryptoJS.AES.encrypt(text, key).toString();
+}
+
+function decryptRoleFromToken(token) {
+  const decoded = jwt.decode(token);
+  if (!decoded || !decoded.role) {
+      throw new Error("Invalid token");
+  }
+  return decryptAES(decoded.role, process.env.AES_KEY);
+}
 
 //sql lokaal
 // const pool = mysql.createPool({
@@ -63,6 +84,27 @@ app.get("/", (req, res) => {
   res.render("User-interface/Login/login");
 });
 
+// route om rol te decrypten uit token
+app.get("/getRole", (req, res) => {
+  
+  if (!req.headers.authorization) {
+      return res.status(400).json({ error: "Authorization header missing" });
+  }
+
+  const tokenParts = req.headers.authorization.split(" ");
+  if (tokenParts.length !== 2 || tokenParts[0] !== "Bearer") {
+      return res.status(400).json({ error: "Malformed token" });
+  }
+
+  const token = tokenParts[1];
+  try {
+      const decryptedRole = decryptRoleFromToken(token);
+      res.json({ role: decryptedRole });
+  } catch (error) {
+      console.error("Error decrypting role:", error);
+      res.status(500).json({ error: "Failed to decrypt role" });
+  }
+});
 // Admin-interface-------------------------------------------------------------------------------
 
 app.get("/HoofdMenuAdmin", (req, res) => {
@@ -426,14 +468,15 @@ app.post("/login", async (req, res) => {
     if (rows.length > 0) {
       const user = rows[0];
       if (await argon2.verify(user.password, password)) {
+        const encryptedRole = encryptAES(user.rol, process.env.AES_KEY);
         const token = jwt.sign(
-          { username: user.username },
+          { username: user.username, role: encryptedRole },
           process.env.JWT_SECRET,
           {
             expiresIn: "1h",
           }
         );
-        res.json({ token });
+        res.json({ token , role: encryptedRole});
         return;
       } else {
         res.status(401).send("Invalid credentials");
@@ -459,7 +502,7 @@ app.post("/signUp", async (req, res) => {
     const username = email.split("@")[0];
     const hashedPassword = await argon2.hash(password);
     await poolPromise.query(
-      "INSERT INTO USER (username, email, password) VALUES (?, ?, ?)",
+      "INSERT INTO USER (username, email, password, rol) VALUES (?, ?, ?, 'student')",
       [username, email, hashedPassword]
     );
     res.status(201).send("User registered");
@@ -566,7 +609,8 @@ app.get("/profiel-user/:email", (req, res) => {
       DATE_FORMAT(r.eind_datum, '%d-%m-%Y') AS formatted_eind_datum, 
       DATE_FORMAT(r.begin_datum, '%d-%m-%Y') AS formatted_begin_datum, 
       p.Model_ID, 
-      pm.naam AS product_name    
+      pm.naam AS product_name,
+      p.status
     FROM 
       RESERVATIE r
     JOIN 

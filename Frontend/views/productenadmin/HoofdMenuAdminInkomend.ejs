@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <script src="/js/admin/checkadmin.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
@@ -38,7 +39,7 @@
             <p>Aantal</p>
         </div>
         <div class="aantal-producten">
-            <h2>Vandaag uit te lenen.</h2>
+            <h2>Uit te lenen.</h2>
             <p>
                 <%= reservations.length %>
             </p>
@@ -80,6 +81,7 @@
                                 <p><span id="titels">Product Name:</span> <br>
                                     <%= reservation.naam %>
                                 </p>
+                                <hr>
                                 <div class="buttons">
                                     <button class="return-button" 
                                     data-reservation-id="<%= reservation.reservatie_ID %>" 

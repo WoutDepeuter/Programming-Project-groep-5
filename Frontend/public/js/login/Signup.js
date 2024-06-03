@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if(isGeldigStudentEmail(email) !== true){
             alert("De email die je hebt ingegeven is geen geldig student email");
+            window.location.href = '/signup';
         }
 
         if (password !== confirmPassword) {
@@ -20,21 +21,23 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-
-        fetch('/signup', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ email, password })
-        })
-        .then(response => {
-            if (response.ok) {
-                window.location.href = '/login'; // Adjust the URL to your home screen route
-            } else {
-                // Handle failed signup
-            }
-        })
-        .catch(error => console.error('Error:', error));
+        if(isGeldigStudentEmail(email) == true){
+            alert("Je hebt je succesvol geregistreerd")
+            fetch('/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, password })
+            })
+            .then(response => {
+                if (response.ok) {
+                    window.location.href = '/login'; // Adjust the URL to your home screen route
+                } else {
+                    // Handle failed signup
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
     });
 });
