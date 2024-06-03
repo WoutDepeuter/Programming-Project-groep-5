@@ -154,7 +154,7 @@ app.get("/HoofdMenuAdmin", (req, res) => {
 
         const telaatCount = telaatResult[0].telaat_count;
 
-        res.render("productenadmin/HoofdMenuAdmin", {
+        res.render("Admin-Interface/HoofdMenuAdmin", {
           reservations: reservations,
           uitgeleendCount: uitgeleendCount,
           telaatCount: telaatCount
@@ -213,7 +213,7 @@ app.get("/HoofdMenuAdminInkomend", (req, res) => {
 
         const telaatCount = telaatResult[0].telaat_count;
 
-        res.render("productenadmin/HoofdMenuAdminInkomend", {
+        res.render("Admin-Interface/HoofdMenuAdminInkomend", {
           reservations: reservations,
           uitgeleendCount: uitgeleendCount,
           telaatCount: telaatCount
