@@ -13,7 +13,28 @@ function toonPopUp(event) {
     }
 
     const merkenLijst = document.getElementById('merkenLijst');
-    merkenLijst.innerHTML = '';
+    merkenLijst.innerHTML =  `
+    <style>
+        .popup-content a {
+          text-decoration: none;
+          color: #333; 
+          padding: 6px 12px;
+          border-radius: 4px;
+          transition: all 0.3s ease; 
+          display: inline-block;                  
+          background-color: #fff;
+      }
+      
+      .popup-content a:hover {
+          color: #fff; 
+          background-color: #ff4444;
+          border-color: #333; 
+          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);  
+      }
+      </style>
+      
+</>
+  `;
     if (merkenLijst) {
         merken.forEach(merk => {
             const merkProduct = document.createElement('div');
