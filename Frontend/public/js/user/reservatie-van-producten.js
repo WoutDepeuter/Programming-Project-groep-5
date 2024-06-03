@@ -20,10 +20,18 @@ function popUpReservatie(event){
         document.getElementById('pop-up-gebruikersvoorwaarden').innerHTML = "";
         alert("De van datum moet vroeger zijn dan de tot datum!");
     }
+    else if(van.getDay() == 6 || van.getDay() == 0){
+        document.getElementById('pop-up-gebruikersvoorwaarden').innerHTML = "";
+        alert("De van datum mag niet in het week-end!");
+    }
+    else if(tot.getDay() == 6 || tot.getDay() == 0){
+        document.getElementById('pop-up-gebruikersvoorwaarden').innerHTML = "";
+        alert("De tot datum mag niet in het week-end!");
+    }
     // specifiek voor studenten
     else if(true){
-        let week = 7 * 24 * 60 * 60 * 1000
-        if(van - vandaag >= week * 2){
+        let week = 7 * 24 * 60 * 60 * 1000;
+        if(tot - vandaag >= week * 2){
             document.getElementById('pop-up-gebruikersvoorwaarden').innerHTML = "";
             alert("Je mag maximum 2 weken vooraf reserveren");
         }
