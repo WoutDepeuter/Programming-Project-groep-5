@@ -1,3 +1,10 @@
+//functie om product aan gebruiker te geven
+//Als de gebruiker op de geef knop klikt wordt het product aan de gebruiker gegeven
+//De gebruiker krijgt een melding dat het product is gegeven
+//Als er een error is wordt er een melding gegeven dat er een error is
+//De gebruiker wordt doorgestuurd naar de homepagina
+
+
 document.addEventListener('DOMContentLoaded', function () {
     const giveButtons = document.querySelectorAll('.give-button'); // Select both buttons
     giveButtons.forEach(button => {

@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then(response => {
                 if (response.ok) {
-                    window.location.href = '/login'; // Adjust the URL to your home screen route
+                    window.location.href = '/login'; 
                 } else {
                     // Handle failed signup
                 }

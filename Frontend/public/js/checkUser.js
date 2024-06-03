@@ -1,4 +1,7 @@
 // ALS USER NIET INGELOGD IS (HEEFT GEEN ROL STUDENT DOCENT OF ADMIN WORDT HIJ DOORGESTUURD NAAR DE LOGIN PAGINA)
+//script om te checken of de gebruiker is ingelogd
+//als de gebruiker is ingelogd wordt de gebruikersnaam en email getoond
+//als de gebruiker niet is ingelogd wordt hij doorgestuurd naar de login pagina
 
 function getRoleFromBackend(token) {
     fetch("/getRole", {

@@ -1,3 +1,5 @@
+//
+
 let bevestig = document.getElementById('bevestig-knop');
 bevestig.addEventListener("click", bevestiging);
 

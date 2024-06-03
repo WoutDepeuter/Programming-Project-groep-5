@@ -1,3 +1,6 @@
+//script om te checken of de gebruiker is ingelogd
+//als de gebruiker is ingelogd wordt de gebruikersnaam en email getoond
+
 async function checkIfLoggedIn() {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -48,10 +51,10 @@ function showUserInfo(userInfo) {
 }
 
 function redirectToLogin() {
-    window.location.href = '/login'; // Adjust the login page URL as needed
+    window.location.href = '/login'; 
 }
 
-// Check if logged in when the page loads
+
 document.addEventListener('DOMContentLoaded', () => {
     checkIfLoggedIn();
 });
