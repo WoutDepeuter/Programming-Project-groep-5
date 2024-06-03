@@ -598,6 +598,8 @@ app.post("/reservatie-van-producten/:productID", async (req, res) => {
   }
 });
 
+
+
 app.get("/profiel-user/:email", (req, res) => {
   const userEmail = req.params.email;
 
