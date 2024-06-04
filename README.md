@@ -50,11 +50,11 @@ Welkom bij EHBLoanHub! EHBLoanHub is een gebruiksvriendelijke website die we heb
 
 ## Database schema's
 
-**Activity Diagram:**
-![Activity Diagram](https://github.com/WoutDepeuter/Programming-Project-groep-5/assets/132590961/d5cce962-568a-432d-a8a8-ee5fee830efd =x250)
+**Activity Diagram:**<br>
+![Activity Diagram](https://github.com/WoutDepeuter/Programming-Project-groep-5/assets/132590961/d5cce962-568a-432d-a8a8-ee5fee830efd)
 
-**Entity Relation Diagram**
-![Entity Relation Diagram](https://github.com/WoutDepeuter/Programming-Project-groep-5/assets/132590961/b90dbff1-18f2-4b6e-98bd-57fc374d40d5 =x250)
+**Entity Relation Diagram** <br>
+![Entity Relation Diagram](https://github.com/WoutDepeuter/Programming-Project-groep-5/assets/132590961/b90dbff1-18f2-4b6e-98bd-57fc374d40d5)
 
 
 
