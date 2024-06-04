@@ -124,6 +124,7 @@ app.get("/HoofdMenuAdmin", (req, res) => {
       USER ON RESERVATIE.user_ID = USER.user_ID
     WHERE 
       RESERVATIE.begin_datum = CURDATE()
+      and PRODUCT.status = 1
   `;
 
   const queryUitgeleend = `SELECT COUNT(*) AS uitgeleend_count FROM PRODUCT WHERE status = 2`;
@@ -485,6 +486,18 @@ app.post("/geefproduct", (req, res) => {
   });
 });
 
+app.post("/leen", (req, res) => {
+pool.query("UPDATE PRODUCT SET status = 2 WHERE product_ID = ?", [req.body.productId], (err, result) => {
+  
+  if (err) {
+    console.error("Error updating product status:", err);
+    res.status(500).send("Internal Server Error");
+    return;
+  }
+  res.send("Product returned successfully");
+}
+);
+});
 
 
 

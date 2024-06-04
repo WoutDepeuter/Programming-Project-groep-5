@@ -83,7 +83,8 @@
                 </p>
                 <hr>
                 <div class="buttons">
-                  <button id="uitgeleend">Uitgeleend</button>
+                  <button id="uitgeleend" class="uitgeleend"data-product-id="<%= reservation.product_ID %>" 
+                    >Uitgeleend</button>
                 </div>
               </li>
               <% }); %>
@@ -110,6 +111,8 @@
   <!-- Einde footer -->
   <!-- <script src="/Backend/admin/productIndienen.js"></script> -->
   <script src="/js/admin/zoekbalkenHoofdAdmin.js"></script>
+  <script src="/js/admin/geefproductaan.js"></script>
+  <script src="/js/admin/leenproduct.js"></script>
 </body>
 
 </html>
