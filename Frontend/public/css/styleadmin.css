@@ -665,6 +665,7 @@ button {
 }
 
 #uitgeleend {
+  flex: 0;
   background-color: #ff0000;
   color: white;
   border: none;
