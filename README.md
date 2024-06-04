@@ -21,6 +21,7 @@ PASSWORD=...
 DATABASE=...
 PORT=...
 JWT_SECRET=...
+AES_KEY=...
 ```
 7. Start de server: (je moet in de Backend zitten)
 `node .\server.js`
@@ -46,16 +47,17 @@ Welkom bij EHBLoanHub! EHBLoanHub is een gebruiksvriendelijke website die we heb
 
 **Client:** Visual Studio Code, HTML, CSS, JavaScript, Express JS, EJS
 
-**Server:** MySQL, Express JS, Node.JS, EJS
+**Server:** MySQL, Express.JS, Node.JS, EJS
 
 ## Documentatie
   - [Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
   - [Node.JS](https://nodejs.org/docs/latest/api/)
-  - [Express JS](https://expressjs.com/en/guide/database-integration.html)
+  - [Express.JS](https://expressjs.com/en/guide/database-integration.html)
   - [EJS](https://ejs.co/#docs)
-  - [Auth0](https://auth0.com/docs/quickstart/webapp/express/interactive)
+  - [Argon2](https://www.npmjs.com/package/argon2)
   - [CryptoJS](https://www.npmjs.com/package/crypto-js)
-  - ...
+  - [JSONWebToken](https://www.npmjs.com/package/jsonwebtoken)
+  - [DotENV](https://www.npmjs.com/package/dotenv)
 
 ## Auteurs
 - [@Ismael Charia Jimenez](https://github.com/IsmaelCH)
