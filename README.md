@@ -48,17 +48,6 @@ Welkom bij EHBLoanHub! EHBLoanHub is een gebruiksvriendelijke website die we heb
 
 **Server:** MySQL, Express JS, Node.JS, EJS
 
-## Database schema's
-
-**Activity Diagram:**<br>
-![Activity Diagram](https://github.com/WoutDepeuter/Programming-Project-groep-5/assets/132590961/d5cce962-568a-432d-a8a8-ee5fee830efd)
-
-**Entity Relation Diagram** <br>
-![Entity Relation Diagram](https://github.com/WoutDepeuter/Programming-Project-groep-5/assets/132590961/b90dbff1-18f2-4b6e-98bd-57fc374d40d5)
-
-
-
-
 ## Documentatie
   - [Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
   - [Node.JS](https://nodejs.org/docs/latest/api/)
